@@ -1,4 +1,5 @@
 ﻿using DatabaseLibrary;
+using OrganizationManagement.MeasureUnitsEdit;
 using OrganizationManagement.NomenclatureEdit;
 using System;
 using System.Collections.Generic;
@@ -64,17 +65,36 @@ namespace OrganizationManagement
 
         private void editItem_Click(object sender, EventArgs e)
         {
-            //EditGoodForm editForm = new EditGoodForm();
-            //editForm.MdiParent = ActiveForm;
-            //editForm.Show();
+            DataGridViewRow selectedRow = goodsGrid.SelectedRows[0];
+            int goodID = Convert.ToInt32(selectedRow.Cells["GoodID"].Value);
+            DataDB goodsRepository = new DataDB();
+
+            string query = $"SELECT * FROM public.\"Good\" WHERE \"GoodID\" = {goodID}";
+            DataTable goodsData = goodsRepository.FillFormWithQueryResult(query);
+
+            EditGoodForm editForm = new EditGoodForm(goodsData);
+            editForm.MdiParent = ActiveForm;
+            editForm.Show();
+        }
+
+        private void goodsGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0)
+            {
+                int goodID = Convert.ToInt32(goodsGrid.Rows[e.RowIndex].Cells["GoodID"].Value);
+                DataDB goodsRepository = new DataDB();
+
+                string query = $"SELECT * FROM public.\"Good\" WHERE \"GoodID\" = {goodID}";
+                DataTable goodsData = goodsRepository.FillFormWithQueryResult(query);
+
+                EditGoodForm editForm = new EditGoodForm(goodsData);
+                editForm.MdiParent = ActiveForm;
+                editForm.Show();
+            }
         }
         private void refreshGrid_Click(object sender, EventArgs e)
         {
             LoadDataIntoDataGridView();
-        }
-        private void goodsGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

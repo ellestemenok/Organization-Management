@@ -1,6 +1,6 @@
 ﻿namespace OrganizationManagement.NomenclatureEdit
 {
-    partial class AddGoodForm
+    partial class EditGoodForm
     {
         /// <summary>
         /// Required designer variable.
@@ -198,9 +198,9 @@
             this.tabPage3.Controls.Add(this.label7);
             this.tabPage3.Controls.Add(this.label6);
             this.tabPage3.Controls.Add(this.label5);
-            this.tabPage3.Location = new System.Drawing.Point(4, 23);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(536, 227);
+            this.tabPage3.Size = new System.Drawing.Size(536, 228);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Цена";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -413,7 +413,7 @@
             this.goodSave.UseVisualStyleBackColor = true;
             this.goodSave.Click += new System.EventHandler(this.goodSave_Click);
             // 
-            // AddGoodForm
+            // EditGoodForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
@@ -423,10 +423,10 @@
             this.Font = new System.Drawing.Font("Verdana", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "AddGoodForm";
+            this.Name = "EditGoodForm";
             this.ShowIcon = false;
-            this.Text = "Добавить товар";
-            this.Enter += new System.EventHandler(this.AddGoodForm_Enter);
+            this.Text = "Редактировать товар";
+            this.Enter += new System.EventHandler(this.EditGoodForm_Enter);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

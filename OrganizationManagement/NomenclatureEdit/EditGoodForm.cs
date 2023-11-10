@@ -11,14 +11,32 @@ using System.Windows.Forms;
 
 namespace OrganizationManagement.NomenclatureEdit
 {
-    public partial class AddGoodForm : Form
+    public partial class EditGoodForm : Form
     {
-        public AddGoodForm()
+        private int goodID;
+        public EditGoodForm(DataTable goodsData)
         {
             InitializeComponent();
+            if (goodsData.Rows.Count > 0)
+            {
+                goodID = Convert.ToInt32(goodsData.Rows[0]["GoodID"]);
+                nameField.Text = goodsData.Rows[0]["Name"].ToString();
+                articleField.Text = goodsData.Rows[0]["ArticleNumber"].ToString();
+                measureunitBox.SelectedValue = Convert.ToInt32(goodsData.Rows[0]["MeasureUnitID"]);
+                groupBox.SelectedValue = Convert.ToInt32(goodsData.Rows[0]["CategoryID"]);
+                archivecheckBox.Checked = Convert.ToBoolean(goodsData.Rows[0]["InArchive"]);
+                netcostField.Text = goodsData.Rows[0]["NetCost"].ToString();
+                vatField.Text = goodsData.Rows[0]["VAT"].ToString();
+                costWoVatField.Text = goodsData.Rows[0]["TradePrice"].ToString();
+                tradepriceField.Text = goodsData.Rows[0]["TradePrice"].ToString();
+                retailpriceField.Text = goodsData.Rows[0]["RetailPrice"].ToString();
+                trademarginField.Text = goodsData.Rows[0]["TradeMargin"].ToString();
+                retailmarginField.Text = goodsData.Rows[0]["RetailMargin"].ToString();
+                descriptionField.Text = goodsData.Rows[0]["Description"].ToString();
+            }
         }
 
-        private void AddGoodForm_Enter(object sender, EventArgs e)
+        private void EditGoodForm_Enter(object sender, EventArgs e)
         {
             DataDB.LoadDataIntoComboBox(groupBox, "SELECT \"CategoryID\", \"Name\" FROM public.\"GoodCategory\" ORDER BY \"CategoryID\" ASC");
             DataDB.LoadDataIntoComboBox(measureunitBox, "SELECT \"UnitID\", \"Name\" FROM public.\"MeasureUnit\" ORDER BY \"UnitID\" ASC");
@@ -53,7 +71,7 @@ namespace OrganizationManagement.NomenclatureEdit
             double retailmargin = Convert.ToDouble(retailmarginField.Text);
             string description = descriptionField.Text;
 
-            Good.Insert(name, article, measureunitID, groupID, archivecheck, netcost, vat, costwovat, tradeprice, retailprice, trademargin, retailmargin, description);
+            Good.Update(goodID, name, article, measureunitID, groupID, archivecheck, netcost, vat, costwovat, tradeprice, retailprice, trademargin, retailmargin, description);
             Close();
         }
 

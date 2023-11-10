@@ -26,8 +26,6 @@ namespace OrganizationManagement.MeasureUnitsEdit
                 fullnameField.Text = measureunitsData.Rows[0]["FullName"].ToString();
                 fractionalCheckBox.Checked = Convert.ToBoolean(measureunitsData.Rows[0]["Fractional"]);
             }
-
-
         }
 
         private void saveButton_Click(object sender, EventArgs e)

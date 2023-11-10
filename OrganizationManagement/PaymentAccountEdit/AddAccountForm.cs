@@ -26,7 +26,8 @@ namespace OrganizationManagement
             string corrAccount = corrField.Text;
             string bik = bikField.Text;
 
-            Requisites.InsertPaymentAccount(name, accountNumber, bankName, corrAccount, bik);
+            Requisites.InsertPaymentAccount(name, accountNumber, 
+                bankName, corrAccount, bik);
             Close();
         }
     }

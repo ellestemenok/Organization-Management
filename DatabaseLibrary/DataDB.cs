@@ -61,21 +61,14 @@ namespace DatabaseLibrary
                 }
             }
         }
-
-
         public static void LoadDataIntoComboBox(ComboBox comboBox, string query)
         {
             if (Autorization.npgSqlConnection != null && Autorization.npgSqlConnection.State == ConnectionState.Open)
             {
-                // Очищаем комбо-бокс перед загрузкой новых данных
                 comboBox.Items.Clear();
-
-                // Выполним SQL-запрос для получения данных из таблицы GoodCategory
-                //string query = "SELECT \"CategoryID\", \"Name\" FROM public.\"GoodCategory\"";
                 using (NpgsqlCommand command = new NpgsqlCommand(query, Autorization.npgSqlConnection))
                 using (NpgsqlDataReader reader = command.ExecuteReader())
                 {
-                // Заполняем комбо-бокс данными из запроса
                     while (reader.Read())
                     {
                         int ID = reader.GetInt32(0);
@@ -83,12 +76,10 @@ namespace DatabaseLibrary
                         comboBox.Items.Add(new KeyValuePair<int, string>(ID, Name));
                     }
                 }
-
             // Установим отображаемое поле и значение по умолчанию (если нужно)
                 comboBox.DisplayMember = "Value";
                 comboBox.ValueMember = "Key";
             }
-
         }
 
 

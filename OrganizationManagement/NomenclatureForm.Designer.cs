@@ -31,16 +31,16 @@
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Категория1");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Категория2");
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.addItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.delItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshGrid = new System.Windows.Forms.ToolStripMenuItem();
             this.filterLable = new System.Windows.Forms.ToolStripMenuItem();
             this.filterBox = new System.Windows.Forms.ToolStripTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.categoryView = new System.Windows.Forms.TreeView();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.goodsGrid = new System.Windows.Forms.DataGridView();
-            this.addItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.delItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.refreshGrid = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.goodsGrid)).BeginInit();
@@ -63,6 +63,42 @@
             this.menuStrip1.Size = new System.Drawing.Size(1140, 27);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // addItem
+            // 
+            this.addItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.addItem.Image = global::OrganizationManagement.Properties.Resources.invoiceAddIcon;
+            this.addItem.Name = "addItem";
+            this.addItem.Size = new System.Drawing.Size(28, 23);
+            this.addItem.Text = " ";
+            this.addItem.Click += new System.EventHandler(this.addItem_Click);
+            // 
+            // delItem
+            // 
+            this.delItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.delItem.Image = global::OrganizationManagement.Properties.Resources.invoiceDeleteIcon;
+            this.delItem.Name = "delItem";
+            this.delItem.Size = new System.Drawing.Size(28, 23);
+            this.delItem.Text = " ";
+            this.delItem.Click += new System.EventHandler(this.delItem_Click);
+            // 
+            // editItem
+            // 
+            this.editItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.editItem.Image = global::OrganizationManagement.Properties.Resources.invoiceEditIcon;
+            this.editItem.Name = "editItem";
+            this.editItem.Size = new System.Drawing.Size(28, 23);
+            this.editItem.Text = " ";
+            this.editItem.Click += new System.EventHandler(this.editItem_Click);
+            // 
+            // refreshGrid
+            // 
+            this.refreshGrid.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.refreshGrid.Image = global::OrganizationManagement.Properties.Resources.refreshIcon;
+            this.refreshGrid.Name = "refreshGrid";
+            this.refreshGrid.Size = new System.Drawing.Size(28, 23);
+            this.refreshGrid.Text = " ";
+            this.refreshGrid.Click += new System.EventHandler(this.refreshGrid_Click);
             // 
             // filterLable
             // 
@@ -100,6 +136,7 @@
             treeNode2});
             this.categoryView.Size = new System.Drawing.Size(160, 434);
             this.categoryView.TabIndex = 0;
+            this.categoryView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.categoryView_AfterSelect);
             // 
             // splitter1
             // 
@@ -128,42 +165,6 @@
             this.goodsGrid.Size = new System.Drawing.Size(977, 434);
             this.goodsGrid.TabIndex = 4;
             this.goodsGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.goodsGrid_CellDoubleClick);
-            // 
-            // addItem
-            // 
-            this.addItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.addItem.Image = global::OrganizationManagement.Properties.Resources.invoiceAddIcon;
-            this.addItem.Name = "addItem";
-            this.addItem.Size = new System.Drawing.Size(28, 23);
-            this.addItem.Text = " ";
-            this.addItem.Click += new System.EventHandler(this.addItem_Click);
-            // 
-            // delItem
-            // 
-            this.delItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.delItem.Image = global::OrganizationManagement.Properties.Resources.invoiceDeleteIcon;
-            this.delItem.Name = "delItem";
-            this.delItem.Size = new System.Drawing.Size(28, 23);
-            this.delItem.Text = " ";
-            this.delItem.Click += new System.EventHandler(this.delItem_Click);
-            // 
-            // editItem
-            // 
-            this.editItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.editItem.Image = global::OrganizationManagement.Properties.Resources.invoiceEditIcon;
-            this.editItem.Name = "editItem";
-            this.editItem.Size = new System.Drawing.Size(28, 23);
-            this.editItem.Text = " ";
-            this.editItem.Click += new System.EventHandler(this.editItem_Click);
-            // 
-            // refreshGrid
-            // 
-            this.refreshGrid.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.refreshGrid.Image = global::OrganizationManagement.Properties.Resources.refreshIcon;
-            this.refreshGrid.Name = "refreshGrid";
-            this.refreshGrid.Size = new System.Drawing.Size(28, 23);
-            this.refreshGrid.Text = " ";
-            this.refreshGrid.Click += new System.EventHandler(this.refreshGrid_Click);
             // 
             // NomenclatureForm
             // 

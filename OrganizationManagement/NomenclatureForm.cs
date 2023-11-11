@@ -28,11 +28,12 @@ namespace OrganizationManagement
 
         public void LoadDataIntoDataGridView()
         {
-            string query = "SELECT \"GoodID\", \"ArticleNumber\" as Артикул,  " +
+            string query = "SELECT \"GoodID\", " +
+                "\"ArticleNumber\" as Артикул,  " +
                 "\"Name\" as Название, " +
                 "\"RetailPrice\" as Цена " +
                 "FROM public.\"Good\" as Good " +
-                "ORDER BY \"GoodID\" ASC ;";
+                "ORDER BY \"ArticleNumber\" ASC ;";
             DataDB.FillDataGridViewWithQueryResult(goodsGrid, query);
             goodsGrid.Columns["GoodID"].Visible = false;
         }
@@ -84,7 +85,22 @@ namespace OrganizationManagement
                 int goodID = Convert.ToInt32(goodsGrid.Rows[e.RowIndex].Cells["GoodID"].Value);
                 DataDB goodsRepository = new DataDB();
 
-                string query = $"SELECT * FROM public.\"Good\" WHERE \"GoodID\" = {goodID}";
+                string query = "SELECT \"GoodID\", " +
+                    "\r\nGood.\"Name\", " +
+                    "\r\nGood.\"ArticleNumber\", " +
+                    "\r\nUnits.\"Name\" as \"UnitName\", " +
+                    "\r\nGood.\"Description\", " +
+                    "\r\n\"InArchive\", " +
+                    "\"VAT\", \r\n\"TradeMargin\", " +
+                    "\"RetailMargin\", \r\n\"NetCost\", " +
+                    "\"TradePrice\", \r\n\"RetailPrice\", " +
+                    "\r\nCategory.\"Name\" as \"CategoryName\" \r\n\t" +
+                    "FROM public.\"Good\" as Good\r\n\t" +
+                    "JOIN public.\"GoodCategory\" as Category\r\n\t" +
+                    "ON Category.\"CategoryID\" = Good.\"CategoryID\"\r\n\t" +
+                    "JOIN public.\"MeasureUnit\" as Units\r\n\t" +
+                    "ON Units.\"UnitID\" = Good.\"MeasureUnitID\"\r\n\t" +
+                    $"WHERE \"GoodID\" = {goodID}\r\n\t;";
                 DataTable goodsData = goodsRepository.FillFormWithQueryResult(query);
 
                 EditGoodForm editForm = new EditGoodForm(goodsData);
@@ -96,5 +112,28 @@ namespace OrganizationManagement
         {
             LoadDataIntoDataGridView();
         }
+
+        private void categoryView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            // Получите выбранный узел
+            TreeNode selectedNode = e.Node;
+            int nodename = selectedNode.Index + 1;
+            if (selectedNode != null)
+            {
+                string query = "SELECT \"GoodID\", " +
+                    "\"ArticleNumber\" as \"Артикул\", " +
+                    "\"Name\" as \"Название\", " +
+                    "\"RetailPrice\" as \"Цена\", " +
+                    "\"CategoryID\"" +
+                    "FROM public.\"Good\" as Good " +
+                    $"WHERE \"CategoryID\" = {nodename} " +
+                    "ORDER BY \"ArticleNumber\" ASC;";
+
+                DataDB.FillDataGridViewWithQueryResult(goodsGrid, query);
+                goodsGrid.Columns["GoodID"].Visible = false;
+                goodsGrid.Columns["CategoryID"].Visible = false;
+            }
+        }
+
     }
 }

@@ -16,12 +16,13 @@ namespace OrganizationManagement.NomenclatureEdit
         public AddGoodForm()
         {
             InitializeComponent();
-        }
-
-        private void AddGoodForm_Enter(object sender, EventArgs e)
-        {
             DataDB.LoadDataIntoComboBox(groupBox, "SELECT \"CategoryID\", \"Name\" FROM public.\"GoodCategory\" ORDER BY \"CategoryID\" ASC");
             DataDB.LoadDataIntoComboBox(measureunitBox, "SELECT \"UnitID\", \"Name\" FROM public.\"MeasureUnit\" ORDER BY \"UnitID\" ASC");
+
+            netcostField.KeyPress += KeyPressEvent.textBox_KeyPressMoney;
+            vatField.KeyPress += KeyPressEvent.textBox_KeyPressPercent;
+            retailmarginField.KeyPress += KeyPressEvent.textBox_KeyPressPercent;
+            trademarginField.KeyPress += KeyPressEvent.textBox_KeyPressPercent;
         }
 
         private void goodSave_Click(object sender, EventArgs e)
@@ -68,6 +69,29 @@ namespace OrganizationManagement.NomenclatureEdit
             costWoVatField.Text = (netcost - netcost * vat).ToString();
             tradepriceField.Text = (netcost + netcost * trademargin).ToString();
             retailpriceField.Text = (netcost + netcost * retailmargin).ToString(); 
+        }
+
+        private void vatField_Leave(object sender, EventArgs e)
+        {
+            double netcost = Convert.ToDouble(netcostField.Text);
+            double vat = Convert.ToDouble(vatField.Text) * 0.01;
+
+            costWoVatField.Text = (netcost - netcost * vat).ToString();
+        }
+        private void trademarginField_Leave(object sender, EventArgs e)
+        {
+            double netcost = Convert.ToDouble(netcostField.Text);
+            double trademargin = Convert.ToDouble(trademarginField.Text) * 0.01;
+
+            tradepriceField.Text = (netcost + netcost * trademargin).ToString();
+        }
+
+        private void retailmarginField_Leave(object sender, EventArgs e)
+        {
+            double netcost = Convert.ToDouble(netcostField.Text);
+            double retailmargin = Convert.ToDouble(retailmarginField.Text) * 0.01;
+
+            retailpriceField.Text = (netcost + netcost * retailmargin).ToString();
         }
     }
 }

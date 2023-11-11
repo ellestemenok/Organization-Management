@@ -93,6 +93,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KeyPressEvent.cs" />
     <Compile Include="MeasureUnitsForm.cs">
       <SubType>Form</SubType>
     </Compile>

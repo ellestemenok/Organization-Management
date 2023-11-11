@@ -198,9 +198,9 @@
             this.tabPage3.Controls.Add(this.label7);
             this.tabPage3.Controls.Add(this.label6);
             this.tabPage3.Controls.Add(this.label5);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 23);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(536, 228);
+            this.tabPage3.Size = new System.Drawing.Size(536, 227);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Цена";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -209,6 +209,7 @@
             // 
             this.costWoVatField.Location = new System.Drawing.Point(382, 53);
             this.costWoVatField.Name = "costWoVatField";
+            this.costWoVatField.ReadOnly = true;
             this.costWoVatField.Size = new System.Drawing.Size(121, 22);
             this.costWoVatField.TabIndex = 24;
             this.costWoVatField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -221,6 +222,7 @@
             this.vatField.TabIndex = 23;
             this.vatField.Text = "20";
             this.vatField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.vatField.Leave += new System.EventHandler(this.vatField_Leave);
             // 
             // netcostField
             // 
@@ -252,6 +254,7 @@
             this.retailmarginField.TabIndex = 25;
             this.retailmarginField.Text = "30";
             this.retailmarginField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.retailmarginField.Leave += new System.EventHandler(this.retailmarginField_Leave);
             // 
             // retailpriceField
             // 
@@ -305,6 +308,7 @@
             this.trademarginField.TabIndex = 25;
             this.trademarginField.Text = "15";
             this.trademarginField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.trademarginField.Leave += new System.EventHandler(this.trademarginField_Leave);
             // 
             // tradepriceField
             // 
@@ -426,7 +430,6 @@
             this.Name = "EditGoodForm";
             this.ShowIcon = false;
             this.Text = "Редактировать товар";
-            this.Enter += new System.EventHandler(this.EditGoodForm_Enter);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

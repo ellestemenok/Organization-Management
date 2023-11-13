@@ -9,21 +9,22 @@ namespace DatabaseLibrary
     public class Autorization
     {
         public static NpgsqlConnection npgSqlConnection;
-
-        static public void Autorize(string userID, string password) 
+        public static string username; 
+        public static string password;
+        static public void Autorize(string userID, string pswrd) 
         {
-            string connectionString = String.Format($"Server=localhost;Port=5432;User ID={userID};Password={password};Database=db;");
+            username = userID;
+            password = pswrd;
+            string connectionString = String.Format($"Server=localhost;Port=5432;User ID={username};Password={password};Database=db;");
             npgSqlConnection = new NpgsqlConnection(connectionString);
             npgSqlConnection.Open();
         }
-
         static public void OpenConnection()
         {
-            string connectionString = String.Format($"Server=localhost;Port=5432;User ID=postgres;Password=5215e;Database=db;");
+            string connectionString = String.Format($"Server=localhost;Port=5432;User ID={username};Password={password};Database=db;");
             npgSqlConnection = new NpgsqlConnection(connectionString);
             npgSqlConnection.Open();
         }
-
         static public void CloseConnection()
         {
             if (npgSqlConnection != null && npgSqlConnection.State == ConnectionState.Open)
@@ -31,12 +32,5 @@ namespace DatabaseLibrary
                 npgSqlConnection.Close();
             }
         }
-
-        static public void Reconnect()
-        {
-            CloseConnection();
-            OpenConnection();
-        }
-
     }
 }

@@ -35,7 +35,7 @@
             this.organizationRequisitesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nomenclatureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.контрагентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contractorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.measureUnitsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.кассаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.кассаСегодняToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,7 +91,7 @@
             this.organizationRequisitesToolStripMenuItem,
             this.nomenclatureToolStripMenuItem,
             this.toolStripSeparator2,
-            this.контрагентыToolStripMenuItem,
+            this.contractorsToolStripMenuItem,
             this.measureUnitsToolStripMenuItem});
             this.справочникиToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.справочникиToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
@@ -123,13 +123,14 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(228, 6);
             // 
-            // контрагентыToolStripMenuItem
+            // contractorsToolStripMenuItem
             // 
-            this.контрагентыToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.контрагентыToolStripMenuItem.Image = global::OrganizationManagement.Properties.Resources.contractorsIcon;
-            this.контрагентыToolStripMenuItem.Name = "контрагентыToolStripMenuItem";
-            this.контрагентыToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.контрагентыToolStripMenuItem.Text = "Контрагенты";
+            this.contractorsToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.contractorsToolStripMenuItem.Image = global::OrganizationManagement.Properties.Resources.contractorsIcon;
+            this.contractorsToolStripMenuItem.Name = "contractorsToolStripMenuItem";
+            this.contractorsToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.contractorsToolStripMenuItem.Text = "Контрагенты";
+            this.contractorsToolStripMenuItem.Click += new System.EventHandler(this.contractorsToolStripMenuItem_Click);
             // 
             // measureUnitsToolStripMenuItem
             // 
@@ -388,7 +389,7 @@
         private System.Windows.Forms.ToolStripMenuItem справочникиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem organizationRequisitesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nomenclatureToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem контрагентыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem contractorsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem measureUnitsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem кассаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem кассаСегодняToolStripMenuItem;

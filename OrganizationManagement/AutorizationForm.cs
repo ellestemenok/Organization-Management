@@ -14,16 +14,21 @@ namespace OrganizationManagement
 {
     public partial class AutorizationForm : Form
     {
+
+        public string userID;
+        public string password;
+
         public AutorizationForm()
         {
             InitializeComponent();
         }
-
         private void autorizationButton_Click(object sender, EventArgs e)
         {
             try
             {
-                Autorization.Autorize(usernameField.Text, passwordField.Text);
+                userID = usernameField.Text;
+                password = passwordField.Text;
+                Autorization.Autorize(userID, password);
                 MainMDI mainMDI = new MainMDI();
                 mainMDI.Show();
                 Hide();

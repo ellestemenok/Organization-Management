@@ -1,6 +1,6 @@
 ﻿namespace OrganizationManagement
 {
-    partial class NomenclatureForm
+    partial class ContractorsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Категория1");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Категория2");
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Категория1");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Категория2");
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.addItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,11 +39,11 @@
             this.filterBox = new System.Windows.Forms.ToolStripTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.categoryView = new System.Windows.Forms.TreeView();
-            this.goodsGrid = new System.Windows.Forms.DataGridView();
+            this.contractorsGrid = new System.Windows.Forms.DataGridView();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.goodsGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contractorsGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -122,7 +120,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(265, 634);
+            this.panel1.Size = new System.Drawing.Size(156, 634);
             this.panel1.TabIndex = 2;
             // 
             // categoryView
@@ -130,81 +128,65 @@
             this.categoryView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.categoryView.Location = new System.Drawing.Point(0, 0);
             this.categoryView.Name = "categoryView";
-            treeNode3.Name = "Узел0";
-            treeNode3.Text = "Категория1";
-            treeNode4.Name = "Узел1";
-            treeNode4.Text = "Категория2";
+            treeNode1.Name = "Узел0";
+            treeNode1.Text = "Категория1";
+            treeNode2.Name = "Узел1";
+            treeNode2.Text = "Категория2";
             this.categoryView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode4});
-            this.categoryView.Size = new System.Drawing.Size(265, 634);
+            treeNode1,
+            treeNode2});
+            this.categoryView.Size = new System.Drawing.Size(156, 634);
             this.categoryView.TabIndex = 4;
             this.categoryView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.categoryView_AfterSelect);
             // 
-            // goodsGrid
+            // contractorsGrid
             // 
-            this.goodsGrid.AllowUserToAddRows = false;
-            this.goodsGrid.AllowUserToDeleteRows = false;
-            this.goodsGrid.AllowUserToResizeRows = false;
-            this.goodsGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.goodsGrid.BackgroundColor = System.Drawing.Color.White;
-            this.goodsGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.goodsGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.goodsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 9F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.goodsGrid.DefaultCellStyle = dataGridViewCellStyle4;
-            this.goodsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.goodsGrid.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.goodsGrid.Location = new System.Drawing.Point(265, 27);
-            this.goodsGrid.Name = "goodsGrid";
-            this.goodsGrid.ReadOnly = true;
-            this.goodsGrid.RowHeadersVisible = false;
-            this.goodsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.goodsGrid.Size = new System.Drawing.Size(469, 634);
-            this.goodsGrid.TabIndex = 1;
-            this.goodsGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.goodsGrid_CellDoubleClick);
+            this.contractorsGrid.AllowUserToAddRows = false;
+            this.contractorsGrid.AllowUserToDeleteRows = false;
+            this.contractorsGrid.AllowUserToResizeRows = false;
+            this.contractorsGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.contractorsGrid.BackgroundColor = System.Drawing.Color.White;
+            this.contractorsGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.contractorsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.contractorsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.contractorsGrid.GridColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.contractorsGrid.Location = new System.Drawing.Point(156, 27);
+            this.contractorsGrid.Name = "contractorsGrid";
+            this.contractorsGrid.ReadOnly = true;
+            this.contractorsGrid.RowHeadersVisible = false;
+            this.contractorsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.contractorsGrid.Size = new System.Drawing.Size(578, 634);
+            this.contractorsGrid.TabIndex = 1;
+            this.contractorsGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.contractorsGrid_CellDoubleClick);
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(265, 27);
+            this.splitter1.Location = new System.Drawing.Point(156, 27);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(3, 634);
             this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
             // 
-            // NomenclatureForm
+            // ContractorsForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(734, 661);
             this.Controls.Add(this.splitter1);
-            this.Controls.Add(this.goodsGrid);
+            this.Controls.Add(this.contractorsGrid);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Verdana", 9F);
             this.MaximizeBox = false;
-            this.Name = "NomenclatureForm";
+            this.Name = "ContractorsForm";
             this.ShowIcon = false;
-            this.Text = "Номенклатура";
-            this.Load += new System.EventHandler(this.NomenclatureForm_Load);
-            this.Enter += new System.EventHandler(this.NomenclatureForm_Enter);
+            this.Text = "Контрагенты";
+            this.Load += new System.EventHandler(this.ContractorsForm_Load);
+            this.Enter += new System.EventHandler(this.ContractorsForm_Enter);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.goodsGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contractorsGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,7 +202,7 @@
         private System.Windows.Forms.ToolStripMenuItem filterLable;
         private System.Windows.Forms.ToolStripTextBox filterBox;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView goodsGrid;
+        private System.Windows.Forms.DataGridView contractorsGrid;
         private System.Windows.Forms.TreeView categoryView;
         private System.Windows.Forms.Splitter splitter1;
     }

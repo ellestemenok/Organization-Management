@@ -26,7 +26,6 @@ namespace DatabaseLibrary
                 }
             }
         }
-
         public DataTable FillFormWithQueryResult(string query) //метод, который возвращает таблицу, чтобы "вытащить" оттуда данные
         {
             if (Autorization.npgSqlConnection != null && Autorization.npgSqlConnection.State == ConnectionState.Open)
@@ -41,9 +40,6 @@ namespace DatabaseLibrary
             }
             else { return null; }
         }
-
-
-
         public static void LoadCategoriesIntoTreeView(string query, TreeView treeViewCategories)
         {
             // Подключение к базе данных и запрос данных
@@ -81,7 +77,5 @@ namespace DatabaseLibrary
                 comboBox.ValueMember = "Key";
             }
         }
-
-
     }
 }

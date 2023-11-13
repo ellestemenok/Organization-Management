@@ -60,6 +60,7 @@ namespace OrganizationManagement
                 "FROM public.\"PaymentAccount\"" +
                 "ORDER BY \"AccountID\" ASC";
             DataDB.FillDataGridViewWithQueryResult(accountsGrid, query);
+            accountsGrid.Columns["№"].Visible = false;
         }
 
         private void orgSave_Click(object sender, EventArgs e)
@@ -99,10 +100,14 @@ namespace OrganizationManagement
 
         private void delAccButton_Click(object sender, EventArgs e)
         {
-            DataGridViewRow selectedRow = accountsGrid.SelectedRows[0];
-            int accountID= Convert.ToInt32(selectedRow.Cells["№"].Value);
-            Requisites.DeletePaymentAccount(accountID);
-            LoadDataIntoDataGridView();
+            DialogResult result = MessageBox.Show("Удалить элемент?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                DataGridViewRow selectedRow = accountsGrid.SelectedRows[0];
+                int accountID= Convert.ToInt32(selectedRow.Cells["№"].Value);
+                Requisites.DeletePaymentAccount(accountID);
+                LoadDataIntoDataGridView();
+            }
         }
 
 

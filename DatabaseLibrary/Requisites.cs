@@ -9,7 +9,6 @@ namespace DatabaseLibrary
 {
     public class Requisites
     {
-        //метод, который обновляющий запись в Organization
         public static void Update(int organizationID, string type, string name, string fullName, string consigneeAddress, string postAddress, string legalAddress, string telephoneNumber, string email, string inn, string kpp, string okpo, string okvad, string ogrn, string director, string generalAccountant, bool payingVAT, string okpd)
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("UPDATE public.\"Organization\" " +
@@ -55,8 +54,6 @@ namespace DatabaseLibrary
                 cmd.ExecuteNonQuery();
             }
         }
-
-        //метод, обновляющий запись в PaymentAccount по ID
         public static void UpdatePaymentAccount(int accountID, string name, string accountNumber,
             string bankname, string corrAccount, string bik)
         {
@@ -79,7 +76,6 @@ namespace DatabaseLibrary
                 cmd.ExecuteNonQuery();
             }
         }
-        //метод, добавляющий запись в PaymentAccount
         public static void InsertPaymentAccount(string name, string accountNumber,
             string bankName, string corrAccount, string bik)
         {
@@ -97,7 +93,6 @@ namespace DatabaseLibrary
                 cmd.ExecuteNonQuery();
             }
         }
-        //метод, удаляющий запись в PaymentAccount по Id
         public static void DeletePaymentAccount(int accountID)
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("DELETE FROM " +

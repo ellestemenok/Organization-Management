@@ -113,7 +113,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button autorizationButton;
-        private System.Windows.Forms.TextBox usernameField;
-        private System.Windows.Forms.TextBox passwordField;
+        public System.Windows.Forms.TextBox usernameField;
+        public System.Windows.Forms.TextBox passwordField;
     }
 }

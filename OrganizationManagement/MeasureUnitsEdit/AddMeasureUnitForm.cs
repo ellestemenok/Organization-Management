@@ -16,6 +16,7 @@ namespace OrganizationManagement.MeasureUnitsEdit
         public AddMeasureUnitForm()
         {
             InitializeComponent();
+            okeiField.KeyPress += KeyPressEvent.textBox_KeyPressNumber;
         }
 
         private void saveButton_Click(object sender, EventArgs e)

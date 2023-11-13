@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autorization.cs" />
+    <Compile Include="Contractor.cs" />
     <Compile Include="DataDB.cs" />
     <Compile Include="Good.cs" />
     <Compile Include="MeasureUnit.cs" />

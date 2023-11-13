@@ -93,6 +93,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContractorEdit\EditContractorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContractorEdit\EditContractorForm.Designer.cs">
+      <DependentUpon>EditContractorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ContractorEdit\AddContractorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContractorEdit\AddContractorForm.Designer.cs">
+      <DependentUpon>AddContractorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="KeyPressEvent.cs" />
     <Compile Include="MeasureUnitsForm.cs">
       <SubType>Form</SubType>
@@ -123,6 +135,12 @@
     </Compile>
     <Compile Include="NomenclatureEdit\AddGoodForm.Designer.cs">
       <DependentUpon>AddGoodForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ContractorsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContractorsForm.Designer.cs">
+      <DependentUpon>ContractorsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="NomenclatureForm.cs">
       <SubType>Form</SubType>
@@ -162,6 +180,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ContractorEdit\EditContractorForm.resx">
+      <DependentUpon>EditContractorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContractorEdit\AddContractorForm.resx">
+      <DependentUpon>AddContractorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MeasureUnitsForm.resx">
       <DependentUpon>MeasureUnitsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NomenclatureEdit\AddGoodForm.resx">
       <DependentUpon>AddGoodForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContractorsForm.resx">
+      <DependentUpon>ContractorsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NomenclatureForm.resx">
       <DependentUpon>NomenclatureForm.cs</DependentUpon>
@@ -255,5 +282,6 @@
   <ItemGroup>
     <None Include="icons\refreshIcon.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

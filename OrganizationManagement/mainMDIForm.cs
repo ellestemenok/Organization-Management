@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DatabaseLibrary;
 using Npgsql;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace OrganizationManagement
 {
@@ -18,7 +17,7 @@ namespace OrganizationManagement
         public MainMDI()
         {
             InitializeComponent();
-            usernameStripStatusLabel.Text = "postgres";
+            usernameStripStatusLabel.Text = Autorization.username;
             timerForDatetime.Start();
             toolStripDateTime.Text = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();
         }
@@ -37,8 +36,14 @@ namespace OrganizationManagement
 
         private void MainMDI_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Autorization.CloseConnection();
-            Dispose();
+            DialogResult result = MessageBox.Show("Вы действительно хотите завершить работу?", "Выход", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Autorization.CloseConnection();
+                Dispose();
+                Application.Exit();
+            }
+            else { e.Cancel = true; }
         }
 
         private void measureUnitsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -51,6 +56,13 @@ namespace OrganizationManagement
         private void nomenclatureToolStripMenuItem_Click(object sender, EventArgs e)
         {
             NomenclatureForm newMDIChild = new NomenclatureForm();
+            newMDIChild.MdiParent = this;
+            newMDIChild.Show();
+        }
+
+        private void contractorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ContractorsForm newMDIChild = new ContractorsForm();
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
         }

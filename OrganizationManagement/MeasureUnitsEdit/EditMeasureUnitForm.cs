@@ -17,6 +17,7 @@ namespace OrganizationManagement.MeasureUnitsEdit
         public EditMeasureUnitForm(DataTable measureunitsData)
         {
             InitializeComponent();
+            okeiField.KeyPress += KeyPressEvent.textBox_KeyPressNumber;
 
             if (measureunitsData.Rows.Count > 0)
             {

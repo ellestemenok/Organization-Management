@@ -9,6 +9,7 @@ namespace OrganizationManagement
 {
     public class KeyPressEvent
     {
+        //ввод чисел в формате [рубли,копейки (2 знака после запятой)]
         public static void textBox_KeyPressMoney(object sender, KeyPressEventArgs e)
         {
             // Проверяем, является ли введенный символ цифрой или запятой
@@ -33,7 +34,7 @@ namespace OrganizationManagement
                 }
             }
         }
-
+        //ввод процентов (от 0 до 100)
         public static void textBox_KeyPressPercent(object sender, KeyPressEventArgs e)
         {
             // Проверка, является ли введенный символ цифрой, Backspace или Delete
@@ -52,7 +53,15 @@ namespace OrganizationManagement
                     e.Handled = true; // Отклонить ввод, если число не в пределах от 0 до 100
                 }
             }
-
+        }
+        //ввод только цифр
+        public static void textBox_KeyPressNumber(object sender, KeyPressEventArgs e)
+        {
+            // Проверка, является ли введенный символ цифрой, Backspace или Delete
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Отклонить ввод, если это не цифра, Backspace или Delete
+            }
         }
     }
 }

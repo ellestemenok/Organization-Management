@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMDI));
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.organizationRequisitesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,19 +38,11 @@
             this.measureUnitsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.кассаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.кассаСегодняToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.кассовыйОтчетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.заказыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.новыйЗаказПокупателяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.новыйЗаказПоставщикуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.журналЗаказовПокупателейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.журналЗаказовПоставщикаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.документыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.приходнаяНакладнаяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.расходнаяНакладнаяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.журналыДокументовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.журналРасходныхНакладныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.журналПриходныхНакладныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.purchaseinvoicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.окнаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.черепицейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.каскадомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,9 +64,8 @@
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.справочникиToolStripMenuItem,
             this.кассаToolStripMenuItem,
-            this.заказыToolStripMenuItem,
-            this.документыToolStripMenuItem,
             this.журналыДокументовToolStripMenuItem,
+            this.toolStripMenuItem1,
             this.окнаToolStripMenuItem});
             this.menuStripMain.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
@@ -143,8 +133,7 @@
             // кассаToolStripMenuItem
             // 
             this.кассаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.кассаСегодняToolStripMenuItem,
-            this.кассовыйОтчетToolStripMenuItem});
+            this.кассаСегодняToolStripMenuItem});
             this.кассаToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.кассаToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.кассаToolStripMenuItem.Margin = new System.Windows.Forms.Padding(3);
@@ -158,99 +147,14 @@
             this.кассаСегодняToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.кассаСегодняToolStripMenuItem.Image = global::OrganizationManagement.Properties.Resources.cashIcon;
             this.кассаСегодняToolStripMenuItem.Name = "кассаСегодняToolStripMenuItem";
-            this.кассаСегодняToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.кассаСегодняToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.кассаСегодняToolStripMenuItem.Text = "Касса сегодня";
-            // 
-            // кассовыйОтчетToolStripMenuItem
-            // 
-            this.кассовыйОтчетToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.кассовыйОтчетToolStripMenuItem.Name = "кассовыйОтчетToolStripMenuItem";
-            this.кассовыйОтчетToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.кассовыйОтчетToolStripMenuItem.Text = "Журнал кассовых отчетов";
-            // 
-            // заказыToolStripMenuItem
-            // 
-            this.заказыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.новыйЗаказПокупателяToolStripMenuItem,
-            this.новыйЗаказПоставщикуToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.журналЗаказовПокупателейToolStripMenuItem,
-            this.журналЗаказовПоставщикаToolStripMenuItem});
-            this.заказыToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.заказыToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.заказыToolStripMenuItem.Margin = new System.Windows.Forms.Padding(3);
-            this.заказыToolStripMenuItem.Name = "заказыToolStripMenuItem";
-            this.заказыToolStripMenuItem.Padding = new System.Windows.Forms.Padding(2);
-            this.заказыToolStripMenuItem.Size = new System.Drawing.Size(60, 22);
-            this.заказыToolStripMenuItem.Text = "Заказы";
-            // 
-            // новыйЗаказПокупателяToolStripMenuItem
-            // 
-            this.новыйЗаказПокупателяToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.новыйЗаказПокупателяToolStripMenuItem.Name = "новыйЗаказПокупателяToolStripMenuItem";
-            this.новыйЗаказПокупателяToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
-            this.новыйЗаказПокупателяToolStripMenuItem.Text = "Новый заказ покупателя";
-            // 
-            // новыйЗаказПоставщикуToolStripMenuItem
-            // 
-            this.новыйЗаказПоставщикуToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.новыйЗаказПоставщикуToolStripMenuItem.Name = "новыйЗаказПоставщикуToolStripMenuItem";
-            this.новыйЗаказПоставщикуToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
-            this.новыйЗаказПоставщикуToolStripMenuItem.Text = "Новый заказ поставщику";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(267, 6);
-            // 
-            // журналЗаказовПокупателейToolStripMenuItem
-            // 
-            this.журналЗаказовПокупателейToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.журналЗаказовПокупателейToolStripMenuItem.Name = "журналЗаказовПокупателейToolStripMenuItem";
-            this.журналЗаказовПокупателейToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
-            this.журналЗаказовПокупателейToolStripMenuItem.Text = "Журнал заказов покупателей";
-            // 
-            // журналЗаказовПоставщикаToolStripMenuItem
-            // 
-            this.журналЗаказовПоставщикаToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.журналЗаказовПоставщикаToolStripMenuItem.Name = "журналЗаказовПоставщикаToolStripMenuItem";
-            this.журналЗаказовПоставщикаToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
-            this.журналЗаказовПоставщикаToolStripMenuItem.Text = "Журнал заказов поставщикам";
-            // 
-            // документыToolStripMenuItem
-            // 
-            this.документыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.приходнаяНакладнаяToolStripMenuItem,
-            this.расходнаяНакладнаяToolStripMenuItem});
-            this.документыToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.документыToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.документыToolStripMenuItem.Margin = new System.Windows.Forms.Padding(3);
-            this.документыToolStripMenuItem.Name = "документыToolStripMenuItem";
-            this.документыToolStripMenuItem.Padding = new System.Windows.Forms.Padding(2);
-            this.документыToolStripMenuItem.Size = new System.Drawing.Size(86, 22);
-            this.документыToolStripMenuItem.Text = "Документы";
-            // 
-            // приходнаяНакладнаяToolStripMenuItem
-            // 
-            this.приходнаяНакладнаяToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.приходнаяНакладнаяToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("приходнаяНакладнаяToolStripMenuItem.Image")));
-            this.приходнаяНакладнаяToolStripMenuItem.Name = "приходнаяНакладнаяToolStripMenuItem";
-            this.приходнаяНакладнаяToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.приходнаяНакладнаяToolStripMenuItem.Text = "Приходная накладная";
-            // 
-            // расходнаяНакладнаяToolStripMenuItem
-            // 
-            this.расходнаяНакладнаяToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.расходнаяНакладнаяToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("расходнаяНакладнаяToolStripMenuItem.Image")));
-            this.расходнаяНакладнаяToolStripMenuItem.Name = "расходнаяНакладнаяToolStripMenuItem";
-            this.расходнаяНакладнаяToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
-            this.расходнаяНакладнаяToolStripMenuItem.Text = "Расходная накладная";
             // 
             // журналыДокументовToolStripMenuItem
             // 
             this.журналыДокументовToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.журналРасходныхНакладныхToolStripMenuItem,
-            this.журналПриходныхНакладныхToolStripMenuItem});
+            this.purchaseinvoicesToolStripMenuItem});
             this.журналыДокументовToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.журналыДокументовToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.журналыДокументовToolStripMenuItem.Margin = new System.Windows.Forms.Padding(3);
@@ -266,12 +170,32 @@
             this.журналРасходныхНакладныхToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
             this.журналРасходныхНакладныхToolStripMenuItem.Text = "Журнал расходных накладных";
             // 
-            // журналПриходныхНакладныхToolStripMenuItem
+            // purchaseinvoicesToolStripMenuItem
             // 
-            this.журналПриходныхНакладныхToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.журналПриходныхНакладныхToolStripMenuItem.Name = "журналПриходныхНакладныхToolStripMenuItem";
-            this.журналПриходныхНакладныхToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
-            this.журналПриходныхНакладныхToolStripMenuItem.Text = "Журнал приходных накладных";
+            this.purchaseinvoicesToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.purchaseinvoicesToolStripMenuItem.Name = "purchaseinvoicesToolStripMenuItem";
+            this.purchaseinvoicesToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
+            this.purchaseinvoicesToolStripMenuItem.Text = "Журнал приходных накладных";
+            this.purchaseinvoicesToolStripMenuItem.Click += new System.EventHandler(this.purchaseinvoicesToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem5});
+            this.toolStripMenuItem1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripMenuItem1.ForeColor = System.Drawing.Color.Black;
+            this.toolStripMenuItem1.Margin = new System.Windows.Forms.Padding(3);
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Padding = new System.Windows.Forms.Padding(2);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(54, 22);
+            this.toolStripMenuItem1.Text = "Склад";
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(187, 22);
+            this.toolStripMenuItem5.Text = "Товар на складах";
             // 
             // окнаToolStripMenuItem
             // 
@@ -393,20 +317,10 @@
         private System.Windows.Forms.ToolStripMenuItem measureUnitsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem кассаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem кассаСегодняToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem кассовыйОтчетToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem заказыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem новыйЗаказПокупателяToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem новыйЗаказПоставщикуToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem журналЗаказовПокупателейToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem журналЗаказовПоставщикаToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem документыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem приходнаяНакладнаяToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem расходнаяНакладнаяToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem журналыДокументовToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem журналРасходныхНакладныхToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem журналПриходныхНакладныхToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem purchaseinvoicesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem окнаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem черепицейToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem каскадомToolStripMenuItem;
@@ -417,6 +331,8 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripDateTime;
         private System.Windows.Forms.Timer timerForDatetime;
         private System.Windows.Forms.ToolStripStatusLabel usernameStripStatusLabel;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
     }
 }
 

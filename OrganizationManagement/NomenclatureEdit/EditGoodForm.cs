@@ -88,23 +88,27 @@ namespace OrganizationManagement.NomenclatureEdit
             double trademargin = Convert.ToDouble(trademarginField.Text) * 0.01;
             double retailmargin = Convert.ToDouble(retailmarginField.Text) * 0.01;
 
-            costWoVatField.Text = (netcost - netcost * vat).ToString();
-            tradepriceField.Text = (netcost + netcost * trademargin).ToString();
-            retailpriceField.Text = (netcost + netcost * retailmargin).ToString(); 
+            costWoVatField.Text = Math.Round(netcost - netcost * vat, 2).ToString();
+            tradepriceField.Text = Math.Round(netcost + netcost * trademargin, 2).ToString();
+            retailpriceField.Text = Math.Round(netcost + netcost * retailmargin, 2).ToString(); 
         }
         private void vatField_Leave(object sender, EventArgs e)
         {
             double netcost = Convert.ToDouble(netcostField.Text);
             double vat = Convert.ToDouble(vatField.Text) * 0.01;
 
-            costWoVatField.Text = (netcost - netcost * vat).ToString();
+            double costWoVat = Math.Round(netcost - netcost * vat, 2);
+
+            costWoVatField.Text = costWoVat.ToString();
         }
         private void trademarginField_Leave(object sender, EventArgs e)
         {
             double netcost = Convert.ToDouble(netcostField.Text);
             double trademargin = Convert.ToDouble(trademarginField.Text) * 0.01;
 
-            tradepriceField.Text = (netcost + netcost * trademargin).ToString();
+            double tradeprice = Math.Round(netcost + netcost * trademargin, 2);
+
+            tradepriceField.Text = tradeprice.ToString();
         }
 
         private void retailmarginField_Leave(object sender, EventArgs e)
@@ -112,7 +116,9 @@ namespace OrganizationManagement.NomenclatureEdit
             double netcost = Convert.ToDouble(netcostField.Text);
             double retailmargin = Convert.ToDouble(retailmarginField.Text) * 0.01;
 
-            retailpriceField.Text = (netcost + netcost * retailmargin).ToString();
+            double retailprice = Math.Round(netcost + netcost * retailmargin, 2);
+
+            retailpriceField.Text = retailprice.ToString();
         }
     }
 }

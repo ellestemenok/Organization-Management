@@ -142,7 +142,7 @@
             this.bikField.Size = new System.Drawing.Size(258, 22);
             this.bikField.TabIndex = 11;
             // 
-            // AddAccount
+            // AddAccountForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
@@ -161,7 +161,7 @@
             this.Font = new System.Drawing.Font("Verdana", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "AddAccount";
+            this.Name = "AddAccountForm";
             this.ShowIcon = false;
             this.Text = "Добавление расчетного счета";
             this.ResumeLayout(false);

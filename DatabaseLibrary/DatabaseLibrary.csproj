@@ -100,6 +100,7 @@
     <Compile Include="Good.cs" />
     <Compile Include="MeasureUnit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseInvoice.cs" />
     <Compile Include="Requisites.cs" />
   </ItemGroup>
   <ItemGroup>

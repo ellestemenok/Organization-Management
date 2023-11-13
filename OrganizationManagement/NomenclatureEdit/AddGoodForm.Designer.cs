@@ -114,8 +114,7 @@
             this.groupBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.groupBox.FormattingEnabled = true;
             this.groupBox.Items.AddRange(new object[] {
-            "Индивидуальный предприниматель",
-            "Организация"});
+            "Кондитерские изделия"});
             this.groupBox.Location = new System.Drawing.Point(98, 125);
             this.groupBox.Name = "groupBox";
             this.groupBox.Size = new System.Drawing.Size(402, 22);
@@ -125,6 +124,8 @@
             // 
             this.measureunitBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.measureunitBox.FormattingEnabled = true;
+            this.measureunitBox.Items.AddRange(new object[] {
+            "шт"});
             this.measureunitBox.Location = new System.Drawing.Point(362, 94);
             this.measureunitBox.Name = "measureunitBox";
             this.measureunitBox.Size = new System.Drawing.Size(138, 22);
@@ -212,6 +213,7 @@
             this.costWoVatField.ReadOnly = true;
             this.costWoVatField.Size = new System.Drawing.Size(121, 22);
             this.costWoVatField.TabIndex = 24;
+            this.costWoVatField.Text = "0,00";
             this.costWoVatField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // vatField
@@ -230,6 +232,7 @@
             this.netcostField.Name = "netcostField";
             this.netcostField.Size = new System.Drawing.Size(121, 22);
             this.netcostField.TabIndex = 22;
+            this.netcostField.Text = "0,00";
             this.netcostField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.netcostField.Leave += new System.EventHandler(this.netcostField_Leave);
             // 
@@ -263,6 +266,7 @@
             this.retailpriceField.ReadOnly = true;
             this.retailpriceField.Size = new System.Drawing.Size(166, 22);
             this.retailpriceField.TabIndex = 23;
+            this.retailpriceField.Text = "0,00";
             this.retailpriceField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label10
@@ -317,6 +321,7 @@
             this.tradepriceField.ReadOnly = true;
             this.tradepriceField.Size = new System.Drawing.Size(166, 22);
             this.tradepriceField.TabIndex = 23;
+            this.tradepriceField.Text = "0,00";
             this.tradepriceField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label9

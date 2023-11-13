@@ -212,6 +212,7 @@
             this.costWoVatField.ReadOnly = true;
             this.costWoVatField.Size = new System.Drawing.Size(121, 22);
             this.costWoVatField.TabIndex = 24;
+            this.costWoVatField.Text = "0,00";
             this.costWoVatField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // vatField
@@ -230,6 +231,7 @@
             this.netcostField.Name = "netcostField";
             this.netcostField.Size = new System.Drawing.Size(121, 22);
             this.netcostField.TabIndex = 22;
+            this.netcostField.Text = "0,00";
             this.netcostField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.netcostField.Leave += new System.EventHandler(this.netcostField_Leave);
             // 
@@ -263,6 +265,7 @@
             this.retailpriceField.ReadOnly = true;
             this.retailpriceField.Size = new System.Drawing.Size(166, 22);
             this.retailpriceField.TabIndex = 23;
+            this.retailpriceField.Text = "0,00";
             this.retailpriceField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label10
@@ -317,6 +320,7 @@
             this.tradepriceField.ReadOnly = true;
             this.tradepriceField.Size = new System.Drawing.Size(166, 22);
             this.tradepriceField.TabIndex = 23;
+            this.tradepriceField.Text = "0,00";
             this.tradepriceField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label9

@@ -164,7 +164,6 @@
             this.Name = "EditAccount";
             this.ShowIcon = false;
             this.Text = "Изменение расчетного счета";
-            this.Load += new System.EventHandler(this.EditAccount_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

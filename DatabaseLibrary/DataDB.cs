@@ -77,5 +77,18 @@ namespace DatabaseLibrary
                 comboBox.ValueMember = "Key";
             }
         }
+        //метод, возвращающий результат запроса с агрегатными функциями
+        public static string ExecuteScalarQuery(string query)
+        {
+            string result = null;
+            if (Autorization.npgSqlConnection != null && Autorization.npgSqlConnection.State == ConnectionState.Open)
+            {
+                using (NpgsqlCommand command = new NpgsqlCommand(query, Autorization.npgSqlConnection))
+                {
+                    result = command.ExecuteScalar()?.ToString();
+                }
+            }
+            return result;
+        }
     }
 }

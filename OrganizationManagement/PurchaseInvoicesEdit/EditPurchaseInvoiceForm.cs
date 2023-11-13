@@ -1,4 +1,6 @@
 ﻿using DatabaseLibrary;
+using OrganizationManagement.NomenclatureEdit;
+using OrganizationManagement.PurchaseInvoicesEdit;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,17 +27,14 @@ namespace OrganizationManagement
             if (invoicesData.Rows.Count > 0)
             {
                 invoiceID = Convert.ToInt32(invoicesData.Rows[0]["InvoiceID"]);
-                dateField.Text = invoicesData.Rows[0]["InvoiceDate"].ToString();
+                dateField.Text = Convert.ToDateTime(invoicesData.Rows[0]["InvoiceDate"]).ToString("dd.MM.yyyy");
                 numField.Text = invoicesData.Rows[0]["InvoiceNumber"].ToString();
                 contractorBox.Text = invoicesData.Rows[0]["ContractorName"].ToString();
                 storageBox.Text = invoicesData.Rows[0]["StorageName"].ToString();
                 reasonField.Text = invoicesData.Rows[0]["Reason"].ToString();
                 sum.Text = invoicesData.Rows[0]["TotalAmount"].ToString();
             }
-            LoadDataIntoDataGridView();
         }
-
-
         public void LoadDataIntoDataGridView()
         {
             string query = "SELECT\r\n" +
@@ -53,6 +52,50 @@ namespace OrganizationManagement
                 $"WHERE pid.\"InvoiceID\" = {invoiceID}; ";
             DataDB.FillDataGridViewWithQueryResult(specGrid, query);
             specGrid.Columns["InvoiceID"].Visible = false;
+            specGrid.Columns["Артикул"].Width = 70;
+            specGrid.Columns["Название"].Width = 200;
+            specGrid.Columns["Кол-во"].Width = 45;
+            specGrid.Columns["Ед. изм."].Width = 45;
+            specGrid.Columns["Цена"].Width = 60;
+            specGrid.Columns["Стоимость"].Width = 90;
+        }
+        private void dateField_Enter(object sender, EventArgs e)
+        {
+            LoadDataIntoDataGridView();
+            quant1.Text = DataDB.ExecuteScalarQuery($"SELECT COUNT(\"DetailID\") FROM public.\"PurchaseInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
+            quant2.Text = DataDB.ExecuteScalarQuery($"SELECT SUM(\"Quantity\") FROM public.\"PurchaseInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
+        }
+        private void addItem_Click(object sender, EventArgs e)
+        {
+            AddGoodinInvoiceForm addForm = new AddGoodinInvoiceForm();
+            addForm.MdiParent = ActiveForm;
+            addForm.Show();
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            DateTime invoiceDate = Convert.ToDateTime(dateField.Text);
+            int invoiceNumber = Convert.ToInt32(numField.Text);
+            int contractorID = 0;
+            int storageID = 0;
+
+            if (contractorBox.SelectedItem != null)
+            {
+                var contractorItem = (KeyValuePair<int, string>)contractorBox.SelectedItem;
+                contractorID = contractorItem.Key;
+            }
+
+            if (storageBox.SelectedItem != null)
+            {
+                var storageItem = (KeyValuePair<int, string>)storageBox.SelectedItem;
+                storageID = storageItem.Key;
+            }
+
+            // Вызываем метод Update из класса DataDB
+            PurchaseInvoice.Update(invoiceID, invoiceDate, invoiceNumber, contractorID, storageID);
+
+            // Закрываем форму после сохранения
+            Close();
         }
     }
 }

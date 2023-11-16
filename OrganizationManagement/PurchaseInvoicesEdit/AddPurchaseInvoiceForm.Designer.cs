@@ -30,20 +30,19 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.numField = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.contractorBox = new System.Windows.Forms.ComboBox();
+            this.storageBox = new System.Windows.Forms.ComboBox();
+            this.reasonField = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.quant2 = new System.Windows.Forms.Label();
+            this.quant1 = new System.Windows.Forms.Label();
+            this.sum = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -53,6 +52,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.addItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dateField = new System.Windows.Forms.MaskedTextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.specGrid)).BeginInit();
@@ -64,7 +64,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(34, 29);
+            this.label1.Location = new System.Drawing.Point(27, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(180, 14);
             this.label1.TabIndex = 0;
@@ -74,30 +74,23 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(366, 29);
+            this.label2.Location = new System.Drawing.Point(359, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(21, 14);
             this.label2.TabIndex = 0;
             this.label2.Text = "от";
             // 
-            // textBox1
+            // numField
             // 
-            this.textBox1.Location = new System.Drawing.Point(220, 26);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(115, 22);
-            this.textBox1.TabIndex = 1;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(393, 26);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(107, 22);
-            this.textBox2.TabIndex = 1;
+            this.numField.Location = new System.Drawing.Point(213, 25);
+            this.numField.Name = "numField";
+            this.numField.Size = new System.Drawing.Size(115, 22);
+            this.numField.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(34, 67);
+            this.label3.Location = new System.Drawing.Point(27, 66);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 14);
             this.label3.TabIndex = 0;
@@ -106,7 +99,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(34, 99);
+            this.label4.Location = new System.Drawing.Point(27, 98);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 14);
             this.label4.TabIndex = 0;
@@ -115,46 +108,48 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(34, 130);
+            this.label5.Location = new System.Drawing.Point(27, 129);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 14);
             this.label5.TabIndex = 0;
             this.label5.Text = "Основание:";
             // 
-            // comboBox1
+            // contractorBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(135, 64);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(365, 22);
-            this.comboBox1.TabIndex = 2;
+            this.contractorBox.FormattingEnabled = true;
+            this.contractorBox.Location = new System.Drawing.Point(128, 63);
+            this.contractorBox.Name = "contractorBox";
+            this.contractorBox.Size = new System.Drawing.Size(365, 22);
+            this.contractorBox.TabIndex = 2;
+            this.contractorBox.SelectedIndexChanged += new System.EventHandler(this.contractorBox_SelectedIndexChanged);
             // 
-            // comboBox2
+            // storageBox
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(135, 96);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(365, 22);
-            this.comboBox2.TabIndex = 2;
+            this.storageBox.FormattingEnabled = true;
+            this.storageBox.Location = new System.Drawing.Point(128, 95);
+            this.storageBox.Name = "storageBox";
+            this.storageBox.Size = new System.Drawing.Size(365, 22);
+            this.storageBox.TabIndex = 2;
             // 
-            // textBox3
+            // reasonField
             // 
-            this.textBox3.Location = new System.Drawing.Point(135, 127);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(365, 47);
-            this.textBox3.TabIndex = 3;
+            this.reasonField.Location = new System.Drawing.Point(128, 126);
+            this.reasonField.Multiline = true;
+            this.reasonField.Name = "reasonField";
+            this.reasonField.ReadOnly = true;
+            this.reasonField.Size = new System.Drawing.Size(365, 47);
+            this.reasonField.TabIndex = 3;
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.quant2);
+            this.panel1.Controls.Add(this.quant1);
+            this.panel1.Controls.Add(this.sum);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Location = new System.Drawing.Point(37, 190);
+            this.panel1.Location = new System.Drawing.Point(30, 189);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(463, 65);
             this.panel1.TabIndex = 4;
@@ -171,43 +166,43 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(190, 14);
+            this.label7.Location = new System.Drawing.Point(230, 14);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(107, 14);
             this.label7.TabIndex = 0;
             this.label7.Text = "Всего позиций:";
             // 
-            // label11
+            // quant2
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(343, 35);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(102, 14);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "наименование";
+            this.quant2.AutoSize = true;
+            this.quant2.Location = new System.Drawing.Point(343, 35);
+            this.quant2.Name = "quant2";
+            this.quant2.Size = new System.Drawing.Size(15, 14);
+            this.quant2.TabIndex = 0;
+            this.quant2.Text = "0";
             // 
-            // label10
+            // quant1
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(303, 14);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(62, 14);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "позиции";
+            this.quant1.AutoSize = true;
+            this.quant1.Location = new System.Drawing.Point(343, 14);
+            this.quant1.Name = "quant1";
+            this.quant1.Size = new System.Drawing.Size(15, 14);
+            this.quant1.TabIndex = 0;
+            this.quant1.Text = "0";
             // 
-            // label9
+            // sum
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(72, 25);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(44, 14);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "сумма";
+            this.sum.AutoSize = true;
+            this.sum.Location = new System.Drawing.Point(72, 14);
+            this.sum.Name = "sum";
+            this.sum.Size = new System.Drawing.Size(44, 14);
+            this.sum.TabIndex = 0;
+            this.sum.Text = "сумма";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 25);
+            this.label6.Location = new System.Drawing.Point(14, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(52, 14);
             this.label6.TabIndex = 0;
@@ -242,15 +237,22 @@
             this.saveButton.TabIndex = 7;
             this.saveButton.Text = "Сохранить";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // specGrid
             // 
+            this.specGrid.AllowUserToAddRows = false;
+            this.specGrid.AllowUserToDeleteRows = false;
+            this.specGrid.AllowUserToResizeRows = false;
+            this.specGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.specGrid.BackgroundColor = System.Drawing.Color.White;
             this.specGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.specGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.specGrid.Location = new System.Drawing.Point(3, 45);
             this.specGrid.Name = "specGrid";
+            this.specGrid.ReadOnly = true;
             this.specGrid.RowHeadersVisible = false;
+            this.specGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.specGrid.Size = new System.Drawing.Size(528, 254);
             this.specGrid.TabIndex = 6;
             // 
@@ -286,6 +288,7 @@
             this.addItem.Name = "addItem";
             this.addItem.Size = new System.Drawing.Size(28, 20);
             this.addItem.Text = " ";
+            this.addItem.Click += new System.EventHandler(this.addItem_Click);
             // 
             // delItem
             // 
@@ -294,21 +297,31 @@
             this.delItem.Name = "delItem";
             this.delItem.Size = new System.Drawing.Size(28, 20);
             this.delItem.Text = " ";
+            this.delItem.Click += new System.EventHandler(this.delItem_Click);
             // 
-            // AddPurchaseInvoice
+            // dateField
+            // 
+            this.dateField.Location = new System.Drawing.Point(386, 25);
+            this.dateField.Mask = "00/00/0000";
+            this.dateField.Name = "dateField";
+            this.dateField.Size = new System.Drawing.Size(100, 22);
+            this.dateField.TabIndex = 8;
+            this.dateField.ValidatingType = typeof(System.DateTime);
+            // 
+            // AddPurchaseInvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(534, 611);
+            this.Controls.Add(this.dateField);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.reasonField);
+            this.Controls.Add(this.storageBox);
+            this.Controls.Add(this.contractorBox);
+            this.Controls.Add(this.numField);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -317,9 +330,10 @@
             this.Font = new System.Drawing.Font("Verdana", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "AddPurchaseInvoice";
+            this.Name = "AddPurchaseInvoiceForm";
             this.ShowIcon = false;
             this.Text = "Добавление приходной накладной";
+            this.Enter += new System.EventHandler(this.EditPurchaseInvoiceForm_Enter);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -337,20 +351,19 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox numField;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.ComboBox contractorBox;
+        private System.Windows.Forms.ComboBox storageBox;
+        private System.Windows.Forms.TextBox reasonField;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label quant2;
+        private System.Windows.Forms.Label quant1;
+        private System.Windows.Forms.Label sum;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView specGrid;
@@ -360,5 +373,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem addItem;
         private System.Windows.Forms.ToolStripMenuItem delItem;
+        private System.Windows.Forms.MaskedTextBox dateField;
     }
 }

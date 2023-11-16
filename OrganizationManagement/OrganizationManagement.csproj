@@ -186,17 +186,17 @@
     <Compile Include="PurchaseInvoicesEdit\AddGoodinInvoiceForm.Designer.cs">
       <DependentUpon>AddGoodinInvoiceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PurchaseInvoicesEdit\EditPurchaseInvoiceForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PurchaseInvoicesEdit\EditPurchaseInvoiceForm.Designer.cs">
-      <DependentUpon>EditPurchaseInvoiceForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="PurchaseInvoicesEdit\AddPurchaseInvoiceForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PurchaseInvoicesEdit\AddPurchaseInvoiceForm.Designer.cs">
       <DependentUpon>AddPurchaseInvoiceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseInvoicesEdit\EditPurchaseInvoiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseInvoicesEdit\EditPurchaseInvoiceForm.Designer.cs">
+      <DependentUpon>EditPurchaseInvoiceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PurchaseInvoicesForm.cs">
       <SubType>Form</SubType>
@@ -254,11 +254,11 @@
     <EmbeddedResource Include="PurchaseInvoicesEdit\AddGoodinInvoiceForm.resx">
       <DependentUpon>AddGoodinInvoiceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PurchaseInvoicesEdit\EditPurchaseInvoiceForm.resx">
-      <DependentUpon>EditPurchaseInvoiceForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PurchaseInvoicesEdit\AddPurchaseInvoiceForm.resx">
       <DependentUpon>AddPurchaseInvoiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseInvoicesEdit\EditPurchaseInvoiceForm.resx">
+      <DependentUpon>EditPurchaseInvoiceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PurchaseInvoicesForm.resx">
       <DependentUpon>PurchaseInvoicesForm.cs</DependentUpon>
@@ -318,6 +318,8 @@
   <ItemGroup>
     <None Include="icons\refreshIcon.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ExpenditureInvoice\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace DatabaseLibrary
 {
-    public class PurchaseInvoice
+    public class ExpenditureInvoice
     {
         public static void Update(int invoiceID, DateTime date, int number, int contractorID, int storageID)
         {
-            using (NpgsqlCommand cmd = new NpgsqlCommand("UPDATE public.\"PurchaseInvoice\"\r\n\t" +
+            using (NpgsqlCommand cmd = new NpgsqlCommand("UPDATE public.\"ExpenditureInvoice\"\r\n\t" +
                 "SET " +
                 "\"InvoiceDate\"=@InvoiceDate, " +
                 "\"InvoiceNumber\"=@InvoiceNumber, " +
@@ -33,7 +33,7 @@ namespace DatabaseLibrary
         public static void Delete(int invoiceID)
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("DELETE FROM " +
-                "public.\"PurchaseInvoice\" " +
+                "public.\"ExpenditureInvoice\" " +
                 "WHERE \"InvoiceID\" = @InvoiceID", Autorization.npgSqlConnection))
             {
                 cmd.Parameters.AddWithValue("@InvoiceID", invoiceID);
@@ -43,7 +43,7 @@ namespace DatabaseLibrary
         public static void DeleteDetail(int detailID)
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("DELETE FROM " +
-                "public.\"PurchaseInvoiceDetail\" " +
+                "public.\"ExpenditureInvoiceDetail\" " +
                 "WHERE \"DetailID\" = @DetailID", Autorization.npgSqlConnection))
             {
                 cmd.Parameters.AddWithValue("@DetailID", detailID);
@@ -52,7 +52,7 @@ namespace DatabaseLibrary
         }
         public static void Insert(DateTime date, int contractorID, int storageID)
         {
-            using (NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO public.\"PurchaseInvoice\"" +
+            using (NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO public.\"ExpenditureInvoice\"" +
                 "(\r\n\t\"InvoiceDate\", " +
                 "\"ContractorID\", " +
                 "\"StorageID\") \r\n\t" +
@@ -70,7 +70,9 @@ namespace DatabaseLibrary
         {
             if (Autorization.npgSqlConnection != null && Autorization.npgSqlConnection.State == ConnectionState.Open)
             {
-                using (NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO public.\"PurchaseInvoiceDetail\" (\"InvoiceID\", \"ProductID\", \"Quantity\") VALUES (@InvoiceID, @ProductID, @Quantity);", Autorization.npgSqlConnection))
+                using (NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO public.\"ExpenditureInvoiceDetail\" " +
+                    "(\"InvoiceID\", \"ProductID\", \"Quantity\") " +
+                    "VALUES (@InvoiceID, @ProductID, @Quantity);", Autorization.npgSqlConnection))
                 {
                     cmd.Parameters.AddWithValue("@InvoiceID", invoiceID);
                     cmd.Parameters.AddWithValue("@ProductID", productID);

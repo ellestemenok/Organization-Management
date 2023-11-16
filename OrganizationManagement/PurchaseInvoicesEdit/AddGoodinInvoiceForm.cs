@@ -24,7 +24,6 @@ namespace OrganizationManagement.PurchaseInvoicesEdit
                 "\"Name\" FROM public.\"Good\" " +
                 "ORDER BY \"Name\" ASC");
         }
-
         private void saveButton_Click(object sender, EventArgs e)
         {
             int selectedgoodID = ((KeyValuePair<int, string>)goodBox.SelectedItem).Key;
@@ -33,7 +32,6 @@ namespace OrganizationManagement.PurchaseInvoicesEdit
             PurchaseInvoice.AddProductToInvoice(invoiceID, selectedgoodID, quantity);
             Close();
         }
-
         private void goodBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedgoodID = ((KeyValuePair<int, string>)goodBox.SelectedItem).Key;
@@ -48,7 +46,6 @@ namespace OrganizationManagement.PurchaseInvoicesEdit
                 unitsField.Text = goodData.Rows[0]["Name"].ToString();
                 priceField.Text = goodData.Rows[0]["TradePrice"].ToString();
             }
-
         }
         private void CalculateSum()
         {

@@ -74,6 +74,7 @@
             this.delItem.Name = "delItem";
             this.delItem.Size = new System.Drawing.Size(28, 23);
             this.delItem.Text = " ";
+            this.delItem.Click += new System.EventHandler(this.delItem_Click);
             // 
             // editItem
             // 

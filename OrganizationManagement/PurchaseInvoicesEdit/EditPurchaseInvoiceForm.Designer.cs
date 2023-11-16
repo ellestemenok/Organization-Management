@@ -31,7 +31,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.numField = new System.Windows.Forms.TextBox();
-            this.dateField = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -53,6 +52,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.addItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dateField = new System.Windows.Forms.MaskedTextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.specGrid)).BeginInit();
@@ -86,14 +86,6 @@
             this.numField.Name = "numField";
             this.numField.Size = new System.Drawing.Size(115, 22);
             this.numField.TabIndex = 1;
-            // 
-            // dateField
-            // 
-            this.dateField.Location = new System.Drawing.Point(386, 25);
-            this.dateField.Name = "dateField";
-            this.dateField.Size = new System.Drawing.Size(107, 22);
-            this.dateField.TabIndex = 1;
-            this.dateField.Enter += new System.EventHandler(this.dateField_Enter);
             // 
             // label3
             // 
@@ -129,6 +121,7 @@
             this.contractorBox.Name = "contractorBox";
             this.contractorBox.Size = new System.Drawing.Size(365, 22);
             this.contractorBox.TabIndex = 2;
+            this.contractorBox.SelectedIndexChanged += new System.EventHandler(this.contractorBox_SelectedIndexChanged);
             // 
             // storageBox
             // 
@@ -304,6 +297,16 @@
             this.delItem.Name = "delItem";
             this.delItem.Size = new System.Drawing.Size(28, 20);
             this.delItem.Text = " ";
+            this.delItem.Click += new System.EventHandler(this.delItem_Click);
+            // 
+            // dateField
+            // 
+            this.dateField.Location = new System.Drawing.Point(386, 25);
+            this.dateField.Mask = "00/00/0000";
+            this.dateField.Name = "dateField";
+            this.dateField.Size = new System.Drawing.Size(100, 22);
+            this.dateField.TabIndex = 8;
+            this.dateField.ValidatingType = typeof(System.DateTime);
             // 
             // EditPurchaseInvoiceForm
             // 
@@ -311,13 +314,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(534, 611);
+            this.Controls.Add(this.dateField);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.reasonField);
             this.Controls.Add(this.storageBox);
             this.Controls.Add(this.contractorBox);
-            this.Controls.Add(this.dateField);
             this.Controls.Add(this.numField);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
@@ -330,6 +333,7 @@
             this.Name = "EditPurchaseInvoiceForm";
             this.ShowIcon = false;
             this.Text = "Редактирование приходной накладной";
+            this.Enter += new System.EventHandler(this.EditPurchaseInvoiceForm_Enter);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -348,7 +352,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox numField;
-        private System.Windows.Forms.TextBox dateField;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -370,5 +373,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem addItem;
         private System.Windows.Forms.ToolStripMenuItem delItem;
+        private System.Windows.Forms.MaskedTextBox dateField;
     }
 }

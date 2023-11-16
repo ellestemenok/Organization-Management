@@ -50,6 +50,9 @@ namespace OrganizationManagement
 
         private void addItem_Click(object sender, EventArgs e)
         {
+            //DataGridViewRow selectedRow = invoicesGrid.SelectedRows[0];
+            //int invoiceID = Convert.ToInt32(selectedRow.Cells["InvoiceID"].Value);
+
             AddPurchaseInvoiceForm addForm = new AddPurchaseInvoiceForm();
             addForm.MdiParent = ActiveForm;
             addForm.Show();
@@ -84,6 +87,18 @@ namespace OrganizationManagement
             EditPurchaseInvoiceForm editForm = new EditPurchaseInvoiceForm(invoicesData);
             editForm.MdiParent = ActiveForm;
             editForm.Show();
+        }
+
+        private void delItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Удалить элемент?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                DataGridViewRow selectedRow = invoicesGrid.SelectedRows[0];
+                int invoiceID = Convert.ToInt32(selectedRow.Cells["InvoiceID"].Value);
+                PurchaseInvoice.Delete(invoiceID);
+                LoadDataIntoDataGridView();
+            }
         }
     }
 }

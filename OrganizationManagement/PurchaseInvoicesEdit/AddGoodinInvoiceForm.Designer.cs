@@ -34,12 +34,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.goodBox = new System.Windows.Forms.ComboBox();
+            this.quantField = new System.Windows.Forms.TextBox();
+            this.unitsField = new System.Windows.Forms.TextBox();
+            this.priceField = new System.Windows.Forms.TextBox();
+            this.sumField = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -90,73 +89,65 @@
             // saveButton
             // 
             this.saveButton.Font = new System.Drawing.Font("Verdana", 9F);
-            this.saveButton.Location = new System.Drawing.Point(188, 151);
+            this.saveButton.Location = new System.Drawing.Point(280, 151);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(100, 30);
             this.saveButton.TabIndex = 8;
-            this.saveButton.Text = "Закрыть";
+            this.saveButton.Text = "Сохранить";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // button1
+            // goodBox
             // 
-            this.button1.Font = new System.Drawing.Font("Verdana", 9F);
-            this.button1.Location = new System.Drawing.Point(294, 151);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 30);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Сохранить";
-            this.button1.UseVisualStyleBackColor = true;
+            this.goodBox.FormattingEnabled = true;
+            this.goodBox.Location = new System.Drawing.Point(85, 30);
+            this.goodBox.Name = "goodBox";
+            this.goodBox.Size = new System.Drawing.Size(295, 22);
+            this.goodBox.TabIndex = 10;
+            this.goodBox.SelectedIndexChanged += new System.EventHandler(this.goodBox_SelectedIndexChanged);
             // 
-            // comboBox1
+            // quantField
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(85, 30);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(295, 22);
-            this.comboBox1.TabIndex = 10;
+            this.quantField.Location = new System.Drawing.Point(122, 63);
+            this.quantField.Name = "quantField";
+            this.quantField.Size = new System.Drawing.Size(67, 22);
+            this.quantField.TabIndex = 11;
+            this.quantField.TextChanged += new System.EventHandler(this.quantField_TextChanged);
             // 
-            // textBox1
+            // unitsField
             // 
-            this.textBox1.Location = new System.Drawing.Point(122, 63);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(67, 22);
-            this.textBox1.TabIndex = 11;
+            this.unitsField.Location = new System.Drawing.Point(264, 63);
+            this.unitsField.Name = "unitsField";
+            this.unitsField.ReadOnly = true;
+            this.unitsField.Size = new System.Drawing.Size(116, 22);
+            this.unitsField.TabIndex = 11;
             // 
-            // textBox2
+            // priceField
             // 
-            this.textBox2.Location = new System.Drawing.Point(264, 63);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(116, 22);
-            this.textBox2.TabIndex = 11;
+            this.priceField.Location = new System.Drawing.Point(80, 96);
+            this.priceField.Name = "priceField";
+            this.priceField.ReadOnly = true;
+            this.priceField.Size = new System.Drawing.Size(109, 22);
+            this.priceField.TabIndex = 11;
             // 
-            // textBox3
+            // sumField
             // 
-            this.textBox3.Location = new System.Drawing.Point(80, 96);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(109, 22);
-            this.textBox3.TabIndex = 11;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(271, 96);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(109, 22);
-            this.textBox4.TabIndex = 11;
+            this.sumField.Location = new System.Drawing.Point(271, 96);
+            this.sumField.Name = "sumField";
+            this.sumField.ReadOnly = true;
+            this.sumField.Size = new System.Drawing.Size(109, 22);
+            this.sumField.TabIndex = 11;
             // 
             // AddGoodinInvoiceForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(406, 193);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.unitsField);
+            this.Controls.Add(this.sumField);
+            this.Controls.Add(this.priceField);
+            this.Controls.Add(this.quantField);
+            this.Controls.Add(this.goodBox);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label5);
@@ -182,11 +173,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button saveButton;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.ComboBox goodBox;
+        private System.Windows.Forms.TextBox quantField;
+        private System.Windows.Forms.TextBox unitsField;
+        private System.Windows.Forms.TextBox priceField;
+        private System.Windows.Forms.TextBox sumField;
     }
 }

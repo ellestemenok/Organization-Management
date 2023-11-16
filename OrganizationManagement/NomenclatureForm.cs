@@ -155,7 +155,6 @@ namespace OrganizationManagement
         {
             string searchText = filterBox.Text.Trim();
 
-            // Применяем фильтр к DataGridView
             if (!string.IsNullOrEmpty(searchText))
             {
                 DataView dv = ((DataTable)goodsGrid.DataSource).DefaultView;
@@ -163,7 +162,6 @@ namespace OrganizationManagement
             }
             else
             {
-                // Если текст в TextBox пуст, сбросить фильтр
                 ((DataTable)goodsGrid.DataSource).DefaultView.RowFilter = string.Empty;
             }
         }

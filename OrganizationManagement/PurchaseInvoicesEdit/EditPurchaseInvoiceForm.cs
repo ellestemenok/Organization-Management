@@ -17,10 +17,11 @@ namespace OrganizationManagement
     public partial class EditPurchaseInvoiceForm : Form
     {
         private int invoiceID;
+        private DataTable invoiceTable;
         public EditPurchaseInvoiceForm(DataTable invoicesData)
         {
             InitializeComponent();
-
+            invoiceTable = invoicesData;
             DataDB.LoadDataIntoComboBox(contractorBox, "SELECT \"ContractorID\", \"Name\" FROM public.\"Contractor\" ORDER BY \"ContractorID\" ASC");
             DataDB.LoadDataIntoComboBox(storageBox, "SELECT \"StorageID\", \"Name\" FROM public.\"Storage\" ORDER BY \"StorageID\" ASC");
 
@@ -39,6 +40,7 @@ namespace OrganizationManagement
         {
             string query = "SELECT\r\n" +
                 "pid.\"InvoiceID\"," +
+                "pd.\"DetailID\", " +
                 "g.\"ArticleNumber\" AS \"Артикул\",\r\n" +
                 "g.\"Name\" AS \"Название\",\r\n" +
                 "pd.\"Quantity\" AS \"Кол-во\",\r\n" +
@@ -52,6 +54,7 @@ namespace OrganizationManagement
                 $"WHERE pid.\"InvoiceID\" = {invoiceID}; ";
             DataDB.FillDataGridViewWithQueryResult(specGrid, query);
             specGrid.Columns["InvoiceID"].Visible = false;
+            specGrid.Columns["DetailID"].Visible = false;
             specGrid.Columns["Артикул"].Width = 70;
             specGrid.Columns["Название"].Width = 200;
             specGrid.Columns["Кол-во"].Width = 45;
@@ -59,19 +62,12 @@ namespace OrganizationManagement
             specGrid.Columns["Цена"].Width = 60;
             specGrid.Columns["Стоимость"].Width = 90;
         }
-        private void dateField_Enter(object sender, EventArgs e)
-        {
-            LoadDataIntoDataGridView();
-            quant1.Text = DataDB.ExecuteScalarQuery($"SELECT COUNT(\"DetailID\") FROM public.\"PurchaseInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
-            quant2.Text = DataDB.ExecuteScalarQuery($"SELECT SUM(\"Quantity\") FROM public.\"PurchaseInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
-        }
         private void addItem_Click(object sender, EventArgs e)
         {
-            AddGoodinInvoiceForm addForm = new AddGoodinInvoiceForm();
+            AddGoodinInvoiceForm addForm = new AddGoodinInvoiceForm(invoiceID);
             addForm.MdiParent = ActiveForm;
             addForm.Show();
         }
-
         private void saveButton_Click(object sender, EventArgs e)
         {
             DateTime invoiceDate = Convert.ToDateTime(dateField.Text);
@@ -96,6 +92,43 @@ namespace OrganizationManagement
 
             // Закрываем форму после сохранения
             Close();
+        }
+
+        private void UpdateQuantnPrice()
+        {
+            quant1.Text = DataDB.ExecuteScalarQuery($"SELECT COUNT(\"DetailID\") FROM public.\"PurchaseInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
+            quant2.Text = DataDB.ExecuteScalarQuery($"SELECT SUM(\"Quantity\") FROM public.\"PurchaseInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
+            sum.Text = DataDB.ExecuteScalarQuery($"SELECT SUM(\"Total\") FROM public.\"PurchaseInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
+        }
+        private void EditPurchaseInvoiceForm_Enter(object sender, EventArgs e)
+        {
+            LoadDataIntoDataGridView();
+            UpdateQuantnPrice();
+        }
+
+        private void delItem_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow selectedRow = specGrid.SelectedRows[0];
+            int detailID = Convert.ToInt32(selectedRow.Cells["DetailID"].Value);
+            PurchaseInvoice.DeleteDetail(detailID);
+            LoadDataIntoDataGridView();
+            UpdateQuantnPrice();
+        }
+
+        private void contractorBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedgoodID = ((KeyValuePair<int, string>)contractorBox.SelectedItem).Key;
+            DataDB contractorRepository = new DataDB();
+            DataTable contrData = contractorRepository.FillFormWithQueryResult(
+                "SELECT \"ContractorID\", " +
+                "\"Reason\" \r\n" +
+                "FROM public.\"Contractor\" \r\n" +
+                $"WHERE \"ContractorID\" = {selectedgoodID};");
+            if (contrData != null && contrData.Rows.Count > 0)
+            {
+                // Заполнение полей значениями из базы данных
+                reasonField.Text = contrData.Rows[0]["Reason"].ToString();
+            }
         }
     }
 }

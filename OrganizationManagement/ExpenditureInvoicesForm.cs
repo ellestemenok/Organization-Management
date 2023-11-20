@@ -38,10 +38,10 @@ namespace OrganizationManagement
                 "JOIN public.\"Contractor\" c ON pid.\"ContractorID\" = c.\"ContractorID\"\r\n" +
                 "JOIN public.\"Storage\" s ON pid.\"StorageID\" = s.\"StorageID\" " +
                 "ORDER BY pid.\"InvoiceNumber\" DESC;";
-            DataDB.FillDataGridViewWithQueryResult(expinvoicesGrid, query);
-            expinvoicesGrid.Columns["InvoiceID"].Visible = false;
-            expinvoicesGrid.Columns["Дата"].Width = 100;
-            expinvoicesGrid.Columns["Номер"].Width = 50;
+            DataDB.FillDataGridViewWithQueryResult(invoicesGrid, query);
+            invoicesGrid.Columns["InvoiceID"].Visible = false;
+            invoicesGrid.Columns["Дата"].Width = 100;
+            invoicesGrid.Columns["Номер"].Width = 50;
         }
 
         private void ExpenditureInvoicesForm_Enter(object sender, EventArgs e)
@@ -51,12 +51,9 @@ namespace OrganizationManagement
 
         private void addItem_Click(object sender, EventArgs e)
         {
-            //DataGridViewRow selectedRow = invoicesGrid.SelectedRows[0];
-            //int invoiceID = Convert.ToInt32(selectedRow.Cells["InvoiceID"].Value);
-
-            //AddExpenditureInvoiceForm addForm = new AddExpenditureInvoiceForm();
-            //addForm.MdiParent = ActiveForm;
-            //addForm.Show();
+            AddExpenditureInvoiceForm addForm = new AddExpenditureInvoiceForm();
+            addForm.MdiParent = ActiveForm;
+            addForm.Show();
         }
 
         private void refreshGrid_Click(object sender, EventArgs e)
@@ -66,7 +63,7 @@ namespace OrganizationManagement
 
         private void editItem_Click(object sender, EventArgs e)
         {
-            DataGridViewRow selectedRow = expinvoicesGrid.SelectedRows[0];
+            DataGridViewRow selectedRow = invoicesGrid.SelectedRows[0];
             int invoiceID = Convert.ToInt32(selectedRow.Cells["InvoiceID"].Value);
             DataDB invoicesRepository = new DataDB();
 
@@ -95,10 +92,26 @@ namespace OrganizationManagement
             DialogResult result = MessageBox.Show("Удалить элемент?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                DataGridViewRow selectedRow = expinvoicesGrid.SelectedRows[0];
+                DataGridViewRow selectedRow = invoicesGrid.SelectedRows[0];
                 int invoiceID = Convert.ToInt32(selectedRow.Cells["InvoiceID"].Value);
                 ExpenditureInvoice.Delete(invoiceID);
                 LoadDataIntoDataGridView();
+            }
+        }
+
+        private void filterBox_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = filterBox.Text.Trim();
+
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                DataView dv = ((DataTable)invoicesGrid.DataSource).DefaultView;
+                dv.RowFilter = string.Format("CONVERT(Номер, 'System.String') LIKE '%{0}%' OR Контрагент LIKE '%{0}%' OR Склад LIKE '%{0}%' " +
+                            "OR Основание LIKE '%{0}%' OR CONVERT(Сумма, 'System.String') LIKE '%{0}%'", searchText);
+            }
+            else
+            {
+                ((DataTable)invoicesGrid.DataSource).DefaultView.RowFilter = string.Empty;
             }
         }
     }

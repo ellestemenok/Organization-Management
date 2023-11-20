@@ -14,11 +14,11 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace OrganizationManagement
 {
-    public partial class EditPurchaseInvoiceForm : Form
+    public partial class EditExpenditureInvoiceForm : Form
     {
         private int invoiceID;
         private DataTable invoiceTable;
-        public EditPurchaseInvoiceForm(DataTable invoicesData)
+        public EditExpenditureInvoiceForm(DataTable invoicesData)
         {
             InitializeComponent();
             invoiceTable = invoicesData;
@@ -47,8 +47,8 @@ namespace OrganizationManagement
                 "mu.\"Name\" AS \"Ед. изм.\",\r\n" +
                 "g.\"TradePrice\" AS \"Цена\",\r\n" +
                 "pd.\"Total\" AS \"Стоимость\"\r\n" +
-                "FROM public.\"PurchaseInvoice\" pid\r\n" +
-                "JOIN public.\"PurchaseInvoiceDetail\" pd ON pid.\"InvoiceID\" = pd.\"InvoiceID\"\r\n" +
+                "FROM public.\"ExpenditureInvoice\" pid\r\n" +
+                "JOIN public.\"ExpenditureInvoiceDetail\" pd ON pid.\"InvoiceID\" = pd.\"InvoiceID\"\r\n" +
                 "JOIN public.\"Good\" g ON pd.\"ProductID\" = g.\"GoodID\"\r\n" +
                 "JOIN public.\"MeasureUnit\" mu ON g.\"MeasureUnitID\" = mu.\"UnitID\"\r\n" +
                 $"WHERE pid.\"InvoiceID\" = {invoiceID}; ";
@@ -64,7 +64,7 @@ namespace OrganizationManagement
         }
         private void addItem_Click(object sender, EventArgs e)
         {
-            AddGoodinPurchaseInvoiceForm addForm = new AddGoodinPurchaseInvoiceForm(invoiceID);
+            AddGoodinExpenditureInvoiceForm addForm = new AddGoodinExpenditureInvoiceForm(invoiceID);
             addForm.MdiParent = ActiveForm;
             addForm.Show();
         }
@@ -88,7 +88,7 @@ namespace OrganizationManagement
             }
 
             // Вызываем метод Update из класса DataDB
-            PurchaseInvoice.Update(invoiceID, invoiceDate, invoiceNumber, contractorID, storageID);
+            ExpenditureInvoice.Update(invoiceID, invoiceDate, invoiceNumber, contractorID, storageID);
 
             // Закрываем форму после сохранения
             Close();
@@ -100,7 +100,7 @@ namespace OrganizationManagement
             quant2.Text = DataDB.ExecuteScalarQuery($"SELECT SUM(\"Quantity\") FROM public.\"PurchaseInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
             sum.Text = DataDB.ExecuteScalarQuery($"SELECT SUM(\"Total\") FROM public.\"PurchaseInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
         }
-        private void EditPurchaseInvoiceForm_Enter(object sender, EventArgs e)
+        private void EditExpenditureInvoiceForm_Enter(object sender, EventArgs e)
         {
             LoadDataIntoDataGridView();
             UpdateQuantnPrice();
@@ -110,7 +110,7 @@ namespace OrganizationManagement
         {
             DataGridViewRow selectedRow = specGrid.SelectedRows[0];
             int detailID = Convert.ToInt32(selectedRow.Cells["DetailID"].Value);
-            PurchaseInvoice.DeleteDetail(detailID);
+            ExpenditureInvoice.DeleteDetail(detailID);
             LoadDataIntoDataGridView();
             UpdateQuantnPrice();
         }

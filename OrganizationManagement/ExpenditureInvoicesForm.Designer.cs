@@ -35,9 +35,9 @@
             this.refreshGrid = new System.Windows.Forms.ToolStripMenuItem();
             this.filterLable = new System.Windows.Forms.ToolStripMenuItem();
             this.filterBox = new System.Windows.Forms.ToolStripTextBox();
-            this.expinvoicesGrid = new System.Windows.Forms.DataGridView();
+            this.invoicesGrid = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.expinvoicesGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoicesGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -107,32 +107,33 @@
             this.filterBox.Font = new System.Drawing.Font("Verdana", 8F);
             this.filterBox.Name = "filterBox";
             this.filterBox.Size = new System.Drawing.Size(150, 20);
+            this.filterBox.TextChanged += new System.EventHandler(this.filterBox_TextChanged);
             // 
-            // expinvoicesGrid
+            // invoicesGrid
             // 
-            this.expinvoicesGrid.AllowUserToAddRows = false;
-            this.expinvoicesGrid.AllowUserToDeleteRows = false;
-            this.expinvoicesGrid.AllowUserToResizeRows = false;
-            this.expinvoicesGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.expinvoicesGrid.BackgroundColor = System.Drawing.Color.White;
-            this.expinvoicesGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            this.expinvoicesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.expinvoicesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.expinvoicesGrid.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.expinvoicesGrid.Location = new System.Drawing.Point(0, 24);
-            this.expinvoicesGrid.Name = "expinvoicesGrid";
-            this.expinvoicesGrid.ReadOnly = true;
-            this.expinvoicesGrid.RowHeadersVisible = false;
-            this.expinvoicesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.expinvoicesGrid.Size = new System.Drawing.Size(804, 437);
-            this.expinvoicesGrid.TabIndex = 3;
+            this.invoicesGrid.AllowUserToAddRows = false;
+            this.invoicesGrid.AllowUserToDeleteRows = false;
+            this.invoicesGrid.AllowUserToResizeRows = false;
+            this.invoicesGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.invoicesGrid.BackgroundColor = System.Drawing.Color.White;
+            this.invoicesGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.invoicesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.invoicesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.invoicesGrid.GridColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.invoicesGrid.Location = new System.Drawing.Point(0, 24);
+            this.invoicesGrid.Name = "invoicesGrid";
+            this.invoicesGrid.ReadOnly = true;
+            this.invoicesGrid.RowHeadersVisible = false;
+            this.invoicesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.invoicesGrid.Size = new System.Drawing.Size(804, 437);
+            this.invoicesGrid.TabIndex = 3;
             // 
             // ExpenditureInvoicesForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(804, 461);
-            this.Controls.Add(this.expinvoicesGrid);
+            this.Controls.Add(this.invoicesGrid);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Verdana", 8F);
             this.Name = "ExpenditureInvoicesForm";
@@ -142,7 +143,7 @@
             this.Enter += new System.EventHandler(this.ExpenditureInvoicesForm_Enter);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.expinvoicesGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoicesGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -157,6 +158,6 @@
         private System.Windows.Forms.ToolStripMenuItem refreshGrid;
         private System.Windows.Forms.ToolStripMenuItem filterLable;
         private System.Windows.Forms.ToolStripTextBox filterBox;
-        private System.Windows.Forms.DataGridView expinvoicesGrid;
+        private System.Windows.Forms.DataGridView invoicesGrid;
     }
 }

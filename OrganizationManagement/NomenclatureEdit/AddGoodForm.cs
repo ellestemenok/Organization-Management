@@ -18,6 +18,8 @@ namespace OrganizationManagement.NomenclatureEdit
             InitializeComponent();
             DataDB.LoadDataIntoComboBox(groupBox, "SELECT \"CategoryID\", \"Name\" FROM public.\"GoodCategory\" ORDER BY \"CategoryID\" ASC");
             DataDB.LoadDataIntoComboBox(measureunitBox, "SELECT \"UnitID\", \"Name\" FROM public.\"MeasureUnit\" ORDER BY \"UnitID\" ASC");
+            groupBox.Text = ((KeyValuePair<int, string>)groupBox.Items[0]).Value;
+            measureunitBox.Text = ((KeyValuePair<int, string>)measureunitBox.Items[0]).Value;
 
             netcostField.KeyPress += KeyPressEvent.textBox_KeyPressMoney;
             vatField.KeyPress += KeyPressEvent.textBox_KeyPressPercent;

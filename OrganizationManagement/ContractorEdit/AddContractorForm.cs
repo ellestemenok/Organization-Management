@@ -16,7 +16,11 @@ namespace OrganizationManagement.ContractorEdit
         public AddContractorForm()
         {
             InitializeComponent();
-            DataDB.LoadDataIntoComboBox(groupBox, "SELECT \"CategoryID\", \"Name\" FROM public.\"ContractorCategory\" ORDER BY \"CategoryID\" ASC");
+            DataDB.LoadDataIntoComboBox(groupBox, "SELECT \"CategoryID\", \"Name\" " +
+                "FROM public.\"ContractorCategory\" " +
+                "ORDER BY \"CategoryID\" ASC");
+            typeBox.Text = typeBox.Items[0].ToString();
+            groupBox.Text = ((KeyValuePair<int, string>)groupBox.Items[0]).Value;
         }
 
         private void saveButton_Click(object sender, EventArgs e)

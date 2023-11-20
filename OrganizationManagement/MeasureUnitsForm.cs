@@ -37,7 +37,8 @@ namespace OrganizationManagement
                 "\"Name\" AS \"Краткое название\", " +
                 "\"FullName\" AS \"Полное название\"," +
                 " \"Fractional\" AS \"Делится?\" " +
-                "FROM public.\"MeasureUnit\";";
+                "FROM public.\"MeasureUnit\" " +
+                "ORDER BY \"UnitID\" ASC;";
             DataDB.FillDataGridViewWithQueryResult(measureunitsGrid, query);
             measureunitsGrid.Columns["UnitID"].Visible = false;
         }

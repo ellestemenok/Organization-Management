@@ -13,10 +13,10 @@ using System.Windows.Forms;
 
 namespace OrganizationManagement.PurchaseInvoicesEdit
 {
-    public partial class AddGoodinInvoiceForm : Form
+    public partial class AddGoodinPurchaseInvoiceForm : Form
     { 
         private int invoiceID;
-        public AddGoodinInvoiceForm(int id)
+        public AddGoodinPurchaseInvoiceForm(int id)
         {
             InitializeComponent();
             invoiceID = id;

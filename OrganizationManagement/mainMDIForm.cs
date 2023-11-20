@@ -27,6 +27,8 @@ namespace OrganizationManagement
             toolStripDateTime.Text = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString();
         }
 
+  
+
         private void organizationRequisitesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OrganizationRequisitesForm newMDIChild = new OrganizationRequisitesForm();
@@ -79,6 +81,33 @@ namespace OrganizationManagement
             ExpenditureInvoicesForm newMDIChild = new ExpenditureInvoicesForm();
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
+        }
+
+        private void verticalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.LayoutMdi(MdiLayout.TileHorizontal);
+            this.LayoutMdi(MdiLayout.TileVertical);
+        }
+
+        private void cascadeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.LayoutMdi(MdiLayout.Cascade);
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null)
+            {
+                this.ActiveMdiChild.Close();
+            }
+        }
+
+        private void minimizeallToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form childForm in this.MdiChildren)
+            {
+                childForm.WindowState = FormWindowState.Minimized;
+            }
         }
     }
 }

@@ -25,6 +25,9 @@ namespace OrganizationManagement
             DataDB.LoadDataIntoComboBox(storageBox, "SELECT \"StorageID\", \"Name\" FROM public.\"Storage\" ORDER BY \"StorageID\" ASC");
             PurchaseInvoice.Insert(DateTime.Today, 1, 1);
 
+            contractorBox.Text = ((KeyValuePair<int, string>)contractorBox.Items[0]).Value;
+            storageBox.Text = ((KeyValuePair<int, string>)storageBox.Items[0]).Value;
+
             invoiceID = Convert.ToInt32(DataDB.ExecuteScalarQuery("SELECT MAX(\"InvoiceID\") " +
                 "FROM public.\"PurchaseInvoice\";"));
             numField.Text = DataDB.ExecuteScalarQuery("SELECT MAX(\"InvoiceNumber\") " +
@@ -60,7 +63,7 @@ namespace OrganizationManagement
         }
         private void addItem_Click(object sender, EventArgs e)
         {
-            AddGoodinInvoiceForm addForm = new AddGoodinInvoiceForm(invoiceID);
+            AddGoodinPurchaseInvoiceForm addForm = new AddGoodinPurchaseInvoiceForm(invoiceID);
             addForm.MdiParent = ActiveForm;
             addForm.Show();
         }

@@ -1,6 +1,6 @@
 ﻿namespace OrganizationManagement.PurchaseInvoicesEdit
 {
-    partial class AddGoodinInvoiceForm
+    partial class AddGoodinPurchaseInvoiceForm
     {
         /// <summary>
         /// Required designer variable.
@@ -112,6 +112,7 @@
             this.quantField.Name = "quantField";
             this.quantField.Size = new System.Drawing.Size(67, 20);
             this.quantField.TabIndex = 11;
+            this.quantField.Text = "0";
             this.quantField.TextChanged += new System.EventHandler(this.quantField_TextChanged);
             // 
             // unitsField
@@ -138,7 +139,7 @@
             this.sumField.Size = new System.Drawing.Size(109, 20);
             this.sumField.TabIndex = 11;
             // 
-            // AddGoodinInvoiceForm
+            // AddGoodinPurchaseInvoiceForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
@@ -157,7 +158,7 @@
             this.Font = new System.Drawing.Font("Verdana", 8F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.Name = "AddGoodinInvoiceForm";
+            this.Name = "AddGoodinPurchaseInvoiceForm";
             this.ShowIcon = false;
             this.Text = "Добавление товара в спецификацию";
             this.ResumeLayout(false);

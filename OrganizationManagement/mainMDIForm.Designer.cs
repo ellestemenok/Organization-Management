@@ -32,30 +32,34 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMDI));
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.organizationRequisitesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nomenclatureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.contractorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.measureUnitsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.журналыДокументовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.expenditureInvoicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.purchaseinvoicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.окнаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.черепицейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.каскадомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.свернутьВсеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.minimizeallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.закрытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStripMain = new System.Windows.Forms.StatusStrip();
             this.usernameStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerForDatetime = new System.Windows.Forms.Timer(this.components);
-            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
-            this.organizationRequisitesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contractorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabControlWindows = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.menuStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
+            this.tabControlWindows.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -92,6 +96,15 @@
             this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(94, 21);
             this.справочникиToolStripMenuItem.Text = "Справочники";
             // 
+            // organizationRequisitesToolStripMenuItem
+            // 
+            this.organizationRequisitesToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.organizationRequisitesToolStripMenuItem.Image = global::OrganizationManagement.Properties.Resources.storeIcon;
+            this.organizationRequisitesToolStripMenuItem.Name = "organizationRequisitesToolStripMenuItem";
+            this.organizationRequisitesToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.organizationRequisitesToolStripMenuItem.Text = "Реквизиты организации";
+            this.organizationRequisitesToolStripMenuItem.Click += new System.EventHandler(this.organizationRequisitesToolStripMenuItem_Click);
+            // 
             // nomenclatureToolStripMenuItem
             // 
             this.nomenclatureToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -105,6 +118,15 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(212, 6);
             // 
+            // contractorsToolStripMenuItem
+            // 
+            this.contractorsToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.contractorsToolStripMenuItem.Image = global::OrganizationManagement.Properties.Resources.contractorsIcon;
+            this.contractorsToolStripMenuItem.Name = "contractorsToolStripMenuItem";
+            this.contractorsToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.contractorsToolStripMenuItem.Text = "Контрагенты";
+            this.contractorsToolStripMenuItem.Click += new System.EventHandler(this.contractorsToolStripMenuItem_Click);
+            // 
             // measureUnitsToolStripMenuItem
             // 
             this.measureUnitsToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -112,6 +134,26 @@
             this.measureUnitsToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
             this.measureUnitsToolStripMenuItem.Text = "Единицы измерения";
             this.measureUnitsToolStripMenuItem.Click += new System.EventHandler(this.measureUnitsToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem9});
+            this.toolStripMenuItem8.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripMenuItem8.ForeColor = System.Drawing.Color.Black;
+            this.toolStripMenuItem8.Margin = new System.Windows.Forms.Padding(3);
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Padding = new System.Windows.Forms.Padding(2);
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(49, 21);
+            this.toolStripMenuItem8.Text = "Касса";
+            // 
+            // toolStripMenuItem9
+            // 
+            this.toolStripMenuItem9.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripMenuItem9.Image = global::OrganizationManagement.Properties.Resources.cashIcon;
+            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(159, 22);
+            this.toolStripMenuItem9.Text = "Касса сегодня";
             // 
             // журналыДокументовToolStripMenuItem
             // 
@@ -164,11 +206,11 @@
             // окнаToolStripMenuItem
             // 
             this.окнаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.черепицейToolStripMenuItem,
-            this.каскадомToolStripMenuItem,
-            this.свернутьВсеToolStripMenuItem,
+            this.verticalToolStripMenuItem,
+            this.cascadeToolStripMenuItem,
+            this.minimizeallToolStripMenuItem,
             this.toolStripSeparator3,
-            this.закрытьToolStripMenuItem});
+            this.closeToolStripMenuItem});
             this.окнаToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.окнаToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.окнаToolStripMenuItem.Margin = new System.Windows.Forms.Padding(3);
@@ -177,38 +219,42 @@
             this.окнаToolStripMenuItem.Size = new System.Drawing.Size(45, 21);
             this.окнаToolStripMenuItem.Text = "Окна";
             // 
-            // черепицейToolStripMenuItem
+            // verticalToolStripMenuItem
             // 
-            this.черепицейToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
-            this.черепицейToolStripMenuItem.Name = "черепицейToolStripMenuItem";
-            this.черепицейToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.черепицейToolStripMenuItem.Text = "Черепицей";
+            this.verticalToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
+            this.verticalToolStripMenuItem.Name = "verticalToolStripMenuItem";
+            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verticalToolStripMenuItem.Text = "Черепицей";
+            this.verticalToolStripMenuItem.Click += new System.EventHandler(this.verticalToolStripMenuItem_Click);
             // 
-            // каскадомToolStripMenuItem
+            // cascadeToolStripMenuItem
             // 
-            this.каскадомToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
-            this.каскадомToolStripMenuItem.Name = "каскадомToolStripMenuItem";
-            this.каскадомToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.каскадомToolStripMenuItem.Text = "Каскадом";
+            this.cascadeToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
+            this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
+            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cascadeToolStripMenuItem.Text = "Каскадом";
+            this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.cascadeToolStripMenuItem_Click);
             // 
-            // свернутьВсеToolStripMenuItem
+            // minimizeallToolStripMenuItem
             // 
-            this.свернутьВсеToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
-            this.свернутьВсеToolStripMenuItem.Name = "свернутьВсеToolStripMenuItem";
-            this.свернутьВсеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.свернутьВсеToolStripMenuItem.Text = "Свернуть все";
+            this.minimizeallToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
+            this.minimizeallToolStripMenuItem.Name = "minimizeallToolStripMenuItem";
+            this.minimizeallToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.minimizeallToolStripMenuItem.Text = "Свернуть все";
+            this.minimizeallToolStripMenuItem.Click += new System.EventHandler(this.minimizeallToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
             // 
-            // закрытьToolStripMenuItem
+            // closeToolStripMenuItem
             // 
-            this.закрытьToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
-            this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
-            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.закрытьToolStripMenuItem.Text = "Закрыть";
+            this.closeToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.closeToolStripMenuItem.Text = "Закрыть";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // statusStripMain
             // 
@@ -246,43 +292,36 @@
             this.timerForDatetime.Interval = 1000;
             this.timerForDatetime.Tick += new System.EventHandler(this.timerForDatetime_Tick);
             // 
-            // toolStripMenuItem8
+            // tabControlWindows
             // 
-            this.toolStripMenuItem8.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem9});
-            this.toolStripMenuItem8.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.toolStripMenuItem8.ForeColor = System.Drawing.Color.Black;
-            this.toolStripMenuItem8.Margin = new System.Windows.Forms.Padding(3);
-            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(49, 21);
-            this.toolStripMenuItem8.Text = "Касса";
+            this.tabControlWindows.Controls.Add(this.tabPage1);
+            this.tabControlWindows.Controls.Add(this.tabPage2);
+            this.tabControlWindows.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tabControlWindows.Location = new System.Drawing.Point(0, 493);
+            this.tabControlWindows.Name = "tabControlWindows";
+            this.tabControlWindows.SelectedIndex = 0;
+            this.tabControlWindows.Size = new System.Drawing.Size(879, 23);
+            this.tabControlWindows.TabIndex = 3;
             // 
-            // organizationRequisitesToolStripMenuItem
+            // tabPage1
             // 
-            this.organizationRequisitesToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.organizationRequisitesToolStripMenuItem.Image = global::OrganizationManagement.Properties.Resources.storeIcon;
-            this.organizationRequisitesToolStripMenuItem.Name = "organizationRequisitesToolStripMenuItem";
-            this.organizationRequisitesToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.organizationRequisitesToolStripMenuItem.Text = "Реквизиты организации";
-            this.organizationRequisitesToolStripMenuItem.Click += new System.EventHandler(this.organizationRequisitesToolStripMenuItem_Click);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(871, 0);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // contractorsToolStripMenuItem
+            // tabPage2
             // 
-            this.contractorsToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.contractorsToolStripMenuItem.Image = global::OrganizationManagement.Properties.Resources.contractorsIcon;
-            this.contractorsToolStripMenuItem.Name = "contractorsToolStripMenuItem";
-            this.contractorsToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.contractorsToolStripMenuItem.Text = "Контрагенты";
-            this.contractorsToolStripMenuItem.Click += new System.EventHandler(this.contractorsToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem9
-            // 
-            this.toolStripMenuItem9.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.toolStripMenuItem9.Image = global::OrganizationManagement.Properties.Resources.cashIcon;
-            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem9.Text = "Касса сегодня";
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(871, 0);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // MainMDI
             // 
@@ -290,6 +329,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(879, 538);
+            this.Controls.Add(this.tabControlWindows);
             this.Controls.Add(this.statusStripMain);
             this.Controls.Add(this.menuStripMain);
             this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -297,7 +337,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStripMain;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainMDI";
             this.Text = "Планерно-диспетчерский отдел";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -306,6 +346,7 @@
             this.menuStripMain.PerformLayout();
             this.statusStripMain.ResumeLayout(false);
             this.statusStripMain.PerformLayout();
+            this.tabControlWindows.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -324,11 +365,11 @@
         private System.Windows.Forms.ToolStripMenuItem expenditureInvoicesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem purchaseinvoicesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem окнаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem черепицейToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem каскадомToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem свернутьВсеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verticalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cascadeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem minimizeallToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem закрытьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStripMain;
         private System.Windows.Forms.ToolStripStatusLabel toolStripDateTime;
         private System.Windows.Forms.Timer timerForDatetime;
@@ -337,6 +378,9 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
+        private System.Windows.Forms.TabControl tabControlWindows;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }
 

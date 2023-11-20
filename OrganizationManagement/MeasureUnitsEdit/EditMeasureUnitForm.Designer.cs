@@ -42,26 +42,26 @@
             // 
             this.fullnameField.Location = new System.Drawing.Point(211, 103);
             this.fullnameField.Name = "fullnameField";
-            this.fullnameField.Size = new System.Drawing.Size(258, 22);
+            this.fullnameField.Size = new System.Drawing.Size(258, 20);
             this.fullnameField.TabIndex = 20;
             // 
             // nameField
             // 
             this.nameField.Location = new System.Drawing.Point(211, 73);
             this.nameField.Name = "nameField";
-            this.nameField.Size = new System.Drawing.Size(258, 22);
+            this.nameField.Size = new System.Drawing.Size(258, 20);
             this.nameField.TabIndex = 19;
             // 
             // okeiField
             // 
             this.okeiField.Location = new System.Drawing.Point(211, 43);
             this.okeiField.Name = "okeiField";
-            this.okeiField.Size = new System.Drawing.Size(258, 22);
+            this.okeiField.Size = new System.Drawing.Size(258, 20);
             this.okeiField.TabIndex = 18;
             // 
             // saveButton
             // 
-            this.saveButton.Font = new System.Drawing.Font("Verdana", 9F);
+            this.saveButton.Font = new System.Drawing.Font("Verdana", 8F);
             this.saveButton.Location = new System.Drawing.Point(369, 169);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(100, 30);
@@ -77,7 +77,7 @@
             this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(8);
-            this.label3.Size = new System.Drawing.Size(141, 30);
+            this.label3.Size = new System.Drawing.Size(130, 29);
             this.label3.TabIndex = 14;
             this.label3.Text = "Полное название:";
             // 
@@ -88,7 +88,7 @@
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(8);
-            this.label2.Size = new System.Drawing.Size(147, 30);
+            this.label2.Size = new System.Drawing.Size(135, 29);
             this.label2.TabIndex = 15;
             this.label2.Text = "Краткое название:";
             // 
@@ -99,7 +99,7 @@
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(8);
-            this.label1.Size = new System.Drawing.Size(63, 30);
+            this.label1.Size = new System.Drawing.Size(60, 29);
             this.label1.TabIndex = 16;
             this.label1.Text = "ОКЕИ:";
             // 
@@ -108,12 +108,12 @@
             this.fractionalCheckBox.AutoSize = true;
             this.fractionalCheckBox.Location = new System.Drawing.Point(28, 144);
             this.fractionalCheckBox.Name = "fractionalCheckBox";
-            this.fractionalCheckBox.Size = new System.Drawing.Size(144, 18);
+            this.fractionalCheckBox.Size = new System.Drawing.Size(136, 17);
             this.fractionalCheckBox.TabIndex = 21;
             this.fractionalCheckBox.Text = "Является дробным";
             this.fractionalCheckBox.UseVisualStyleBackColor = true;
             // 
-            // EditMeasureUnit
+            // EditMeasureUnitForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
@@ -126,11 +126,11 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Verdana", 9F);
+            this.Font = new System.Drawing.Font("Verdana", 8F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.MaximizeBox = false;
-            this.Name = "EditMeasureUnit";
+            this.Name = "EditMeasureUnitForm";
             this.ShowIcon = false;
             this.Text = "Редактировать единицу измерения";
             this.ResumeLayout(false);

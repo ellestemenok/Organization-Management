@@ -14,23 +14,27 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace OrganizationManagement
 {
-    
-    public partial class AddPurchaseInvoiceForm : Form
+    public partial class EditExpenditureInvoiceForm : Form
     {
         private int invoiceID;
-        public AddPurchaseInvoiceForm()
+        private DataTable invoiceTable;
+        public EditExpenditureInvoiceForm(DataTable invoicesData)
         {
             InitializeComponent();
+            invoiceTable = invoicesData;
             DataDB.LoadDataIntoComboBox(contractorBox, "SELECT \"ContractorID\", \"Name\" FROM public.\"Contractor\" ORDER BY \"ContractorID\" ASC");
             DataDB.LoadDataIntoComboBox(storageBox, "SELECT \"StorageID\", \"Name\" FROM public.\"Storage\" ORDER BY \"StorageID\" ASC");
-            PurchaseInvoice.Insert(DateTime.Today, 1, 1);
 
-            invoiceID = Convert.ToInt32(DataDB.ExecuteScalarQuery("SELECT MAX(\"InvoiceID\") " +
-                "FROM public.\"PurchaseInvoice\";"));
-            numField.Text = DataDB.ExecuteScalarQuery("SELECT MAX(\"InvoiceNumber\") " +
-                "FROM public.\"PurchaseInvoice\";");
-            dateField.Text = DateTime.Today.ToString();
-
+            if (invoicesData.Rows.Count > 0)
+            {
+                invoiceID = Convert.ToInt32(invoicesData.Rows[0]["InvoiceID"]);
+                dateField.Text = Convert.ToDateTime(invoicesData.Rows[0]["InvoiceDate"]).ToString("dd.MM.yyyy");
+                numField.Text = invoicesData.Rows[0]["InvoiceNumber"].ToString();
+                contractorBox.Text = invoicesData.Rows[0]["ContractorName"].ToString();
+                storageBox.Text = invoicesData.Rows[0]["StorageName"].ToString();
+                reasonField.Text = invoicesData.Rows[0]["Reason"].ToString();
+                sum.Text = invoicesData.Rows[0]["TotalAmount"].ToString();
+            }
         }
         public void LoadDataIntoDataGridView()
         {
@@ -43,8 +47,8 @@ namespace OrganizationManagement
                 "mu.\"Name\" AS \"Ед. изм.\",\r\n" +
                 "g.\"TradePrice\" AS \"Цена\",\r\n" +
                 "pd.\"Total\" AS \"Стоимость\"\r\n" +
-                "FROM public.\"PurchaseInvoice\" pid\r\n" +
-                "JOIN public.\"PurchaseInvoiceDetail\" pd ON pid.\"InvoiceID\" = pd.\"InvoiceID\"\r\n" +
+                "FROM public.\"ExpenditureInvoice\" pid\r\n" +
+                "JOIN public.\"ExpenditureInvoiceDetail\" pd ON pid.\"InvoiceID\" = pd.\"InvoiceID\"\r\n" +
                 "JOIN public.\"Good\" g ON pd.\"ProductID\" = g.\"GoodID\"\r\n" +
                 "JOIN public.\"MeasureUnit\" mu ON g.\"MeasureUnitID\" = mu.\"UnitID\"\r\n" +
                 $"WHERE pid.\"InvoiceID\" = {invoiceID}; ";
@@ -67,9 +71,9 @@ namespace OrganizationManagement
         private void saveButton_Click(object sender, EventArgs e)
         {
             DateTime invoiceDate = Convert.ToDateTime(dateField.Text);
+            int invoiceNumber = Convert.ToInt32(numField.Text);
             int contractorID = 0;
             int storageID = 0;
-            int number = Convert.ToInt32(numField.Text);
 
             if (contractorBox.SelectedItem != null)
             {
@@ -83,7 +87,8 @@ namespace OrganizationManagement
                 storageID = storageItem.Key;
             }
 
-            PurchaseInvoice.Update(invoiceID, invoiceDate, number, contractorID, storageID);
+            // Вызываем метод Update из класса DataDB
+            ExpenditureInvoice.Update(invoiceID, invoiceDate, invoiceNumber, contractorID, storageID);
 
             // Закрываем форму после сохранения
             Close();
@@ -91,21 +96,22 @@ namespace OrganizationManagement
 
         private void UpdateQuantnPrice()
         {
-            quant1.Text = DataDB.ExecuteScalarQuery($"SELECT COUNT(\"DetailID\") FROM public.\"PurchaseInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
-            quant2.Text = DataDB.ExecuteScalarQuery($"SELECT SUM(\"Quantity\") FROM public.\"PurchaseInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
-            sum.Text = DataDB.ExecuteScalarQuery($"SELECT SUM(\"Total\") FROM public.\"PurchaseInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
+            quant1.Text = DataDB.ExecuteScalarQuery($"SELECT COUNT(\"DetailID\") FROM public.\"ExpenditureInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
+            quant2.Text = DataDB.ExecuteScalarQuery($"SELECT SUM(\"Quantity\") FROM public.\"ExpenditureInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
+            sum.Text = DataDB.ExecuteScalarQuery($"SELECT SUM(\"Total\") FROM public.\"ExpenditureInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
         }
         private void EditPurchaseInvoiceForm_Enter(object sender, EventArgs e)
         {
-            UpdateQuantnPrice();
             LoadDataIntoDataGridView();
+            UpdateQuantnPrice();
         }
 
         private void delItem_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = specGrid.SelectedRows[0];
             int detailID = Convert.ToInt32(selectedRow.Cells["DetailID"].Value);
-            PurchaseInvoice.DeleteDetail(detailID);
+            ExpenditureInvoice.DeleteDetail(detailID);
+            LoadDataIntoDataGridView();
             UpdateQuantnPrice();
         }
 

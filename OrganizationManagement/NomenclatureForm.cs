@@ -90,7 +90,7 @@ namespace OrganizationManagement
                     $"WHERE \"GoodID\" = {goodID}\r\n\t;";
             DataTable goodsData = goodsRepository.FillFormWithQueryResult(query);
 
-            EditGoodForm editForm = new EditGoodForm(goodsData);
+            NomenclatureEdit.EditPurchaseInvoiceForm editForm = new NomenclatureEdit.EditPurchaseInvoiceForm(goodsData);
             editForm.MdiParent = ActiveForm;
             editForm.Show();
         }
@@ -120,7 +120,7 @@ namespace OrganizationManagement
                     $"WHERE \"GoodID\" = {goodID}\r\n\t;";
                 DataTable goodsData = goodsRepository.FillFormWithQueryResult(query);
 
-                EditGoodForm editForm = new EditGoodForm(goodsData);
+                NomenclatureEdit.EditPurchaseInvoiceForm editForm = new NomenclatureEdit.EditPurchaseInvoiceForm(goodsData);
                 editForm.MdiParent = ActiveForm;
                 editForm.Show();
             }

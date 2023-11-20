@@ -54,7 +54,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(804, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(804, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -63,7 +63,7 @@
             this.addItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.addItem.Image = global::OrganizationManagement.Properties.Resources.invoiceAddIcon;
             this.addItem.Name = "addItem";
-            this.addItem.Size = new System.Drawing.Size(28, 23);
+            this.addItem.Size = new System.Drawing.Size(28, 20);
             this.addItem.Text = " ";
             this.addItem.Click += new System.EventHandler(this.addItem_Click);
             // 
@@ -72,7 +72,7 @@
             this.delItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.delItem.Image = global::OrganizationManagement.Properties.Resources.invoiceDeleteIcon;
             this.delItem.Name = "delItem";
-            this.delItem.Size = new System.Drawing.Size(28, 23);
+            this.delItem.Size = new System.Drawing.Size(28, 20);
             this.delItem.Text = " ";
             this.delItem.Click += new System.EventHandler(this.delItem_Click);
             // 
@@ -81,7 +81,7 @@
             this.editItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.editItem.Image = global::OrganizationManagement.Properties.Resources.invoiceEditIcon;
             this.editItem.Name = "editItem";
-            this.editItem.Size = new System.Drawing.Size(28, 23);
+            this.editItem.Size = new System.Drawing.Size(28, 20);
             this.editItem.Text = " ";
             this.editItem.Click += new System.EventHandler(this.editItem_Click);
             // 
@@ -90,22 +90,24 @@
             this.refreshGrid.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.refreshGrid.Image = global::OrganizationManagement.Properties.Resources.refreshIcon;
             this.refreshGrid.Name = "refreshGrid";
-            this.refreshGrid.Size = new System.Drawing.Size(28, 23);
+            this.refreshGrid.Size = new System.Drawing.Size(28, 20);
             this.refreshGrid.Text = " ";
             this.refreshGrid.Click += new System.EventHandler(this.refreshGrid_Click);
             // 
             // filterLable
             // 
+            this.filterLable.Font = new System.Drawing.Font("Verdana", 8F);
             this.filterLable.Name = "filterLable";
-            this.filterLable.Size = new System.Drawing.Size(67, 23);
+            this.filterLable.Size = new System.Drawing.Size(61, 20);
             this.filterLable.Text = "Фильтр";
             // 
             // filterBox
             // 
             this.filterBox.BackColor = System.Drawing.Color.White;
-            this.filterBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.filterBox.Font = new System.Drawing.Font("Verdana", 8F);
             this.filterBox.Name = "filterBox";
-            this.filterBox.Size = new System.Drawing.Size(150, 23);
+            this.filterBox.Size = new System.Drawing.Size(150, 20);
+            this.filterBox.TextChanged += new System.EventHandler(this.filterBox_TextChanged);
             // 
             // invoicesGrid
             // 
@@ -118,13 +120,14 @@
             this.invoicesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.invoicesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.invoicesGrid.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.invoicesGrid.Location = new System.Drawing.Point(0, 27);
+            this.invoicesGrid.Location = new System.Drawing.Point(0, 24);
             this.invoicesGrid.Name = "invoicesGrid";
             this.invoicesGrid.ReadOnly = true;
             this.invoicesGrid.RowHeadersVisible = false;
             this.invoicesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.invoicesGrid.Size = new System.Drawing.Size(804, 434);
+            this.invoicesGrid.Size = new System.Drawing.Size(804, 437);
             this.invoicesGrid.TabIndex = 3;
+            this.invoicesGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.invoicesGrid_CellDoubleClick);
             // 
             // PurchaseInvoicesForm
             // 
@@ -133,7 +136,7 @@
             this.ClientSize = new System.Drawing.Size(804, 461);
             this.Controls.Add(this.invoicesGrid);
             this.Controls.Add(this.menuStrip1);
-            this.Font = new System.Drawing.Font("Verdana", 9F);
+            this.Font = new System.Drawing.Font("Verdana", 8F);
             this.Name = "PurchaseInvoicesForm";
             this.ShowIcon = false;
             this.Text = "Журнал приходных накладных";

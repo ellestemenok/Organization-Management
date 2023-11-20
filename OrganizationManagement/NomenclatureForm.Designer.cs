@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Категория1");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Категория2");
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Категория1");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Категория2");
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.addItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,7 +61,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(734, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(684, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -71,7 +70,7 @@
             this.addItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.addItem.Image = global::OrganizationManagement.Properties.Resources.invoiceAddIcon;
             this.addItem.Name = "addItem";
-            this.addItem.Size = new System.Drawing.Size(28, 23);
+            this.addItem.Size = new System.Drawing.Size(28, 20);
             this.addItem.Text = " ";
             this.addItem.Click += new System.EventHandler(this.addItem_Click);
             // 
@@ -80,7 +79,7 @@
             this.delItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.delItem.Image = global::OrganizationManagement.Properties.Resources.invoiceDeleteIcon;
             this.delItem.Name = "delItem";
-            this.delItem.Size = new System.Drawing.Size(28, 23);
+            this.delItem.Size = new System.Drawing.Size(28, 20);
             this.delItem.Text = " ";
             this.delItem.Click += new System.EventHandler(this.delItem_Click);
             // 
@@ -89,7 +88,7 @@
             this.editItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.editItem.Image = global::OrganizationManagement.Properties.Resources.invoiceEditIcon;
             this.editItem.Name = "editItem";
-            this.editItem.Size = new System.Drawing.Size(28, 23);
+            this.editItem.Size = new System.Drawing.Size(28, 20);
             this.editItem.Text = " ";
             this.editItem.Click += new System.EventHandler(this.editItem_Click);
             // 
@@ -98,31 +97,32 @@
             this.refreshGrid.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.refreshGrid.Image = global::OrganizationManagement.Properties.Resources.refreshIcon;
             this.refreshGrid.Name = "refreshGrid";
-            this.refreshGrid.Size = new System.Drawing.Size(28, 23);
+            this.refreshGrid.Size = new System.Drawing.Size(28, 20);
             this.refreshGrid.Text = " ";
             this.refreshGrid.Click += new System.EventHandler(this.refreshGrid_Click);
             // 
             // filterLable
             // 
+            this.filterLable.Font = new System.Drawing.Font("Verdana", 8F);
             this.filterLable.Name = "filterLable";
-            this.filterLable.Size = new System.Drawing.Size(67, 23);
+            this.filterLable.Size = new System.Drawing.Size(61, 20);
             this.filterLable.Text = "Фильтр";
             // 
             // filterBox
             // 
             this.filterBox.BackColor = System.Drawing.Color.White;
-            this.filterBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.filterBox.Font = new System.Drawing.Font("Verdana", 8F);
             this.filterBox.Name = "filterBox";
-            this.filterBox.Size = new System.Drawing.Size(150, 23);
+            this.filterBox.Size = new System.Drawing.Size(150, 20);
             this.filterBox.TextChanged += new System.EventHandler(this.filterBox_TextChanged);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.categoryView);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 27);
+            this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(265, 634);
+            this.panel1.Size = new System.Drawing.Size(150, 437);
             this.panel1.TabIndex = 2;
             // 
             // categoryView
@@ -130,14 +130,14 @@
             this.categoryView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.categoryView.Location = new System.Drawing.Point(0, 0);
             this.categoryView.Name = "categoryView";
-            treeNode3.Name = "Узел0";
-            treeNode3.Text = "Категория1";
-            treeNode4.Name = "Узел1";
-            treeNode4.Text = "Категория2";
+            treeNode1.Name = "Узел0";
+            treeNode1.Text = "Категория1";
+            treeNode2.Name = "Узел1";
+            treeNode2.Text = "Категория2";
             this.categoryView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode4});
-            this.categoryView.Size = new System.Drawing.Size(265, 634);
+            treeNode1,
+            treeNode2});
+            this.categoryView.Size = new System.Drawing.Size(150, 437);
             this.categoryView.TabIndex = 4;
             this.categoryView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.categoryView_AfterSelect);
             // 
@@ -147,41 +147,34 @@
             this.goodsGrid.AllowUserToDeleteRows = false;
             this.goodsGrid.AllowUserToResizeRows = false;
             this.goodsGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.goodsGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.goodsGrid.BackgroundColor = System.Drawing.Color.White;
             this.goodsGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.goodsGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.goodsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 9F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.goodsGrid.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.goodsGrid.DefaultCellStyle = dataGridViewCellStyle1;
             this.goodsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.goodsGrid.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.goodsGrid.Location = new System.Drawing.Point(265, 27);
+            this.goodsGrid.Location = new System.Drawing.Point(150, 24);
             this.goodsGrid.Name = "goodsGrid";
             this.goodsGrid.ReadOnly = true;
             this.goodsGrid.RowHeadersVisible = false;
             this.goodsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.goodsGrid.Size = new System.Drawing.Size(469, 634);
+            this.goodsGrid.Size = new System.Drawing.Size(534, 437);
             this.goodsGrid.TabIndex = 1;
             this.goodsGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.goodsGrid_CellDoubleClick);
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(265, 27);
+            this.splitter1.Location = new System.Drawing.Point(150, 24);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 634);
+            this.splitter1.Size = new System.Drawing.Size(3, 437);
             this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
             // 
@@ -189,12 +182,12 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(734, 661);
+            this.ClientSize = new System.Drawing.Size(684, 461);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.goodsGrid);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
-            this.Font = new System.Drawing.Font("Verdana", 9F);
+            this.Font = new System.Drawing.Font("Verdana", 8F);
             this.MaximizeBox = false;
             this.Name = "NomenclatureForm";
             this.ShowIcon = false;

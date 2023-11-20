@@ -82,7 +82,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabControl1.Font = new System.Drawing.Font("Verdana", 9F);
+            this.tabControl1.Font = new System.Drawing.Font("Verdana", 8F);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -107,160 +107,176 @@
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 23);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(576, 257);
+            this.tabPage1.Size = new System.Drawing.Size(576, 258);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Общие данные";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // nameField
             // 
+            this.nameField.Font = new System.Drawing.Font("Verdana", 8F);
             this.nameField.Location = new System.Drawing.Point(202, 49);
             this.nameField.Name = "nameField";
-            this.nameField.Size = new System.Drawing.Size(355, 22);
+            this.nameField.Size = new System.Drawing.Size(355, 20);
             this.nameField.TabIndex = 3;
             // 
             // emailField
             // 
+            this.emailField.Font = new System.Drawing.Font("Verdana", 8F);
             this.emailField.Location = new System.Drawing.Point(202, 229);
             this.emailField.Name = "emailField";
-            this.emailField.Size = new System.Drawing.Size(355, 22);
+            this.emailField.Size = new System.Drawing.Size(355, 20);
             this.emailField.TabIndex = 2;
             // 
             // telephoneField
             // 
+            this.telephoneField.Font = new System.Drawing.Font("Verdana", 8F);
             this.telephoneField.Location = new System.Drawing.Point(202, 199);
             this.telephoneField.Name = "telephoneField";
-            this.telephoneField.Size = new System.Drawing.Size(355, 22);
+            this.telephoneField.Size = new System.Drawing.Size(355, 20);
             this.telephoneField.TabIndex = 2;
             // 
             // legalAddrField
             // 
+            this.legalAddrField.Font = new System.Drawing.Font("Verdana", 8F);
             this.legalAddrField.Location = new System.Drawing.Point(202, 169);
             this.legalAddrField.Name = "legalAddrField";
-            this.legalAddrField.Size = new System.Drawing.Size(355, 22);
+            this.legalAddrField.Size = new System.Drawing.Size(355, 20);
             this.legalAddrField.TabIndex = 2;
             // 
             // postAddrField
             // 
+            this.postAddrField.Font = new System.Drawing.Font("Verdana", 8F);
             this.postAddrField.Location = new System.Drawing.Point(202, 139);
             this.postAddrField.Name = "postAddrField";
-            this.postAddrField.Size = new System.Drawing.Size(355, 22);
+            this.postAddrField.Size = new System.Drawing.Size(355, 20);
             this.postAddrField.TabIndex = 2;
             // 
             // consAddrField
             // 
+            this.consAddrField.Font = new System.Drawing.Font("Verdana", 8F);
             this.consAddrField.Location = new System.Drawing.Point(202, 109);
             this.consAddrField.Name = "consAddrField";
-            this.consAddrField.Size = new System.Drawing.Size(355, 22);
+            this.consAddrField.Size = new System.Drawing.Size(355, 20);
             this.consAddrField.TabIndex = 2;
             // 
             // fullnameField
             // 
+            this.fullnameField.Font = new System.Drawing.Font("Verdana", 8F);
             this.fullnameField.Location = new System.Drawing.Point(202, 79);
             this.fullnameField.Name = "fullnameField";
-            this.fullnameField.Size = new System.Drawing.Size(355, 22);
+            this.fullnameField.Size = new System.Drawing.Size(355, 20);
             this.fullnameField.TabIndex = 2;
             // 
             // typeField
             // 
             this.typeField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.typeField.Font = new System.Drawing.Font("Verdana", 8F);
             this.typeField.FormattingEnabled = true;
             this.typeField.Items.AddRange(new object[] {
             "Индивидуальный предприниматель",
             "Организация"});
             this.typeField.Location = new System.Drawing.Point(202, 19);
             this.typeField.Name = "typeField";
-            this.typeField.Size = new System.Drawing.Size(355, 22);
+            this.typeField.Size = new System.Drawing.Size(355, 21);
             this.typeField.TabIndex = 1;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Verdana", 8F);
             this.label8.Location = new System.Drawing.Point(14, 224);
             this.label8.Margin = new System.Windows.Forms.Padding(0);
             this.label8.Name = "label8";
             this.label8.Padding = new System.Windows.Forms.Padding(8);
-            this.label8.Size = new System.Drawing.Size(66, 30);
+            this.label8.Size = new System.Drawing.Size(64, 29);
             this.label8.TabIndex = 0;
             this.label8.Text = "E-mail:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Verdana", 8F);
             this.label7.Location = new System.Drawing.Point(14, 194);
             this.label7.Margin = new System.Windows.Forms.Padding(0);
             this.label7.Name = "label7";
             this.label7.Padding = new System.Windows.Forms.Padding(8);
-            this.label7.Size = new System.Drawing.Size(85, 30);
+            this.label7.Size = new System.Drawing.Size(79, 29);
             this.label7.TabIndex = 0;
             this.label7.Text = "Телефон:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Verdana", 8F);
             this.label6.Location = new System.Drawing.Point(14, 164);
             this.label6.Margin = new System.Windows.Forms.Padding(0);
             this.label6.Name = "label6";
             this.label6.Padding = new System.Windows.Forms.Padding(8);
-            this.label6.Size = new System.Drawing.Size(159, 30);
+            this.label6.Size = new System.Drawing.Size(148, 29);
             this.label6.TabIndex = 0;
             this.label6.Text = "Юридический адрес:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Verdana", 8F);
             this.label5.Location = new System.Drawing.Point(14, 134);
             this.label5.Margin = new System.Windows.Forms.Padding(0);
             this.label5.Name = "label5";
             this.label5.Padding = new System.Windows.Forms.Padding(8);
-            this.label5.Size = new System.Drawing.Size(134, 30);
+            this.label5.Size = new System.Drawing.Size(124, 29);
             this.label5.TabIndex = 0;
             this.label5.Text = "Почтовый адрес:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Verdana", 8F);
             this.label4.Location = new System.Drawing.Point(14, 104);
             this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(8);
-            this.label4.Size = new System.Drawing.Size(147, 30);
+            this.label4.Size = new System.Drawing.Size(134, 29);
             this.label4.TabIndex = 0;
             this.label4.Text = "Грузоотправитель:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Verdana", 8F);
             this.label3.Location = new System.Drawing.Point(14, 74);
             this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(8);
-            this.label3.Size = new System.Drawing.Size(175, 30);
+            this.label3.Size = new System.Drawing.Size(159, 29);
             this.label3.TabIndex = 0;
             this.label3.Text = "Полное наименование:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Verdana", 8F);
             this.label2.Location = new System.Drawing.Point(14, 44);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(8);
-            this.label2.Size = new System.Drawing.Size(181, 30);
+            this.label2.Size = new System.Drawing.Size(164, 29);
             this.label2.TabIndex = 0;
             this.label2.Text = "Краткое наименование:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 14);
+            this.label1.Font = new System.Drawing.Font("Verdana", 8F);
+            this.label1.Location = new System.Drawing.Point(14, 15);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(8);
-            this.label1.Size = new System.Drawing.Size(51, 30);
+            this.label1.Size = new System.Drawing.Size(49, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Тип:";
             // 
@@ -283,87 +299,97 @@
             this.tabPage2.Controls.Add(this.label14);
             this.tabPage2.Controls.Add(this.label15);
             this.tabPage2.Controls.Add(this.label16);
-            this.tabPage2.Location = new System.Drawing.Point(4, 23);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(576, 257);
+            this.tabPage2.Size = new System.Drawing.Size(576, 258);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Реквизиты";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // okpdField
             // 
+            this.okpdField.Font = new System.Drawing.Font("Verdana", 8F);
             this.okpdField.Location = new System.Drawing.Point(202, 135);
             this.okpdField.Name = "okpdField";
-            this.okpdField.Size = new System.Drawing.Size(344, 22);
+            this.okpdField.Size = new System.Drawing.Size(344, 20);
             this.okpdField.TabIndex = 19;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Verdana", 8F);
             this.label9.Location = new System.Drawing.Point(15, 134);
             this.label9.Margin = new System.Windows.Forms.Padding(0);
             this.label9.Name = "label9";
             this.label9.Padding = new System.Windows.Forms.Padding(8);
-            this.label9.Size = new System.Drawing.Size(64, 30);
+            this.label9.Size = new System.Drawing.Size(61, 29);
             this.label9.TabIndex = 18;
             this.label9.Text = "ОКПД:";
             // 
             // genaccountantField
             // 
+            this.genaccountantField.Font = new System.Drawing.Font("Verdana", 8F);
             this.genaccountantField.Location = new System.Drawing.Point(202, 193);
             this.genaccountantField.Name = "genaccountantField";
-            this.genaccountantField.Size = new System.Drawing.Size(344, 22);
+            this.genaccountantField.Size = new System.Drawing.Size(344, 20);
             this.genaccountantField.TabIndex = 17;
             // 
             // directorField
             // 
+            this.directorField.Font = new System.Drawing.Font("Verdana", 8F);
             this.directorField.Location = new System.Drawing.Point(202, 163);
             this.directorField.Name = "directorField";
-            this.directorField.Size = new System.Drawing.Size(344, 22);
+            this.directorField.Size = new System.Drawing.Size(344, 20);
             this.directorField.TabIndex = 16;
             // 
             // ogrnField
             // 
+            this.ogrnField.Font = new System.Drawing.Font("Verdana", 8F);
             this.ogrnField.Location = new System.Drawing.Point(202, 106);
             this.ogrnField.Name = "ogrnField";
-            this.ogrnField.Size = new System.Drawing.Size(344, 22);
+            this.ogrnField.Size = new System.Drawing.Size(344, 20);
             this.ogrnField.TabIndex = 15;
             // 
             // okvadField
             // 
+            this.okvadField.Font = new System.Drawing.Font("Verdana", 8F);
             this.okvadField.Location = new System.Drawing.Point(438, 77);
             this.okvadField.Name = "okvadField";
-            this.okvadField.Size = new System.Drawing.Size(108, 22);
+            this.okvadField.Size = new System.Drawing.Size(108, 20);
             this.okvadField.TabIndex = 14;
             // 
             // okpoField
             // 
+            this.okpoField.Font = new System.Drawing.Font("Verdana", 8F);
             this.okpoField.Location = new System.Drawing.Point(202, 77);
             this.okpoField.Name = "okpoField";
-            this.okpoField.Size = new System.Drawing.Size(130, 22);
+            this.okpoField.Size = new System.Drawing.Size(130, 20);
             this.okpoField.TabIndex = 13;
             // 
             // kppField
             // 
+            this.kppField.Font = new System.Drawing.Font("Verdana", 8F);
             this.kppField.Location = new System.Drawing.Point(202, 49);
             this.kppField.Name = "kppField";
-            this.kppField.Size = new System.Drawing.Size(344, 22);
+            this.kppField.Size = new System.Drawing.Size(344, 20);
             this.kppField.TabIndex = 12;
             // 
             // innField
             // 
+            this.innField.Font = new System.Drawing.Font("Verdana", 8F);
             this.innField.Location = new System.Drawing.Point(202, 19);
             this.innField.Name = "innField";
-            this.innField.Size = new System.Drawing.Size(344, 22);
+            this.innField.Size = new System.Drawing.Size(344, 20);
             this.innField.TabIndex = 11;
             // 
             // payingVATcheckBox
             // 
             this.payingVATcheckBox.AutoSize = true;
+            this.payingVATcheckBox.Font = new System.Drawing.Font("Verdana", 8F);
             this.payingVATcheckBox.Location = new System.Drawing.Point(27, 230);
             this.payingVATcheckBox.Name = "payingVATcheckBox";
-            this.payingVATcheckBox.Size = new System.Drawing.Size(213, 18);
+            this.payingVATcheckBox.Size = new System.Drawing.Size(198, 17);
             this.payingVATcheckBox.TabIndex = 10;
             this.payingVATcheckBox.Text = "Является плательщиком НДС";
             this.payingVATcheckBox.UseVisualStyleBackColor = true;
@@ -371,77 +397,84 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(325, 73);
+            this.label17.Font = new System.Drawing.Font("Verdana", 8F);
+            this.label17.Location = new System.Drawing.Point(335, 72);
             this.label17.Margin = new System.Windows.Forms.Padding(0);
             this.label17.Name = "label17";
             this.label17.Padding = new System.Windows.Forms.Padding(8);
-            this.label17.Size = new System.Drawing.Size(119, 30);
+            this.label17.Size = new System.Drawing.Size(114, 29);
             this.label17.TabIndex = 9;
             this.label17.Text = "Код по ОКВАД:";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Verdana", 8F);
             this.label11.Location = new System.Drawing.Point(15, 191);
             this.label11.Margin = new System.Windows.Forms.Padding(0);
             this.label11.Name = "label11";
             this.label11.Padding = new System.Windows.Forms.Padding(8);
-            this.label11.Size = new System.Drawing.Size(152, 30);
+            this.label11.Size = new System.Drawing.Size(141, 29);
             this.label11.TabIndex = 3;
             this.label11.Text = "Главный бухгалтер:";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Verdana", 8F);
             this.label12.Location = new System.Drawing.Point(15, 161);
             this.label12.Margin = new System.Windows.Forms.Padding(0);
             this.label12.Name = "label12";
             this.label12.Padding = new System.Windows.Forms.Padding(8);
-            this.label12.Size = new System.Drawing.Size(91, 30);
+            this.label12.Size = new System.Drawing.Size(83, 29);
             this.label12.TabIndex = 4;
             this.label12.Text = "Директор:";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Verdana", 8F);
             this.label13.Location = new System.Drawing.Point(15, 104);
             this.label13.Margin = new System.Windows.Forms.Padding(0);
             this.label13.Name = "label13";
             this.label13.Padding = new System.Windows.Forms.Padding(8);
-            this.label13.Size = new System.Drawing.Size(62, 30);
+            this.label13.Size = new System.Drawing.Size(58, 29);
             this.label13.TabIndex = 5;
             this.label13.Text = "ОГРН:";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Verdana", 8F);
             this.label14.Location = new System.Drawing.Point(15, 74);
             this.label14.Margin = new System.Windows.Forms.Padding(0);
             this.label14.Name = "label14";
             this.label14.Padding = new System.Windows.Forms.Padding(8);
-            this.label14.Size = new System.Drawing.Size(113, 30);
+            this.label14.Size = new System.Drawing.Size(107, 29);
             this.label14.TabIndex = 6;
             this.label14.Text = "Код по ОКПО:";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Verdana", 8F);
             this.label15.Location = new System.Drawing.Point(15, 44);
             this.label15.Margin = new System.Windows.Forms.Padding(0);
             this.label15.Name = "label15";
             this.label15.Padding = new System.Windows.Forms.Padding(8);
-            this.label15.Size = new System.Drawing.Size(54, 30);
+            this.label15.Size = new System.Drawing.Size(52, 29);
             this.label15.TabIndex = 7;
             this.label15.Text = "КПП:";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Verdana", 8F);
             this.label16.Location = new System.Drawing.Point(15, 14);
             this.label16.Margin = new System.Windows.Forms.Padding(0);
             this.label16.Name = "label16";
             this.label16.Padding = new System.Windows.Forms.Padding(8);
-            this.label16.Size = new System.Drawing.Size(55, 30);
+            this.label16.Size = new System.Drawing.Size(52, 29);
             this.label16.TabIndex = 8;
             this.label16.Text = "ИНН:";
             // 
@@ -450,17 +483,17 @@
             this.tabPage3.Controls.Add(this.delAccButton);
             this.tabPage3.Controls.Add(this.addAccButton);
             this.tabPage3.Controls.Add(this.accountsGrid);
-            this.tabPage3.Location = new System.Drawing.Point(4, 23);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(576, 257);
+            this.tabPage3.Size = new System.Drawing.Size(576, 258);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Расчетные счета";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // delAccButton
             // 
-            this.delAccButton.Font = new System.Drawing.Font("Verdana", 9F);
-            this.delAccButton.Location = new System.Drawing.Point(336, 219);
+            this.delAccButton.Font = new System.Drawing.Font("Verdana", 8F);
+            this.delAccButton.Location = new System.Drawing.Point(354, 219);
             this.delAccButton.Name = "delAccButton";
             this.delAccButton.Size = new System.Drawing.Size(100, 30);
             this.delAccButton.TabIndex = 4;
@@ -470,7 +503,7 @@
             // 
             // addAccButton
             // 
-            this.addAccButton.Font = new System.Drawing.Font("Verdana", 9F);
+            this.addAccButton.Font = new System.Drawing.Font("Verdana", 8F);
             this.addAccButton.Location = new System.Drawing.Point(460, 219);
             this.addAccButton.Name = "addAccButton";
             this.addAccButton.Size = new System.Drawing.Size(100, 30);
@@ -501,8 +534,8 @@
             // 
             // orgSave
             // 
-            this.orgSave.Font = new System.Drawing.Font("Verdana", 9F);
-            this.orgSave.Location = new System.Drawing.Point(472, 290);
+            this.orgSave.Font = new System.Drawing.Font("Verdana", 8F);
+            this.orgSave.Location = new System.Drawing.Point(464, 290);
             this.orgSave.Name = "orgSave";
             this.orgSave.Size = new System.Drawing.Size(100, 30);
             this.orgSave.TabIndex = 1;
@@ -517,6 +550,7 @@
             this.ClientSize = new System.Drawing.Size(584, 331);
             this.Controls.Add(this.orgSave);
             this.Controls.Add(this.tabControl1);
+            this.Font = new System.Drawing.Font("Verdana", 8F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "OrganizationRequisitesForm";

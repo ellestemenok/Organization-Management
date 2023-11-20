@@ -1,6 +1,6 @@
 ﻿namespace OrganizationManagement
 {
-    partial class AddPurchaseInvoiceForm
+    partial class EditExpenditureInvoiceForm
     {
         /// <summary>
         /// Required designer variable.
@@ -308,7 +308,7 @@
             this.dateField.TabIndex = 8;
             this.dateField.ValidatingType = typeof(System.DateTime);
             // 
-            // AddPurchaseInvoiceForm
+            // EditExpenditureInvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -330,9 +330,9 @@
             this.Font = new System.Drawing.Font("Verdana", 8F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "AddPurchaseInvoiceForm";
+            this.Name = "EditExpenditureInvoiceForm";
             this.ShowIcon = false;
-            this.Text = "Добавление приходной накладной";
+            this.Text = "Редактирование расходной накладной";
             this.Enter += new System.EventHandler(this.EditPurchaseInvoiceForm_Enter);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

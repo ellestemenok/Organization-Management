@@ -73,5 +73,12 @@ namespace OrganizationManagement
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
         }
+
+        private void expenditureInvoicesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExpenditureInvoicesForm newMDIChild = new ExpenditureInvoicesForm();
+            newMDIChild.MdiParent = this;
+            newMDIChild.Show();
+        }
     }
 }

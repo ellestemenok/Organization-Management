@@ -38,26 +38,26 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 9F);
-            this.label1.Location = new System.Drawing.Point(35, 31);
+            this.label1.Font = new System.Drawing.Font("Verdana", 8F);
+            this.label1.Location = new System.Drawing.Point(58, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 14);
+            this.label1.Size = new System.Drawing.Size(94, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Пользователь:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Verdana", 9F);
-            this.label2.Location = new System.Drawing.Point(35, 64);
+            this.label2.Font = new System.Drawing.Font("Verdana", 8F);
+            this.label2.Location = new System.Drawing.Point(96, 65);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 14);
+            this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Пароль:";
             // 
             // autorizationButton
             // 
-            this.autorizationButton.Font = new System.Drawing.Font("Verdana", 9F);
+            this.autorizationButton.Font = new System.Drawing.Font("Verdana", 8F);
             this.autorizationButton.Location = new System.Drawing.Point(99, 106);
             this.autorizationButton.Margin = new System.Windows.Forms.Padding(0);
             this.autorizationButton.Name = "autorizationButton";
@@ -69,20 +69,20 @@
             // 
             // usernameField
             // 
-            this.usernameField.Font = new System.Drawing.Font("Verdana", 9F);
+            this.usernameField.Font = new System.Drawing.Font("Verdana", 8F);
             this.usernameField.Location = new System.Drawing.Point(158, 29);
             this.usernameField.Name = "usernameField";
-            this.usernameField.Size = new System.Drawing.Size(190, 22);
+            this.usernameField.Size = new System.Drawing.Size(190, 20);
             this.usernameField.TabIndex = 4;
             this.usernameField.Text = "postgres";
             // 
             // passwordField
             // 
-            this.passwordField.Font = new System.Drawing.Font("Verdana", 9F);
+            this.passwordField.Font = new System.Drawing.Font("Verdana", 8F);
             this.passwordField.Location = new System.Drawing.Point(158, 62);
             this.passwordField.Name = "passwordField";
             this.passwordField.PasswordChar = '*';
-            this.passwordField.Size = new System.Drawing.Size(190, 22);
+            this.passwordField.Size = new System.Drawing.Size(190, 20);
             this.passwordField.TabIndex = 5;
             this.passwordField.Text = "5215e";
             // 

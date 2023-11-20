@@ -84,7 +84,7 @@
             // 
             this.numField.Location = new System.Drawing.Point(213, 25);
             this.numField.Name = "numField";
-            this.numField.Size = new System.Drawing.Size(115, 22);
+            this.numField.Size = new System.Drawing.Size(115, 20);
             this.numField.TabIndex = 1;
             // 
             // label3
@@ -92,7 +92,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(27, 66);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 14);
+            this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "Поставщик:";
             // 
@@ -101,7 +101,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(27, 98);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 14);
+            this.label4.Size = new System.Drawing.Size(66, 13);
             this.label4.TabIndex = 0;
             this.label4.Text = "На склад:";
             // 
@@ -110,7 +110,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(27, 129);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 14);
+            this.label5.Size = new System.Drawing.Size(76, 13);
             this.label5.TabIndex = 0;
             this.label5.Text = "Основание:";
             // 
@@ -119,7 +119,7 @@
             this.contractorBox.FormattingEnabled = true;
             this.contractorBox.Location = new System.Drawing.Point(128, 63);
             this.contractorBox.Name = "contractorBox";
-            this.contractorBox.Size = new System.Drawing.Size(365, 22);
+            this.contractorBox.Size = new System.Drawing.Size(365, 21);
             this.contractorBox.TabIndex = 2;
             this.contractorBox.SelectedIndexChanged += new System.EventHandler(this.contractorBox_SelectedIndexChanged);
             // 
@@ -128,7 +128,7 @@
             this.storageBox.FormattingEnabled = true;
             this.storageBox.Location = new System.Drawing.Point(128, 95);
             this.storageBox.Name = "storageBox";
-            this.storageBox.Size = new System.Drawing.Size(365, 22);
+            this.storageBox.Size = new System.Drawing.Size(365, 21);
             this.storageBox.TabIndex = 2;
             // 
             // reasonField
@@ -159,7 +159,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(190, 35);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(147, 14);
+            this.label8.Size = new System.Drawing.Size(133, 13);
             this.label8.TabIndex = 0;
             this.label8.Text = "Всего наименований:";
             // 
@@ -168,7 +168,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(230, 14);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(107, 14);
+            this.label7.Size = new System.Drawing.Size(98, 13);
             this.label7.TabIndex = 0;
             this.label7.Text = "Всего позиций:";
             // 
@@ -177,7 +177,7 @@
             this.quant2.AutoSize = true;
             this.quant2.Location = new System.Drawing.Point(343, 35);
             this.quant2.Name = "quant2";
-            this.quant2.Size = new System.Drawing.Size(15, 14);
+            this.quant2.Size = new System.Drawing.Size(14, 13);
             this.quant2.TabIndex = 0;
             this.quant2.Text = "0";
             // 
@@ -186,7 +186,7 @@
             this.quant1.AutoSize = true;
             this.quant1.Location = new System.Drawing.Point(343, 14);
             this.quant1.Name = "quant1";
-            this.quant1.Size = new System.Drawing.Size(15, 14);
+            this.quant1.Size = new System.Drawing.Size(14, 13);
             this.quant1.TabIndex = 0;
             this.quant1.Text = "0";
             // 
@@ -195,7 +195,7 @@
             this.sum.AutoSize = true;
             this.sum.Location = new System.Drawing.Point(72, 14);
             this.sum.Name = "sum";
-            this.sum.Size = new System.Drawing.Size(44, 14);
+            this.sum.Size = new System.Drawing.Size(41, 13);
             this.sum.TabIndex = 0;
             this.sum.Text = "сумма";
             // 
@@ -204,7 +204,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(14, 14);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(52, 14);
+            this.label6.Size = new System.Drawing.Size(49, 13);
             this.label6.TabIndex = 0;
             this.label6.Text = "Сумма:";
             // 
@@ -220,7 +220,7 @@
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Verdana", 9F);
+            this.button1.Font = new System.Drawing.Font("Verdana", 8F);
             this.button1.Location = new System.Drawing.Point(302, 9);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 30);
@@ -230,7 +230,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Font = new System.Drawing.Font("Verdana", 9F);
+            this.saveButton.Font = new System.Drawing.Font("Verdana", 8F);
             this.saveButton.Location = new System.Drawing.Point(422, 9);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(100, 30);
@@ -274,7 +274,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addItem,
             this.delItem});
-            this.menuStrip1.Location = new System.Drawing.Point(3, 18);
+            this.menuStrip1.Location = new System.Drawing.Point(3, 16);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.menuStrip1.Size = new System.Drawing.Size(528, 24);
@@ -304,7 +304,7 @@
             this.dateField.Location = new System.Drawing.Point(386, 25);
             this.dateField.Mask = "00/00/0000";
             this.dateField.Name = "dateField";
-            this.dateField.Size = new System.Drawing.Size(100, 22);
+            this.dateField.Size = new System.Drawing.Size(100, 20);
             this.dateField.TabIndex = 8;
             this.dateField.ValidatingType = typeof(System.DateTime);
             // 
@@ -327,7 +327,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Verdana", 9F);
+            this.Font = new System.Drawing.Font("Verdana", 8F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "EditPurchaseInvoiceForm";

@@ -18,12 +18,10 @@ namespace OrganizationManagement
         {
             InitializeComponent();
         }
-
         private void PurchaseInvoicesForm_Load(object sender, EventArgs e)
         {
             Autorization.OpenConnection();
         }
-
         public void LoadDataIntoDataGridView()
         {
             string query = "SELECT\r\n" +
@@ -36,18 +34,17 @@ namespace OrganizationManagement
                 "pid.\"TotalAmount\" AS \"Сумма\"\r\n" +
                 "FROM public.\"PurchaseInvoice\" pid\r\n" +
                 "JOIN public.\"Contractor\" c ON pid.\"ContractorID\" = c.\"ContractorID\"\r\n" +
-                "JOIN public.\"Storage\" s ON pid.\"StorageID\" = s.\"StorageID\";";
+                "JOIN public.\"Storage\" s ON pid.\"StorageID\" = s.\"StorageID\" " +
+                "ORDER BY pid.\"InvoiceNumber\" DESC;";
             DataDB.FillDataGridViewWithQueryResult(invoicesGrid, query);
             invoicesGrid.Columns["InvoiceID"].Visible = false;
             invoicesGrid.Columns["Дата"].Width = 100;
             invoicesGrid.Columns["Номер"].Width = 50;
         }
-
         private void PurchaseInvoicesForm_Enter(object sender, EventArgs e)
         {
             LoadDataIntoDataGridView();
         }
-
         private void addItem_Click(object sender, EventArgs e)
         {
             //DataGridViewRow selectedRow = invoicesGrid.SelectedRows[0];
@@ -57,12 +54,10 @@ namespace OrganizationManagement
             addForm.MdiParent = ActiveForm;
             addForm.Show();
         }
-
         private void refreshGrid_Click(object sender, EventArgs e)
         {
             LoadDataIntoDataGridView();
         }
-
         private void editItem_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = invoicesGrid.SelectedRows[0];
@@ -88,7 +83,6 @@ namespace OrganizationManagement
             editForm.MdiParent = ActiveForm;
             editForm.Show();
         }
-
         private void delItem_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Удалить элемент?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -98,6 +92,48 @@ namespace OrganizationManagement
                 int invoiceID = Convert.ToInt32(selectedRow.Cells["InvoiceID"].Value);
                 PurchaseInvoice.Delete(invoiceID);
                 LoadDataIntoDataGridView();
+            }
+        }
+        private void invoicesGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                int invoiceID = Convert.ToInt32(invoicesGrid.Rows[e.RowIndex].Cells["InvoiceID"].Value);
+                DataDB invoicesRepository = new DataDB();
+
+                string query = "SELECT\r\n" +
+                    "pid.\"InvoiceID\",\r\n    " +
+                    "pid.\"InvoiceDate\",\r\n    " +
+                    "pid.\"InvoiceNumber\",\r\n    " +
+                    "c.\"Name\" as \"ContractorName\",\r\n    " +
+                    "s.\"Name\" as \"StorageName\",\r\n    " +
+                    "c.\"Reason\" as \"Reason\",\r\n    " +
+                    "pid.\"TotalAmount\"\r\n" +
+                    "FROM public.\"PurchaseInvoice\" pid\r\n" +
+                    "JOIN public.\"Contractor\" c ON pid.\"ContractorID\" = c.\"ContractorID\"\r\n" +
+                    "JOIN public.\"Storage\" s ON pid.\"StorageID\" = s.\"StorageID\"\r\n" +
+                    $"WHERE pid.\"InvoiceID\" = {invoiceID};";
+                DataTable invoicesData = invoicesRepository.FillFormWithQueryResult(query);
+
+                EditPurchaseInvoiceForm editForm = new EditPurchaseInvoiceForm(invoicesData);
+                editForm.MdiParent = ActiveForm;
+                editForm.Show();
+            }
+        }
+
+        private void filterBox_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = filterBox.Text.Trim();
+
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                DataView dv = ((DataTable)invoicesGrid.DataSource).DefaultView;
+                dv.RowFilter = string.Format("CONVERT(Номер, 'System.String') LIKE '%{0}%' OR Контрагент LIKE '%{0}%' OR Склад LIKE '%{0}%' " +
+                            "OR Основание LIKE '%{0}%' OR CONVERT(Сумма, 'System.String') LIKE '%{0}%'", searchText);
+            }
+            else
+            {
+                ((DataTable)invoicesGrid.DataSource).DefaultView.RowFilter = string.Empty;
             }
         }
     }

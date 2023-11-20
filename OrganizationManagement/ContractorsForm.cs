@@ -37,6 +37,7 @@ namespace OrganizationManagement
                 "ORDER BY \"ContractorID\";";
             DataDB.FillDataGridViewWithQueryResult(contractorsGrid, query);
             contractorsGrid.Columns["ContractorID"].Visible = false;
+            contractorsGrid.Columns["Краткое название"].Width = 110;
             contractorsGrid.Columns["Телефон"].Width = 100;
         }
 

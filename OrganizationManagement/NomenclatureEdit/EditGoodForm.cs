@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace OrganizationManagement.NomenclatureEdit
 {
-    public partial class EditGoodForm : Form
+    public partial class EditPurchaseInvoiceForm : Form
     {
         private int goodID;
-        public EditGoodForm(DataTable goodsData)
+        public EditPurchaseInvoiceForm(DataTable goodsData)
         {
             InitializeComponent();
 

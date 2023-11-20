@@ -48,7 +48,7 @@
             this.label5.Margin = new System.Windows.Forms.Padding(0);
             this.label5.Name = "label5";
             this.label5.Padding = new System.Windows.Forms.Padding(8);
-            this.label5.Size = new System.Drawing.Size(53, 30);
+            this.label5.Size = new System.Drawing.Size(52, 29);
             this.label5.TabIndex = 1;
             this.label5.Text = "БИК:";
             // 
@@ -59,7 +59,7 @@
             this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(8);
-            this.label4.Size = new System.Drawing.Size(191, 30);
+            this.label4.Size = new System.Drawing.Size(174, 29);
             this.label4.TabIndex = 2;
             this.label4.Text = "Корреспондентский счет:";
             // 
@@ -70,7 +70,7 @@
             this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(8);
-            this.label3.Size = new System.Drawing.Size(79, 30);
+            this.label3.Size = new System.Drawing.Size(75, 29);
             this.label3.TabIndex = 3;
             this.label3.Text = "В банке:";
             // 
@@ -81,7 +81,7 @@
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(8);
-            this.label2.Size = new System.Drawing.Size(131, 30);
+            this.label2.Size = new System.Drawing.Size(119, 29);
             this.label2.TabIndex = 4;
             this.label2.Text = "Расчетный счет:";
             // 
@@ -92,13 +92,13 @@
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(8);
-            this.label1.Size = new System.Drawing.Size(90, 30);
+            this.label1.Size = new System.Drawing.Size(84, 29);
             this.label1.TabIndex = 5;
             this.label1.Text = "Название:";
             // 
             // saveButton
             // 
-            this.saveButton.Font = new System.Drawing.Font("Verdana", 9F);
+            this.saveButton.Font = new System.Drawing.Font("Verdana", 8F);
             this.saveButton.Location = new System.Drawing.Point(363, 167);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(100, 30);
@@ -111,35 +111,35 @@
             // 
             this.nameField.Location = new System.Drawing.Point(204, 14);
             this.nameField.Name = "nameField";
-            this.nameField.Size = new System.Drawing.Size(258, 22);
+            this.nameField.Size = new System.Drawing.Size(258, 20);
             this.nameField.TabIndex = 7;
             // 
             // numberField
             // 
             this.numberField.Location = new System.Drawing.Point(204, 44);
             this.numberField.Name = "numberField";
-            this.numberField.Size = new System.Drawing.Size(258, 22);
+            this.numberField.Size = new System.Drawing.Size(258, 20);
             this.numberField.TabIndex = 8;
             // 
             // bankField
             // 
             this.bankField.Location = new System.Drawing.Point(204, 74);
             this.bankField.Name = "bankField";
-            this.bankField.Size = new System.Drawing.Size(258, 22);
+            this.bankField.Size = new System.Drawing.Size(258, 20);
             this.bankField.TabIndex = 9;
             // 
             // corrField
             // 
             this.corrField.Location = new System.Drawing.Point(204, 104);
             this.corrField.Name = "corrField";
-            this.corrField.Size = new System.Drawing.Size(258, 22);
+            this.corrField.Size = new System.Drawing.Size(258, 20);
             this.corrField.TabIndex = 10;
             // 
             // bikField
             // 
             this.bikField.Location = new System.Drawing.Point(204, 134);
             this.bikField.Name = "bikField";
-            this.bikField.Size = new System.Drawing.Size(258, 22);
+            this.bikField.Size = new System.Drawing.Size(258, 20);
             this.bikField.TabIndex = 11;
             // 
             // AddAccountForm
@@ -158,7 +158,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Verdana", 9F);
+            this.Font = new System.Drawing.Font("Verdana", 8F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "AddAccountForm";

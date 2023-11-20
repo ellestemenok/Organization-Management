@@ -57,7 +57,7 @@ namespace OrganizationManagement
             specGrid.Columns["DetailID"].Visible = false;
             specGrid.Columns["Артикул"].Width = 70;
             specGrid.Columns["Название"].Width = 200;
-            specGrid.Columns["Кол-во"].Width = 45;
+            specGrid.Columns["Кол-во"].Width = 55;
             specGrid.Columns["Ед. изм."].Width = 45;
             specGrid.Columns["Цена"].Width = 60;
             specGrid.Columns["Стоимость"].Width = 90;

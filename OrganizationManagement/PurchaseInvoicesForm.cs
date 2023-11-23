@@ -47,9 +47,6 @@ namespace OrganizationManagement
         }
         private void addItem_Click(object sender, EventArgs e)
         {
-            //DataGridViewRow selectedRow = invoicesGrid.SelectedRows[0];
-            //int invoiceID = Convert.ToInt32(selectedRow.Cells["InvoiceID"].Value);
-
             AddPurchaseInvoiceForm addForm = new AddPurchaseInvoiceForm();
             addForm.MdiParent = ActiveForm;
             addForm.Show();

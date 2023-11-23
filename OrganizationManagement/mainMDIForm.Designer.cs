@@ -37,13 +37,11 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.contractorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.measureUnitsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.журналыДокументовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.expenditureInvoicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.purchaseinvoicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.storageStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.окнаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,12 +52,8 @@
             this.usernameStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerForDatetime = new System.Windows.Forms.Timer(this.components);
-            this.tabControlWindows = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.menuStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
-            this.tabControlWindows.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -68,7 +62,6 @@
             this.menuStripMain.Font = new System.Drawing.Font("Verdana", 8F);
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.справочникиToolStripMenuItem,
-            this.toolStripMenuItem8,
             this.журналыДокументовToolStripMenuItem,
             this.toolStripMenuItem1,
             this.окнаToolStripMenuItem});
@@ -135,26 +128,6 @@
             this.measureUnitsToolStripMenuItem.Text = "Единицы измерения";
             this.measureUnitsToolStripMenuItem.Click += new System.EventHandler(this.measureUnitsToolStripMenuItem_Click);
             // 
-            // toolStripMenuItem8
-            // 
-            this.toolStripMenuItem8.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem9});
-            this.toolStripMenuItem8.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.toolStripMenuItem8.ForeColor = System.Drawing.Color.Black;
-            this.toolStripMenuItem8.Margin = new System.Windows.Forms.Padding(3);
-            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Padding = new System.Windows.Forms.Padding(2);
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(49, 21);
-            this.toolStripMenuItem8.Text = "Касса";
-            // 
-            // toolStripMenuItem9
-            // 
-            this.toolStripMenuItem9.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.toolStripMenuItem9.Image = global::OrganizationManagement.Properties.Resources.cashIcon;
-            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(159, 22);
-            this.toolStripMenuItem9.Text = "Касса сегодня";
-            // 
             // журналыДокументовToolStripMenuItem
             // 
             this.журналыДокументовToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -187,7 +160,7 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem5});
+            this.storageStripMenuItem});
             this.toolStripMenuItem1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.toolStripMenuItem1.ForeColor = System.Drawing.Color.Black;
             this.toolStripMenuItem1.Margin = new System.Windows.Forms.Padding(3);
@@ -196,12 +169,13 @@
             this.toolStripMenuItem1.Size = new System.Drawing.Size(53, 21);
             this.toolStripMenuItem1.Text = "Склад";
             // 
-            // toolStripMenuItem5
+            // storageStripMenuItem
             // 
-            this.toolStripMenuItem5.Font = new System.Drawing.Font("Verdana", 8F);
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem5.Text = "Товар на складах";
+            this.storageStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
+            this.storageStripMenuItem.Name = "storageStripMenuItem";
+            this.storageStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.storageStripMenuItem.Text = "Товар на складах";
+            this.storageStripMenuItem.Click += new System.EventHandler(this.storageStripMenuItem_Click);
             // 
             // окнаToolStripMenuItem
             // 
@@ -292,44 +266,12 @@
             this.timerForDatetime.Interval = 1000;
             this.timerForDatetime.Tick += new System.EventHandler(this.timerForDatetime_Tick);
             // 
-            // tabControlWindows
-            // 
-            this.tabControlWindows.Controls.Add(this.tabPage1);
-            this.tabControlWindows.Controls.Add(this.tabPage2);
-            this.tabControlWindows.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabControlWindows.Location = new System.Drawing.Point(0, 493);
-            this.tabControlWindows.Name = "tabControlWindows";
-            this.tabControlWindows.SelectedIndex = 0;
-            this.tabControlWindows.Size = new System.Drawing.Size(879, 23);
-            this.tabControlWindows.TabIndex = 3;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(871, 0);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(871, 0);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // MainMDI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(879, 538);
-            this.Controls.Add(this.tabControlWindows);
             this.Controls.Add(this.statusStripMain);
             this.Controls.Add(this.menuStripMain);
             this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -346,7 +288,6 @@
             this.menuStripMain.PerformLayout();
             this.statusStripMain.ResumeLayout(false);
             this.statusStripMain.PerformLayout();
-            this.tabControlWindows.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -375,12 +316,7 @@
         private System.Windows.Forms.Timer timerForDatetime;
         private System.Windows.Forms.ToolStripStatusLabel usernameStripStatusLabel;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
-        private System.Windows.Forms.TabControl tabControlWindows;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.ToolStripMenuItem storageStripMenuItem;
     }
 }
 

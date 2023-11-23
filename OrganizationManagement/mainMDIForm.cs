@@ -109,5 +109,12 @@ namespace OrganizationManagement
                 childForm.WindowState = FormWindowState.Minimized;
             }
         }
+
+        private void storageStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StorageContentsForm newMDIChild = new StorageContentsForm();
+            newMDIChild.MdiParent = this;
+            newMDIChild.Show();
+        }
     }
 }

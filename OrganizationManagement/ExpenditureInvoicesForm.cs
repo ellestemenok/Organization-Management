@@ -114,5 +114,32 @@ namespace OrganizationManagement
                 ((DataTable)invoicesGrid.DataSource).DefaultView.RowFilter = string.Empty;
             }
         }
+
+        private void invoicesGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                int invoiceID = Convert.ToInt32(invoicesGrid.Rows[e.RowIndex].Cells["InvoiceID"].Value);
+                DataDB invoicesRepository = new DataDB();
+
+                string query = "SELECT\r\n" +
+                    "pid.\"InvoiceID\",\r\n    " +
+                    "pid.\"InvoiceDate\",\r\n    " +
+                    "pid.\"InvoiceNumber\",\r\n    " +
+                    "c.\"Name\" as \"ContractorName\",\r\n    " +
+                    "s.\"Name\" as \"StorageName\",\r\n    " +
+                    "c.\"Reason\" as \"Reason\",\r\n    " +
+                    "pid.\"TotalAmount\"\r\n" +
+                    "FROM public.\"ExpenditureInvoice\" pid\r\n" +
+                    "JOIN public.\"Contractor\" c ON pid.\"ContractorID\" = c.\"ContractorID\"\r\n" +
+                    "JOIN public.\"Storage\" s ON pid.\"StorageID\" = s.\"StorageID\"\r\n" +
+                    $"WHERE pid.\"InvoiceID\" = {invoiceID};";
+                DataTable invoicesData = invoicesRepository.FillFormWithQueryResult(query);
+
+                EditExpenditureInvoiceForm editForm = new EditExpenditureInvoiceForm(invoicesData);
+                editForm.MdiParent = ActiveForm;
+                editForm.Show();
+            }
+        }
     }
 }

@@ -228,6 +228,12 @@
     <Compile Include="PurchaseInvoicesForm.Designer.cs">
       <DependentUpon>PurchaseInvoicesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="StorageContentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StorageContentsForm.Designer.cs">
+      <DependentUpon>StorageContentsForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ContractorEdit\EditContractorForm.resx">
       <DependentUpon>EditContractorForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -298,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PurchaseInvoicesForm.resx">
       <DependentUpon>PurchaseInvoicesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StorageContentsForm.resx">
+      <DependentUpon>StorageContentsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -1,6 +1,6 @@
 ﻿namespace OrganizationManagement
 {
-    partial class ExpenditureInvoicesForm
+    partial class StorageContentsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,16 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.addItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshGrid = new System.Windows.Forms.ToolStripMenuItem();
             this.filterLable = new System.Windows.Forms.ToolStripMenuItem();
             this.filterBox = new System.Windows.Forms.ToolStripTextBox();
-            this.invoicesGrid = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.storagesView = new System.Windows.Forms.TreeView();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.storageGoodsGrid = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.invoicesGrid)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.storageGoodsGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -47,14 +51,13 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addItem,
             this.delItem,
-            this.editItem,
             this.refreshGrid,
             this.filterLable,
             this.filterBox});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(804, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(684, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -75,15 +78,6 @@
             this.delItem.Size = new System.Drawing.Size(28, 20);
             this.delItem.Text = " ";
             this.delItem.Click += new System.EventHandler(this.delItem_Click);
-            // 
-            // editItem
-            // 
-            this.editItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.editItem.Image = global::OrganizationManagement.Properties.Resources.invoiceEditIcon;
-            this.editItem.Name = "editItem";
-            this.editItem.Size = new System.Drawing.Size(28, 20);
-            this.editItem.Text = " ";
-            this.editItem.Click += new System.EventHandler(this.editItem_Click);
             // 
             // refreshGrid
             // 
@@ -109,42 +103,80 @@
             this.filterBox.Size = new System.Drawing.Size(150, 20);
             this.filterBox.TextChanged += new System.EventHandler(this.filterBox_TextChanged);
             // 
-            // invoicesGrid
+            // panel1
             // 
-            this.invoicesGrid.AllowUserToAddRows = false;
-            this.invoicesGrid.AllowUserToDeleteRows = false;
-            this.invoicesGrid.AllowUserToResizeRows = false;
-            this.invoicesGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.invoicesGrid.BackgroundColor = System.Drawing.Color.White;
-            this.invoicesGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            this.invoicesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.invoicesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.invoicesGrid.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.invoicesGrid.Location = new System.Drawing.Point(0, 24);
-            this.invoicesGrid.Name = "invoicesGrid";
-            this.invoicesGrid.ReadOnly = true;
-            this.invoicesGrid.RowHeadersVisible = false;
-            this.invoicesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.invoicesGrid.Size = new System.Drawing.Size(804, 437);
-            this.invoicesGrid.TabIndex = 3;
-            this.invoicesGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.invoicesGrid_CellDoubleClick);
+            this.panel1.Controls.Add(this.storagesView);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 24);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(150, 437);
+            this.panel1.TabIndex = 3;
             // 
-            // ExpenditureInvoicesForm
+            // storagesView
+            // 
+            this.storagesView.BackColor = System.Drawing.Color.White;
+            this.storagesView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.storagesView.Location = new System.Drawing.Point(0, 0);
+            this.storagesView.Name = "storagesView";
+            this.storagesView.Size = new System.Drawing.Size(150, 437);
+            this.storagesView.TabIndex = 0;
+            this.storagesView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.storagesView_AfterSelect);
+            // 
+            // splitter1
+            // 
+            this.splitter1.Location = new System.Drawing.Point(150, 24);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 437);
+            this.splitter1.TabIndex = 4;
+            this.splitter1.TabStop = false;
+            // 
+            // storageGoodsGrid
+            // 
+            this.storageGoodsGrid.AllowUserToAddRows = false;
+            this.storageGoodsGrid.AllowUserToDeleteRows = false;
+            this.storageGoodsGrid.AllowUserToResizeRows = false;
+            this.storageGoodsGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.storageGoodsGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.storageGoodsGrid.BackgroundColor = System.Drawing.Color.White;
+            this.storageGoodsGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.storageGoodsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Verdana", 8.25F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.storageGoodsGrid.DefaultCellStyle = dataGridViewCellStyle7;
+            this.storageGoodsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.storageGoodsGrid.GridColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.storageGoodsGrid.Location = new System.Drawing.Point(153, 24);
+            this.storageGoodsGrid.Name = "storageGoodsGrid";
+            this.storageGoodsGrid.ReadOnly = true;
+            this.storageGoodsGrid.RowHeadersVisible = false;
+            this.storageGoodsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.storageGoodsGrid.Size = new System.Drawing.Size(531, 437);
+            this.storageGoodsGrid.TabIndex = 5;
+            // 
+            // StorageContentsForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(804, 461);
-            this.Controls.Add(this.invoicesGrid);
+            this.ClientSize = new System.Drawing.Size(684, 461);
+            this.Controls.Add(this.storageGoodsGrid);
+            this.Controls.Add(this.splitter1);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
-            this.Font = new System.Drawing.Font("Verdana", 8F);
-            this.Name = "ExpenditureInvoicesForm";
+            this.Font = new System.Drawing.Font("Verdana", 8.25F);
+            this.Name = "StorageContentsForm";
             this.ShowIcon = false;
-            this.Text = "Журнал расходных накладных";
-            this.Load += new System.EventHandler(this.ExpenditureInvoicesForm_Load);
-            this.Enter += new System.EventHandler(this.ExpenditureInvoicesForm_Enter);
+            this.Text = "Товар на складах";
+            this.Load += new System.EventHandler(this.StorageContentsForm_Load);
+            this.Enter += new System.EventHandler(this.StorageContentsForm_Enter);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.invoicesGrid)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.storageGoodsGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,10 +187,12 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem addItem;
         private System.Windows.Forms.ToolStripMenuItem delItem;
-        private System.Windows.Forms.ToolStripMenuItem editItem;
         private System.Windows.Forms.ToolStripMenuItem refreshGrid;
         private System.Windows.Forms.ToolStripMenuItem filterLable;
         private System.Windows.Forms.ToolStripTextBox filterBox;
-        private System.Windows.Forms.DataGridView invoicesGrid;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Splitter splitter1;
+        private System.Windows.Forms.DataGridView storageGoodsGrid;
+        private System.Windows.Forms.TreeView storagesView;
     }
 }

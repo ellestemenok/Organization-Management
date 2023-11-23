@@ -23,6 +23,8 @@ namespace OrganizationManagement.PurchaseInvoicesEdit
             DataDB.LoadDataIntoComboBox(goodBox, "SELECT \"GoodID\", " +
                 "\"Name\" FROM public.\"Good\" " +
                 "ORDER BY \"Name\" ASC");
+
+            goodBox.Text = ((KeyValuePair<int, string>)goodBox.Items[0]).Value;
         }
         private void saveButton_Click(object sender, EventArgs e)
         {

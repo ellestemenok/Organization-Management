@@ -343,7 +343,7 @@
             this.Name = "AddPurchaseInvoiceForm";
             this.ShowIcon = false;
             this.Text = "Добавление приходной накладной";
-            this.Enter += new System.EventHandler(this.EditPurchaseInvoiceForm_Enter);
+            this.Enter += new System.EventHandler(this.AddPurchaseInvoiceForm_Enter);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

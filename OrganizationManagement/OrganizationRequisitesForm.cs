@@ -71,7 +71,7 @@ namespace OrganizationManagement
                     innField.Text,kppField.Text,okpoField.Text,okvadField.Text,ogrnField.Text,
                     directorField.Text,genaccountantField.Text,
                     payingVATcheckBox.Checked, okpdField.Text);
-            MessageBox.Show("Реквизиты организации сохранены!");
+            Close();
         }
 
 

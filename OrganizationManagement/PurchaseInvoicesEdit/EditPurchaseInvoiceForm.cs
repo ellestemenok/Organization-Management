@@ -17,11 +17,9 @@ namespace OrganizationManagement
     public partial class EditPurchaseInvoiceForm : Form
     {
         private int invoiceID;
-        private DataTable invoiceTable;
         public EditPurchaseInvoiceForm(DataTable invoicesData)
         {
             InitializeComponent();
-            invoiceTable = invoicesData;
             DataDB.LoadDataIntoComboBox(contractorBox, "SELECT \"ContractorID\", \"Name\" FROM public.\"Contractor\" ORDER BY \"ContractorID\" ASC");
             DataDB.LoadDataIntoComboBox(storageBox, "SELECT \"StorageID\", \"Name\" FROM public.\"Storage\" ORDER BY \"StorageID\" ASC");
 

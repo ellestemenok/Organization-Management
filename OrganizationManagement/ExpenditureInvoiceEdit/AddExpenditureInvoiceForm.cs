@@ -98,7 +98,7 @@ namespace OrganizationManagement
             quant2.Text = DataDB.ExecuteScalarQuery($"SELECT SUM(\"Quantity\") FROM public.\"ExpenditureInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
             sum.Text = DataDB.ExecuteScalarQuery($"SELECT SUM(\"Total\") FROM public.\"ExpenditureInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
         }
-        private void EditPurchaseInvoiceForm_Enter(object sender, EventArgs e)
+        private void AddExpenditureInvoiceForm_Enter(object sender, EventArgs e)
         {
             UpdateQuantnPrice();
             LoadDataIntoDataGridView();

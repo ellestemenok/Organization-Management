@@ -343,7 +343,7 @@
             this.Name = "AddExpenditureInvoiceForm";
             this.ShowIcon = false;
             this.Text = "Добавление расходной накладной";
-            this.Enter += new System.EventHandler(this.EditPurchaseInvoiceForm_Enter);
+            this.Enter += new System.EventHandler(this.AddExpenditureInvoiceForm_Enter);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

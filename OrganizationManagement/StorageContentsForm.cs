@@ -17,7 +17,6 @@ namespace OrganizationManagement
         {
             InitializeComponent();
         }
-
         private void StorageContentsForm_Load(object sender, EventArgs e)
         {
             Autorization.OpenConnection();

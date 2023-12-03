@@ -1,7 +1,4 @@
-﻿using DocumentFormat.OpenXml.Bibliography;
-using DocumentFormat.OpenXml.Spreadsheet;
-using Npgsql;
-
+﻿using Npgsql;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;

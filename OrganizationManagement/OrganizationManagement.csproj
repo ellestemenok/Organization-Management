@@ -234,6 +234,24 @@
     <Compile Include="StorageContentsForm.Designer.cs">
       <DependentUpon>StorageContentsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="StoragesEdit\EditStorageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StoragesEdit\EditStorageForm.Designer.cs">
+      <DependentUpon>EditStorageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StoragesEdit\AddStorageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StoragesEdit\AddStorageForm.Designer.cs">
+      <DependentUpon>AddStorageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StoragesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StoragesForm.Designer.cs">
+      <DependentUpon>StoragesForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ContractorEdit\EditContractorForm.resx">
       <DependentUpon>EditContractorForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -307,6 +325,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StorageContentsForm.resx">
       <DependentUpon>StorageContentsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoragesEdit\EditStorageForm.resx">
+      <DependentUpon>EditStorageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoragesEdit\AddStorageForm.resx">
+      <DependentUpon>AddStorageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoragesForm.resx">
+      <DependentUpon>StoragesForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

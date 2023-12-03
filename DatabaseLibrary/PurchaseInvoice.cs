@@ -70,7 +70,9 @@ namespace DatabaseLibrary
         {
             if (Autorization.npgSqlConnection != null && Autorization.npgSqlConnection.State == ConnectionState.Open)
             {
-                using (NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO public.\"PurchaseInvoiceDetail\" (\"InvoiceID\", \"ProductID\", \"Quantity\") VALUES (@InvoiceID, @ProductID, @Quantity);", Autorization.npgSqlConnection))
+                using (NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO " +
+                    "public.\"PurchaseInvoiceDetail\" (\"InvoiceID\", \"ProductID\", \"Quantity\") " +
+                    "VALUES (@InvoiceID, @ProductID, @Quantity);", Autorization.npgSqlConnection))
                 {
                     cmd.Parameters.AddWithValue("@InvoiceID", invoiceID);
                     cmd.Parameters.AddWithValue("@ProductID", productID);

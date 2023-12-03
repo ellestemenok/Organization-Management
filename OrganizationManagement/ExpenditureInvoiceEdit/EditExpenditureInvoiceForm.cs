@@ -17,11 +17,9 @@ namespace OrganizationManagement
     public partial class EditExpenditureInvoiceForm : Form
     {
         private int invoiceID;
-        private DataTable invoiceTable;
         public EditExpenditureInvoiceForm(DataTable invoicesData)
         {
             InitializeComponent();
-            invoiceTable = invoicesData;
             DataDB.LoadDataIntoComboBox(contractorBox, "SELECT \"ContractorID\", \"Name\" FROM public.\"Contractor\" ORDER BY \"ContractorID\" ASC");
             DataDB.LoadDataIntoComboBox(storageBox, "SELECT \"StorageID\", \"Name\" FROM public.\"Storage\" ORDER BY \"StorageID\" ASC");
 
@@ -104,6 +102,7 @@ namespace OrganizationManagement
         {
             LoadDataIntoDataGridView();
             UpdateQuantnPrice();
+            if (specGrid.Rows.Count > 0) storageBox.Enabled = false;
         }
 
         private void delItem_Click(object sender, EventArgs e)

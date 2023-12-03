@@ -33,7 +33,6 @@ namespace OrganizationManagement
             numField.Text = DataDB.ExecuteScalarQuery("SELECT MAX(\"InvoiceNumber\") " +
                 "FROM public.\"ExpenditureInvoice\";");
             dateField.Text = DateTime.Today.ToString();
-
         }
         public void LoadDataIntoDataGridView()
         {
@@ -63,6 +62,22 @@ namespace OrganizationManagement
         }
         private void addItem_Click(object sender, EventArgs e)
         {
+            DateTime invoiceDate = Convert.ToDateTime(dateField.Text);
+            int contractorID = 0;
+            int storageID = 0;
+            int number = Convert.ToInt32(numField.Text);
+            if (contractorBox.SelectedItem != null)
+            {
+                var contractorItem = (KeyValuePair<int, string>)contractorBox.SelectedItem;
+                contractorID = contractorItem.Key;
+            }
+            if (storageBox.SelectedItem != null)
+            {
+                var storageItem = (KeyValuePair<int, string>)storageBox.SelectedItem;
+                storageID = storageItem.Key;
+            }
+            ExpenditureInvoice.Update(invoiceID, invoiceDate, number, contractorID, storageID);
+
             AddGoodinExpenditureInvoiceForm addForm = new AddGoodinExpenditureInvoiceForm(invoiceID);
             addForm.MdiParent = ActiveForm;
             addForm.Show();
@@ -102,6 +117,7 @@ namespace OrganizationManagement
         {
             UpdateQuantnPrice();
             LoadDataIntoDataGridView();
+            if (specGrid.Rows.Count > 0) storageBox.Enabled = false;
         }
 
         private void delItem_Click(object sender, EventArgs e)

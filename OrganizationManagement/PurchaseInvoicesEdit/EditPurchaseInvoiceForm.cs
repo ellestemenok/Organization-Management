@@ -102,6 +102,7 @@ namespace OrganizationManagement
         {
             LoadDataIntoDataGridView();
             UpdateQuantnPrice();
+            if (specGrid.Rows.Count > 0) storageBox.Enabled = false;
         }
 
         private void delItem_Click(object sender, EventArgs e)

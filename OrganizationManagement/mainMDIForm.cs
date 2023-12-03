@@ -116,5 +116,12 @@ namespace OrganizationManagement
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
         }
+
+        private void storagesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StoragesForm newMDIChild = new StoragesForm();
+            newMDIChild.MdiParent = this;
+            newMDIChild.Show();
+        }
     }
 }

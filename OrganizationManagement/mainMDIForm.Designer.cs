@@ -52,6 +52,7 @@
             this.usernameStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerForDatetime = new System.Windows.Forms.Timer(this.components);
+            this.storagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
             this.SuspendLayout();
@@ -160,6 +161,7 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.storagesToolStripMenuItem,
             this.storageStripMenuItem});
             this.toolStripMenuItem1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.toolStripMenuItem1.ForeColor = System.Drawing.Color.Black;
@@ -197,7 +199,7 @@
             // 
             this.verticalToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
             this.verticalToolStripMenuItem.Name = "verticalToolStripMenuItem";
-            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.verticalToolStripMenuItem.Text = "Черепицей";
             this.verticalToolStripMenuItem.Click += new System.EventHandler(this.verticalToolStripMenuItem_Click);
             // 
@@ -205,7 +207,7 @@
             // 
             this.cascadeToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
             this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
-            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.cascadeToolStripMenuItem.Text = "Каскадом";
             this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.cascadeToolStripMenuItem_Click);
             // 
@@ -213,20 +215,20 @@
             // 
             this.minimizeallToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
             this.minimizeallToolStripMenuItem.Name = "minimizeallToolStripMenuItem";
-            this.minimizeallToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.minimizeallToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.minimizeallToolStripMenuItem.Text = "Свернуть все";
             this.minimizeallToolStripMenuItem.Click += new System.EventHandler(this.minimizeallToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(151, 6);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.closeToolStripMenuItem.Text = "Закрыть";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -265,6 +267,13 @@
             // 
             this.timerForDatetime.Interval = 1000;
             this.timerForDatetime.Tick += new System.EventHandler(this.timerForDatetime_Tick);
+            // 
+            // storagesToolStripMenuItem
+            // 
+            this.storagesToolStripMenuItem.Name = "storagesToolStripMenuItem";
+            this.storagesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.storagesToolStripMenuItem.Text = "Склады";
+            this.storagesToolStripMenuItem.Click += new System.EventHandler(this.storagesToolStripMenuItem_Click);
             // 
             // MainMDI
             // 
@@ -317,6 +326,7 @@
         private System.Windows.Forms.ToolStripStatusLabel usernameStripStatusLabel;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem storageStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem storagesToolStripMenuItem;
     }
 }
 

@@ -1,8 +1,6 @@
-﻿using DocumentFormat.OpenXml.Spreadsheet;
-using Npgsql;
+﻿using Npgsql;
 using System;
 using System.Data;
-using System.Windows.Forms;
 
 namespace DatabaseLibrary
 {

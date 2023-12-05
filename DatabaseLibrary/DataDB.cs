@@ -7,7 +7,8 @@ namespace DatabaseLibrary
 {
     public class DataDB
     {
-        public static void FillDataGridViewWithQueryResult(DataGridView dataGridView, string query) //метод для записи в определенную таблицу результат SELECT запроса
+        //метод для записи в определенную таблицу результат SELECT запроса
+        public static void FillDataGridViewWithQueryResult(DataGridView dataGridView, string query) 
         {
             if (Autorization.npgSqlConnection != null && Autorization.npgSqlConnection.State == ConnectionState.Open)
             {
@@ -19,7 +20,8 @@ namespace DatabaseLibrary
                 }
             }
         }
-        public DataTable FillFormWithQueryResult(string query) //метод, который возвращает таблицу, чтобы "вытащить" оттуда данные
+        //метод, который возвращает таблицу, чтобы "вытащить" оттуда данные
+        public DataTable FillFormWithQueryResult(string query) 
         {
             if (Autorization.npgSqlConnection != null && Autorization.npgSqlConnection.State == ConnectionState.Open)
             {
@@ -65,7 +67,7 @@ namespace DatabaseLibrary
                         comboBox.Items.Add(new KeyValuePair<int, string>(ID, Name));
                     }
                 }
-            // Установим отображаемое поле и значение по умолчанию (если нужно)
+            // установим отображаемое поле и значение по умолчанию
                 comboBox.DisplayMember = "Value";
                 comboBox.ValueMember = "Key";
             }

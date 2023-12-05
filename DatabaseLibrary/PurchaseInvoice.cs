@@ -1,10 +1,6 @@
 ﻿using Npgsql;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DatabaseLibrary
 {
@@ -68,7 +64,7 @@ namespace DatabaseLibrary
         }
         public static void AddProductToInvoice(int invoiceID, int productID, int quantity)
         {
-            if (Autorization.npgSqlConnection != null && Autorization.npgSqlConnection.State == ConnectionState.Open)
+            if (Autorization.npgSqlConnection != null)
             {
                 using (NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO " +
                     "public.\"PurchaseInvoiceDetail\" (\"InvoiceID\", \"ProductID\", \"Quantity\") " +

@@ -1,17 +1,8 @@
 ﻿using DatabaseLibrary;
 using OrganizationManagement.ContractorEdit;
-using OrganizationManagement.MeasureUnitsEdit;
-using OrganizationManagement.NomenclatureEdit;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace OrganizationManagement
 {
@@ -147,15 +138,14 @@ namespace OrganizationManagement
         {
             string searchText = filterBox.Text.Trim();
 
-            // Применяем фильтр к DataGridView
             if (!string.IsNullOrEmpty(searchText))
             {
                 DataView dv = ((DataTable)contractorsGrid.DataSource).DefaultView;
-                dv.RowFilter = string.Format("[Краткое название] LIKE '%{0}%' OR [Полное название] LIKE '%{0}%' OR [Телефон] LIKE '%{0}%'", searchText);
+                dv.RowFilter = string.Format("[Краткое название] LIKE '%{0}%' OR [Полное название] LIKE '%{0}%' " +
+                    "OR [Телефон] LIKE '%{0}%'", searchText);
             }
             else
             {
-                // Если текст в TextBox пуст, сбросить фильтр
                 ((DataTable)contractorsGrid.DataSource).DefaultView.RowFilter = string.Empty;
             }
         }

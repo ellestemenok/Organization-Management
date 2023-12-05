@@ -1,15 +1,7 @@
 ﻿using DatabaseLibrary;
-using OrganizationManagement.AccountEdit;
-
 using OrganizationManagement.StoragesEdit;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OrganizationManagement
@@ -39,7 +31,7 @@ namespace OrganizationManagement
                 "\"isFree\" AS \"Свободный склад\" " +
                 "FROM public.\"Storage\" ORDER BY \"StorageID\" ASC;";
             DataDB.FillDataGridViewWithQueryResult(storagesGrid, query);
-            //storagesGrid.Columns["StorageID"].Visible = false;
+            storagesGrid.Columns["StorageID"].Visible = false;
         }
 
         private void addItem_Click(object sender, EventArgs e)

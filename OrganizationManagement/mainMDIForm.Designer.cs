@@ -37,6 +37,9 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.contractorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.measureUnitsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.водителиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.routesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.журналыДокументовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.expenditureInvoicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.purchaseinvoicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,9 +56,6 @@
             this.usernameStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerForDatetime = new System.Windows.Forms.Timer(this.components);
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.водителиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.маршрутыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
             this.SuspendLayout();
@@ -87,7 +87,7 @@
             this.measureUnitsToolStripMenuItem,
             this.toolStripSeparator1,
             this.водителиToolStripMenuItem,
-            this.маршрутыToolStripMenuItem});
+            this.routesToolStripMenuItem});
             this.справочникиToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.справочникиToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.справочникиToolStripMenuItem.Margin = new System.Windows.Forms.Padding(3);
@@ -134,6 +134,24 @@
             this.measureUnitsToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
             this.measureUnitsToolStripMenuItem.Text = "Единицы измерения";
             this.measureUnitsToolStripMenuItem.Click += new System.EventHandler(this.measureUnitsToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(212, 6);
+            // 
+            // водителиToolStripMenuItem
+            // 
+            this.водителиToolStripMenuItem.Name = "водителиToolStripMenuItem";
+            this.водителиToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.водителиToolStripMenuItem.Text = "Водители";
+            // 
+            // routesToolStripMenuItem
+            // 
+            this.routesToolStripMenuItem.Name = "routesToolStripMenuItem";
+            this.routesToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.routesToolStripMenuItem.Text = "Маршруты";
+            this.routesToolStripMenuItem.Click += new System.EventHandler(this.routesToolStripMenuItem_Click);
             // 
             // журналыДокументовToolStripMenuItem
             // 
@@ -281,23 +299,6 @@
             this.timerForDatetime.Interval = 1000;
             this.timerForDatetime.Tick += new System.EventHandler(this.timerForDatetime_Tick);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(212, 6);
-            // 
-            // водителиToolStripMenuItem
-            // 
-            this.водителиToolStripMenuItem.Name = "водителиToolStripMenuItem";
-            this.водителиToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.водителиToolStripMenuItem.Text = "Водители";
-            // 
-            // маршрутыToolStripMenuItem
-            // 
-            this.маршрутыToolStripMenuItem.Name = "маршрутыToolStripMenuItem";
-            this.маршрутыToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.маршрутыToolStripMenuItem.Text = "Маршруты";
-            // 
             // MainMDI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -352,7 +353,7 @@
         private System.Windows.Forms.ToolStripMenuItem storagesToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem водителиToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem маршрутыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem routesToolStripMenuItem;
     }
 }
 

@@ -183,6 +183,18 @@
     <Compile Include="PurchaseInvoicesForm.Designer.cs">
       <DependentUpon>PurchaseInvoicesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RoutesEdit\EditRouteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoutesEdit\EditRouteForm.Designer.cs">
+      <DependentUpon>EditRouteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RoutesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoutesForm.Designer.cs">
+      <DependentUpon>RoutesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="StorageContentsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,6 +289,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PurchaseInvoicesForm.resx">
       <DependentUpon>PurchaseInvoicesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoutesEdit\EditRouteForm.resx">
+      <DependentUpon>EditRouteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoutesForm.resx">
+      <DependentUpon>RoutesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StorageContentsForm.resx">
       <DependentUpon>StorageContentsForm.cs</DependentUpon>

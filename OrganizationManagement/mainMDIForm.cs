@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using DatabaseLibrary;
+using OrganizationManagement.RoutesEdit;
 namespace OrganizationManagement
 {
     public partial class MainMDI : Form
@@ -93,6 +94,13 @@ namespace OrganizationManagement
         private void storagesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StoragesForm newMDIChild = new StoragesForm();
+            newMDIChild.MdiParent = this;
+            newMDIChild.Show();
+        }
+
+        private void routesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RoutesForm newMDIChild = new RoutesForm();
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
         }

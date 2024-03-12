@@ -3,7 +3,6 @@ using System.Data;
 using System.Windows.Forms;
 using DatabaseLibrary;
 using OrganizationManagement.AccountEdit;
-
 namespace OrganizationManagement
 {
     public partial class OrganizationRequisitesForm : Form
@@ -12,7 +11,6 @@ namespace OrganizationManagement
         {
             InitializeComponent();
         }
-
         private void OrganizationRequisites_Load(object sender, EventArgs e)
         {
             Autorization.OpenConnection();
@@ -42,7 +40,6 @@ namespace OrganizationManagement
                 payingVATcheckBox.Checked = Convert.ToBoolean(organizationData.Rows[0]["PayingVAT"]);
             }
         }        
-        
         public void LoadDataIntoDataGridView() //заполняем таблицу списком счетов
         {
             string query = "SELECT \"AccountID\" AS \"№\", " +
@@ -54,7 +51,6 @@ namespace OrganizationManagement
             DataDB.FillDataGridViewWithQueryResult(accountsGrid, query);
             accountsGrid.Columns["№"].Visible = false;
         }
-
         private void orgSave_Click(object sender, EventArgs e)
         {
             Requisites.Update(1,typeField.Text,nameField.Text,fullnameField.Text,
@@ -65,8 +61,6 @@ namespace OrganizationManagement
                     payingVATcheckBox.Checked, okpdField.Text);
             Close();
         }
-
-
         private void accountsGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -82,14 +76,12 @@ namespace OrganizationManagement
                 editForm.Show();
             }
         }
-
         private void addAccButton_Click(object sender, EventArgs e)
         {
             AddAccountForm addForm = new AddAccountForm();
             addForm.MdiParent = ActiveForm;
             addForm.Show();
         }
-
         private void delAccButton_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Удалить элемент?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -101,18 +93,13 @@ namespace OrganizationManagement
                 LoadDataIntoDataGridView();
             }
         }
-
-
         private void OrganizationRequisites_FormClosing(object sender, FormClosingEventArgs e)
         {
             Autorization.CloseConnection();
         }
-
         private void OrganizationRequisites_Enter(object sender, EventArgs e)
         {
             LoadDataIntoDataGridView();
         }
-
-
     }
 }

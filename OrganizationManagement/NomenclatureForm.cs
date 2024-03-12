@@ -3,7 +3,6 @@ using OrganizationManagement.NomenclatureEdit;
 using System;
 using System.Data;
 using System.Windows.Forms;
-
 namespace OrganizationManagement
 {
     public partial class NomenclatureForm : Form
@@ -12,12 +11,10 @@ namespace OrganizationManagement
         {
             InitializeComponent();
         }
-
         private void NomenclatureForm_Load(object sender, EventArgs e)
         {
             Autorization.OpenConnection();
         }
-
         public void LoadDataIntoDataGridView()
         {
             string query = "SELECT \"GoodID\", " +
@@ -29,7 +26,6 @@ namespace OrganizationManagement
             goodsGrid.Columns["GoodID"].Visible = false;
             goodsGrid.Columns["Артикул"].Width = 100;
         }
-
         private void NomenclatureForm_Enter(object sender, EventArgs e)
         {
             LoadDataIntoDataGridView();
@@ -37,7 +33,6 @@ namespace OrganizationManagement
             DataDB.LoadCategoriesIntoTreeView(query,categoryView);
 
         }
-
         private void addItem_Click(object sender, EventArgs e)
         {
             AddGoodForm addForm = new AddGoodForm();
@@ -45,7 +40,6 @@ namespace OrganizationManagement
             addForm.Show();
 
         }
-
         private void delItem_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Удалить элемент?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -57,7 +51,6 @@ namespace OrganizationManagement
                 LoadDataIntoDataGridView();
             }
         }
-
         private void editItem_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = goodsGrid.SelectedRows[0];
@@ -86,7 +79,6 @@ namespace OrganizationManagement
             editForm.MdiParent = ActiveForm;
             editForm.Show();
         }
-
         private void goodsGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if(e.RowIndex >= 0)
@@ -121,7 +113,6 @@ namespace OrganizationManagement
         {
             LoadDataIntoDataGridView();
         }
-
         private void categoryView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             // Получите выбранный узел
@@ -142,7 +133,6 @@ namespace OrganizationManagement
                 goodsGrid.Columns["CategoryID"].Visible = false;
             }
         }
-
         private void filterBox_TextChanged(object sender, EventArgs e)
         {
             string searchText = filterBox.Text.Trim();

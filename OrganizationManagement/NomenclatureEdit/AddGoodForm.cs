@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-
 namespace OrganizationManagement.NomenclatureEdit
 {
     public partial class AddGoodForm : Form
@@ -20,7 +19,6 @@ namespace OrganizationManagement.NomenclatureEdit
             retailmarginField.KeyPress += KeyPressEvent.textBox_KeyPressPercent;
             trademarginField.KeyPress += KeyPressEvent.textBox_KeyPressPercent;
         }
-
         private void goodSave_Click(object sender, EventArgs e)
         {
             string name = nameField.Text;
@@ -39,7 +37,6 @@ namespace OrganizationManagement.NomenclatureEdit
                 var groupItem = (KeyValuePair<int, string>)groupBox.SelectedItem;
                 groupID = groupItem.Key;
             }
-
             bool archivecheck = archivecheckBox.Checked;
             double netcost = Convert.ToDouble(netcostField.Text);
             double vat = Convert.ToDouble(vatField.Text);
@@ -54,7 +51,6 @@ namespace OrganizationManagement.NomenclatureEdit
                 costwovat, tradeprice, retailprice, trademargin, retailmargin, description);
             Close();
         }
-
         private void netcostField_Leave(object sender, EventArgs e)
         {
             double netcost = Convert.ToDouble(netcostField.Text);
@@ -67,7 +63,6 @@ namespace OrganizationManagement.NomenclatureEdit
             tradepriceField.Text = Math.Round(netcost + netcost * trademargin, 2).ToString();
             retailpriceField.Text = Math.Round(netcost + netcost * retailmargin, 2).ToString();
         }
-
         private void vatField_Leave(object sender, EventArgs e)
         {
             double netcost = Convert.ToDouble(netcostField.Text);
@@ -86,7 +81,6 @@ namespace OrganizationManagement.NomenclatureEdit
 
             tradepriceField.Text = tradeprice.ToString();
         }
-
         private void retailmarginField_Leave(object sender, EventArgs e)
         {
             double netcost = Convert.ToDouble(netcostField.Text);

@@ -2,7 +2,6 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
-
 namespace OrganizationManagement
 {
     public partial class StorageContentsForm : Form
@@ -69,26 +68,22 @@ namespace OrganizationManagement
                 storageGoodsGrid.Columns["Остаток"].Width = 65;
             }
         }
-
         private void addItem_Click(object sender, EventArgs e)
         {
             AddPurchaseInvoiceForm addForm = new AddPurchaseInvoiceForm();
             addForm.MdiParent = ActiveForm;
             addForm.Show();
         }
-
         private void delItem_Click(object sender, EventArgs e)
         {
             AddExpenditureInvoiceForm addForm = new AddExpenditureInvoiceForm();
             addForm.MdiParent = ActiveForm;
             addForm.Show();
         }
-
         private void refreshGrid_Click(object sender, EventArgs e)
         {
             LoadDataIntoDataGridView();
         }
-
         private void filterBox_TextChanged(object sender, EventArgs e)
         {
             string searchText = filterBox.Text.Trim();

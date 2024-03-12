@@ -2,7 +2,6 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
-
 namespace OrganizationManagement.StoragesEdit
 {
     public partial class EditStorageForm : Form
@@ -20,7 +19,6 @@ namespace OrganizationManagement.StoragesEdit
                 freeCheckBox.Checked = Convert.ToBoolean(storagesData.Rows[0]["isFree"]);
             }
         }
-
         private void saveButton_Click(object sender, EventArgs e)
         {
             string name = nameField.Text;

@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
-
 namespace OrganizationManagement
 {
     public partial class EditPurchaseInvoiceForm : Form
@@ -84,7 +83,6 @@ namespace OrganizationManagement
             // Закрываем форму после сохранения
             Close();
         }
-
         private void UpdateQuantnPrice()
         {
             quant1.Text = DataDB.ExecuteScalarQuery($"SELECT COUNT(\"DetailID\") FROM public.\"PurchaseInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
@@ -97,7 +95,6 @@ namespace OrganizationManagement
             UpdateQuantnPrice();
             if (specGrid.Rows.Count > 0) storageBox.Enabled = false;
         }
-
         private void delItem_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = specGrid.SelectedRows[0];
@@ -106,7 +103,6 @@ namespace OrganizationManagement
             LoadDataIntoDataGridView();
             UpdateQuantnPrice();
         }
-
         private void contractorBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedgoodID = ((KeyValuePair<int, string>)contractorBox.SelectedItem).Key;

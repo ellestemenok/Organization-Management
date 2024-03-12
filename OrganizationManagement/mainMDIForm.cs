@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using DatabaseLibrary;
-
 namespace OrganizationManagement
 {
     public partial class MainMDI : Form

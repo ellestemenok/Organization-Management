@@ -1,5 +1,4 @@
 ﻿using Npgsql;
-
 namespace DatabaseLibrary
 {
     public class MeasureUnit
@@ -19,7 +18,6 @@ namespace DatabaseLibrary
                 cmd.Parameters.AddWithValue("@Name", name);
                 cmd.Parameters.AddWithValue("@FullName", fullname);
                 cmd.Parameters.AddWithValue("@Fractional", fractional);
-
                 cmd.ExecuteNonQuery();
             }
         }
@@ -34,7 +32,6 @@ namespace DatabaseLibrary
                 cmd.Parameters.AddWithValue("@Name", name);
                 cmd.Parameters.AddWithValue("@FullName", fullname);
                 cmd.Parameters.AddWithValue("@Fractional", fractional);
-
                 cmd.ExecuteNonQuery();
             }
         }

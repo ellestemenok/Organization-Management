@@ -2,7 +2,6 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
-
 namespace OrganizationManagement.MeasureUnitsEdit
 {
     public partial class EditMeasureUnitForm : Form
@@ -22,14 +21,12 @@ namespace OrganizationManagement.MeasureUnitsEdit
                 fractionalCheckBox.Checked = Convert.ToBoolean(measureunitsData.Rows[0]["Fractional"]);
             }
         }
-
         private void saveButton_Click(object sender, EventArgs e)
         {
             string name = nameField.Text;
             string okeiID = okeiField.Text;
             string fullname = fullnameField.Text;
             bool fractional = fractionalCheckBox.Checked;
-
             MeasureUnit.Update(unitID, Convert.ToInt32(okeiID), name, fullname, fractional);
             Close();
         }

@@ -6,10 +6,8 @@ namespace OrganizationManagement
 {
     public partial class AutorizationForm : Form
     {
-
         public string userID;
         public string password;
-
         public AutorizationForm()
         {
             InitializeComponent();

@@ -2,7 +2,6 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
-
 namespace OrganizationManagement.AccountEdit
 {
     public partial class EditAccountForm : Form

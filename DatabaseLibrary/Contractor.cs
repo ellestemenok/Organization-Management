@@ -1,5 +1,4 @@
 ﻿using Npgsql;
-
 namespace DatabaseLibrary
 {
     public class Contractor
@@ -10,7 +9,7 @@ namespace DatabaseLibrary
             string oktmo, string ogrn, string paymentacc, string bank, 
             string bik, string corracc, string postaddr, string legaladdr, 
             string consaddr, string director, 
-            string genacc, string reason, int categoryID, string manager, string description)
+            string genacc, string reason, int categoryID, string manager, string description, int routeID)
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("UPDATE public.\"Contractor\" " +
                 "SET " +
@@ -32,7 +31,8 @@ namespace DatabaseLibrary
                 "\"Reason\"=@Reason, " +
                 "\"Manager\"=@Manager, " +
                 "\"Description\"=@Description, " +
-                "\"CategoryID\"=@CategoryID " +
+                "\"CategoryID\"=@CategoryID, " +
+                "\"RouteID\"=@RouteID " +
                 "WHERE \"ContractorID\" =@ContractorID;",
                 Autorization.npgSqlConnection))
             {
@@ -60,22 +60,22 @@ namespace DatabaseLibrary
                 cmd.Parameters.AddWithValue("@CategoryID", categoryID);
                 cmd.Parameters.AddWithValue("@Manager", manager);
                 cmd.Parameters.AddWithValue("@Description", description);
-
+                cmd.Parameters.AddWithValue("@RouteID", routeID);
                 cmd.ExecuteNonQuery();
             }
         }
         public static void Insert(string type, string name, string fullname, string telephone, 
             string email, string inn, string kpp, string okpo, string oktmo, string ogrn, 
             string paymentacc, string bank, string bik, string corracc, string postaddr, string legaladdr, 
-            string consaddr, string director, string genacc, string reason, int categoryID, string manager, string description)
+            string consaddr, string director, string genacc, string reason, int categoryID, string manager, string description, int routeID)
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO public.\"Contractor\" " +
                 "(\"Type\", \"Name\", \"FullName\", \"Telephone\", \"Email\", \"INN\", \"KPP\", \"OKPO\", \"OKTMO\", \"OGRN\", \"PaymentAccount\", " +
                 "\"Bank\", \"BIK\", \"CorrAccount\", \"PostAddress\", \"LegalAddress\", \"ConsigneeAddress\", " +
-                "\"Director\", \"GeneralAccountant\", \"Reason\", \"CategoryID\", \"Description\", \"Manager\") " +
+                "\"Director\", \"GeneralAccountant\", \"Reason\", \"CategoryID\", \"Description\", \"Manager\", \"RouteID\") " +
                 "VALUES (@Type, @Name, @FullName, @Telephone, @Email, @INN, @KPP, @OKPO, @OKTMO, @OGRN, @PaymentAccount, " +
                 "@Bank, @BIK, @CorrAccount, @PostAddress, @LegalAddress, @ConsigneeAddress, " +
-                "@Director, @GeneralAccountant, @Reason, @CategoryID, @Description, @Manager);",
+                "@Director, @GeneralAccountant, @Reason, @CategoryID, @Description, @Manager, @RouteID);",
                 Autorization.npgSqlConnection))
             {
                 cmd.Parameters.AddWithValue("@Type", type);
@@ -101,7 +101,7 @@ namespace DatabaseLibrary
                 cmd.Parameters.AddWithValue("@CategoryID", categoryID);
                 cmd.Parameters.AddWithValue("@Description", description);
                 cmd.Parameters.AddWithValue("@Manager", manager);
-
+                cmd.Parameters.AddWithValue("@RouteID", routeID);
                 cmd.ExecuteNonQuery();
             }
         }

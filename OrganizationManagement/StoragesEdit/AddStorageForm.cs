@@ -1,7 +1,6 @@
 ﻿using DatabaseLibrary;
 using System;
 using System.Windows.Forms;
-
 namespace OrganizationManagement.StoragesEdit
 {
     public partial class AddStorageForm : Form
@@ -10,7 +9,6 @@ namespace OrganizationManagement.StoragesEdit
         {
             InitializeComponent();
         }
-
         private void saveButton_Click(object sender, EventArgs e)
         {
             string name = nameField.Text;

@@ -74,7 +74,6 @@
             this.usernameField.Name = "usernameField";
             this.usernameField.Size = new System.Drawing.Size(190, 20);
             this.usernameField.TabIndex = 4;
-            this.usernameField.Text = "postgres";
             // 
             // passwordField
             // 
@@ -84,7 +83,6 @@
             this.passwordField.PasswordChar = '*';
             this.passwordField.Size = new System.Drawing.Size(190, 20);
             this.passwordField.TabIndex = 5;
-            this.passwordField.Text = "5215e";
             // 
             // AutorizationForm
             // 

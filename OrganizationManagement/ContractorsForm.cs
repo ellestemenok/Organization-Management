@@ -3,7 +3,6 @@ using OrganizationManagement.ContractorEdit;
 using System;
 using System.Data;
 using System.Windows.Forms;
-
 namespace OrganizationManagement
 {
     public partial class ContractorsForm : Form
@@ -12,12 +11,10 @@ namespace OrganizationManagement
         {
             InitializeComponent();
         }
-
         private void ContractorsForm_Load(object sender, EventArgs e)
         {
             Autorization.OpenConnection();
         }
-
         public void LoadDataIntoDataGridView()
         {
             string query = "SELECT \"ContractorID\", " +
@@ -31,23 +28,18 @@ namespace OrganizationManagement
             contractorsGrid.Columns["Краткое название"].Width = 110;
             contractorsGrid.Columns["Телефон"].Width = 100;
         }
-
         private void ContractorsForm_Enter(object sender, EventArgs e)
         {
             LoadDataIntoDataGridView();
             string query = "SELECT \"Name\" FROM public.\"ContractorCategory\"";
             DataDB.LoadCategoriesIntoTreeView(query,categoryView);
         }
-
-
-
         private void addItem_Click(object sender, EventArgs e)
         {
             AddContractorForm addForm = new AddContractorForm();
             addForm.MdiParent = ActiveForm;
             addForm.Show();
         }
-
         private void delItem_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Удалить элемент?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -59,7 +51,6 @@ namespace OrganizationManagement
                 LoadDataIntoDataGridView();
             }
         }
-
         private void editItem_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = contractorsGrid.SelectedRows[0];
@@ -75,23 +66,22 @@ namespace OrganizationManagement
                 "\r\n\"PostAddress\", \"LegalAddress\", \r\n\"ConsigneeAddress\", " +
                 "\"Director\", \"GeneralAccountant\", \"Reason\", " +
                 "\r\nCategory.\"Name\" AS CategoryName, \r\n\"Description\", " +
+                "\r\nRoute.\"Name\" AS RouteName, " +
                 "\r\n\"Manager\"\r\n\tFROM public.\"Contractor\" as Con\r\n\t" +
                 "JOIN public.\"ContractorCategory\" as Category\r\n\tON Category.\"CategoryID\" = Con.\"CategoryID\"\r\n\t" +
+                 "JOIN public.\"Route\" as Route\r\n\tON Route.\"RouteID\" = Con.\"RouteID\"\r\n\t" +
                 $"WHERE \"ContractorID\" = {contractorID};";
             DataTable contractorsData = contractorsRepository.FillFormWithQueryResult(query);
-
             EditContractorForm editForm = new EditContractorForm(contractorsData);
             editForm.MdiParent = ActiveForm;
             editForm.Show();
         }
-
         private void contractorsGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 int contractorID = Convert.ToInt32(contractorsGrid.Rows[e.RowIndex].Cells["ContractorID"].Value);
                 DataDB contractorsRepository = new DataDB();
-
                 string query = "SELECT \"ContractorID\", " +
                     "\r\n\"Type\", Con.\"Name\", " +
                     "\r\n\"FullName\", \"Telephone\", " +
@@ -101,11 +91,12 @@ namespace OrganizationManagement
                     "\r\n\"PostAddress\", \"LegalAddress\", \r\n\"ConsigneeAddress\", " +
                     "\"Director\", \"GeneralAccountant\", \"Reason\", " +
                     "\r\nCategory.\"Name\" AS CategoryName, \r\n\"Description\", " +
+                    "\r\nRoute.\"Name\" AS RouteName, " +
                     "\r\n\"Manager\"\r\n\tFROM public.\"Contractor\" as Con\r\n\t" +
                     "JOIN public.\"ContractorCategory\" as Category\r\n\tON Category.\"CategoryID\" = Con.\"CategoryID\"\r\n\t" +
+                    "JOIN public.\"Route\" as Route\r\n\tON Route.\"RouteID\" = Con.\"RouteID\"\r\n\t" +
                     $"WHERE \"ContractorID\" = {contractorID};";
                 DataTable contractorsData = contractorsRepository.FillFormWithQueryResult(query);
-
                 EditContractorForm editForm = new EditContractorForm(contractorsData);
                 editForm.MdiParent = ActiveForm;
                 editForm.Show();

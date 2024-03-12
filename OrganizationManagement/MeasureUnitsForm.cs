@@ -12,17 +12,14 @@ namespace OrganizationManagement
         {
             InitializeComponent();
         }
-
         private void MeasureUnits_Load(object sender, EventArgs e)
         {
             Autorization.OpenConnection();
         }
-
         private void MeasureUnits_Enter(object sender, EventArgs e)
         {
             LoadDataIntoDataGridView();
         }
-
         public void LoadDataIntoDataGridView()
         {
             string query = "SELECT \"UnitID\", " +
@@ -35,14 +32,12 @@ namespace OrganizationManagement
             DataDB.FillDataGridViewWithQueryResult(measureunitsGrid, query);
             measureunitsGrid.Columns["UnitID"].Visible = false;
         }
-
         private void addItem_Click(object sender, EventArgs e)
         {
             AddMeasureUnitForm addForm = new AddMeasureUnitForm();
             addForm.MdiParent = ActiveForm;
             addForm.Show();
         }
-
         private void delItem_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Удалить элемент?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -54,12 +49,10 @@ namespace OrganizationManagement
                 LoadDataIntoDataGridView();
             }
         }
-
         private void refreshGrid_Click(object sender, EventArgs e)
         {
             LoadDataIntoDataGridView();
         }
-
         private void editItem_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = measureunitsGrid.SelectedRows[0];
@@ -73,7 +66,6 @@ namespace OrganizationManagement
             editForm.MdiParent = ActiveForm;
             editForm.Show();
         }
-
         private void measureunitsGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -89,13 +81,10 @@ namespace OrganizationManagement
                 editForm.Show();
             }
         }
-
-
         private void MeasureUnits_FormClosing(object sender, FormClosingEventArgs e)
         {
             Autorization.CloseConnection();
         }
-
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
         {
             // Получаем текст из TextBox

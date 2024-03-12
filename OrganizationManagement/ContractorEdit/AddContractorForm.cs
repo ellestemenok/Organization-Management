@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-
 namespace OrganizationManagement.ContractorEdit
 {
     public partial class AddContractorForm : Form
@@ -10,13 +9,19 @@ namespace OrganizationManagement.ContractorEdit
         public AddContractorForm()
         {
             InitializeComponent();
-            DataDB.LoadDataIntoComboBox(groupBox, "SELECT \"CategoryID\", \"Name\" " +
+            
+            typeBox.Text = typeBox.Items[0].ToString(); // тайбокс = ип, ооо и т.д.
+
+            DataDB.LoadDataIntoComboBox(groupBox, "SELECT \"CategoryID\", \"Name\" " + // загрузка в групбокс категорий контрагентов (покупатель, продавец)
                 "FROM public.\"ContractorCategory\" " +
                 "ORDER BY \"CategoryID\" ASC");
-            typeBox.Text = typeBox.Items[0].ToString();
-            groupBox.Text = ((KeyValuePair<int, string>)groupBox.Items[0]).Value;
-        }
+            groupBox.Text = ((KeyValuePair<int, string>)groupBox.Items[0]).Value; // отображение вариантов в боксе
 
+            DataDB.LoadDataIntoComboBox(routeBox, "SELECT \"RouteID\", \"Name\" " + // загрузка в групбокс маршрутов
+                "FROM public.\"Route\" " +
+                "ORDER BY \"RouteID\" ASC");
+            routeBox.Text = ((KeyValuePair<int, string>)routeBox.Items[0]).Value; // отображение маршрутов в боксе
+        }
         private void saveButton_Click(object sender, EventArgs e)
         {
             string type = typeBox.Text;
@@ -48,9 +53,15 @@ namespace OrganizationManagement.ContractorEdit
             string reason = reasonField.Text;
             string description = descriptionField.Text;
 
+            int routeID = 0;
+            if (routeBox.SelectedItem != null)
+            {
+                var routeItem = (KeyValuePair<int, string>)routeBox.SelectedItem;
+                routeID = routeItem.Key;
+            }
             Contractor.Insert(type, name, fullname, telephone, email, inn, kpp, okpo, oktmo, ogrn,
                 paymentacc, bank, bik, corr, postadrr, legaladdr, consaddr, director, accountant,
-                reason, groupID, manager, description);
+                reason, groupID, manager, description, routeID);
             Close();
         }
     }

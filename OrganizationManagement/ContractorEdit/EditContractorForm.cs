@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
-
 namespace OrganizationManagement.ContractorEdit
 {
     public partial class EditContractorForm : Form
@@ -13,6 +12,7 @@ namespace OrganizationManagement.ContractorEdit
         {
             InitializeComponent();
             DataDB.LoadDataIntoComboBox(groupBox, "SELECT \"CategoryID\", \"Name\" FROM public.\"ContractorCategory\" ORDER BY \"CategoryID\" ASC");
+            DataDB.LoadDataIntoComboBox(routeBox, "SELECT \"RouteID\", \"Name\" FROM public.\"Route\" ORDER BY \"RouteID\" ASC");
 
             if (contractorsTable.Rows.Count > 0)
             {
@@ -24,7 +24,6 @@ namespace OrganizationManagement.ContractorEdit
                 groupBox.Text = contractorsTable.Rows[0]["CategoryName"].ToString();
                 telephoneField.Text = contractorsTable.Rows[0]["Telephone"].ToString();
                 emailField.Text = contractorsTable.Rows[0]["Email"].ToString();
-
                 innField.Text = contractorsTable.Rows[0]["INN"].ToString();
                 kppField.Text = contractorsTable.Rows[0]["KPP"].ToString();
                 okpoField.Text = contractorsTable.Rows[0]["OKPO"].ToString();
@@ -34,7 +33,6 @@ namespace OrganizationManagement.ContractorEdit
                 bankField.Text = contractorsTable.Rows[0]["Bank"].ToString();
                 bikField.Text = contractorsTable.Rows[0]["BIK"].ToString();
                 corrField.Text = contractorsTable.Rows[0]["CorrAccount"].ToString();
-
                 postAddrField.Text = contractorsTable.Rows[0]["PostAddress"].ToString();
                 legaladdrField.Text = contractorsTable.Rows[0]["LegalAddress"].ToString();
                 consaddrField.Text = contractorsTable.Rows[0]["ConsigneeAddress"].ToString();
@@ -43,10 +41,9 @@ namespace OrganizationManagement.ContractorEdit
                 reasonField.Text = contractorsTable.Rows[0]["Reason"].ToString();
                 descriptionField.Text = contractorsTable.Rows[0]["Description"].ToString();
                 managerField.Text = contractorsTable.Rows[0]["Manager"].ToString();
+                routeBox.Text = contractorsTable.Rows[0]["RouteName"].ToString();
             }
-
         }
-
         private void saveButton_Click(object sender, EventArgs e)
         {
             string type = typeBox.Text;
@@ -78,9 +75,15 @@ namespace OrganizationManagement.ContractorEdit
             string reason = reasonField.Text;
             string description = descriptionField.Text;
 
+            int routeID = 0;
+            if (routeBox.SelectedItem != null)
+            {
+                var routeItem = (KeyValuePair<int, string>)routeBox.SelectedItem;
+                routeID = routeItem.Key;
+            }
             Contractor.Update(contractorID, type, name, fullname, telephone, email, inn, kpp, okpo, oktmo, ogrn,
                 paymentacc, bank, bik, corr, postadrr, legaladdr, consaddr, director, accountant,
-                reason, groupID, manager, description);
+                reason, groupID, manager, description, routeID);
             Close();
         }
     }

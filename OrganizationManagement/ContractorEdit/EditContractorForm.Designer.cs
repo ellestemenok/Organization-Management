@@ -63,6 +63,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.routeBox = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.consaddrField = new System.Windows.Forms.TextBox();
             this.postAddrField = new System.Windows.Forms.TextBox();
             this.legaladdrField = new System.Windows.Forms.TextBox();
@@ -442,6 +444,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.routeBox);
+            this.tabPage3.Controls.Add(this.label23);
             this.tabPage3.Controls.Add(this.consaddrField);
             this.tabPage3.Controls.Add(this.postAddrField);
             this.tabPage3.Controls.Add(this.legaladdrField);
@@ -454,6 +458,26 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Адреса";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // routeBox
+            // 
+            this.routeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.routeBox.FormattingEnabled = true;
+            this.routeBox.Location = new System.Drawing.Point(174, 216);
+            this.routeBox.Name = "routeBox";
+            this.routeBox.Size = new System.Drawing.Size(255, 21);
+            this.routeBox.TabIndex = 32;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(89, 212);
+            this.label23.Margin = new System.Windows.Forms.Padding(0);
+            this.label23.Name = "label23";
+            this.label23.Padding = new System.Windows.Forms.Padding(8);
+            this.label23.Size = new System.Drawing.Size(79, 29);
+            this.label23.TabIndex = 31;
+            this.label23.Text = "Маршрут:";
             // 
             // consaddrField
             // 
@@ -640,7 +664,7 @@
             this.MaximizeBox = false;
             this.Name = "EditContractorForm";
             this.ShowIcon = false;
-            this.Text = "Добавление контрагента";
+            this.Text = "Редактирование контрагента";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -713,5 +737,7 @@
         private System.Windows.Forms.TextBox descriptionField;
         private System.Windows.Forms.TextBox reasonField;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.ComboBox routeBox;
+        private System.Windows.Forms.Label label23;
     }
 }

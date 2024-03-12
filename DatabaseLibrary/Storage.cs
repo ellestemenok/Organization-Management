@@ -1,5 +1,4 @@
 ﻿using Npgsql;
-
 namespace DatabaseLibrary
 {
     public class Storage
@@ -18,7 +17,6 @@ namespace DatabaseLibrary
                 cmd.Parameters.AddWithValue("@Name", name);
                 cmd.Parameters.AddWithValue("@isMain", ismain);
                 cmd.Parameters.AddWithValue("@isFree", isfree);
-
                 cmd.ExecuteNonQuery();
             }
         }
@@ -32,7 +30,6 @@ namespace DatabaseLibrary
                 cmd.ExecuteNonQuery();
             }
         }
-
         public static void Insert(string name, bool ismain, bool isfree)
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO public.\"Storage\"" +
@@ -46,10 +43,8 @@ namespace DatabaseLibrary
                 cmd.Parameters.AddWithValue("@Name", name);
                 cmd.Parameters.AddWithValue("@isMain", ismain);
                 cmd.Parameters.AddWithValue("@isFree", isfree);
-
                 cmd.ExecuteNonQuery();
             }
         }
-
     }
 }

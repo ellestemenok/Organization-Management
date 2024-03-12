@@ -81,6 +81,8 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.descriptionField = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
+            this.routeBox = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -443,6 +445,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.routeBox);
+            this.tabPage3.Controls.Add(this.label23);
             this.tabPage3.Controls.Add(this.consaddrField);
             this.tabPage3.Controls.Add(this.postAddrField);
             this.tabPage3.Controls.Add(this.legaladdrField);
@@ -629,6 +633,26 @@
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
+            // routeBox
+            // 
+            this.routeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.routeBox.FormattingEnabled = true;
+            this.routeBox.Location = new System.Drawing.Point(174, 216);
+            this.routeBox.Name = "routeBox";
+            this.routeBox.Size = new System.Drawing.Size(255, 21);
+            this.routeBox.TabIndex = 34;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(89, 212);
+            this.label23.Margin = new System.Windows.Forms.Padding(0);
+            this.label23.Name = "label23";
+            this.label23.Padding = new System.Windows.Forms.Padding(8);
+            this.label23.Size = new System.Drawing.Size(79, 29);
+            this.label23.TabIndex = 33;
+            this.label23.Text = "Маршрут:";
+            // 
             // AddContractorForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -714,5 +738,7 @@
         private System.Windows.Forms.TextBox descriptionField;
         private System.Windows.Forms.TextBox reasonField;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.ComboBox routeBox;
+        private System.Windows.Forms.Label label23;
     }
 }

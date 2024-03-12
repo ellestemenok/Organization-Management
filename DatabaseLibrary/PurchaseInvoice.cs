@@ -1,7 +1,5 @@
 ﻿using Npgsql;
 using System;
-using System.Data;
-
 namespace DatabaseLibrary
 {
     public class PurchaseInvoice

@@ -1,5 +1,4 @@
 ﻿using Npgsql;
-
 namespace DatabaseLibrary
 {
     public class Good

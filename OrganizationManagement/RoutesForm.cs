@@ -1,16 +1,10 @@
 ﻿using DatabaseLibrary;
-using OrganizationManagement.StoragesEdit;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using OrganizationManagement.RoutesEdit;
 
-namespace OrganizationManagement.RoutesEdit
+namespace OrganizationManagement
 {
     public partial class RoutesForm : Form
     {
@@ -36,12 +30,15 @@ namespace OrganizationManagement.RoutesEdit
 
         public void LoadDataIntoDataGridView()
         {
+            routesGrid.DataSource = null;
             string query = "SELECT  r.\"RouteID\" AS \"№\", " +
                 "r.\"Name\" AS \"Название\", " +
                 "COUNT(rp.\"ContractorID\") AS \"Количество точек\" " +
                 "FROM public.\"Route\" r LEFT JOIN public.\"Contractor\" rp ON r.\"RouteID\" = rp.\"RouteID\" " +
                 "GROUP BY r.\"RouteID\", r.\"Name\" ORDER BY r.\"RouteID\"";
+            
             DataDB.FillDataGridViewWithQueryResult(routesGrid, query);
+            routesGrid.Columns["№"].Visible = false;
         }
 
         private void delItem_Click(object sender, EventArgs e)
@@ -51,30 +48,46 @@ namespace OrganizationManagement.RoutesEdit
             {
                 DataGridViewRow selectedRow = routesGrid.SelectedRows[0];
                 int routeID = Convert.ToInt32(selectedRow.Cells["№"].Value);
-                Storage.Delete(routeID);
+
+                // Проверка на запрещенный к удалению маршрут
+                if (routeID == 1)
+                {
+                    MessageBox.Show("Удаление этого маршрута запрещено.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Перемещение контрагентов маршрута в запись с RouteID = 1
+                string updateContractorsQuery = $"UPDATE public.\"Contractor\" SET \"RouteID\" = 1 WHERE \"RouteID\" = {routeID}";
+                DataDB.ExecuteQuery(updateContractorsQuery);
+
+                // Удаление маршрута
+                Route.Delete(routeID);
                 LoadDataIntoDataGridView();
             }
         }
 
-        private void addItem_Click_1(object sender, EventArgs e)
+        private void addItem_Click(object sender, EventArgs e)
         {
-            //AddRouteForm addForm = new AddRouteForm();
-            //addForm.MdiParent = ActiveForm;
-            //addForm.Show();
+            AddRouteForm addForm = new AddRouteForm();
+            addForm.MdiParent = ActiveForm;
+            addForm.Show();
         }
 
         private void editItem_Click(object sender, EventArgs e)
         {
-            //DataGridViewRow selectedRow = routesGrid.SelectedRows[0];
-            //int routeID = Convert.ToInt32(selectedRow.Cells["№"].Value);
-            //DataDB routesRepository = new DataDB();
+            DataGridViewRow selectedRow = routesGrid.SelectedRows[0];
+            int routeID = Convert.ToInt32(selectedRow.Cells["№"].Value);
+            DataDB routesRepository = new DataDB();
 
-            //string query = $"SELECT * FROM public.\"Route\" WHERE \"RouteID\" = {routeID}";
-            //DataTable routesData = routesRepository.FillFormWithQueryResult(query);
+            string routeQuery = $"SELECT * FROM public.\"Route\" WHERE \"RouteID\" = {routeID}";
+            DataTable routeData = routesRepository.FillFormWithQueryResult(routeQuery);
 
-            //EditRouteForm editForm = new EditRouteForm(routesData);
-            //editForm.MdiParent = ActiveForm;
-            //editForm.Show();
+            string contractorsQuery = "SELECT * FROM public.\"Contractor\""; // Запрос на получение данных о контрагентах
+            DataTable contractorsData = routesRepository.FillFormWithQueryResult(contractorsQuery);
+
+            EditRouteForm editForm = new EditRouteForm(routeData, contractorsData); // Передача данных о контрагентах в конструктор
+            editForm.MdiParent = ActiveForm;
+            editForm.Show();
         }
 
         private void filterBox_TextChanged(object sender, EventArgs e)
@@ -114,9 +127,15 @@ namespace OrganizationManagement.RoutesEdit
                 editForm.Show();
             }
         }
+
         private void refreshGrid_Click(object sender, EventArgs e)
         {
-            LoadDataIntoDataGridView();
+            try
+            {
+                LoadDataIntoDataGridView();
+
+            }
+            catch (Exception ex) { MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
     }
 }

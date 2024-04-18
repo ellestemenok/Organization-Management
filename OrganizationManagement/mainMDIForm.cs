@@ -104,5 +104,19 @@ namespace OrganizationManagement
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
         }
+
+        private void testToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form1 newMDIChild = new Form1();
+            newMDIChild.MdiParent = this;
+            newMDIChild.Show();
+        }
+
+        private void водителиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DriversForm newMDIChild = new DriversForm();
+            newMDIChild.MdiParent = this;
+            newMDIChild.Show();
+        }
     }
 }

@@ -11,7 +11,6 @@ namespace OrganizationManagement.RoutesEdit
         private DataTable routesData;
         public EditRouteForm(DataTable routesData, DataTable contractorsData)
         {
-
             InitializeComponent();
             this.routesData = routesData;
             this.contractorsData = contractorsData; // Сохраняем данные о контрагентах
@@ -21,16 +20,18 @@ namespace OrganizationManagement.RoutesEdit
                 routeID = Convert.ToInt32(routesData.Rows[0]["RouteID"]);
                 nameField.Text = routesData.Rows[0]["Name"].ToString();
             }
-      
-            LoadDataIntoDataGridView();
-            
         }
+        private void EditRouteForm_Enter(object sender, EventArgs e)
+        {
+            LoadDataIntoDataGridView();
+        }
+
         public void LoadDataIntoDataGridView()
         {
+
             // Очищаем таблицу перед загрузкой новых данных
             routeAdrsGrid.Rows.Clear();
             routeAdrsGrid.Columns.Clear(); // Очищаем все столбцы
-
             // Создаем столбец с галочками
             DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
             checkBoxColumn.HeaderText = "Принадлежность к маршруту";
@@ -60,33 +61,55 @@ namespace OrganizationManagement.RoutesEdit
         }
         private void saveButton_Click(object sender, EventArgs e)
         {
+            // Сохраняем измененное название маршрута
+            if (routesData.Rows.Count > 0)
+            {
+                string newName = nameField.Text.Trim();
+                routesData.Rows[0]["Name"] = newName;
+                Route.UpdateRouteName(routeID, newName); // метод реализован для обновления названия маршрута
+            }
 
-            // Route.Update(....);
-            // Close();
+            // Сохраняем изменения в маршрутах контрагентов
+            foreach (DataRow contractor in contractorsData.Rows)
+            {
+                Contractor.UpdateContractorRoute(contractor["Name"].ToString(), contractor["RouteID"]);
+            }
+            MessageBox.Show("Изменения сохранены.");
+            Close(); // Закрываем форму после сохранения изменений
         }
 
-        private void routeAdrsGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void routeAdrsGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Проверяем, что изменение произошло в колонке с чекбоксами
             if (e.ColumnIndex == routeAdrsGrid.Columns["BelongsToRoute"].Index && e.RowIndex >= 0)
             {
-                // Получаем новое состояние чекбокса
-                bool isChecked = Convert.ToBoolean(routeAdrsGrid.Rows[e.RowIndex].Cells["BelongsToRoute"].Value);
+                DataGridViewCheckBoxCell checkBox = (DataGridViewCheckBoxCell)routeAdrsGrid.Rows[e.RowIndex].Cells["BelongsToRoute"];
+                bool isChecked = !(bool)checkBox.Value; // Предполагаемое новое значение
 
-                // Получаем информацию о контрагенте
                 string contractorName = routeAdrsGrid.Rows[e.RowIndex].Cells["ContractorName"].Value.ToString();
 
-                // Обновляем данные о маршрутах контрагента в зависимости от состояния чекбокса
                 foreach (DataRow contractor in contractorsData.Rows)
                 {
                     if (contractor["Name"].ToString() == contractorName)
                     {
-                        contractor["RouteID"] = isChecked ? routeID : DBNull.Value;
+                        if (isChecked)
+                        {
+                            contractor["RouteID"] = routeID;
+                        }
+                        else
+                        {
+                            // Проверяем, не установлен ли уже RouteID равным 1
+                            if (Convert.ToInt32(contractor["RouteID"]) == 1)
+                            {
+                                checkBox.Value = true; // Оставляем галочку, если RouteID уже 1
+                            }
+                            else
+                            {
+                                contractor["RouteID"] = 1; // Устанавливаем RouteID равным 1
+                            }
+                        }
                         break;
                     }
                 }
-
-                // Обновляем данные в DataGridView
                 LoadDataIntoDataGridView();
             }
         }

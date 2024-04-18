@@ -52,6 +52,7 @@
             this.minimizeallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStripMain = new System.Windows.Forms.StatusStrip();
             this.usernameStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripDateTime = new System.Windows.Forms.ToolStripStatusLabel();
@@ -145,6 +146,7 @@
             this.водителиToolStripMenuItem.Name = "водителиToolStripMenuItem";
             this.водителиToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
             this.водителиToolStripMenuItem.Text = "Водители";
+            this.водителиToolStripMenuItem.Click += new System.EventHandler(this.водителиToolStripMenuItem_Click);
             // 
             // routesToolStripMenuItem
             // 
@@ -217,7 +219,8 @@
             this.cascadeToolStripMenuItem,
             this.minimizeallToolStripMenuItem,
             this.toolStripSeparator3,
-            this.closeToolStripMenuItem});
+            this.closeToolStripMenuItem,
+            this.testToolStripMenuItem});
             this.окнаToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.окнаToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.окнаToolStripMenuItem.Margin = new System.Windows.Forms.Padding(3);
@@ -262,6 +265,13 @@
             this.closeToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.closeToolStripMenuItem.Text = "Закрыть";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.testToolStripMenuItem.Text = "test";
+            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
             // statusStripMain
             // 
@@ -354,6 +364,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem водителиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem routesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
     }
 }
 

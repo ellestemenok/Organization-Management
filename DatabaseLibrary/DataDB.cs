@@ -84,5 +84,31 @@ namespace DatabaseLibrary
             }
             return result;
         }
+
+        public static void ExecuteQuery(string query)
+        {
+            if (Autorization.npgSqlConnection != null && Autorization.npgSqlConnection.State == ConnectionState.Open)
+            {
+                using (NpgsqlCommand command = new NpgsqlCommand(query, Autorization.npgSqlConnection))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void ExecuteQueryWithParams(string query, NpgsqlParameter[] parameters)
+        {
+            if (Autorization.npgSqlConnection != null && Autorization.npgSqlConnection.State == ConnectionState.Open)
+            {
+                using (NpgsqlCommand command = new NpgsqlCommand(query, Autorization.npgSqlConnection))
+                {
+                    foreach (var parameter in parameters)
+                    {
+                        command.Parameters.Add(parameter);
+                    }
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

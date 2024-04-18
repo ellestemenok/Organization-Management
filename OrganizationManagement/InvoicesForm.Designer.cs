@@ -1,6 +1,6 @@
 ﻿namespace OrganizationManagement
 {
-    partial class RoutesForm
+    partial class InvoicesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.addItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -36,9 +35,9 @@
             this.refreshGrid = new System.Windows.Forms.ToolStripMenuItem();
             this.filterLable = new System.Windows.Forms.ToolStripMenuItem();
             this.filterBox = new System.Windows.Forms.ToolStripTextBox();
-            this.routesGrid = new System.Windows.Forms.DataGridView();
+            this.invoicesGrid = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.routesGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoicesGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -54,10 +53,9 @@
             this.filterBox});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(684, 24);
-            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Size = new System.Drawing.Size(804, 24);
+            this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // addItem
@@ -108,55 +106,45 @@
             this.filterBox.BackColor = System.Drawing.Color.White;
             this.filterBox.Font = new System.Drawing.Font("Verdana", 8F);
             this.filterBox.Name = "filterBox";
-            this.filterBox.Size = new System.Drawing.Size(174, 20);
+            this.filterBox.Size = new System.Drawing.Size(150, 20);
             this.filterBox.TextChanged += new System.EventHandler(this.filterBox_TextChanged);
             // 
-            // routesGrid
+            // invoicesGrid
             // 
-            this.routesGrid.AllowUserToAddRows = false;
-            this.routesGrid.AllowUserToDeleteRows = false;
-            this.routesGrid.AllowUserToResizeRows = false;
-            this.routesGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.routesGrid.BackgroundColor = System.Drawing.Color.White;
-            this.routesGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            this.routesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.routesGrid.DefaultCellStyle = dataGridViewCellStyle1;
-            this.routesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.routesGrid.Location = new System.Drawing.Point(0, 24);
-            this.routesGrid.Name = "routesGrid";
-            this.routesGrid.ReadOnly = true;
-            this.routesGrid.RowHeadersVisible = false;
-            this.routesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.routesGrid.Size = new System.Drawing.Size(684, 437);
-            this.routesGrid.TabIndex = 4;
-            this.routesGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.routesGrid_CellDoubleClick);
+            this.invoicesGrid.AllowUserToAddRows = false;
+            this.invoicesGrid.AllowUserToDeleteRows = false;
+            this.invoicesGrid.AllowUserToResizeRows = false;
+            this.invoicesGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.invoicesGrid.BackgroundColor = System.Drawing.Color.White;
+            this.invoicesGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.invoicesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.invoicesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.invoicesGrid.GridColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.invoicesGrid.Location = new System.Drawing.Point(0, 24);
+            this.invoicesGrid.Name = "invoicesGrid";
+            this.invoicesGrid.ReadOnly = true;
+            this.invoicesGrid.RowHeadersVisible = false;
+            this.invoicesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.invoicesGrid.Size = new System.Drawing.Size(804, 437);
+            this.invoicesGrid.TabIndex = 3;
+            this.invoicesGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.invoicesGrid_CellDoubleClick);
             // 
-            // RoutesForm
+            // InvoicesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(684, 461);
-            this.Controls.Add(this.routesGrid);
+            this.ClientSize = new System.Drawing.Size(804, 461);
+            this.Controls.Add(this.invoicesGrid);
             this.Controls.Add(this.menuStrip1);
-            this.Font = new System.Drawing.Font("Verdana", 8.25F);
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "RoutesForm";
+            this.Font = new System.Drawing.Font("Verdana", 8F);
+            this.Name = "InvoicesForm";
             this.ShowIcon = false;
-            this.Text = "Маршруты";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RoutesForm_FormClosing);
-            this.Load += new System.EventHandler(this.RoutesForm_Load);
-            this.Enter += new System.EventHandler(this.RoutesForm_Enter);
+            this.Text = "Журнал счетов-фактур";
+            this.Load += new System.EventHandler(this.InvoicesForm_Load);
+            this.Enter += new System.EventHandler(this.InvoicesForm_Enter);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.routesGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invoicesGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,10 +155,10 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem addItem;
         private System.Windows.Forms.ToolStripMenuItem delItem;
+        private System.Windows.Forms.ToolStripMenuItem editItem;
         private System.Windows.Forms.ToolStripMenuItem refreshGrid;
         private System.Windows.Forms.ToolStripMenuItem filterLable;
         private System.Windows.Forms.ToolStripTextBox filterBox;
-        private System.Windows.Forms.DataGridView routesGrid;
-        private System.Windows.Forms.ToolStripMenuItem editItem;
+        private System.Windows.Forms.DataGridView invoicesGrid;
     }
 }

@@ -1,4 +1,7 @@
 ﻿using Npgsql;
+using System.Data.SqlClient;
+using System;
+using System.Data;
 namespace DatabaseLibrary
 {
     public class Contractor
@@ -113,6 +116,21 @@ namespace DatabaseLibrary
             {
                 cmd.Parameters.AddWithValue("@ContractorID", contractorID);
                 cmd.ExecuteNonQuery();
+            }
+        }
+
+
+        public static void UpdateContractorRoute(string contractorName, object routeID)
+        {
+            if (Autorization.npgSqlConnection != null && Autorization.npgSqlConnection.State == ConnectionState.Open)
+            {                 
+                using (var command = new NpgsqlCommand("UPDATE public.\"Contractor\" SET \"RouteID\" = @RouteID WHERE \"Name\" = @Name", Autorization.npgSqlConnection))
+                {
+                    command.Parameters.AddWithValue("@RouteID", routeID ?? DBNull.Value);
+                    command.Parameters.AddWithValue("@Name", contractorName);
+
+                    command.ExecuteNonQuery();
+                }
             }
         }
     }

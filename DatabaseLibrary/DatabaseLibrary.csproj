@@ -97,12 +97,14 @@
     <Compile Include="Autorization.cs" />
     <Compile Include="Contractor.cs" />
     <Compile Include="DataDB.cs" />
+    <Compile Include="Driver.cs" />
     <Compile Include="ExpenditureInvoice.cs" />
     <Compile Include="Good.cs" />
     <Compile Include="MeasureUnit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseInvoice.cs" />
     <Compile Include="Requisites.cs" />
+    <Compile Include="Route.cs" />
     <Compile Include="Storage.cs" />
   </ItemGroup>
   <ItemGroup>

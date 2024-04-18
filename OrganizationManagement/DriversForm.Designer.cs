@@ -1,6 +1,6 @@
 ﻿namespace OrganizationManagement
 {
-    partial class RoutesForm
+    partial class DriversForm
     {
         /// <summary>
         /// Required designer variable.
@@ -36,9 +36,9 @@
             this.refreshGrid = new System.Windows.Forms.ToolStripMenuItem();
             this.filterLable = new System.Windows.Forms.ToolStripMenuItem();
             this.filterBox = new System.Windows.Forms.ToolStripTextBox();
-            this.routesGrid = new System.Windows.Forms.DataGridView();
+            this.driversGrid = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.routesGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.driversGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -111,15 +111,15 @@
             this.filterBox.Size = new System.Drawing.Size(174, 20);
             this.filterBox.TextChanged += new System.EventHandler(this.filterBox_TextChanged);
             // 
-            // routesGrid
+            // driversGrid
             // 
-            this.routesGrid.AllowUserToAddRows = false;
-            this.routesGrid.AllowUserToDeleteRows = false;
-            this.routesGrid.AllowUserToResizeRows = false;
-            this.routesGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.routesGrid.BackgroundColor = System.Drawing.Color.White;
-            this.routesGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            this.routesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.driversGrid.AllowUserToAddRows = false;
+            this.driversGrid.AllowUserToDeleteRows = false;
+            this.driversGrid.AllowUserToResizeRows = false;
+            this.driversGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.driversGrid.BackgroundColor = System.Drawing.Color.White;
+            this.driversGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.driversGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8.25F);
@@ -127,36 +127,36 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.routesGrid.DefaultCellStyle = dataGridViewCellStyle1;
-            this.routesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.routesGrid.Location = new System.Drawing.Point(0, 24);
-            this.routesGrid.Name = "routesGrid";
-            this.routesGrid.ReadOnly = true;
-            this.routesGrid.RowHeadersVisible = false;
-            this.routesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.routesGrid.Size = new System.Drawing.Size(684, 437);
-            this.routesGrid.TabIndex = 4;
-            this.routesGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.routesGrid_CellDoubleClick);
+            this.driversGrid.DefaultCellStyle = dataGridViewCellStyle1;
+            this.driversGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.driversGrid.Location = new System.Drawing.Point(0, 24);
+            this.driversGrid.Name = "driversGrid";
+            this.driversGrid.ReadOnly = true;
+            this.driversGrid.RowHeadersVisible = false;
+            this.driversGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.driversGrid.Size = new System.Drawing.Size(684, 437);
+            this.driversGrid.TabIndex = 4;
+            this.driversGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.routesGrid_CellDoubleClick);
             // 
-            // RoutesForm
+            // DriversForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(684, 461);
-            this.Controls.Add(this.routesGrid);
+            this.Controls.Add(this.driversGrid);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Verdana", 8.25F);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "RoutesForm";
+            this.Name = "DriversForm";
             this.ShowIcon = false;
-            this.Text = "Маршруты";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RoutesForm_FormClosing);
-            this.Load += new System.EventHandler(this.RoutesForm_Load);
-            this.Enter += new System.EventHandler(this.RoutesForm_Enter);
+            this.Text = "Водители";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DriversForm_FormClosing);
+            this.Load += new System.EventHandler(this.DriversForm_Load);
+            this.Enter += new System.EventHandler(this.DriversForm_Enter);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.routesGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.driversGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,7 +170,7 @@
         private System.Windows.Forms.ToolStripMenuItem refreshGrid;
         private System.Windows.Forms.ToolStripMenuItem filterLable;
         private System.Windows.Forms.ToolStripTextBox filterBox;
-        private System.Windows.Forms.DataGridView routesGrid;
+        private System.Windows.Forms.DataGridView driversGrid;
         private System.Windows.Forms.ToolStripMenuItem editItem;
     }
 }

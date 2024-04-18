@@ -69,6 +69,7 @@
             this.addAccButton = new System.Windows.Forms.Button();
             this.accountsGrid = new System.Windows.Forms.DataGridView();
             this.orgSave = new System.Windows.Forms.Button();
+            this.orgPrint = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -535,7 +536,7 @@
             // orgSave
             // 
             this.orgSave.Font = new System.Drawing.Font("Verdana", 8F);
-            this.orgSave.Location = new System.Drawing.Point(464, 290);
+            this.orgSave.Location = new System.Drawing.Point(464, 289);
             this.orgSave.Name = "orgSave";
             this.orgSave.Size = new System.Drawing.Size(100, 30);
             this.orgSave.TabIndex = 1;
@@ -543,11 +544,23 @@
             this.orgSave.UseVisualStyleBackColor = true;
             this.orgSave.Click += new System.EventHandler(this.orgSave_Click);
             // 
+            // orgPrint
+            // 
+            this.orgPrint.Font = new System.Drawing.Font("Verdana", 8F);
+            this.orgPrint.Location = new System.Drawing.Point(358, 289);
+            this.orgPrint.Name = "orgPrint";
+            this.orgPrint.Size = new System.Drawing.Size(100, 30);
+            this.orgPrint.TabIndex = 2;
+            this.orgPrint.Text = "Печать";
+            this.orgPrint.UseVisualStyleBackColor = true;
+            this.orgPrint.Click += new System.EventHandler(this.orgPrint_Click);
+            // 
             // OrganizationRequisitesForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(584, 331);
+            this.Controls.Add(this.orgPrint);
             this.Controls.Add(this.orgSave);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Verdana", 8F);
@@ -613,5 +626,6 @@
         private System.Windows.Forms.TextBox okpdField;
         private System.Windows.Forms.Button addAccButton;
         private System.Windows.Forms.Button delAccButton;
+        private System.Windows.Forms.Button orgPrint;
     }
 }

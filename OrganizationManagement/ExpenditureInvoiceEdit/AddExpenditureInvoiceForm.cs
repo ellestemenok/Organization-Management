@@ -23,7 +23,7 @@ namespace OrganizationManagement
                 "FROM public.\"ExpenditureInvoice\";"));
             numField.Text = DataDB.ExecuteScalarQuery("SELECT MAX(\"InvoiceNumber\") " +
                 "FROM public.\"ExpenditureInvoice\";");
-            dateField.Text = DateTime.Today.ToString();
+            dateTimePicker.Value = DateTime.Today;
         }
         public void LoadDataIntoDataGridView()
         {
@@ -53,7 +53,7 @@ namespace OrganizationManagement
         }
         private void addItem_Click(object sender, EventArgs e)
         {
-            DateTime invoiceDate = Convert.ToDateTime(dateField.Text);
+            DateTime invoiceDate = dateTimePicker.Value;
             int contractorID = 0;
             int storageID = 0;
             int number = Convert.ToInt32(numField.Text);
@@ -75,7 +75,7 @@ namespace OrganizationManagement
         }
         private void saveButton_Click(object sender, EventArgs e)
         {
-            DateTime invoiceDate = Convert.ToDateTime(dateField.Text);
+            DateTime invoiceDate = dateTimePicker.Value;
             int contractorID = 0;
             int storageID = 0;
             int number = Convert.ToInt32(numField.Text);

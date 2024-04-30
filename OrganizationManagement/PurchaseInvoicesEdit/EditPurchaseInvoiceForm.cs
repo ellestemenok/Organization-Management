@@ -18,7 +18,7 @@ namespace OrganizationManagement
             if (invoicesData.Rows.Count > 0)
             {
                 invoiceID = Convert.ToInt32(invoicesData.Rows[0]["InvoiceID"]);
-                dateField.Text = Convert.ToDateTime(invoicesData.Rows[0]["InvoiceDate"]).ToString("dd.MM.yyyy");
+                dateTimePicker.Value = (DateTime)invoicesData.Rows[0]["InvoiceDate"];
                 numField.Text = invoicesData.Rows[0]["InvoiceNumber"].ToString();
                 contractorBox.Text = invoicesData.Rows[0]["ContractorName"].ToString();
                 storageBox.Text = invoicesData.Rows[0]["StorageName"].ToString();
@@ -60,7 +60,7 @@ namespace OrganizationManagement
         }
         private void saveButton_Click(object sender, EventArgs e)
         {
-            DateTime invoiceDate = Convert.ToDateTime(dateField.Text);
+            DateTime invoiceDate = dateTimePicker.Value;
             int invoiceNumber = Convert.ToInt32(numField.Text);
             int contractorID = 0;
             int storageID = 0;

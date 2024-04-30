@@ -84,7 +84,7 @@
             this.passwordField.PasswordChar = '*';
             this.passwordField.Size = new System.Drawing.Size(190, 20);
             this.passwordField.TabIndex = 5;
-            this.passwordField.Text = "5215e";
+            this.passwordField.Text = "5215";
             // 
             // AutorizationForm
             // 

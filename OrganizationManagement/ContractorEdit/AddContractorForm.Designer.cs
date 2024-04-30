@@ -63,6 +63,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.routeBox = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.consaddrField = new System.Windows.Forms.TextBox();
             this.postAddrField = new System.Windows.Forms.TextBox();
             this.legaladdrField = new System.Windows.Forms.TextBox();
@@ -81,8 +83,7 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.descriptionField = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
-            this.routeBox = new System.Windows.Forms.ComboBox();
-            this.label23 = new System.Windows.Forms.Label();
+            this.api_btn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -255,6 +256,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.api_btn);
             this.tabPage2.Controls.Add(this.corrField);
             this.tabPage2.Controls.Add(this.paymentField);
             this.tabPage2.Controls.Add(this.ogrnField);
@@ -325,16 +327,16 @@
             // 
             // oktmoField
             // 
-            this.oktmoField.Location = new System.Drawing.Point(295, 55);
+            this.oktmoField.Location = new System.Drawing.Point(283, 82);
             this.oktmoField.Name = "oktmoField";
-            this.oktmoField.Size = new System.Drawing.Size(135, 20);
+            this.oktmoField.Size = new System.Drawing.Size(147, 20);
             this.oktmoField.TabIndex = 28;
             // 
             // kppField
             // 
-            this.kppField.Location = new System.Drawing.Point(295, 25);
+            this.kppField.Location = new System.Drawing.Point(283, 54);
             this.kppField.Name = "kppField";
-            this.kppField.Size = new System.Drawing.Size(135, 20);
+            this.kppField.Size = new System.Drawing.Size(147, 20);
             this.kppField.TabIndex = 27;
             // 
             // innField
@@ -402,7 +404,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(227, 50);
+            this.label11.Location = new System.Drawing.Point(219, 79);
             this.label11.Margin = new System.Windows.Forms.Padding(0);
             this.label11.Name = "label11";
             this.label11.Padding = new System.Windows.Forms.Padding(8);
@@ -424,7 +426,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(227, 20);
+            this.label9.Location = new System.Drawing.Point(219, 50);
             this.label9.Margin = new System.Windows.Forms.Padding(0);
             this.label9.Name = "label9";
             this.label9.Padding = new System.Windows.Forms.Padding(8);
@@ -459,6 +461,26 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Адреса";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // routeBox
+            // 
+            this.routeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.routeBox.FormattingEnabled = true;
+            this.routeBox.Location = new System.Drawing.Point(174, 216);
+            this.routeBox.Name = "routeBox";
+            this.routeBox.Size = new System.Drawing.Size(255, 21);
+            this.routeBox.TabIndex = 34;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(89, 212);
+            this.label23.Margin = new System.Windows.Forms.Padding(0);
+            this.label23.Name = "label23";
+            this.label23.Padding = new System.Windows.Forms.Padding(8);
+            this.label23.Size = new System.Drawing.Size(79, 29);
+            this.label23.TabIndex = 33;
+            this.label23.Text = "Маршрут:";
             // 
             // consaddrField
             // 
@@ -633,25 +655,16 @@
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // routeBox
+            // api_btn
             // 
-            this.routeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.routeBox.FormattingEnabled = true;
-            this.routeBox.Location = new System.Drawing.Point(174, 216);
-            this.routeBox.Name = "routeBox";
-            this.routeBox.Size = new System.Drawing.Size(255, 21);
-            this.routeBox.TabIndex = 34;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(89, 212);
-            this.label23.Margin = new System.Windows.Forms.Padding(0);
-            this.label23.Name = "label23";
-            this.label23.Padding = new System.Windows.Forms.Padding(8);
-            this.label23.Size = new System.Drawing.Size(79, 29);
-            this.label23.TabIndex = 33;
-            this.label23.Text = "Маршрут:";
+            this.api_btn.Font = new System.Drawing.Font("Verdana", 9F);
+            this.api_btn.Location = new System.Drawing.Point(222, 24);
+            this.api_btn.Name = "api_btn";
+            this.api_btn.Size = new System.Drawing.Size(208, 20);
+            this.api_btn.TabIndex = 19;
+            this.api_btn.Text = "Заполнить";
+            this.api_btn.UseVisualStyleBackColor = true;
+            this.api_btn.Click += new System.EventHandler(this.api_btn_Click);
             // 
             // AddContractorForm
             // 
@@ -740,5 +753,6 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.ComboBox routeBox;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Button api_btn;
     }
 }

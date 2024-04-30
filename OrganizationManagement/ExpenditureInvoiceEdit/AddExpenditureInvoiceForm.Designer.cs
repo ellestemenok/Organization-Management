@@ -52,7 +52,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.addItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dateField = new System.Windows.Forms.MaskedTextBox();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.specGrid)).BeginInit();
@@ -64,7 +64,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(27, 28);
+            this.label1.Location = new System.Drawing.Point(27, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(179, 14);
             this.label1.TabIndex = 0;
@@ -74,7 +74,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(359, 28);
+            this.label2.Location = new System.Drawing.Point(334, 27);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(21, 14);
             this.label2.TabIndex = 0;
@@ -82,7 +82,7 @@
             // 
             // numField
             // 
-            this.numField.Location = new System.Drawing.Point(213, 25);
+            this.numField.Location = new System.Drawing.Point(213, 24);
             this.numField.Name = "numField";
             this.numField.Size = new System.Drawing.Size(115, 20);
             this.numField.TabIndex = 1;
@@ -297,14 +297,12 @@
             this.delItem.Text = " ";
             this.delItem.Click += new System.EventHandler(this.delItem_Click);
             // 
-            // dateField
+            // dateTimePicker
             // 
-            this.dateField.Location = new System.Drawing.Point(386, 25);
-            this.dateField.Mask = "00/00/0000";
-            this.dateField.Name = "dateField";
-            this.dateField.Size = new System.Drawing.Size(100, 20);
-            this.dateField.TabIndex = 8;
-            this.dateField.ValidatingType = typeof(System.DateTime);
+            this.dateTimePicker.Location = new System.Drawing.Point(361, 24);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(132, 20);
+            this.dateTimePicker.TabIndex = 9;
             // 
             // AddExpenditureInvoiceForm
             // 
@@ -312,7 +310,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(534, 611);
-            this.Controls.Add(this.dateField);
+            this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -370,6 +368,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem addItem;
         private System.Windows.Forms.ToolStripMenuItem delItem;
-        private System.Windows.Forms.MaskedTextBox dateField;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
     }
 }

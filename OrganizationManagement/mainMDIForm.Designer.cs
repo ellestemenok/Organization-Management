@@ -57,6 +57,8 @@
             this.usernameStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerForDatetime = new System.Windows.Forms.Timer(this.components);
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.invoicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
             this.SuspendLayout();
@@ -159,7 +161,9 @@
             // 
             this.журналыДокументовToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.expenditureInvoicesToolStripMenuItem,
-            this.purchaseinvoicesToolStripMenuItem});
+            this.purchaseinvoicesToolStripMenuItem,
+            this.toolStripSeparator4,
+            this.invoicesToolStripMenuItem});
             this.журналыДокументовToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.журналыДокументовToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.журналыДокументовToolStripMenuItem.Margin = new System.Windows.Forms.Padding(3);
@@ -233,7 +237,7 @@
             // 
             this.verticalToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
             this.verticalToolStripMenuItem.Name = "verticalToolStripMenuItem";
-            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.verticalToolStripMenuItem.Text = "Черепицей";
             this.verticalToolStripMenuItem.Click += new System.EventHandler(this.verticalToolStripMenuItem_Click);
             // 
@@ -241,7 +245,7 @@
             // 
             this.cascadeToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
             this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
-            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cascadeToolStripMenuItem.Text = "Каскадом";
             this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.cascadeToolStripMenuItem_Click);
             // 
@@ -249,27 +253,27 @@
             // 
             this.minimizeallToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
             this.minimizeallToolStripMenuItem.Name = "minimizeallToolStripMenuItem";
-            this.minimizeallToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.minimizeallToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.minimizeallToolStripMenuItem.Text = "Свернуть все";
             this.minimizeallToolStripMenuItem.Click += new System.EventHandler(this.minimizeallToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(151, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.closeToolStripMenuItem.Text = "Закрыть";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.testToolStripMenuItem.Text = "test";
             this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
@@ -308,6 +312,18 @@
             // 
             this.timerForDatetime.Interval = 1000;
             this.timerForDatetime.Tick += new System.EventHandler(this.timerForDatetime_Tick);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(257, 6);
+            // 
+            // invoicesToolStripMenuItem
+            // 
+            this.invoicesToolStripMenuItem.Name = "invoicesToolStripMenuItem";
+            this.invoicesToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
+            this.invoicesToolStripMenuItem.Text = "Журнал счетов-фактур";
+            this.invoicesToolStripMenuItem.Click += new System.EventHandler(this.invoicesToolStripMenuItem_Click);
             // 
             // MainMDI
             // 
@@ -365,6 +381,8 @@
         private System.Windows.Forms.ToolStripMenuItem водителиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem routesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem invoicesToolStripMenuItem;
     }
 }
 

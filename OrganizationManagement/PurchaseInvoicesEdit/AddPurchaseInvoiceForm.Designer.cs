@@ -28,10 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.numField = new System.Windows.Forms.TextBox();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -52,40 +49,16 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.addItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dateField = new System.Windows.Forms.MaskedTextBox();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
+            this.numField = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.specGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(27, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(180, 14);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Приходная накладная №";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(359, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(21, 14);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "от";
-            // 
-            // numField
-            // 
-            this.numField.Location = new System.Drawing.Point(213, 25);
-            this.numField.Name = "numField";
-            this.numField.Size = new System.Drawing.Size(115, 20);
-            this.numField.TabIndex = 1;
             // 
             // label3
             // 
@@ -237,14 +210,14 @@
             this.specGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.specGrid.BackgroundColor = System.Drawing.Color.White;
             this.specGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 8F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.specGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 8F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.specGrid.DefaultCellStyle = dataGridViewCellStyle3;
             this.specGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.specGrid.Location = new System.Drawing.Point(3, 45);
             this.specGrid.Name = "specGrid";
@@ -297,14 +270,39 @@
             this.delItem.Text = " ";
             this.delItem.Click += new System.EventHandler(this.delItem_Click);
             // 
-            // dateField
+            // dateTimePicker
             // 
-            this.dateField.Location = new System.Drawing.Point(386, 25);
-            this.dateField.Mask = "00/00/0000";
-            this.dateField.Name = "dateField";
-            this.dateField.Size = new System.Drawing.Size(100, 20);
-            this.dateField.TabIndex = 8;
-            this.dateField.ValidatingType = typeof(System.DateTime);
+            this.dateTimePicker.Location = new System.Drawing.Point(361, 24);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(132, 20);
+            this.dateTimePicker.TabIndex = 15;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
+            this.label9.Location = new System.Drawing.Point(334, 27);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(21, 14);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "от";
+            // 
+            // numField
+            // 
+            this.numField.Location = new System.Drawing.Point(213, 24);
+            this.numField.Name = "numField";
+            this.numField.Size = new System.Drawing.Size(115, 20);
+            this.numField.TabIndex = 13;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(27, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(180, 14);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Приходная накладная №";
             // 
             // AddPurchaseInvoiceForm
             // 
@@ -312,19 +310,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(534, 611);
-            this.Controls.Add(this.dateField);
+            this.Controls.Add(this.dateTimePicker);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.numField);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.reasonField);
             this.Controls.Add(this.storageBox);
             this.Controls.Add(this.contractorBox);
-            this.Controls.Add(this.numField);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Verdana", 8F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -346,10 +344,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox numField;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -370,6 +364,9 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem addItem;
         private System.Windows.Forms.ToolStripMenuItem delItem;
-        private System.Windows.Forms.MaskedTextBox dateField;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox numField;
+        private System.Windows.Forms.Label label1;
     }
 }

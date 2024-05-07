@@ -44,6 +44,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.api_btn = new System.Windows.Forms.Button();
             this.corrField = new System.Windows.Forms.TextBox();
             this.paymentField = new System.Windows.Forms.TextBox();
             this.ogrnField = new System.Windows.Forms.TextBox();
@@ -83,7 +84,7 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.descriptionField = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
-            this.api_btn = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -283,6 +284,17 @@
             this.tabPage2.Text = "Реквизиты";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // api_btn
+            // 
+            this.api_btn.Font = new System.Drawing.Font("Verdana", 9F);
+            this.api_btn.Location = new System.Drawing.Point(222, 24);
+            this.api_btn.Name = "api_btn";
+            this.api_btn.Size = new System.Drawing.Size(208, 20);
+            this.api_btn.TabIndex = 19;
+            this.api_btn.Text = "Заполнить";
+            this.api_btn.UseVisualStyleBackColor = true;
+            this.api_btn.Click += new System.EventHandler(this.api_btn_Click);
+            // 
             // corrField
             // 
             this.corrField.Location = new System.Drawing.Point(205, 205);
@@ -404,7 +416,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(219, 79);
+            this.label11.Location = new System.Drawing.Point(219, 77);
             this.label11.Margin = new System.Windows.Forms.Padding(0);
             this.label11.Name = "label11";
             this.label11.Padding = new System.Windows.Forms.Padding(8);
@@ -447,6 +459,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.linkLabel1);
             this.tabPage3.Controls.Add(this.routeBox);
             this.tabPage3.Controls.Add(this.label23);
             this.tabPage3.Controls.Add(this.consaddrField);
@@ -655,16 +668,16 @@
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // api_btn
+            // linkLabel1
             // 
-            this.api_btn.Font = new System.Drawing.Font("Verdana", 9F);
-            this.api_btn.Location = new System.Drawing.Point(222, 24);
-            this.api_btn.Name = "api_btn";
-            this.api_btn.Size = new System.Drawing.Size(208, 20);
-            this.api_btn.TabIndex = 19;
-            this.api_btn.Text = "Заполнить";
-            this.api_btn.UseVisualStyleBackColor = true;
-            this.api_btn.Click += new System.EventHandler(this.api_btn_Click);
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(171, 108);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(68, 13);
+            this.linkLabel1.TabIndex = 35;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Заполнить";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // AddContractorForm
             // 
@@ -754,5 +767,6 @@
         private System.Windows.Forms.ComboBox routeBox;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Button api_btn;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

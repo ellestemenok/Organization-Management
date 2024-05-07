@@ -182,11 +182,17 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="InvoicesEdit\AddInvoiceForm.cs">
+    <Compile Include="InvoicesEdit\AddGoodinInvoiceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InvoicesEdit\AddInvoiceForm.Designer.cs">
-      <DependentUpon>AddInvoiceForm.cs</DependentUpon>
+    <Compile Include="InvoicesEdit\AddGoodinInvoiceForm.Designer.cs">
+      <DependentUpon>AddGoodinInvoiceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InvoicesEdit\EditInvoiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InvoicesEdit\EditInvoiceForm.Designer.cs">
+      <DependentUpon>EditInvoiceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="InvoicesForm.cs">
       <SubType>Form</SubType>
@@ -371,8 +377,11 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InvoicesEdit\AddInvoiceForm.resx">
-      <DependentUpon>AddInvoiceForm.cs</DependentUpon>
+    <EmbeddedResource Include="InvoicesEdit\AddGoodinInvoiceForm.resx">
+      <DependentUpon>AddGoodinInvoiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvoicesEdit\EditInvoiceForm.resx">
+      <DependentUpon>EditInvoiceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InvoicesForm.resx">
       <DependentUpon>InvoicesForm.cs</DependentUpon>

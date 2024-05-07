@@ -83,6 +83,8 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.descriptionField = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
+            this.api_btn = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -254,6 +256,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.api_btn);
             this.tabPage2.Controls.Add(this.corrField);
             this.tabPage2.Controls.Add(this.paymentField);
             this.tabPage2.Controls.Add(this.ogrnField);
@@ -324,16 +327,16 @@
             // 
             // oktmoField
             // 
-            this.oktmoField.Location = new System.Drawing.Point(295, 55);
+            this.oktmoField.Location = new System.Drawing.Point(283, 82);
             this.oktmoField.Name = "oktmoField";
-            this.oktmoField.Size = new System.Drawing.Size(135, 20);
+            this.oktmoField.Size = new System.Drawing.Size(147, 20);
             this.oktmoField.TabIndex = 28;
             // 
             // kppField
             // 
-            this.kppField.Location = new System.Drawing.Point(295, 25);
+            this.kppField.Location = new System.Drawing.Point(283, 54);
             this.kppField.Name = "kppField";
-            this.kppField.Size = new System.Drawing.Size(135, 20);
+            this.kppField.Size = new System.Drawing.Size(147, 20);
             this.kppField.TabIndex = 27;
             // 
             // innField
@@ -401,7 +404,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(227, 50);
+            this.label11.Location = new System.Drawing.Point(219, 77);
             this.label11.Margin = new System.Windows.Forms.Padding(0);
             this.label11.Name = "label11";
             this.label11.Padding = new System.Windows.Forms.Padding(8);
@@ -423,7 +426,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(227, 20);
+            this.label9.Location = new System.Drawing.Point(219, 50);
             this.label9.Margin = new System.Windows.Forms.Padding(0);
             this.label9.Name = "label9";
             this.label9.Padding = new System.Windows.Forms.Padding(8);
@@ -444,6 +447,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.linkLabel1);
             this.tabPage3.Controls.Add(this.routeBox);
             this.tabPage3.Controls.Add(this.label23);
             this.tabPage3.Controls.Add(this.consaddrField);
@@ -643,7 +647,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Font = new System.Drawing.Font("Verdana", 8F);
+            this.saveButton.Font = new System.Drawing.Font("Verdana", 9F);
             this.saveButton.Location = new System.Drawing.Point(372, 302);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(100, 30);
@@ -651,6 +655,28 @@
             this.saveButton.Text = "Сохранить";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // api_btn
+            // 
+            this.api_btn.Font = new System.Drawing.Font("Verdana", 9F);
+            this.api_btn.Location = new System.Drawing.Point(222, 24);
+            this.api_btn.Name = "api_btn";
+            this.api_btn.Size = new System.Drawing.Size(208, 20);
+            this.api_btn.TabIndex = 29;
+            this.api_btn.Text = "Заполнить";
+            this.api_btn.UseVisualStyleBackColor = true;
+            this.api_btn.Click += new System.EventHandler(this.api_btn_Click);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(171, 108);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(68, 13);
+            this.linkLabel1.TabIndex = 33;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Заполнить";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // EditContractorForm
             // 
@@ -739,5 +765,7 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.ComboBox routeBox;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Button api_btn;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

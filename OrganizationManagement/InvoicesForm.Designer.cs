@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.addItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshGrid = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,7 +44,6 @@
             this.menuStrip1.AllowMerge = false;
             this.menuStrip1.Font = new System.Drawing.Font("Verdana", 9F);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addItem,
             this.delItem,
             this.editItem,
             this.refreshGrid,
@@ -57,15 +55,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(804, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // addItem
-            // 
-            this.addItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.addItem.Image = global::OrganizationManagement.Properties.Resources.invoiceAddIcon;
-            this.addItem.Name = "addItem";
-            this.addItem.Size = new System.Drawing.Size(28, 20);
-            this.addItem.Text = " ";
-            this.addItem.Click += new System.EventHandler(this.addItem_Click);
             // 
             // delItem
             // 
@@ -153,7 +142,6 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem addItem;
         private System.Windows.Forms.ToolStripMenuItem delItem;
         private System.Windows.Forms.ToolStripMenuItem editItem;
         private System.Windows.Forms.ToolStripMenuItem refreshGrid;

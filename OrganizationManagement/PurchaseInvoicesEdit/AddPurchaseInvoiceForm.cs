@@ -1,4 +1,5 @@
 ﻿using DatabaseLibrary;
+using Npgsql;
 using OrganizationManagement.PurchaseInvoicesEdit;
 using System;
 using System.Collections.Generic;
@@ -121,6 +122,7 @@ namespace OrganizationManagement
             int detailID = Convert.ToInt32(selectedRow.Cells["DetailID"].Value);
             PurchaseInvoice.DeleteDetail(detailID);
             UpdateQuantnPrice();
+            LoadDataIntoDataGridView();
         }
 
         private void contractorBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -138,5 +140,7 @@ namespace OrganizationManagement
                 reasonField.Text = contrData.Rows[0]["Reason"].ToString();
             }
         }
+
+        
     }
 }

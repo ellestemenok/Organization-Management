@@ -1,4 +1,5 @@
 ﻿using DatabaseLibrary;
+using Npgsql;
 using OrganizationManagement.PurchaseInvoicesEdit;
 using System;
 using System.Collections.Generic;
@@ -134,5 +135,64 @@ namespace OrganizationManagement
                 reasonField.Text = contrData.Rows[0]["Reason"].ToString();
             }
         }
+
+        private void создатьСчетфактуруToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (NpgsqlConnection conn = new NpgsqlConnection(Autorization.connectionString))
+            {
+                conn.Open();
+
+                using (var transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        // Получаем данные из ExpenditureInvoice
+                        NpgsqlCommand cmd = new NpgsqlCommand($"SELECT \"InvoiceDate\", \"ContractorID\" FROM public.\"ExpenditureInvoice\" WHERE \"InvoiceID\" = {invoiceID};", conn);
+                        NpgsqlDataReader reader = cmd.ExecuteReader();
+                        if (!reader.Read())
+                        {
+                            reader.Close();
+                            throw new Exception("Расходная накладная не найдена.");
+                        }
+                        DateTime invoiceDate = reader.GetDateTime(0);
+                        int contractorID = reader.GetInt32(1);
+                        reader.Close(); // Обязательно закрываем ридер
+
+                        // Получаем суммарную стоимость по расходной накладной
+                        cmd = new NpgsqlCommand($"SELECT COALESCE(SUM(\"Total\"), 0) FROM public.\"ExpenditureInvoiceDetail\" WHERE \"InvoiceID\"={invoiceID};", conn);
+                        double totalAmount = Convert.ToDouble(cmd.ExecuteScalar());
+
+                        // Создаем новый Invoice
+                        cmd = new NpgsqlCommand("INSERT INTO public.\"Invoice\" (\"InvoiceDate\", \"ContractorID\", \"OrgID\", \"ExpInvID\", \"TotalAmount\") VALUES (@InvoiceDate, @ContractorID, 1, @ExpInvID, @TotalAmount) RETURNING \"InvoiceID\";", conn);
+                        cmd.Parameters.AddWithValue("@InvoiceDate", invoiceDate);
+                        cmd.Parameters.AddWithValue("@ContractorID", contractorID);
+                        cmd.Parameters.AddWithValue("@ExpInvID", invoiceID);
+                        cmd.Parameters.AddWithValue("@TotalAmount", totalAmount);
+                        int newInvoiceID = (int)cmd.ExecuteScalar();
+
+                        // Копирование деталей из ExpenditureInvoiceDetail в InvoiceDetail
+                        cmd = new NpgsqlCommand($"SELECT \"ProductID\", \"Quantity\", \"Total\" FROM public.\"ExpenditureInvoiceDetail\" WHERE \"InvoiceID\" = {invoiceID};", conn);
+                        reader = cmd.ExecuteReader();
+                        List<Tuple<int, int, decimal>> details = new List<Tuple<int, int, decimal>>();
+                        while (reader.Read())
+                        {
+                            details.Add(new Tuple<int, int, decimal>(reader.GetInt32(0), reader.GetInt32(1), reader.GetDecimal(2)));
+                        }
+                        reader.Close(); // Обязательно закрываем ридер
+
+                        transaction.Commit();
+                        MessageBox.Show("Счет-фактура успешно создана", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show("Ошибка при создании счета-фактуры: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+
+
     }
 }

@@ -8,17 +8,18 @@ namespace DatabaseLibrary
         public static NpgsqlConnection npgSqlConnection;
         public static string username; 
         public static string password;
+        public static string connectionString;
         static public void Autorize(string userID, string pswrd) 
         {
             username = userID;
             password = pswrd;
-            string connectionString = String.Format($"Server=localhost;Port=5432;User ID={username};Password={password};Database=db;");
+            connectionString = String.Format($"Server=localhost;Port=5432;User ID={username};Password={password};Database=db;");
             npgSqlConnection = new NpgsqlConnection(connectionString);
             npgSqlConnection.Open();
         }
         static public void OpenConnection()
         {
-            string connectionString = String.Format($"Server=localhost;Port=5432;User ID={username};Password={password};Database=db;");
+            connectionString = String.Format($"Server=localhost;Port=5432;User ID={username};Password={password};Database=db;");
             npgSqlConnection = new NpgsqlConnection(connectionString);
             npgSqlConnection.Open();
         }

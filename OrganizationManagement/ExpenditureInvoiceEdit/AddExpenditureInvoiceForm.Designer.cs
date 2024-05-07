@@ -53,6 +53,7 @@
             this.addItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.создатьСчетфактуруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.specGrid)).BeginInit();
@@ -271,7 +272,8 @@
             this.menuStrip1.Font = new System.Drawing.Font("Verdana", 9F);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addItem,
-            this.delItem});
+            this.delItem,
+            this.создатьСчетфактуруToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(3, 16);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -303,6 +305,13 @@
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(132, 20);
             this.dateTimePicker.TabIndex = 9;
+            // 
+            // создатьСчетфактуруToolStripMenuItem
+            // 
+            this.создатьСчетфактуруToolStripMenuItem.Name = "создатьСчетфактуруToolStripMenuItem";
+            this.создатьСчетфактуруToolStripMenuItem.Size = new System.Drawing.Size(165, 20);
+            this.создатьСчетфактуруToolStripMenuItem.Text = "Создать счет-фактуру";
+            this.создатьСчетфактуруToolStripMenuItem.Click += new System.EventHandler(this.создатьСчетфактуруToolStripMenuItem_Click);
             // 
             // AddExpenditureInvoiceForm
             // 
@@ -369,5 +378,6 @@
         private System.Windows.Forms.ToolStripMenuItem addItem;
         private System.Windows.Forms.ToolStripMenuItem delItem;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.ToolStripMenuItem создатьСчетфактуруToolStripMenuItem;
     }
 }

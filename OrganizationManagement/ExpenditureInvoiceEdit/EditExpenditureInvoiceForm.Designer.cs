@@ -53,6 +53,7 @@
             this.numField = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.создатьСчетфактуруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.specGrid)).BeginInit();
@@ -244,7 +245,8 @@
             this.menuStrip1.Font = new System.Drawing.Font("Verdana", 9F);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addItem,
-            this.delItem});
+            this.delItem,
+            this.создатьСчетфактуруToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(3, 16);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -303,6 +305,13 @@
             this.label1.Size = new System.Drawing.Size(179, 14);
             this.label1.TabIndex = 11;
             this.label1.Text = "Расходная накладная №";
+            // 
+            // создатьСчетфактуруToolStripMenuItem
+            // 
+            this.создатьСчетфактуруToolStripMenuItem.Name = "создатьСчетфактуруToolStripMenuItem";
+            this.создатьСчетфактуруToolStripMenuItem.Size = new System.Drawing.Size(165, 20);
+            this.создатьСчетфактуруToolStripMenuItem.Text = "Создать счет-фактуру";
+            this.создатьСчетфактуруToolStripMenuItem.Click += new System.EventHandler(this.создатьСчетфактуруToolStripMenuItem_Click);
             // 
             // EditExpenditureInvoiceForm
             // 
@@ -368,5 +377,6 @@
         private System.Windows.Forms.TextBox numField;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem создатьСчетфактуруToolStripMenuItem;
     }
 }

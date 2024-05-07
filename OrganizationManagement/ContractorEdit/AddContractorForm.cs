@@ -107,5 +107,9 @@ namespace OrganizationManagement.ContractorEdit
             }
         }
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            consaddrField.Text = nameField.Text + "; " + legaladdrField.Text;
+        }
     }
 }

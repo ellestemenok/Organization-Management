@@ -23,7 +23,8 @@ namespace OrganizationManagement
                 "pid.\"InvoiceDate\" AS \"Дата\",\r\n" +
                 "pid.\"InvoiceNumber\" AS \"Номер\",\r\n" +
                 "c.\"Name\" AS \"Контрагент\",\r\n" +
-                "pid.\"TotalAmount\" AS \"Сумма\"\r\n" +
+                "pid.\"TotalAmount\" AS \"Сумма\"\r\n, " +
+                "pid.\"Given\" AS \"Отдана\" \r\n" +
                 "FROM public.\"Invoice\" pid\r\n" +
                 "JOIN public.\"Contractor\" c ON pid.\"ContractorID\" = c.\"ContractorID\"\r\n" +
                 "ORDER BY pid.\"InvoiceNumber\" DESC;";
@@ -36,90 +37,103 @@ namespace OrganizationManagement
         {
             LoadDataIntoDataGridView();
         }
-        private void addItem_Click(object sender, EventArgs e)
-        {
-            AddInvoiceForm addForm = new AddInvoiceForm();
-            addForm.MdiParent = ActiveForm;
-            addForm.Show();
-        }
         private void refreshGrid_Click(object sender, EventArgs e)
         {
             LoadDataIntoDataGridView();
         }
         private void editItem_Click(object sender, EventArgs e)
         {
-            //DataGridViewRow selectedRow = invoicesGrid.SelectedRows[0];
-            //int invoiceID = Convert.ToInt32(selectedRow.Cells["InvoiceID"].Value);
-            //DataDB invoicesRepository = new DataDB();
+            DataGridViewRow selectedRow = invoicesGrid.SelectedRows[0];
+            int invoiceID = Convert.ToInt32(selectedRow.Cells["InvoiceID"].Value);
+            DataDB invoicesRepository = new DataDB();
 
-            //string query = "SELECT\r\n" +
-            //    "pid.\"InvoiceID\",\r\n    " +
-            //    "pid.\"InvoiceDate\",\r\n    " +
-            //    "pid.\"InvoiceNumber\",\r\n    " +
-            //    "c.\"Name\" as \"ContractorName\",\r\n    " +
-            //    "s.\"Name\" as \"StorageName\",\r\n    " +
-            //    "c.\"Reason\" as \"Reason\",\r\n    " +
-            //    "pid.\"TotalAmount\"\r\n" +
-            //    "FROM public.\"ExpenditureInvoice\" pid\r\n" +
-            //    "JOIN public.\"Contractor\" c ON pid.\"ContractorID\" = c.\"ContractorID\"\r\n" +
-            //    "JOIN public.\"Storage\" s ON pid.\"StorageID\" = s.\"StorageID\"\r\n" +
-            //    $"WHERE pid.\"InvoiceID\" = {invoiceID};";
+            string query = "SELECT\r\n" +
+                "pid.\"ExpInvID\",\r\n    " +
+                "pid.\"InvoiceID\",\r\n    " +
+                "pid.\"InvoiceDate\",\r\n    " +
+                "pid.\"InvoiceNumber\",\r\n    " +
+                "pid.\"Given\",\r\n    " +
+                "pid.\"ExpInvID\",\r\n    " +
+                "c.\"Name\" as \"ContractorName\",\r\n    " +
+                "c.\"Reason\" as \"Reason\",\r\n    " +
+                "c.\"ConsigneeAddress\" as \"ConsigneeAddress\",\r\n    " +
+                "pa.\"Name\" as \"Name\",\r\n    " +
+                "org.\"Name\" as \"OrgName\",\r\n    " +
+                "org.\"ConsigneeAddress\" as \"OrgConsigneeAddress\",\r\n    " +
+                "pid.\"TotalAmount\"\r\n" +
 
-            //DataTable invoicesData = invoicesRepository.FillFormWithQueryResult(query);
+                "FROM public.\"Invoice\" pid\r\n" +
+                "JOIN public.\"Contractor\" c ON pid.\"ContractorID\" = c.\"ContractorID\"\r\n" +
+                "JOIN public.\"Organization\" org ON pid.\"OrgID\" = org.\"OrganizationID\"\r\n" +
+                "JOIN public.\"PaymentAccount\" pa ON pid.\"PaymentID\" = pa.\"AccountID\"\r\n" +
+                $"WHERE pid.\"InvoiceID\" = {invoiceID};";
 
-            //EditExpenditureInvoiceForm editForm = new EditExpenditureInvoiceForm(invoicesData);
-            //editForm.MdiParent = ActiveForm;
-            //editForm.Show();
+            DataTable invoicesData = invoicesRepository.FillFormWithQueryResult(query);
+
+            EditInvoiceForm editForm = new EditInvoiceForm(invoicesData);
+            editForm.MdiParent = ActiveForm;
+            editForm.Show();
         }
         private void delItem_Click(object sender, EventArgs e)
         {
-            //DialogResult result = MessageBox.Show("Удалить элемент?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            //if (result == DialogResult.Yes)
-            //{
-            //    DataGridViewRow selectedRow = invoicesGrid.SelectedRows[0];
-            //    int invoiceID = Convert.ToInt32(selectedRow.Cells["InvoiceID"].Value);
-            //    ExpenditureInvoice.Delete(invoiceID);
-            //    LoadDataIntoDataGridView();
-            //}
+            DialogResult result = MessageBox.Show("Удалить элемент?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                DataGridViewRow selectedRow = invoicesGrid.SelectedRows[0];
+                int invoiceID = Convert.ToInt32(selectedRow.Cells["InvoiceID"].Value);
+                Invoice.Delete(invoiceID);
+                LoadDataIntoDataGridView();
+            }
         }
         private void filterBox_TextChanged(object sender, EventArgs e)
         {
-            //string searchText = filterBox.Text.Trim();
+            string searchText = filterBox.Text.Trim();
 
-            //if (!string.IsNullOrEmpty(searchText))
-            //{
-            //    DataView dv = ((DataTable)invoicesGrid.DataSource).DefaultView;
-            //    dv.RowFilter = string.Format("CONVERT(Номер, 'System.String') LIKE '%{0}%' OR Контрагент LIKE '%{0}%' OR Склад LIKE '%{0}%' " +
-            //                "OR Основание LIKE '%{0}%' OR CONVERT(Сумма, 'System.String') LIKE '%{0}%'", searchText);
-            //}
-            //else
-            //{
-            //    ((DataTable)invoicesGrid.DataSource).DefaultView.RowFilter = string.Empty;
-            //}
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                DataView dv = ((DataTable)invoicesGrid.DataSource).DefaultView;
+                dv.RowFilter = string.Format("CONVERT(Номер, 'System.String') LIKE '%{0}%' OR Контрагент LIKE '%{0}%' OR CONVERT(Сумма, 'System.String') LIKE '%{0}%'", searchText);
+            }
+            else
+            {
+                ((DataTable)invoicesGrid.DataSource).DefaultView.RowFilter = string.Empty;
+            }
         }
         private void invoicesGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if (e.RowIndex >= 0)
-            //{
-            //    int invoiceID = Convert.ToInt32(invoicesGrid.Rows[e.RowIndex].Cells["InvoiceID"].Value);
-            //    DataDB invoicesRepository = new DataDB();
-            //    string query = "SELECT\r\n" +
-            //        "pid.\"InvoiceID\",\r\n    " +
-            //        "pid.\"InvoiceDate\",\r\n    " +
-            //        "pid.\"InvoiceNumber\",\r\n    " +
-            //        "c.\"Name\" as \"ContractorName\",\r\n    " +
-            //        "s.\"Name\" as \"StorageName\",\r\n    " +
-            //        "c.\"Reason\" as \"Reason\",\r\n    " +
-            //        "pid.\"TotalAmount\"\r\n" +
-            //        "FROM public.\"ExpenditureInvoice\" pid\r\n" +
-            //        "JOIN public.\"Contractor\" c ON pid.\"ContractorID\" = c.\"ContractorID\"\r\n" +
-            //        "JOIN public.\"Storage\" s ON pid.\"StorageID\" = s.\"StorageID\"\r\n" +
-            //        $"WHERE pid.\"InvoiceID\" = {invoiceID};";
-            //    DataTable invoicesData = invoicesRepository.FillFormWithQueryResult(query);
-            //    EditExpenditureInvoiceForm editForm = new EditExpenditureInvoiceForm(invoicesData);
-            //    editForm.MdiParent = ActiveForm;
-            //    editForm.Show();
-            //}
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = invoicesGrid.SelectedRows[0];
+                int invoiceID = Convert.ToInt32(selectedRow.Cells["InvoiceID"].Value);
+                DataDB invoicesRepository = new DataDB();
+
+                string query = "SELECT\r\n" +
+                    "pid.\"ExpInvID\",\r\n    " +
+                    "pid.\"InvoiceID\",\r\n    " +
+                    "pid.\"InvoiceDate\",\r\n    " +
+                    "pid.\"InvoiceNumber\",\r\n    " +
+                    "pid.\"Given\",\r\n    " +
+                    "pid.\"ExpInvID\",\r\n    " +
+                    "c.\"Name\" as \"ContractorName\",\r\n    " +
+                    "c.\"Reason\" as \"Reason\",\r\n    " +
+                    "c.\"ConsigneeAddress\" as \"ConsigneeAddress\",\r\n    " +
+                    "pa.\"Name\" as \"Name\",\r\n    " +
+                    "org.\"Name\" as \"OrgName\",\r\n    " +
+                    "org.\"ConsigneeAddress\" as \"OrgConsigneeAddress\",\r\n    " +
+                    "pid.\"TotalAmount\"\r\n" +
+
+                    "FROM public.\"Invoice\" pid\r\n" +
+                    "JOIN public.\"Contractor\" c ON pid.\"ContractorID\" = c.\"ContractorID\"\r\n" +
+                    "JOIN public.\"Organization\" org ON pid.\"OrgID\" = org.\"OrganizationID\"\r\n" +
+                    "JOIN public.\"PaymentAccount\" pa ON pid.\"PaymentID\" = pa.\"AccountID\"\r\n" +
+                    $"WHERE pid.\"InvoiceID\" = {invoiceID};";
+
+                DataTable invoicesData = invoicesRepository.FillFormWithQueryResult(query);
+
+                EditInvoiceForm editForm = new EditInvoiceForm(invoicesData);
+                editForm.MdiParent = ActiveForm;
+                editForm.Show();
+            }
         }
     }
 }

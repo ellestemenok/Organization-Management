@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using DatabaseLibrary;
+using OrganizationManagement.CashboxEdit;
+using OrganizationManagement.PKOnRKOEdit;
 using OrganizationManagement.RoutesEdit;
 namespace OrganizationManagement
 {
@@ -122,6 +124,68 @@ namespace OrganizationManagement
         private void invoicesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InvoicesForm newMDIChild = new InvoicesForm();
+            newMDIChild.MdiParent = this;
+            newMDIChild.Show();
+        }
+
+        private void cashboxJournalStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            CashboxForm newMDIChild = new CashboxForm();
+            newMDIChild.MdiParent = this;
+            newMDIChild.Show();
+        }
+
+        private void cashboxTodayStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Autorization.OpenConnection();
+            string query = $"SELECT \"CashboxID\" FROM public.\"Cashbox\" WHERE \"CashboxDate\" = '{DateTime.Today:yyyy-MM-dd}'";
+            object result = DataDB.ExecuteScalarQuery(query);
+
+            if (result != null && int.TryParse(result.ToString(), out int cashID))
+            {
+                CashboxEditForm newMDIChild = new CashboxEditForm(cashID);
+                newMDIChild.MdiParent = this;
+                newMDIChild.Show();
+            }
+            else
+            {
+                var userChoice = MessageBox.Show("Кассы не существует. Создать?", "Ошибка", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                
+                if (userChoice == DialogResult.Yes)
+                {
+                    AddCashboxForm newMDIChild = new AddCashboxForm();
+                    newMDIChild.MdiParent = this;
+                    newMDIChild.Show();
+                }
+            }
+            Autorization.CloseConnection();
+
+        }
+
+        private void pkoJournalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PKOForm newMDIChild = new PKOForm();
+            newMDIChild.MdiParent = this;
+            newMDIChild.Show();
+        }
+
+        private void rkoJournalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RKOForm newMDIChild = new RKOForm();
+            newMDIChild.MdiParent = this;
+            newMDIChild.Show();
+        }
+
+        private void pkoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddPKOForm newMDIChild = new AddPKOForm();
+            newMDIChild.MdiParent = this;
+            newMDIChild.Show();
+        }
+
+        private void rkoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddRKOForm newMDIChild = new AddRKOForm();
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
         }

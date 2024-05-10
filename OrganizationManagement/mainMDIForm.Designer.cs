@@ -40,12 +40,23 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.водителиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.routesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.журналыДокументовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.expenditureInvoicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.purchaseinvoicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cashboxTodayStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cashboxJournalStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.pkoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rkoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.storagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.storageStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.журналыДокументовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.expenditureInvoicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.purchaseinvoicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.invoicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.pkoJournalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rkoJournalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.окнаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,8 +68,6 @@
             this.usernameStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerForDatetime = new System.Windows.Forms.Timer(this.components);
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.invoicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.statusStripMain.SuspendLayout();
             this.SuspendLayout();
@@ -69,8 +78,9 @@
             this.menuStripMain.Font = new System.Drawing.Font("Verdana", 8F);
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.справочникиToolStripMenuItem,
-            this.журналыДокументовToolStripMenuItem,
+            this.toolStripMenuItem2,
             this.toolStripMenuItem1,
+            this.журналыДокументовToolStripMenuItem,
             this.окнаToolStripMenuItem});
             this.menuStripMain.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
@@ -157,36 +167,56 @@
             this.routesToolStripMenuItem.Text = "Маршруты";
             this.routesToolStripMenuItem.Click += new System.EventHandler(this.routesToolStripMenuItem_Click);
             // 
-            // журналыДокументовToolStripMenuItem
+            // toolStripMenuItem2
             // 
-            this.журналыДокументовToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.expenditureInvoicesToolStripMenuItem,
-            this.purchaseinvoicesToolStripMenuItem,
-            this.toolStripSeparator4,
-            this.invoicesToolStripMenuItem});
-            this.журналыДокументовToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.журналыДокументовToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.журналыДокументовToolStripMenuItem.Margin = new System.Windows.Forms.Padding(3);
-            this.журналыДокументовToolStripMenuItem.Name = "журналыДокументовToolStripMenuItem";
-            this.журналыДокументовToolStripMenuItem.Padding = new System.Windows.Forms.Padding(2);
-            this.журналыДокументовToolStripMenuItem.Size = new System.Drawing.Size(143, 21);
-            this.журналыДокументовToolStripMenuItem.Text = "Журналы документов";
+            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cashboxTodayStripMenuItem,
+            this.cashboxJournalStripMenuItem3,
+            this.toolStripSeparator5,
+            this.pkoToolStripMenuItem,
+            this.rkoToolStripMenuItem});
+            this.toolStripMenuItem2.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripMenuItem2.ForeColor = System.Drawing.Color.Black;
+            this.toolStripMenuItem2.Margin = new System.Windows.Forms.Padding(3);
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Padding = new System.Windows.Forms.Padding(2);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(49, 21);
+            this.toolStripMenuItem2.Text = "Касса";
             // 
-            // expenditureInvoicesToolStripMenuItem
+            // cashboxTodayStripMenuItem
             // 
-            this.expenditureInvoicesToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.expenditureInvoicesToolStripMenuItem.Name = "expenditureInvoicesToolStripMenuItem";
-            this.expenditureInvoicesToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
-            this.expenditureInvoicesToolStripMenuItem.Text = "Журнал расходных накладных";
-            this.expenditureInvoicesToolStripMenuItem.Click += new System.EventHandler(this.expenditureInvoicesToolStripMenuItem_Click);
+            this.cashboxTodayStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
+            this.cashboxTodayStripMenuItem.Name = "cashboxTodayStripMenuItem";
+            this.cashboxTodayStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.cashboxTodayStripMenuItem.Text = "Касса сегодня";
+            this.cashboxTodayStripMenuItem.Click += new System.EventHandler(this.cashboxTodayStripMenuItem_Click);
             // 
-            // purchaseinvoicesToolStripMenuItem
+            // cashboxJournalStripMenuItem3
             // 
-            this.purchaseinvoicesToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.purchaseinvoicesToolStripMenuItem.Name = "purchaseinvoicesToolStripMenuItem";
-            this.purchaseinvoicesToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
-            this.purchaseinvoicesToolStripMenuItem.Text = "Журнал приходных накладных";
-            this.purchaseinvoicesToolStripMenuItem.Click += new System.EventHandler(this.purchaseinvoicesToolStripMenuItem_Click);
+            this.cashboxJournalStripMenuItem3.Font = new System.Drawing.Font("Verdana", 8F);
+            this.cashboxJournalStripMenuItem3.Name = "cashboxJournalStripMenuItem3";
+            this.cashboxJournalStripMenuItem3.Size = new System.Drawing.Size(241, 22);
+            this.cashboxJournalStripMenuItem3.Text = "Журнал кассовых отчетов";
+            this.cashboxJournalStripMenuItem3.Click += new System.EventHandler(this.cashboxJournalStripMenuItem3_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(238, 6);
+            // 
+            // pkoToolStripMenuItem
+            // 
+            this.pkoToolStripMenuItem.Name = "pkoToolStripMenuItem";
+            this.pkoToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.pkoToolStripMenuItem.Text = "Приходный кассовый ордер";
+            this.pkoToolStripMenuItem.Click += new System.EventHandler(this.pkoToolStripMenuItem_Click);
+            // 
+            // rkoToolStripMenuItem
+            // 
+            this.rkoToolStripMenuItem.Name = "rkoToolStripMenuItem";
+            this.rkoToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
+            this.rkoToolStripMenuItem.Text = "Расходный кассовый ордер";
+            this.rkoToolStripMenuItem.Click += new System.EventHandler(this.rkoToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -216,6 +246,71 @@
             this.storageStripMenuItem.Text = "Товар на складах";
             this.storageStripMenuItem.Click += new System.EventHandler(this.storageStripMenuItem_Click);
             // 
+            // журналыДокументовToolStripMenuItem
+            // 
+            this.журналыДокументовToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.expenditureInvoicesToolStripMenuItem,
+            this.purchaseinvoicesToolStripMenuItem,
+            this.toolStripSeparator4,
+            this.invoicesToolStripMenuItem,
+            this.toolStripSeparator6,
+            this.pkoJournalToolStripMenuItem,
+            this.rkoJournalToolStripMenuItem});
+            this.журналыДокументовToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.журналыДокументовToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.журналыДокументовToolStripMenuItem.Margin = new System.Windows.Forms.Padding(3);
+            this.журналыДокументовToolStripMenuItem.Name = "журналыДокументовToolStripMenuItem";
+            this.журналыДокументовToolStripMenuItem.Padding = new System.Windows.Forms.Padding(2);
+            this.журналыДокументовToolStripMenuItem.Size = new System.Drawing.Size(143, 21);
+            this.журналыДокументовToolStripMenuItem.Text = "Журналы документов";
+            // 
+            // expenditureInvoicesToolStripMenuItem
+            // 
+            this.expenditureInvoicesToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.expenditureInvoicesToolStripMenuItem.Name = "expenditureInvoicesToolStripMenuItem";
+            this.expenditureInvoicesToolStripMenuItem.Size = new System.Drawing.Size(304, 22);
+            this.expenditureInvoicesToolStripMenuItem.Text = "Журнал расходных накладных";
+            this.expenditureInvoicesToolStripMenuItem.Click += new System.EventHandler(this.expenditureInvoicesToolStripMenuItem_Click);
+            // 
+            // purchaseinvoicesToolStripMenuItem
+            // 
+            this.purchaseinvoicesToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.purchaseinvoicesToolStripMenuItem.Name = "purchaseinvoicesToolStripMenuItem";
+            this.purchaseinvoicesToolStripMenuItem.Size = new System.Drawing.Size(304, 22);
+            this.purchaseinvoicesToolStripMenuItem.Text = "Журнал приходных накладных";
+            this.purchaseinvoicesToolStripMenuItem.Click += new System.EventHandler(this.purchaseinvoicesToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(301, 6);
+            // 
+            // invoicesToolStripMenuItem
+            // 
+            this.invoicesToolStripMenuItem.Name = "invoicesToolStripMenuItem";
+            this.invoicesToolStripMenuItem.Size = new System.Drawing.Size(304, 22);
+            this.invoicesToolStripMenuItem.Text = "Журнал счетов-фактур";
+            this.invoicesToolStripMenuItem.Click += new System.EventHandler(this.invoicesToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(301, 6);
+            // 
+            // pkoJournalToolStripMenuItem
+            // 
+            this.pkoJournalToolStripMenuItem.Name = "pkoJournalToolStripMenuItem";
+            this.pkoJournalToolStripMenuItem.Size = new System.Drawing.Size(304, 22);
+            this.pkoJournalToolStripMenuItem.Text = "Журнал приходных кассовых ордеров";
+            this.pkoJournalToolStripMenuItem.Click += new System.EventHandler(this.pkoJournalToolStripMenuItem_Click);
+            // 
+            // rkoJournalToolStripMenuItem
+            // 
+            this.rkoJournalToolStripMenuItem.Name = "rkoJournalToolStripMenuItem";
+            this.rkoJournalToolStripMenuItem.Size = new System.Drawing.Size(304, 22);
+            this.rkoJournalToolStripMenuItem.Text = "Журнал расходных кассовых ордеров";
+            this.rkoJournalToolStripMenuItem.Click += new System.EventHandler(this.rkoJournalToolStripMenuItem_Click);
+            // 
             // окнаToolStripMenuItem
             // 
             this.окнаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -237,7 +332,7 @@
             // 
             this.verticalToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
             this.verticalToolStripMenuItem.Name = "verticalToolStripMenuItem";
-            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.verticalToolStripMenuItem.Text = "Черепицей";
             this.verticalToolStripMenuItem.Click += new System.EventHandler(this.verticalToolStripMenuItem_Click);
             // 
@@ -245,7 +340,7 @@
             // 
             this.cascadeToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
             this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
-            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.cascadeToolStripMenuItem.Text = "Каскадом";
             this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.cascadeToolStripMenuItem_Click);
             // 
@@ -253,27 +348,27 @@
             // 
             this.minimizeallToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
             this.minimizeallToolStripMenuItem.Name = "minimizeallToolStripMenuItem";
-            this.minimizeallToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.minimizeallToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.minimizeallToolStripMenuItem.Text = "Свернуть все";
             this.minimizeallToolStripMenuItem.Click += new System.EventHandler(this.minimizeallToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(151, 6);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.closeToolStripMenuItem.Text = "Закрыть";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.testToolStripMenuItem.Text = "test";
             this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
@@ -312,18 +407,6 @@
             // 
             this.timerForDatetime.Interval = 1000;
             this.timerForDatetime.Tick += new System.EventHandler(this.timerForDatetime_Tick);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(257, 6);
-            // 
-            // invoicesToolStripMenuItem
-            // 
-            this.invoicesToolStripMenuItem.Name = "invoicesToolStripMenuItem";
-            this.invoicesToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
-            this.invoicesToolStripMenuItem.Text = "Журнал счетов-фактур";
-            this.invoicesToolStripMenuItem.Click += new System.EventHandler(this.invoicesToolStripMenuItem_Click);
             // 
             // MainMDI
             // 
@@ -383,6 +466,15 @@
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem invoicesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem cashboxJournalStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem cashboxTodayStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem pkoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rkoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem pkoJournalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rkoJournalToolStripMenuItem;
     }
 }
 

@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autorization.cs" />
+    <Compile Include="Cashbox.cs" />
     <Compile Include="Contractor.cs" />
     <Compile Include="DataDB.cs" />
     <Compile Include="Driver.cs" />
@@ -103,6 +104,8 @@
     <Compile Include="Good.cs" />
     <Compile Include="Invoice.cs" />
     <Compile Include="MeasureUnit.cs" />
+    <Compile Include="RKO.cs" />
+    <Compile Include="PKO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseInvoice.cs" />
     <Compile Include="Requisites.cs" />

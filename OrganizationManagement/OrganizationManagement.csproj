@@ -134,6 +134,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CashboxEdit\AddPaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CashboxEdit\AddPaymentForm.Designer.cs">
+      <DependentUpon>AddPaymentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CashboxEdit\AddCashboxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CashboxEdit\AddCashboxForm.Designer.cs">
+      <DependentUpon>AddCashboxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CashboxEdit\CashboxEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CashboxEdit\CashboxEditForm.Designer.cs">
+      <DependentUpon>CashboxEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ContractorEdit\EditContractorForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,6 +219,12 @@
       <DependentUpon>InvoicesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="KeyPressEvent.cs" />
+    <Compile Include="CashboxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CashboxForm.Designer.cs">
+      <DependentUpon>CashboxForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MeasureUnitsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,6 +296,36 @@
     </Compile>
     <Compile Include="OrganizationRequisitesForm.Designer.cs">
       <DependentUpon>OrganizationRequisitesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKOnRKOEdit\AddRKOForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKOnRKOEdit\AddRKOForm.Designer.cs">
+      <DependentUpon>AddRKOForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKOnRKOEdit\EditRKOForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKOnRKOEdit\EditRKOForm.Designer.cs">
+      <DependentUpon>EditRKOForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RKOForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RKOForm.Designer.cs">
+      <DependentUpon>RKOForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKOnRKOEdit\EditPKOForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKOnRKOEdit\EditPKOForm.Designer.cs">
+      <DependentUpon>EditPKOForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PKOnRKOEdit\AddPKOForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKOnRKOEdit\AddPKOForm.Designer.cs">
+      <DependentUpon>AddPKOForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -347,12 +401,27 @@
     <Compile Include="StoragesEdit\AddStorageForm.Designer.cs">
       <DependentUpon>AddStorageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PKOForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PKOForm.Designer.cs">
+      <DependentUpon>PKOForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="StoragesForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="StoragesForm.Designer.cs">
       <DependentUpon>StoragesForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CashboxEdit\AddPaymentForm.resx">
+      <DependentUpon>AddPaymentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CashboxEdit\AddCashboxForm.resx">
+      <DependentUpon>AddCashboxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CashboxEdit\CashboxEditForm.resx">
+      <DependentUpon>CashboxEditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ContractorEdit\EditContractorForm.resx">
       <DependentUpon>EditContractorForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -385,6 +454,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InvoicesForm.resx">
       <DependentUpon>InvoicesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CashboxForm.resx">
+      <DependentUpon>CashboxForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MeasureUnitsForm.resx">
       <DependentUpon>MeasureUnitsForm.cs</DependentUpon>
@@ -421,6 +493,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OrganizationRequisitesForm.resx">
       <DependentUpon>OrganizationRequisitesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKOnRKOEdit\AddRKOForm.resx">
+      <DependentUpon>AddRKOForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKOnRKOEdit\EditRKOForm.resx">
+      <DependentUpon>EditRKOForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RKOForm.resx">
+      <DependentUpon>RKOForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKOnRKOEdit\EditPKOForm.resx">
+      <DependentUpon>EditPKOForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKOnRKOEdit\AddPKOForm.resx">
+      <DependentUpon>AddPKOForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -462,6 +549,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StoragesEdit\AddStorageForm.resx">
       <DependentUpon>AddStorageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PKOForm.resx">
+      <DependentUpon>PKOForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StoragesForm.resx">
       <DependentUpon>StoragesForm.cs</DependentUpon>
@@ -531,6 +621,7 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Web.WebView2.1.0.2365.46\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.2365.46\build\Microsoft.Web.WebView2.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

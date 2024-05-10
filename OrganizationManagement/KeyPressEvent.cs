@@ -9,22 +9,30 @@ namespace OrganizationManagement
         //ввод чисел в формате [рубли,копейки (2 знака после запятой)]
         public static void textBox_KeyPressMoney(object sender, KeyPressEventArgs e)
         {
-            // Проверяем, является ли введенный символ цифрой или запятой
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
+            TextBox textBox = sender as TextBox;
+
+            // Проверяем, является ли введенный символ цифрой, запятой или минусом
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '-')
             {
-                e.Handled = true; // Отменяем ввод, если символ не является цифрой или запятой
+                e.Handled = true; // Отменяем ввод, если символ не соответствует условиям
+            }
+
+            // Разрешаем ввод минуса только если он в начале и если текстбокс уже не содержит минус
+            if (e.KeyChar == '-' && (textBox.Text.Length != 0 || textBox.Text.Contains("-")))
+            {
+                e.Handled = true;
             }
 
             // Проверяем, что введена только одна запятая
-            if (e.KeyChar == ',' && (sender as TextBox).Text.Contains(','))
+            if (e.KeyChar == ',' && textBox.Text.Contains(','))
             {
                 e.Handled = true;
             }
 
             // Проверяем, что после запятой не более двух цифр
-            if ((sender as TextBox).Text.Contains(','))
+            if (textBox.Text.Contains(','))
             {
-                string[] parts = (sender as TextBox).Text.Split(',');
+                string[] parts = textBox.Text.Split(',');
                 if (parts.Length > 1 && parts[1].Length >= 2 && !char.IsControl(e.KeyChar))
                 {
                     e.Handled = true;

@@ -38,7 +38,6 @@ namespace OrganizationManagement.InvoicesEdit
                 paymentBox.Text = row["Name"].ToString();
                 sumField.Text = row["TotalAmount"].ToString();
                 expNumField.Text = row["ExpInvID"].ToString();
-                // Обновление поля "Reason", если оно используется в вашей форме
                 reasonBox.Text = row["Reason"].ToString();
             }
 

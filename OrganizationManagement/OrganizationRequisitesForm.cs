@@ -98,7 +98,7 @@ namespace OrganizationManagement
         }
         private void OrganizationRequisites_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Autorization.CloseConnection();
+            //Autorization.CloseConnection();
         }
         private void OrganizationRequisites_Enter(object sender, EventArgs e)
         {

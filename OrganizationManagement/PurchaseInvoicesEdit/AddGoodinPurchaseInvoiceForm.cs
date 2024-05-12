@@ -17,11 +17,16 @@ namespace OrganizationManagement.PurchaseInvoicesEdit
                 "ORDER BY \"Name\" ASC");
 
             goodBox.Text = ((KeyValuePair<int, string>)goodBox.Items[0]).Value;
+            quantField.KeyPress += KeyPressEvent.textBox_KeyPressMeasureUnit;
         }
         private void saveButton_Click(object sender, EventArgs e)
         {
             int selectedgoodID = ((KeyValuePair<int, string>)goodBox.SelectedItem).Key;
-            int quantity = Convert.ToInt32(quantField.Text);
+            double quantity = 0;
+            if (quantField.Text != "")
+            {
+                quantity = Convert.ToDouble(quantField.Text);
+            }
 
             PurchaseInvoice.AddProductToInvoice(invoiceID, selectedgoodID, quantity);
             Close();
@@ -30,7 +35,7 @@ namespace OrganizationManagement.PurchaseInvoicesEdit
         {
             int selectedgoodID = ((KeyValuePair<int, string>)goodBox.SelectedItem).Key;
             DataDB goodsRepository = new DataDB();
-            DataTable goodData = goodsRepository.FillFormWithQueryResult("SELECT u.\"Name\", " +
+            DataTable goodData = goodsRepository.FillFormWithQueryResult("SELECT u.\"Name\", u.\"Fractional\", " +
                 "\"TradePrice\" \r\nFROM public.\"Good\" as g\r\n" +
                 "JOIN public.\"MeasureUnit\" AS u ON g.\"MeasureUnitID\" = u.\"UnitID\"\r\n" +
                 $"WHERE \"GoodID\" = {selectedgoodID}");
@@ -39,11 +44,23 @@ namespace OrganizationManagement.PurchaseInvoicesEdit
                 // Заполнение полей значениями из базы данных
                 unitsField.Text = goodData.Rows[0]["Name"].ToString();
                 priceField.Text = goodData.Rows[0]["TradePrice"].ToString();
+
+                // Установка обработчика в зависимости от делимости единицы измерения
+                if (Convert.ToBoolean(goodData.Rows[0]["Fractional"]))
+                {
+                    quantField.KeyPress -= KeyPressEvent.textBox_KeyPressNumber; // Удалить обработчик для чисел, если он был добавлен
+                    quantField.KeyPress += KeyPressEvent.textBox_KeyPressMeasureUnit; // Добавить обработчик для делимых единиц измерения
+                }
+                else
+                {
+                    quantField.KeyPress -= KeyPressEvent.textBox_KeyPressMeasureUnit; // Удалить обработчик для делимых единиц, если он был добавлен
+                    quantField.KeyPress += KeyPressEvent.textBox_KeyPressNumber; // Добавить обработчик для неделимых единиц измерения
+                }
             }
         }
         private void CalculateSum()
         {
-            if (int.TryParse(quantField.Text, out int quantity) && double.TryParse(priceField.Text, out double price))
+            if (double.TryParse(quantField.Text, out double quantity) && double.TryParse(priceField.Text, out double price))
             {
                 sumField.Text = (quantity * price).ToString();
             }

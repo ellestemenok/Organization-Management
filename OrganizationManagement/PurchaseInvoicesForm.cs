@@ -1,6 +1,7 @@
 ﻿using DatabaseLibrary;
 using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 namespace OrganizationManagement
 {
@@ -32,6 +33,39 @@ namespace OrganizationManagement
             invoicesGrid.Columns["InvoiceID"].Visible = false;
             invoicesGrid.Columns["Дата"].Width = 100;
             invoicesGrid.Columns["Номер"].Width = 50;
+
+            UpdateRowColors();
+        }
+
+
+        private void UpdateRowColors()
+        {
+            foreach (DataGridViewRow row in invoicesGrid.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    double totalAmount = Convert.ToDouble(row.Cells["Сумма"].Value);
+                    int invoiceID = Convert.ToInt32(row.Cells["InvoiceID"].Value);
+
+                    // Выполняем запрос для получения долга
+                    string debtQuery = "SELECT COALESCE(\"TotalAmount\" - (SELECT COALESCE(SUM(\"Sum\"),0.00) from public.\"RKO\" " +
+                                        $"WHERE \"PurchInvID\" = {invoiceID}), 0.00) AS \"Долг\" " +
+                                        $"FROM public.\"PurchaseInvoice\" WHERE \"InvoiceID\" = {invoiceID}";
+
+                    // Здесь предполагается, что у вас есть метод для выполнения SQL-запроса и получения результата
+                    double debt = Convert.ToDouble(DataDB.ExecuteScalarQuery(debtQuery));
+
+
+
+                    // Установка цвета в зависимости от условий
+                    if (debt == totalAmount)
+                        row.DefaultCellStyle.ForeColor = Color.Red;
+                    else if (debt > 0 && debt != totalAmount)
+                        row.DefaultCellStyle.ForeColor = Color.Blue;
+                    else if (debt < 0)
+                        row.DefaultCellStyle.ForeColor = Color.Green;
+                }
+            }
         }
         private void PurchaseInvoicesForm_Enter(object sender, EventArgs e)
         {

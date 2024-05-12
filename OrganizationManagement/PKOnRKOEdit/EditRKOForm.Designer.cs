@@ -40,9 +40,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.orgBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.invField = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.numField = new System.Windows.Forms.TextBox();
+            this.invBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // saveButton
@@ -104,12 +104,12 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(34, 105);
+            this.label4.Location = new System.Drawing.Point(52, 105);
             this.label4.Margin = new System.Windows.Forms.Padding(2);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 13);
+            this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 24;
-            this.label4.Text = "Принято от:";
+            this.label4.Text = "Выдано:";
             // 
             // label5
             // 
@@ -159,13 +159,6 @@
             this.label6.TabIndex = 29;
             this.label6.Text = "К прих. накладной №";
             // 
-            // invField
-            // 
-            this.invField.Location = new System.Drawing.Point(381, 50);
-            this.invField.Name = "invField";
-            this.invField.Size = new System.Drawing.Size(72, 20);
-            this.invField.TabIndex = 30;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -184,14 +177,23 @@
             this.numField.Size = new System.Drawing.Size(103, 24);
             this.numField.TabIndex = 32;
             // 
+            // invBox
+            // 
+            this.invBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.invBox.FormattingEnabled = true;
+            this.invBox.Location = new System.Drawing.Point(381, 50);
+            this.invBox.Name = "invBox";
+            this.invBox.Size = new System.Drawing.Size(72, 21);
+            this.invBox.TabIndex = 35;
+            // 
             // EditRKOForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(465, 294);
+            this.Controls.Add(this.invBox);
             this.Controls.Add(this.numField);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.invField);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.orgBox);
             this.Controls.Add(this.label1);
@@ -230,8 +232,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox orgBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox invField;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox numField;
+        private System.Windows.Forms.ComboBox invBox;
     }
 }

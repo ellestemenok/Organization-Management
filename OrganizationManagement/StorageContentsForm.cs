@@ -82,8 +82,22 @@ namespace OrganizationManagement
         }
         private void refreshGrid_Click(object sender, EventArgs e)
         {
-            LoadDataIntoDataGridView();
+            if (storagesView.Nodes.Count > 0)
+            {
+                // Выбираем первый узел в TreeView
+                storagesView.SelectedNode = storagesView.Nodes[0];
+
+                // Эмулируем событие выбора узла, вызывая соответствующий обработчик
+                TreeViewEventArgs args = new TreeViewEventArgs(storagesView.SelectedNode);
+                storagesView_AfterSelect(this, args);
+            }
+            else
+            {
+                // Если узлов нет, просто загружаем данные по умолчанию
+                LoadDataIntoDataGridView();
+            }
         }
+
         private void filterBox_TextChanged(object sender, EventArgs e)
         {
             string searchText = filterBox.Text.Trim();

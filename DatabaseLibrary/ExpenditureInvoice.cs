@@ -61,7 +61,7 @@ namespace DatabaseLibrary
                 cmd.ExecuteNonQuery();
             }
         }
-        public static void AddProductToInvoice(int invoiceID, int productID, int quantity)
+        public static void AddProductToInvoice(int invoiceID, int productID, double quantity)
         {
             if (Autorization.npgSqlConnection != null && Autorization.npgSqlConnection.State == ConnectionState.Open)
             {

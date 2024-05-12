@@ -1,56 +1,46 @@
 ﻿using DatabaseLibrary;
-using OrganizationManagement.PKOnRKOEdit;
 using System;
+using OrganizationManagement.PKOnRKOEdit;
 using System.Data;
 using System.Windows.Forms;
+
 namespace OrganizationManagement
 {
-    public partial class RKOForm : Form
+    public partial class PaymentsForPurchForm : Form
     {
-        public RKOForm()
+        int invoiceID;
+        public PaymentsForPurchForm(int purchInvID)
         {
             InitializeComponent();
+            invoiceID = purchInvID;
+            Text += invoiceID.ToString();
         }
-
-        private void RKOForm_Load(object sender, EventArgs e)
+        private void PaymentsForPurchForm_Load(object sender, EventArgs e)
         {
             Autorization.OpenConnection();
         }
-
-        private void RKOForm_Enter(object sender, EventArgs e)
+        private void PaymentsForPurchForm_Enter(object sender, EventArgs e)
         {
             LoadDataIntoDataGridView();
         }
-
         public void LoadDataIntoDataGridView()
         {
-            string query = "SELECT p.\"RkoID\", " +
-                           "p.\"RkoDate\" AS \"Дата\", " +
-                           "p.\"RkoNum\" AS \"Номер\", " +
-                           "o.\"Name\" AS \"Выписан на\", " +
-                           "c.\"Name\" AS \"Принято от\", " +
-                           "p.\"Sum\" AS \"Сумма\", " +
-                           "p.\"Name\" AS \"Основание\" " +
-                           "FROM public.\"RKO\" p " +
-                           "LEFT JOIN public.\"Organization\" o ON p.\"OrgID\" = o.\"OrganizationID\" " +
-                           "LEFT JOIN public.\"Contractor\" c ON p.\"ContractorID\" = c.\"ContractorID\" " +
-                           "ORDER BY p.\"RkoID\" DESC;";
-            DataDB.FillDataGridViewWithQueryResult(rkoGrid, query);
-            rkoGrid.Columns["RkoID"].Visible = false;
-            rkoGrid.Columns["Дата"].Width = 100;
-            rkoGrid.Columns["Номер"].Width = 50;
-
+            string query = "SELECT \"RkoID\", " +
+                "\"RkoDate\" AS \"Дата\", " +
+                "\"Sum\" AS \"Сумма\", " +
+                $"\"Name\" AS \"Примечание\" FROM public.\"RKO\" WHERE \"PurchInvID\" = {invoiceID}";
+            DataDB.FillDataGridViewWithQueryResult(paymentsGrid, query);
+            paymentsGrid.Columns["RkoID"].Visible = false;
         }
-
         private void addItem_Click(object sender, EventArgs e)
         {
-            AddRKOForm addForm = new AddRKOForm();
+            AddRKOForm addForm = new AddRKOForm(invoiceID);
             addForm.MdiParent = ActiveForm;
             addForm.Show();
         }
         private void delItem_Click(object sender, EventArgs e)
         {
-            DataGridViewRow selectedRow = rkoGrid.SelectedRows[0];
+            DataGridViewRow selectedRow = paymentsGrid.SelectedRows[0];
             int rkoID = Convert.ToInt32(selectedRow.Cells["RkoID"].Value);
 
             // Подтверждение удаления от пользователя
@@ -62,8 +52,8 @@ namespace OrganizationManagement
                 DataDB.ExecuteQuery(deletePaymentQuery);
 
                 // Удаление записи из таблицы PKO
-                string deletePKOQuery = $"DELETE FROM public.\"RKO\" WHERE \"RkoID\" = {rkoID}";
-                DataDB.ExecuteQuery(deletePKOQuery);
+                string deleteRKOQuery = $"DELETE FROM public.\"RKO\" WHERE \"RkoID\" = {rkoID}";
+                DataDB.ExecuteQuery(deleteRKOQuery);
 
                 // Обновление данных в DataGridView
                 LoadDataIntoDataGridView();
@@ -75,7 +65,7 @@ namespace OrganizationManagement
         }
         private void editItem_Click(object sender, EventArgs e)
         {
-            DataGridViewRow selectedRow = rkoGrid.SelectedRows[0];
+            DataGridViewRow selectedRow = paymentsGrid.SelectedRows[0];
             int rkoID = Convert.ToInt32(selectedRow.Cells["RkoID"].Value);
             DataDB rkoRepository = new DataDB();
 
@@ -92,9 +82,9 @@ namespace OrganizationManagement
             editForm.MdiParent = ActiveForm;
             editForm.Show();
         }
-        private void pkoGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void paymentsGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow selectedRow = rkoGrid.SelectedRows[0];
+            DataGridViewRow selectedRow = paymentsGrid.SelectedRows[0];
             int rkoID = Convert.ToInt32(selectedRow.Cells["RkoID"].Value);
             DataDB rkoRepository = new DataDB();
 
@@ -111,11 +101,6 @@ namespace OrganizationManagement
             editForm.MdiParent = ActiveForm;
             editForm.Show();
         }
-        private void RKOForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //Autorization.CloseConnection();
-        }
-
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
         {
             // Получаем текст из TextBox
@@ -124,22 +109,19 @@ namespace OrganizationManagement
             // Применяем фильтр к DataGridView
             if (!string.IsNullOrEmpty(searchText))
             {
-                DataView dv = ((DataTable)rkoGrid.DataSource).DefaultView;
+                DataView dv = ((DataTable)paymentsGrid.DataSource).DefaultView;
 
                 // Создаем фильтр для всех интересующих нас столбцов
                 dv.RowFilter = string.Format(
                     "CONVERT(Дата, 'System.String')  LIKE '%{0}%' OR " +
-                    "CONVERT(Номер, 'System.String')  LIKE '%{0}%' OR " +
                     "CONVERT(Сумма, 'System.String')  LIKE '%{0}%' OR " +
-                    "[Выписан на] LIKE '%{0}%' OR " +
-                    "[Принято от] LIKE '%{0}%' OR " +
-                    "[Основание] LIKE '%{0}%'",
+                    "[Примечание] LIKE '%{0}%'",
                     searchText);
             }
             else
             {
                 // Если текст в TextBox пуст, сбросить фильтр
-                ((DataTable)rkoGrid.DataSource).DefaultView.RowFilter = string.Empty;
+                ((DataTable)paymentsGrid.DataSource).DefaultView.RowFilter = string.Empty;
             }
         }
     }

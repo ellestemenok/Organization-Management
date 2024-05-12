@@ -6,7 +6,7 @@ namespace OrganizationManagement
 {
     public class KeyPressEvent
     {
-        //ввод чисел в формате [рубли,копейки (2 знака после запятой)]
+        //ввод чисел в формате [ (-)рубли,копейки (2 знака после запятой)]
         public static void textBox_KeyPressMoney(object sender, KeyPressEventArgs e)
         {
             TextBox textBox = sender as TextBox;
@@ -39,6 +39,42 @@ namespace OrganizationManagement
                 }
             }
         }
+
+        //ввод чисел в формате [ *,??? (3 знака после запятой)]
+        public static void textBox_KeyPressMeasureUnit(object sender, KeyPressEventArgs e)
+        {
+
+            TextBox textBox = sender as TextBox;
+            // Разрешаем ввод только цифр, запятой и управляющих символов (например, Backspace)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != ',' && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Отклоняем символ
+            }
+            else if (e.KeyChar == ',')
+            {
+                // Разрешаем ввод запятой только если она еще не введена и не в начале строки
+                if (textBox.Text.Contains(",") || textBox.Text.Length == 0)
+                {
+                    e.Handled = true;
+                }
+            }
+            else if (char.IsDigit(e.KeyChar))
+            {
+                // Проверяем, введены ли цифры после запятой
+                if (textBox.Text.Contains(","))
+                {
+                    int commaIndex = textBox.Text.IndexOf(',');
+                    int cursorPosition = textBox.SelectionStart;  // Позиция курсора
+
+                    // Если курсор находится после запятой и уже введено три цифры, предотвращаем ввод
+                    if (cursorPosition > commaIndex && textBox.Text.Substring(commaIndex + 1).Length >= 3)
+                    {
+                        e.Handled = true;
+                    }
+                }
+            }
+        }
+
         //ввод процентов (от 0 до 100)
         public static void textBox_KeyPressPercent(object sender, KeyPressEventArgs e)
         {

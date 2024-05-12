@@ -16,19 +16,20 @@ namespace OrganizationManagement.PKOnRKOEdit
             sumBox.KeyPress += KeyPressEvent.textBox_KeyPressMoney;
             DataDB.LoadDataIntoComboBox(contractorBox, "SELECT \"ContractorID\", \"Name\" FROM public.\"Contractor\" ORDER BY \"ContractorID\" ASC");
             DataDB.LoadDataIntoComboBox(orgBox, "SELECT \"OrganizationID\", \"Name\" FROM public.\"Organization\" WHERE  \"OrganizationID\" = 1");
-
+            DataDB.LoadDataIntoComboBox(invBox, "SELECT \"InvoiceID\",CAST(\"InvoiceNumber\" AS VARCHAR) AS \"InvoiceNumber\" FROM public.\"PurchaseInvoice\" ORDER BY \"InvoiceID\" ASC");
+            int invoiceID;
             if (purInvID != 0)
             {
-                int invoiceID = purInvID;
+                invoiceID = purInvID;
             }
             else
             {
-                int invoiceID = Convert.ToInt32(DataDB.ExecuteScalarQuery("SELECT MAX(\"InvoiceID\") " +
+                invoiceID = Convert.ToInt32(DataDB.ExecuteScalarQuery("SELECT MAX(\"InvoiceID\") " +
                     "FROM public.\"PurchaseInvoice\";"));
             }
-            RKO.Insert(DateTime.Today, 1, purInvID, 0.00);
+            RKO.Insert(DateTime.Today, 1, invoiceID, 0.00);
 
-            invField.Text = purInvID.ToString();
+            invBox.Text = invoiceID.ToString();
             contractorBox.Text = ((KeyValuePair<int, string>)contractorBox.Items[0]).Value;
             orgBox.Text = ((KeyValuePair<int, string>)orgBox.Items[0]).Value;
 
@@ -44,7 +45,12 @@ namespace OrganizationManagement.PKOnRKOEdit
             DateTime date = dateTimePicker.Value;
             int contractorID = 0;
             int number = Convert.ToInt32(numField.Text);
-            int invoiceID = Convert.ToInt32(invField.Text);
+            int invoiceID = 0;
+            if (invBox.SelectedItem != null)
+            {
+                var invItem = (KeyValuePair<int, string>)invBox.SelectedItem;
+                invoiceID = invItem.Key;
+            }
             double sum = Convert.ToDouble(sumBox.Text);
             if (contractorBox.SelectedItem != null)
             {

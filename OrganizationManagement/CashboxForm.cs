@@ -19,7 +19,7 @@ namespace OrganizationManagement
 
         private void CashboxForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Autorization.CloseConnection();
+            //Autorization.CloseConnection();
         }
 
         private void CashboxForm_Enter(object sender, EventArgs e)

@@ -36,6 +36,14 @@
             this.filterLable = new System.Windows.Forms.ToolStripMenuItem();
             this.filterBox = new System.Windows.Forms.ToolStripTextBox();
             this.invoicesGrid = new System.Windows.Forms.DataGridView();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.invoicesGrid)).BeginInit();
             this.SuspendLayout();
@@ -54,7 +62,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(804, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(834, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -118,22 +126,98 @@
             this.invoicesGrid.BackgroundColor = System.Drawing.Color.White;
             this.invoicesGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.invoicesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.invoicesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.invoicesGrid.Dock = System.Windows.Forms.DockStyle.Top;
             this.invoicesGrid.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.invoicesGrid.Location = new System.Drawing.Point(0, 24);
             this.invoicesGrid.Name = "invoicesGrid";
             this.invoicesGrid.ReadOnly = true;
             this.invoicesGrid.RowHeadersVisible = false;
             this.invoicesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.invoicesGrid.Size = new System.Drawing.Size(804, 437);
+            this.invoicesGrid.Size = new System.Drawing.Size(834, 425);
             this.invoicesGrid.TabIndex = 3;
             this.invoicesGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.invoicesGrid_CellDoubleClick);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Green;
+            this.panel3.Location = new System.Drawing.Point(243, 469);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(13, 13);
+            this.panel3.TabIndex = 19;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(262, 469);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(163, 13);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "- переплата по накладной";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Blue;
+            this.panel4.Location = new System.Drawing.Point(243, 452);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(13, 13);
+            this.panel4.TabIndex = 17;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(262, 452);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(197, 13);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "- накладная частично оплачена";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Red;
+            this.panel2.Location = new System.Drawing.Point(14, 469);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(13, 13);
+            this.panel2.TabIndex = 15;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(33, 469);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(158, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "- накладная не оплачена";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Location = new System.Drawing.Point(14, 452);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(13, 13);
+            this.panel1.TabIndex = 13;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(33, 452);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(140, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "- накладная оплачена";
             // 
             // PurchaseInvoicesForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(804, 461);
+            this.ClientSize = new System.Drawing.Size(834, 491);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.invoicesGrid);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Verdana", 8F);
@@ -160,5 +244,13 @@
         private System.Windows.Forms.ToolStripMenuItem filterLable;
         private System.Windows.Forms.ToolStripTextBox filterBox;
         private System.Windows.Forms.DataGridView invoicesGrid;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
     }
 }

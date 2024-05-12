@@ -1,57 +1,46 @@
 ﻿using DatabaseLibrary;
-using OrganizationManagement.PKOnRKOEdit;
-
 using System;
+using OrganizationManagement.PKOnRKOEdit;
 using System.Data;
 using System.Windows.Forms;
+
 namespace OrganizationManagement
 {
-    public partial class PKOForm : Form
+    public partial class PaymentsForExpForm : Form
     {
-        public PKOForm()
+        int invoiceID;
+        public PaymentsForExpForm(int expInvID)
         {
             InitializeComponent();
+            invoiceID = expInvID;
+            Text += invoiceID.ToString();
         }
-
-        private void PKOForm_Load(object sender, EventArgs e)
+        private void PaymentsForExpForm_Load(object sender, EventArgs e)
         {
             Autorization.OpenConnection();
         }
-
-        private void PKOForm_Enter(object sender, EventArgs e)
+        private void PaymentsForExpForm_Enter(object sender, EventArgs e)
         {
             LoadDataIntoDataGridView();
         }
-
         public void LoadDataIntoDataGridView()
         {
-            string query = "SELECT p.\"PkoID\", " +
-                           "p.\"PkoDate\" AS \"Дата\", " +
-                           "p.\"PkoNum\" AS \"Номер\", " +
-                           "o.\"Name\" AS \"Выписан на\", " +
-                           "c.\"Name\" AS \"Принято от\", " +
-                           "p.\"Sum\" AS \"Сумма\", " +
-                           "p.\"Name\" AS \"Основание\" " +
-                           "FROM public.\"PKO\" p " +
-                           "LEFT JOIN public.\"Organization\" o ON p.\"OrgID\" = o.\"OrganizationID\" " +
-                           "LEFT JOIN public.\"Contractor\" c ON p.\"ContractorID\" = c.\"ContractorID\" " +
-                           "ORDER BY p.\"PkoID\" DESC;";
-            DataDB.FillDataGridViewWithQueryResult(pkoGrid, query);
-            pkoGrid.Columns["PkoID"].Visible = false;
-            pkoGrid.Columns["Дата"].Width = 100;
-            pkoGrid.Columns["Номер"].Width = 50;
-
+            string query = "SELECT \"PkoID\", " +
+                "\"PkoDate\" AS \"Дата\", " +
+                "\"Sum\" AS \"Сумма\", " +
+                $"\"Name\" AS \"Примечание\" FROM public.\"PKO\" WHERE \"ExpInvID\" = {invoiceID}";
+            DataDB.FillDataGridViewWithQueryResult(paymentsGrid, query);
+            paymentsGrid.Columns["PkoID"].Visible = false;
         }
-
         private void addItem_Click(object sender, EventArgs e)
         {
-            AddPKOForm addForm = new AddPKOForm();
+            AddPKOForm addForm = new AddPKOForm(invoiceID);
             addForm.MdiParent = ActiveForm;
             addForm.Show();
         }
         private void delItem_Click(object sender, EventArgs e)
         {
-            DataGridViewRow selectedRow = pkoGrid.SelectedRows[0];
+            DataGridViewRow selectedRow = paymentsGrid.SelectedRows[0];
             int pkoID = Convert.ToInt32(selectedRow.Cells["PkoID"].Value);
 
             // Подтверждение удаления от пользователя
@@ -76,7 +65,7 @@ namespace OrganizationManagement
         }
         private void editItem_Click(object sender, EventArgs e)
         {
-            DataGridViewRow selectedRow = pkoGrid.SelectedRows[0];
+            DataGridViewRow selectedRow = paymentsGrid.SelectedRows[0];
             int pkoID = Convert.ToInt32(selectedRow.Cells["PkoID"].Value);
             DataDB pkoRepository = new DataDB();
 
@@ -93,9 +82,9 @@ namespace OrganizationManagement
             editForm.MdiParent = ActiveForm;
             editForm.Show();
         }
-        private void pkoGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void paymentsGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow selectedRow = pkoGrid.SelectedRows[0];
+            DataGridViewRow selectedRow = paymentsGrid.SelectedRows[0];
             int pkoID = Convert.ToInt32(selectedRow.Cells["PkoID"].Value);
             DataDB pkoRepository = new DataDB();
 
@@ -112,11 +101,6 @@ namespace OrganizationManagement
             editForm.MdiParent = ActiveForm;
             editForm.Show();
         }
-        private void PKOForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //Autorization.CloseConnection();
-        }
-
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
         {
             // Получаем текст из TextBox
@@ -125,22 +109,19 @@ namespace OrganizationManagement
             // Применяем фильтр к DataGridView
             if (!string.IsNullOrEmpty(searchText))
             {
-                DataView dv = ((DataTable)pkoGrid.DataSource).DefaultView;
+                DataView dv = ((DataTable)paymentsGrid.DataSource).DefaultView;
 
                 // Создаем фильтр для всех интересующих нас столбцов
                 dv.RowFilter = string.Format(
                     "CONVERT(Дата, 'System.String')  LIKE '%{0}%' OR " +
-                    "CONVERT(Номер, 'System.String')  LIKE '%{0}%' OR " +
                     "CONVERT(Сумма, 'System.String')  LIKE '%{0}%' OR " +
-                    "[Выписан на] LIKE '%{0}%' OR " +
-                    "[Принято от] LIKE '%{0}%' OR " +
-                    "[Основание] LIKE '%{0}%'",
+                    "[Примечание] LIKE '%{0}%'",
                     searchText);
             }
             else
             {
                 // Если текст в TextBox пуст, сбросить фильтр
-                ((DataTable)pkoGrid.DataSource).DefaultView.RowFilter = string.Empty;
+                ((DataTable)paymentsGrid.DataSource).DefaultView.RowFilter = string.Empty;
             }
         }
     }

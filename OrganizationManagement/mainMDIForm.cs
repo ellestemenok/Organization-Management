@@ -158,7 +158,7 @@ namespace OrganizationManagement
                     newMDIChild.Show();
                 }
             }
-            Autorization.CloseConnection();
+            //Autorization.CloseConnection();
 
         }
 

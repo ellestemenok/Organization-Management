@@ -86,9 +86,17 @@ namespace OrganizationManagement
         }
         private void UpdateQuantnPrice()
         {
-            quant1.Text = DataDB.ExecuteScalarQuery($"SELECT COUNT(\"DetailID\") FROM public.\"ExpenditureInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
-            quant2.Text = DataDB.ExecuteScalarQuery($"SELECT SUM(\"Quantity\") FROM public.\"ExpenditureInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
-            sum.Text = DataDB.ExecuteScalarQuery($"SELECT SUM(\"Total\") FROM public.\"ExpenditureInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
+            quant1.Text = DataDB.ExecuteScalarQuery($"SELECT COALESCE(COUNT(\"DetailID\"), 0.00) FROM public.\"ExpenditureInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
+            quant2.Text = DataDB.ExecuteScalarQuery($"SELECT COALESCE(SUM(\"Quantity\"), 0.00) FROM public.\"ExpenditureInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
+            sum.Text = DataDB.ExecuteScalarQuery($"SELECT COALESCE(SUM(\"Total\"), 0.00) FROM public.\"ExpenditureInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
+            opl.Text = DataDB.ExecuteScalarQuery($"SELECT COALESCE(SUM(\"Sum\"), 0.00) from public.\"PKO\" WHERE \"ExpInvID\" ={invoiceID}");
+            duty.Text = DataDB.ExecuteScalarQuery($"SELECT COALESCE(\"TotalAmount\" - (SELECT COALESCE(SUM(\"Sum\"),0.00) from public.\"PKO\" " +
+                $"WHERE \"ExpInvID\" = {invoiceID}), 0.00) " +
+                $"AS \"Долг\" \r\nFROM public.\"ExpenditureInvoice\" WHERE \"InvoiceID\" = {invoiceID}");
+            if (Convert.ToDouble(duty.Text) == Convert.ToDouble(sum.Text)) duty.ForeColor = System.Drawing.Color.Red;
+            if (Convert.ToDouble(duty.Text) > 0 && Convert.ToDouble(duty.Text) != Convert.ToDouble(sum.Text)) duty.ForeColor = System.Drawing.Color.Blue;
+            if (Convert.ToDouble(duty.Text) < 0) duty.ForeColor = System.Drawing.Color.Green;
+
         }
         private void EditExpenditureInvoiceForm_Enter(object sender, EventArgs e)
         {
@@ -174,6 +182,13 @@ namespace OrganizationManagement
                     }
                 }
             }
+        }
+
+        private void paymentJournal_Click(object sender, EventArgs e)
+        {
+            PaymentsForExpForm paymentJournal = new PaymentsForExpForm(invoiceID);
+            paymentJournal.MdiParent = ActiveForm;
+            paymentJournal.Show();
         }
     }
 }

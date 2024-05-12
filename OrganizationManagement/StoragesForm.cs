@@ -84,7 +84,7 @@ namespace OrganizationManagement
         }
         private void StoragesForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Autorization.CloseConnection();
+            //Autorization.CloseConnection();
         }
 
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)

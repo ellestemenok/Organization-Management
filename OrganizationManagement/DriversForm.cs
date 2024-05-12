@@ -29,7 +29,7 @@ namespace OrganizationManagement
 
         private void DriversForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Autorization.CloseConnection();
+            //Autorization.CloseConnection();
         }
 
         public void LoadDataIntoDataGridView()

@@ -20,7 +20,7 @@ namespace OrganizationManagement
 
         private void RoutesForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Autorization.CloseConnection();
+            //Autorization.CloseConnection();
         }
 
         private void RoutesForm_Enter(object sender, EventArgs e)

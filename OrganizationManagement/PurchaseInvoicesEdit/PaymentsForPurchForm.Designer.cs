@@ -1,6 +1,6 @@
 ﻿namespace OrganizationManagement
 {
-    partial class MeasureUnitsForm
+    partial class PaymentsForPurchForm
     {
         /// <summary>
         /// Required designer variable.
@@ -35,9 +35,9 @@
             this.refreshGrid = new System.Windows.Forms.ToolStripMenuItem();
             this.filterLable = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
-            this.measureunitsGrid = new System.Windows.Forms.DataGridView();
+            this.paymentsGrid = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.measureunitsGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymentsGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -109,47 +109,46 @@
             this.toolStripTextBox1.Size = new System.Drawing.Size(150, 20);
             this.toolStripTextBox1.TextChanged += new System.EventHandler(this.toolStripTextBox1_TextChanged);
             // 
-            // measureunitsGrid
+            // paymentsGrid
             // 
-            this.measureunitsGrid.AllowUserToAddRows = false;
-            this.measureunitsGrid.AllowUserToDeleteRows = false;
-            this.measureunitsGrid.AllowUserToResizeRows = false;
-            this.measureunitsGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.measureunitsGrid.BackgroundColor = System.Drawing.Color.White;
-            this.measureunitsGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            this.measureunitsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.measureunitsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.measureunitsGrid.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.measureunitsGrid.Location = new System.Drawing.Point(0, 24);
-            this.measureunitsGrid.Name = "measureunitsGrid";
-            this.measureunitsGrid.ReadOnly = true;
-            this.measureunitsGrid.RowHeadersVisible = false;
-            this.measureunitsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.measureunitsGrid.Size = new System.Drawing.Size(734, 307);
-            this.measureunitsGrid.TabIndex = 1;
-            this.measureunitsGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.measureunitsGrid_CellDoubleClick);
+            this.paymentsGrid.AllowUserToAddRows = false;
+            this.paymentsGrid.AllowUserToDeleteRows = false;
+            this.paymentsGrid.AllowUserToResizeRows = false;
+            this.paymentsGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.paymentsGrid.BackgroundColor = System.Drawing.Color.White;
+            this.paymentsGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.paymentsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.paymentsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.paymentsGrid.GridColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.paymentsGrid.Location = new System.Drawing.Point(0, 24);
+            this.paymentsGrid.Name = "paymentsGrid";
+            this.paymentsGrid.ReadOnly = true;
+            this.paymentsGrid.RowHeadersVisible = false;
+            this.paymentsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.paymentsGrid.Size = new System.Drawing.Size(734, 307);
+            this.paymentsGrid.TabIndex = 1;
+            this.paymentsGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.paymentsGrid_CellDoubleClick);
             // 
-            // MeasureUnitsForm
+            // PaymentsForExpForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(734, 331);
-            this.Controls.Add(this.measureunitsGrid);
+            this.Controls.Add(this.paymentsGrid);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Verdana", 8F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
-            this.Name = "MeasureUnitsForm";
+            this.Name = "PaymentsForExpForm";
             this.ShowIcon = false;
-            this.Text = "Единицы измерения";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MeasureUnits_FormClosing);
-            this.Load += new System.EventHandler(this.MeasureUnits_Load);
-            this.Enter += new System.EventHandler(this.MeasureUnits_Enter);
+            this.Text = "Оплата расходной накладной №";
+            this.Load += new System.EventHandler(this.PaymentsForPurchForm_Load);
+            this.Enter += new System.EventHandler(this.PaymentsForPurchForm_Enter);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.measureunitsGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymentsGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,7 +160,7 @@
         private System.Windows.Forms.ToolStripMenuItem editItem;
         private System.Windows.Forms.ToolStripMenuItem refreshGrid;
         private System.Windows.Forms.ToolStripMenuItem filterLable;
-        private System.Windows.Forms.DataGridView measureunitsGrid;
+        private System.Windows.Forms.DataGridView paymentsGrid;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
     }

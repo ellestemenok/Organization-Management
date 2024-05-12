@@ -39,6 +39,10 @@
             this.storageBox = new System.Windows.Forms.ComboBox();
             this.reasonField = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.duty = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.opl = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.quant2 = new System.Windows.Forms.Label();
@@ -52,8 +56,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.addItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.создатьСчетфактуруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.paymentJournal = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.specGrid)).BeginInit();
@@ -144,21 +149,64 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.duty);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.opl);
+            this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.quant2);
             this.panel1.Controls.Add(this.quant1);
             this.panel1.Controls.Add(this.sum);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Location = new System.Drawing.Point(30, 189);
+            this.panel1.Location = new System.Drawing.Point(12, 190);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(463, 65);
+            this.panel1.Size = new System.Drawing.Size(510, 65);
             this.panel1.TabIndex = 4;
+            // 
+            // duty
+            // 
+            this.duty.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
+            this.duty.ForeColor = System.Drawing.Color.Black;
+            this.duty.Location = new System.Drawing.Point(169, 31);
+            this.duty.Name = "duty";
+            this.duty.Size = new System.Drawing.Size(124, 20);
+            this.duty.TabIndex = 4;
+            this.duty.Text = "сумма";
+            this.duty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
+            this.label9.Location = new System.Drawing.Point(166, 14);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(127, 14);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "Нужно доплатить";
+            // 
+            // opl
+            // 
+            this.opl.AutoSize = true;
+            this.opl.Location = new System.Drawing.Point(94, 35);
+            this.opl.Name = "opl";
+            this.opl.Size = new System.Drawing.Size(41, 13);
+            this.opl.TabIndex = 1;
+            this.opl.Text = "сумма";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(14, 35);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(70, 13);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Оплачено:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(190, 35);
+            this.label8.Location = new System.Drawing.Point(321, 35);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(133, 13);
             this.label8.TabIndex = 0;
@@ -167,7 +215,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(230, 14);
+            this.label7.Location = new System.Drawing.Point(321, 14);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(98, 13);
             this.label7.TabIndex = 0;
@@ -176,7 +224,7 @@
             // quant2
             // 
             this.quant2.AutoSize = true;
-            this.quant2.Location = new System.Drawing.Point(343, 35);
+            this.quant2.Location = new System.Drawing.Point(460, 35);
             this.quant2.Name = "quant2";
             this.quant2.Size = new System.Drawing.Size(14, 13);
             this.quant2.TabIndex = 0;
@@ -185,7 +233,7 @@
             // quant1
             // 
             this.quant1.AutoSize = true;
-            this.quant1.Location = new System.Drawing.Point(343, 14);
+            this.quant1.Location = new System.Drawing.Point(460, 14);
             this.quant1.Name = "quant1";
             this.quant1.Size = new System.Drawing.Size(14, 13);
             this.quant1.TabIndex = 0;
@@ -194,7 +242,7 @@
             // sum
             // 
             this.sum.AutoSize = true;
-            this.sum.Location = new System.Drawing.Point(72, 14);
+            this.sum.Location = new System.Drawing.Point(94, 14);
             this.sum.Name = "sum";
             this.sum.Size = new System.Drawing.Size(41, 13);
             this.sum.TabIndex = 0;
@@ -273,6 +321,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addItem,
             this.delItem,
+            this.paymentJournal,
             this.создатьСчетфактуруToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(3, 16);
             this.menuStrip1.Name = "menuStrip1";
@@ -299,6 +348,13 @@
             this.delItem.Text = " ";
             this.delItem.Click += new System.EventHandler(this.delItem_Click);
             // 
+            // создатьСчетфактуруToolStripMenuItem
+            // 
+            this.создатьСчетфактуруToolStripMenuItem.Name = "создатьСчетфактуруToolStripMenuItem";
+            this.создатьСчетфактуруToolStripMenuItem.Size = new System.Drawing.Size(165, 20);
+            this.создатьСчетфактуруToolStripMenuItem.Text = "Создать счет-фактуру";
+            this.создатьСчетфактуруToolStripMenuItem.Click += new System.EventHandler(this.создатьСчетфактуруToolStripMenuItem_Click);
+            // 
             // dateTimePicker
             // 
             this.dateTimePicker.Location = new System.Drawing.Point(361, 24);
@@ -306,12 +362,14 @@
             this.dateTimePicker.Size = new System.Drawing.Size(132, 20);
             this.dateTimePicker.TabIndex = 9;
             // 
-            // создатьСчетфактуруToolStripMenuItem
+            // paymentJournal
             // 
-            this.создатьСчетфактуруToolStripMenuItem.Name = "создатьСчетфактуруToolStripMenuItem";
-            this.создатьСчетфактуруToolStripMenuItem.Size = new System.Drawing.Size(165, 20);
-            this.создатьСчетфактуруToolStripMenuItem.Text = "Создать счет-фактуру";
-            this.создатьСчетфактуруToolStripMenuItem.Click += new System.EventHandler(this.создатьСчетфактуруToolStripMenuItem_Click);
+            this.paymentJournal.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.paymentJournal.Image = global::OrganizationManagement.Properties.Resources.cashIcon;
+            this.paymentJournal.Name = "paymentJournal";
+            this.paymentJournal.Size = new System.Drawing.Size(28, 20);
+            this.paymentJournal.Text = "гиги";
+            this.paymentJournal.Click += new System.EventHandler(this.paymentJournal_Click);
             // 
             // AddExpenditureInvoiceForm
             // 
@@ -379,5 +437,10 @@
         private System.Windows.Forms.ToolStripMenuItem delItem;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.ToolStripMenuItem создатьСчетфактуруToolStripMenuItem;
+        private System.Windows.Forms.Label duty;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label opl;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ToolStripMenuItem paymentJournal;
     }
 }

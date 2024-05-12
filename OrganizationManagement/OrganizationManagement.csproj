@@ -194,6 +194,12 @@
     <Compile Include="ExpenditureInvoiceEdit\EditExpenditureInvoiceForm.Designer.cs">
       <DependentUpon>EditExpenditureInvoiceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExpenditureInvoiceEdit\PaymentsForExpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExpenditureInvoiceEdit\PaymentsForExpForm.Designer.cs">
+      <DependentUpon>PaymentsForExpForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -308,6 +314,12 @@
     </Compile>
     <Compile Include="PKOnRKOEdit\EditRKOForm.Designer.cs">
       <DependentUpon>EditRKOForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseInvoicesEdit\PaymentsForPurchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseInvoicesEdit\PaymentsForPurchForm.Designer.cs">
+      <DependentUpon>PaymentsForPurchForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RKOForm.cs">
       <SubType>Form</SubType>
@@ -443,6 +455,9 @@
     <EmbeddedResource Include="ExpenditureInvoiceEdit\EditExpenditureInvoiceForm.resx">
       <DependentUpon>EditExpenditureInvoiceForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ExpenditureInvoiceEdit\PaymentsForExpForm.resx">
+      <DependentUpon>PaymentsForExpForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -499,6 +514,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PKOnRKOEdit\EditRKOForm.resx">
       <DependentUpon>EditRKOForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseInvoicesEdit\PaymentsForPurchForm.resx">
+      <DependentUpon>PaymentsForPurchForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RKOForm.resx">
       <DependentUpon>RKOForm.cs</DependentUpon>

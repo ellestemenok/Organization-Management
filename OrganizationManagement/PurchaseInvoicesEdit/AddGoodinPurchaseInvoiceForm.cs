@@ -36,14 +36,14 @@ namespace OrganizationManagement.PurchaseInvoicesEdit
             int selectedgoodID = ((KeyValuePair<int, string>)goodBox.SelectedItem).Key;
             DataDB goodsRepository = new DataDB();
             DataTable goodData = goodsRepository.FillFormWithQueryResult("SELECT u.\"Name\", u.\"Fractional\", " +
-                "\"TradePrice\" \r\nFROM public.\"Good\" as g\r\n" +
+                "\"NetCost\" \r\nFROM public.\"Good\" as g\r\n" +
                 "JOIN public.\"MeasureUnit\" AS u ON g.\"MeasureUnitID\" = u.\"UnitID\"\r\n" +
                 $"WHERE \"GoodID\" = {selectedgoodID}");
             if (goodData != null && goodData.Rows.Count > 0)
             {
                 // Заполнение полей значениями из базы данных
                 unitsField.Text = goodData.Rows[0]["Name"].ToString();
-                priceField.Text = goodData.Rows[0]["TradePrice"].ToString();
+                priceField.Text = goodData.Rows[0]["NetCost"].ToString();
 
                 // Установка обработчика в зависимости от делимости единицы измерения
                 if (Convert.ToBoolean(goodData.Rows[0]["Fractional"]))

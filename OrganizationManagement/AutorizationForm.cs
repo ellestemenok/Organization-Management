@@ -6,27 +6,49 @@ namespace OrganizationManagement
 {
     public partial class AutorizationForm : Form
     {
-        public string userID;
+        public string username; // Переименовано с userID на username
         public string password;
+
         public AutorizationForm()
         {
             InitializeComponent();
         }
+
         private void autorizationButton_Click(object sender, EventArgs e)
         {
             try
             {
-                userID = usernameField.Text;
+                username = usernameField.Text; // Используйте новое имя переменной
                 password = passwordField.Text;
-                Autorization.Autorize(userID, password);
-                MainMDI mainMDI = new MainMDI();
-                mainMDI.Show();
-                Hide();
-                Autorization.CloseConnection();
+                var (role, fullName, fetchedUserID) = Autorization.Autorize(username, password);
+
+                if (role != null)
+                {
+                    mainMDIAdminForm.SetUserRole(role); // Установка роли пользователя
+                    mainMDIAdminForm.SetUserID(fetchedUserID); // Установка ID пользователя
+                    Form nextForm = new mainMDIAdminForm();
+                    //Form nextForm;
+                    //if (role == "Администратор")
+                    //{
+                    //    nextForm = new mainMDIAdminForm();
+                    //}
+                    //else
+                    //{
+                    //    nextForm = new MainMDI(); // Если есть другая форма для других ролей
+                    //                              // Если требуется, добавьте код для установки UserID и в этой форме
+                    //}
+
+                    nextForm.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Неверные учетные данные.", "Ошибка авторизации", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка подключения к базе данных: вы ввели неверные учетные данные.");
+                MessageBox.Show($"Ошибка подключения к базе данных: {ex.Message}", "Ошибка базы данных", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

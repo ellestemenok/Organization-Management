@@ -16,7 +16,6 @@ namespace OrganizationManagement.NomenclatureEdit
 
             netcostField.KeyPress += KeyPressEvent.textBox_KeyPressMoney;
             vatField.KeyPress += KeyPressEvent.textBox_KeyPressPercent;
-            retailmarginField.KeyPress += KeyPressEvent.textBox_KeyPressPercent;
             trademarginField.KeyPress += KeyPressEvent.textBox_KeyPressPercent;
         }
         private void goodSave_Click(object sender, EventArgs e)
@@ -42,13 +41,11 @@ namespace OrganizationManagement.NomenclatureEdit
             double vat = Convert.ToDouble(vatField.Text);
             double costwovat = Convert.ToDouble(costWoVatField.Text);
             double tradeprice = Convert.ToDouble(tradepriceField.Text);
-            double retailprice = Convert.ToDouble(retailpriceField.Text);
             double trademargin = Convert.ToDouble(trademarginField.Text);
-            double retailmargin = Convert.ToDouble(retailmarginField.Text);
             string description = descriptionField.Text;
 
             Good.Insert(name, article, measureunitID, groupID, archivecheck, netcost, vat, 
-                costwovat, tradeprice, retailprice, trademargin, retailmargin, description);
+                costwovat, tradeprice, trademargin,  description);
             Close();
         }
         private void netcostField_Leave(object sender, EventArgs e)
@@ -57,11 +54,9 @@ namespace OrganizationManagement.NomenclatureEdit
 
             double vat = Convert.ToDouble(vatField.Text) * 0.01;
             double trademargin = Convert.ToDouble(trademarginField.Text) * 0.01;
-            double retailmargin = Convert.ToDouble(retailmarginField.Text) * 0.01;
 
             costWoVatField.Text = Math.Round(netcost - netcost * vat, 2).ToString();
             tradepriceField.Text = Math.Round(netcost + netcost * trademargin, 2).ToString();
-            retailpriceField.Text = Math.Round(netcost + netcost * retailmargin, 2).ToString();
         }
         private void vatField_Leave(object sender, EventArgs e)
         {
@@ -80,15 +75,6 @@ namespace OrganizationManagement.NomenclatureEdit
             double tradeprice = Math.Round(netcost + netcost * trademargin, 2);
 
             tradepriceField.Text = tradeprice.ToString();
-        }
-        private void retailmarginField_Leave(object sender, EventArgs e)
-        {
-            double netcost = Convert.ToDouble(netcostField.Text);
-            double retailmargin = Convert.ToDouble(retailmarginField.Text) * 0.01;
-
-            double retailprice = Math.Round(netcost + netcost * retailmargin, 2);
-
-            retailpriceField.Text = retailprice.ToString();
         }
     }
 }

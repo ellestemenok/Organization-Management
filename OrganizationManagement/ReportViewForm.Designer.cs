@@ -1,6 +1,6 @@
 ﻿namespace OrganizationManagement
 {
-    partial class Form1
+    partial class ReportViewForm
     {
         /// <summary>
         /// Required designer variable.
@@ -48,7 +48,6 @@
             this.Controls.Add(this.reportViewer1);
             this.Name = "Form1";
             this.Text = "Отчет для печати";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }

@@ -43,11 +43,6 @@
             this.costWoVatField = new System.Windows.Forms.TextBox();
             this.vatField = new System.Windows.Forms.TextBox();
             this.netcostField = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.retailmarginField = new System.Windows.Forms.TextBox();
-            this.retailpriceField = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.trademarginField = new System.Windows.Forms.TextBox();
             this.tradepriceField = new System.Windows.Forms.TextBox();
@@ -63,7 +58,6 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.SuspendLayout();
@@ -195,7 +189,6 @@
             this.tabPage3.Controls.Add(this.costWoVatField);
             this.tabPage3.Controls.Add(this.vatField);
             this.tabPage3.Controls.Add(this.netcostField);
-            this.tabPage3.Controls.Add(this.groupBox2);
             this.tabPage3.Controls.Add(this.groupBox1);
             this.tabPage3.Controls.Add(this.label7);
             this.tabPage3.Controls.Add(this.label6);
@@ -209,7 +202,7 @@
             // 
             // costWoVatField
             // 
-            this.costWoVatField.Location = new System.Drawing.Point(382, 53);
+            this.costWoVatField.Location = new System.Drawing.Point(366, 53);
             this.costWoVatField.Name = "costWoVatField";
             this.costWoVatField.ReadOnly = true;
             this.costWoVatField.Size = new System.Drawing.Size(121, 20);
@@ -229,7 +222,7 @@
             // 
             // netcostField
             // 
-            this.netcostField.Location = new System.Drawing.Point(137, 24);
+            this.netcostField.Location = new System.Drawing.Point(137, 25);
             this.netcostField.Name = "netcostField";
             this.netcostField.Size = new System.Drawing.Size(121, 20);
             this.netcostField.TabIndex = 22;
@@ -237,79 +230,24 @@
             this.netcostField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.netcostField.Leave += new System.EventHandler(this.netcostField_Leave);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.retailmarginField);
-            this.groupBox2.Controls.Add(this.retailpriceField);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Location = new System.Drawing.Point(274, 98);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(250, 90);
-            this.groupBox2.TabIndex = 9;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Розница";
-            // 
-            // retailmarginField
-            // 
-            this.retailmarginField.Location = new System.Drawing.Point(185, 23);
-            this.retailmarginField.Name = "retailmarginField";
-            this.retailmarginField.Size = new System.Drawing.Size(49, 20);
-            this.retailmarginField.TabIndex = 25;
-            this.retailmarginField.Text = "30";
-            this.retailmarginField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.retailmarginField.Leave += new System.EventHandler(this.retailmarginField_Leave);
-            // 
-            // retailpriceField
-            // 
-            this.retailpriceField.Location = new System.Drawing.Point(68, 53);
-            this.retailpriceField.Name = "retailpriceField";
-            this.retailpriceField.ReadOnly = true;
-            this.retailpriceField.Size = new System.Drawing.Size(166, 20);
-            this.retailpriceField.TabIndex = 23;
-            this.retailpriceField.Text = "0,00";
-            this.retailpriceField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(4, 48);
-            this.label10.Margin = new System.Windows.Forms.Padding(0);
-            this.label10.Name = "label10";
-            this.label10.Padding = new System.Windows.Forms.Padding(8);
-            this.label10.Size = new System.Drawing.Size(58, 29);
-            this.label10.TabIndex = 26;
-            this.label10.Text = "Цена:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(4, 18);
-            this.label11.Margin = new System.Windows.Forms.Padding(0);
-            this.label11.Name = "label11";
-            this.label11.Padding = new System.Windows.Forms.Padding(8);
-            this.label11.Size = new System.Drawing.Size(164, 29);
-            this.label11.TabIndex = 25;
-            this.label11.Text = "Розничная наценка, %:";
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.trademarginField);
             this.groupBox1.Controls.Add(this.tradepriceField);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Location = new System.Drawing.Point(18, 98);
+            this.groupBox1.Location = new System.Drawing.Point(137, 104);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(250, 90);
+            this.groupBox1.Size = new System.Drawing.Size(244, 85);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Опт";
+            this.groupBox1.Text = "Цена продажи";
             // 
             // trademarginField
             // 
-            this.trademarginField.Location = new System.Drawing.Point(182, 23);
+            this.trademarginField.Location = new System.Drawing.Point(108, 24);
             this.trademarginField.Name = "trademarginField";
-            this.trademarginField.Size = new System.Drawing.Size(49, 20);
+            this.trademarginField.Size = new System.Drawing.Size(121, 20);
             this.trademarginField.TabIndex = 25;
             this.trademarginField.Text = "15";
             this.trademarginField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -317,10 +255,10 @@
             // 
             // tradepriceField
             // 
-            this.tradepriceField.Location = new System.Drawing.Point(65, 53);
+            this.tradepriceField.Location = new System.Drawing.Point(108, 50);
             this.tradepriceField.Name = "tradepriceField";
             this.tradepriceField.ReadOnly = true;
-            this.tradepriceField.Size = new System.Drawing.Size(166, 20);
+            this.tradepriceField.Size = new System.Drawing.Size(121, 20);
             this.tradepriceField.TabIndex = 23;
             this.tradepriceField.Text = "0,00";
             this.tradepriceField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -328,24 +266,24 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(4, 48);
+            this.label9.Location = new System.Drawing.Point(59, 50);
             this.label9.Margin = new System.Windows.Forms.Padding(0);
             this.label9.Name = "label9";
-            this.label9.Padding = new System.Windows.Forms.Padding(8);
-            this.label9.Size = new System.Drawing.Size(58, 29);
+            this.label9.Padding = new System.Windows.Forms.Padding(2);
+            this.label9.Size = new System.Drawing.Size(46, 17);
             this.label9.TabIndex = 26;
             this.label9.Text = "Цена:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(4, 18);
+            this.label8.Location = new System.Drawing.Point(18, 24);
             this.label8.Margin = new System.Windows.Forms.Padding(0);
             this.label8.Name = "label8";
-            this.label8.Padding = new System.Windows.Forms.Padding(8);
-            this.label8.Size = new System.Drawing.Size(151, 29);
+            this.label8.Padding = new System.Windows.Forms.Padding(2);
+            this.label8.Size = new System.Drawing.Size(87, 17);
             this.label8.TabIndex = 25;
-            this.label8.Text = "Оптовая наценка, %:";
+            this.label8.Text = "Наценка, %:";
             // 
             // label7
             // 
@@ -361,7 +299,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 49);
+            this.label6.Location = new System.Drawing.Point(15, 48);
             this.label6.Margin = new System.Windows.Forms.Padding(0);
             this.label6.Name = "label6";
             this.label6.Padding = new System.Windows.Forms.Padding(8);
@@ -372,7 +310,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 19);
+            this.label5.Location = new System.Drawing.Point(25, 19);
             this.label5.Margin = new System.Windows.Forms.Padding(0);
             this.label5.Name = "label5";
             this.label5.Padding = new System.Windows.Forms.Padding(8);
@@ -441,8 +379,6 @@
             this.tabPage1.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage4.ResumeLayout(false);
@@ -476,11 +412,6 @@
         private System.Windows.Forms.TextBox trademarginField;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox retailmarginField;
-        private System.Windows.Forms.TextBox retailpriceField;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox tradepriceField;
         private System.Windows.Forms.TextBox descriptionField;
         private System.Windows.Forms.Label label12;

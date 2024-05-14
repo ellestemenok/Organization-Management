@@ -1,4 +1,6 @@
 ﻿using DatabaseLibrary;
+using Microsoft.ReportingServices.Diagnostics.Internal;
+using Npgsql;
 using OrganizationManagement.CashboxEdit;
 using System;
 using System.CodeDom;
@@ -81,11 +83,32 @@ namespace OrganizationManagement.PKOnRKOEdit
 
                 if (userChoice == DialogResult.Yes)
                 {
-                    AddCashboxForm newMDIChild = new AddCashboxForm();
-                    newMDIChild.MdiParent = this.MdiParent;
-                    newMDIChild.Show();
+                    string insertCashboxQuery = "INSERT INTO public.\"Cashbox\" (\"Name\", \"CashboxDate\") VALUES (@Name, @CashboxDate) RETURNING \"CashboxID\";";
+                    int newCashboxID = 0;
+
+                    using (var command = new NpgsqlCommand(insertCashboxQuery, Autorization.npgSqlConnection))
+                    {
+                        string cashName = "Кассовый отчет за " + date.ToShortDateString();
+                        command.Parameters.AddWithValue("@Name", cashName);
+                        command.Parameters.AddWithValue("@CashboxDate", date);
+
+
+
+                        object result = command.ExecuteScalar(); // Выполнение запроса и возвращение CashboxID
+                        if (result != null && int.TryParse(result.ToString(), out newCashboxID) && newCashboxID > 0)
+                        {
+                            // Создаем запись в Payment с новым CashboxID
+                            CreatePaymentRecord(date, name, contractorID, sum, newCashboxID, number);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Не удалось создать новую кассу.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
             }
+
+                
             Close();
         }
 

@@ -1,28 +1,39 @@
 ﻿using System;
-using System.Net;
 using System.Windows.Forms;
 using DatabaseLibrary;
+using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
 using OrganizationManagement.CashboxEdit;
 using OrganizationManagement.PKOnRKOEdit;
 using OrganizationManagement.RoutesEdit;
 
 namespace OrganizationManagement
 {
-    public partial class MainMDI : Form
+    public partial class mainMDIAdminForm : Form
     {
         public static int userID;
-        public void SetUserID(int id)
+        public static string userRole; // Добавьте статическую переменную для хранения роли пользователя
+
+        public static void SetUserID(int id)
         {
             userID = id;
         }
-        public MainMDI()
+
+        public static void SetUserRole(string role) // Метод для установки роли пользователя
+        {
+            userRole = role;
+        }
+
+        public mainMDIAdminForm()
         {
             InitializeComponent();
             usernameStripStatusLabel.Text = Autorization.fullName;
 
+            // Проверка роли пользователя и установка видимости пункта меню
+            adminStripMenuItem.Visible = userRole == "Администратор";
+
             timerForDatetime.Start();
             toolStripDateTime.Text = DateTime.Now.ToLongDateString() + " " +
-                DateTime.Now.ToLongTimeString();
+            DateTime.Now.ToLongTimeString();
         }
         private void timerForDatetime_Tick(object sender, EventArgs e)
         {
@@ -187,6 +198,13 @@ namespace OrganizationManagement
         private void rkoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddRKOForm newMDIChild = new AddRKOForm();
+            newMDIChild.MdiParent = this;
+            newMDIChild.Show();
+        }
+
+        private void userToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UsersForm newMDIChild = new UsersForm();
             newMDIChild.MdiParent = this;
             newMDIChild.Show();
         }

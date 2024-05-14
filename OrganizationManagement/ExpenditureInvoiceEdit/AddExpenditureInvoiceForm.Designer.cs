@@ -56,9 +56,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.addItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.paymentJournal = new System.Windows.Forms.ToolStripMenuItem();
             this.создатьСчетфактуруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.paymentJournal = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.specGrid)).BeginInit();
@@ -348,6 +348,15 @@
             this.delItem.Text = " ";
             this.delItem.Click += new System.EventHandler(this.delItem_Click);
             // 
+            // paymentJournal
+            // 
+            this.paymentJournal.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.paymentJournal.Image = global::OrganizationManagement.Properties.Resources.cashIcon;
+            this.paymentJournal.Name = "paymentJournal";
+            this.paymentJournal.Size = new System.Drawing.Size(28, 20);
+            this.paymentJournal.Text = "гиги";
+            this.paymentJournal.Click += new System.EventHandler(this.paymentJournal_Click);
+            // 
             // создатьСчетфактуруToolStripMenuItem
             // 
             this.создатьСчетфактуруToolStripMenuItem.Name = "создатьСчетфактуруToolStripMenuItem";
@@ -361,15 +370,6 @@
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(132, 20);
             this.dateTimePicker.TabIndex = 9;
-            // 
-            // paymentJournal
-            // 
-            this.paymentJournal.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.paymentJournal.Image = global::OrganizationManagement.Properties.Resources.cashIcon;
-            this.paymentJournal.Name = "paymentJournal";
-            this.paymentJournal.Size = new System.Drawing.Size(28, 20);
-            this.paymentJournal.Text = "гиги";
-            this.paymentJournal.Click += new System.EventHandler(this.paymentJournal_Click);
             // 
             // AddExpenditureInvoiceForm
             // 

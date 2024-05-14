@@ -36,7 +36,7 @@ namespace OrganizationManagement
                 "g.\"Name\" AS \"Название\",\r\n" +
                 "pd.\"Quantity\" AS \"Кол-во\",\r\n" +
                 "mu.\"Name\" AS \"Ед. изм.\",\r\n" +
-                "g.\"TradePrice\" AS \"Цена\",\r\n" +
+                "g.\"NetCost\" AS \"Цена\",\r\n" +
                 "pd.\"Total\" AS \"Стоимость\"\r\n" +
                 "FROM public.\"PurchaseInvoice\" pid\r\n" +
                 "JOIN public.\"PurchaseInvoiceDetail\" pd ON pid.\"InvoiceID\" = pd.\"InvoiceID\"\r\n" +

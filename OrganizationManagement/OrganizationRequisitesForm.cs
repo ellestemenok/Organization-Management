@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using DatabaseLibrary;
 using Microsoft.Reporting.WinForms;
+using OrganizationManagement._dataTables;
 using OrganizationManagement.AccountEdit;
 
 namespace OrganizationManagement
@@ -107,29 +108,10 @@ namespace OrganizationManagement
 
         private void orgPrint_Click(object sender, EventArgs e)
         {
-            // Формируем запрос к базе данных для получения данных организации
-            string orgQuery = "SELECT * FROM \"Organization\" LIMIT 1";
-            DataDB x = new DataDB();
-            DataTable organizationDetails = x.FillFormWithQueryResult(orgQuery);
-
-            // Создаем новый ReportDataSource для данных организации
-            ReportDataSource orgDataSource = new ReportDataSource("OrganizationDetails", organizationDetails);
-
-            // Формируем запрос к базе данных для получения списка расчетных счетов
-            string accountsQuery = "SELECT \"Name\", \"AccountNumber\", \"BankName\", \"BIK\", \"СorrAccount\" FROM \"PaymentAccount\"";
-            DataTable paymentAccounts = x.FillFormWithQueryResult(accountsQuery);
-
-            // Создаем новый ReportDataSource для расчетных счетов
-            ReportDataSource accountsDataSource = new ReportDataSource("PaymentAccounts", paymentAccounts);
-
-            // Создаем новый экземпляр Form1
-            Form1 reportForm = new Form1();
-
-            // Передаем DataTables в reportForm, которая уже знает, как их использовать
-            reportForm.ShowReport(organizationDetails, paymentAccounts);
-
-            // Показываем Form1
-            reportForm.Show();
+            IReportDataProvider provider = new OrganizationReportDataProvider();
+            ReportViewForm viewForm = new ReportViewForm(provider);
+            viewForm.MdiParent = ActiveForm;
+            viewForm.Show();
         }
     }
 }

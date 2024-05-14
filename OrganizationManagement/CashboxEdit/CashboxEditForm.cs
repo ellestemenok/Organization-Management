@@ -29,13 +29,15 @@ namespace OrganizationManagement.CashboxEdit
         private void LoadDataIntoDataGridView()
         {
             string query = "SELECT \r\n    " +
-                "p.\"PaymentID\",\r\n    " +
+                "p.\"PaymentID\"," +
                 "p.\"Name\" AS \"Описание платежа\",\r\n    " +
                 "p.\"Type\" AS \"Тип\",\r\n    " +
                 "p.\"Sum\" AS \"Сумма\",\r\n    " +
-                "c.\"Name\" AS \"Контрагент\"\r\n" +
+                "c.\"Name\" AS \"Контрагент\", " +
+                "u.\"FullName\" AS \"Пользователь\" \r\n    " +
                 "FROM \r\n    public.\"Payment\" p\r\n" +
                 "LEFT JOIN \r\n    public.\"Contractor\" c ON p.\"ContractorID\" = c.\"ContractorID\"\r\n" +
+                "LEFT JOIN \r\n    public.\"User\" u ON p.\"CreatedBy\" = u.\"UserID\"\r\n" +
                 $"WHERE \r\n    p.\"CashboxID\" = {cashboxID};\r\n";
             DataDB.FillDataGridViewWithQueryResult(specGrid, query);
             specGrid.Columns["PaymentID"].Visible = false;

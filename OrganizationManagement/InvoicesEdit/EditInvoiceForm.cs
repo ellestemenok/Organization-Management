@@ -160,7 +160,7 @@ namespace OrganizationManagement.InvoicesEdit
             }
             bool isGiven = givenBox.Checked;
             Invoice.Update(invoiceID, invoiceDate, number, contractorID, paymentID, isGiven, expNum);
-
+            Log.Insert(mainMDIForm.userID, "Отредактирована счет-фактура №" + number.ToString());
 
             
             UpdateQuantnPrice();

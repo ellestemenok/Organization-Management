@@ -92,9 +92,9 @@ namespace OrganizationManagement
                 var storageItem = (KeyValuePair<int, string>)storageBox.SelectedItem;
                 storageID = storageItem.Key;
             }
-
+           
             ExpenditureInvoice.Update(invoiceID, invoiceDate, number, contractorID, storageID);
-
+            Log.Insert(mainMDIForm.userID, "Добавлена расходная накладная №" + number.ToString());
             // Закрываем форму после сохранения
             Close();
         }

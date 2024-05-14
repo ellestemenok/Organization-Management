@@ -113,6 +113,7 @@
     <Compile Include="ExpenditureInvoice.cs" />
     <Compile Include="Good.cs" />
     <Compile Include="Invoice.cs" />
+    <Compile Include="Log.cs" />
     <Compile Include="MeasureUnit.cs" />
     <Compile Include="RKO.cs" />
     <Compile Include="PKO.cs" />

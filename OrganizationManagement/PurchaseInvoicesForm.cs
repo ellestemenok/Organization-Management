@@ -113,8 +113,10 @@ namespace OrganizationManagement
             {
                 DataGridViewRow selectedRow = invoicesGrid.SelectedRows[0];
                 int invoiceID = Convert.ToInt32(selectedRow.Cells["InvoiceID"].Value);
+                Log.Insert(mainMDIForm.userID, "Удалена приходная накладная №" + selectedRow.Cells["InvoiceNumber"].Value.ToString());
                 PurchaseInvoice.Delete(invoiceID);
                 LoadDataIntoDataGridView();
+                
             }
         }
         private void invoicesGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

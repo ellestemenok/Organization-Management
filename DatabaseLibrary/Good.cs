@@ -1,4 +1,6 @@
 ﻿using Npgsql;
+using System;
+using System.Windows.Forms;
 namespace DatabaseLibrary
 {
     public class Good
@@ -66,8 +68,16 @@ namespace DatabaseLibrary
                 "public.\"Good\" " +
                 "WHERE \"GoodID\" = @GoodID", Autorization.npgSqlConnection))
             {
-                cmd.Parameters.AddWithValue("@GoodID", goodID);
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    cmd.Parameters.AddWithValue("@GoodID", goodID);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка: элемент используется в другой таблице.", "Запрещено", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
     }

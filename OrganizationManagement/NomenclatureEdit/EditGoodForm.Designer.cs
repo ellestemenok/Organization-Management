@@ -1,6 +1,6 @@
 ﻿namespace OrganizationManagement.NomenclatureEdit
 {
-    partial class EditPurchaseInvoiceForm
+    partial class EditGoodForm
     {
         /// <summary>
         /// Required designer variable.

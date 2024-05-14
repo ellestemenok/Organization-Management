@@ -50,6 +50,7 @@ namespace OrganizationManagement
                 string deletePaymentQuery = $"DELETE FROM public.\"Payment\"\r\n" +
                     $"WHERE \"Name\" IN (SELECT \"Name\" FROM public.\"PKO\");";
                 DataDB.ExecuteQuery(deletePaymentQuery);
+                Log.Insert(mainMDIForm.userID, "Удален Приходный кассовый ордер №" + pkoID.ToString());
 
                 // Удаление записи из таблицы PKO
                 string deletePKOQuery = $"DELETE FROM public.\"PKO\" WHERE \"PkoID\" = {pkoID}";
@@ -57,6 +58,7 @@ namespace OrganizationManagement
 
                 // Обновление данных в DataGridView
                 LoadDataIntoDataGridView();
+                
             }
         }
         private void refreshGrid_Click(object sender, EventArgs e)

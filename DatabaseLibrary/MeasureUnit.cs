@@ -1,4 +1,6 @@
 ﻿using Npgsql;
+using System.Windows.Forms;
+using System;
 namespace DatabaseLibrary
 {
     public class MeasureUnit
@@ -41,8 +43,15 @@ namespace DatabaseLibrary
                 "public.\"MeasureUnit\" " +
                 "WHERE \"UnitID\" = @UnitID", Autorization.npgSqlConnection))
             {
-                cmd.Parameters.AddWithValue("@UnitID", unitID);
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    cmd.Parameters.AddWithValue("@UnitID", unitID);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка: элемент используется в другой таблице.", "Запрещено", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

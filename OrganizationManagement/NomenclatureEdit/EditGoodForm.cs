@@ -5,10 +5,10 @@ using System.Data;
 using System.Windows.Forms;
 namespace OrganizationManagement.NomenclatureEdit
 {
-    public partial class EditPurchaseInvoiceForm : Form
+    public partial class EditGoodForm : Form
     {
         private int goodID;
-        public EditPurchaseInvoiceForm(DataTable goodsData)
+        public EditGoodForm(DataTable goodsData)
         {
             InitializeComponent();
 
@@ -65,7 +65,9 @@ namespace OrganizationManagement.NomenclatureEdit
             double trademargin = Convert.ToDouble(trademarginField.Text);
             string description = descriptionField.Text;
 
+
             Good.Update(goodID, name, article, measureunitID, groupID, archivecheck, netcost, vat, costwovat, tradeprice, trademargin, description);
+            Log.Insert(mainMDIForm.userID, "Отредактирован товар " + name);
             Close();
         }
 

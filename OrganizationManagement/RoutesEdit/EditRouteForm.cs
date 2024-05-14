@@ -61,10 +61,11 @@ namespace OrganizationManagement.RoutesEdit
         }
         private void saveButton_Click(object sender, EventArgs e)
         {
+            string newName ="";
             // Сохраняем измененное название маршрута
             if (routesData.Rows.Count > 0)
             {
-                string newName = nameField.Text.Trim();
+                newName = nameField.Text.Trim();
                 routesData.Rows[0]["Name"] = newName;
                 Route.UpdateRouteName(routeID, newName); // метод реализован для обновления названия маршрута
             }
@@ -75,6 +76,7 @@ namespace OrganizationManagement.RoutesEdit
                 Contractor.UpdateContractorRoute(contractor["Name"].ToString(), contractor["RouteID"]);
             }
             MessageBox.Show("Изменения сохранены.");
+            Log.Insert(mainMDIForm.userID, "Отредактирован маршрут " + newName);
             Close(); // Закрываем форму после сохранения изменений
         }
 

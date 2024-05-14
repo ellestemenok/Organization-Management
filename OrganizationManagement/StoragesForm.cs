@@ -46,8 +46,10 @@ namespace OrganizationManagement
             {
                 DataGridViewRow selectedRow = storagesGrid.SelectedRows[0];
                 int storageID = Convert.ToInt32(selectedRow.Cells["StorageID"].Value);
+                Log.Insert(mainMDIForm.userID, "Удален склад " + selectedRow.Cells["Название"].Value.ToString());
                 Storage.Delete(storageID);
                 LoadDataIntoDataGridView();
+                
             }
         }
         private void refreshGrid_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,11 +38,11 @@ namespace DatabaseLibrary
                
         }
 
-        public static void AddPayment(DateTime time, string type, double sum, int? contractorID, string name, int cashboxID)
+        public static void AddPayment(DateTime time, string type, double sum, int? contractorID, string name, int cashboxID, int userID)
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO public.\"Payment\" " +
-                "(\"Time\", \"Type\", \"Sum\", \"ContractorID\", \"Name\", \"CashboxID\") " +
-                "VALUES (@time, @type, @sum, @contractorID, @name, @cashboxID)",
+                "(\"Time\", \"Type\", \"Sum\", \"ContractorID\", \"Name\", \"CashboxID\", \"CreatedBy\") " +
+                "VALUES (@time, @type, @sum, @contractorID, @name, @cashboxID, @userID)",
                 Autorization.npgSqlConnection))
             {
                 cmd.Parameters.AddWithValue("@time", time.TimeOfDay);
@@ -53,6 +54,7 @@ namespace DatabaseLibrary
                     cmd.Parameters.AddWithValue("@contractorID", DBNull.Value);
                 cmd.Parameters.AddWithValue("@name", name);
                 cmd.Parameters.AddWithValue("@cashboxID", cashboxID);
+                cmd.Parameters.AddWithValue("@userID", userID);
 
                 cmd.ExecuteNonQuery();
             }

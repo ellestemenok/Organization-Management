@@ -1,6 +1,6 @@
 ﻿namespace OrganizationManagement
 {
-    partial class MainMDI
+    partial class mainMDIForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMDI));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainMDIForm));
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.organizationRequisitesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,6 +63,9 @@
             this.minimizeallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.adminStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStripMain = new System.Windows.Forms.StatusStrip();
             this.usernameStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripDateTime = new System.Windows.Forms.ToolStripStatusLabel();
@@ -80,7 +83,8 @@
             this.toolStripMenuItem2,
             this.toolStripMenuItem1,
             this.журналыДокументовToolStripMenuItem,
-            this.окнаToolStripMenuItem});
+            this.окнаToolStripMenuItem,
+            this.adminStripMenuItem});
             this.menuStripMain.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
@@ -330,7 +334,7 @@
             // 
             this.verticalToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
             this.verticalToolStripMenuItem.Name = "verticalToolStripMenuItem";
-            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verticalToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.verticalToolStripMenuItem.Text = "Черепицей";
             this.verticalToolStripMenuItem.Click += new System.EventHandler(this.verticalToolStripMenuItem_Click);
             // 
@@ -338,7 +342,7 @@
             // 
             this.cascadeToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
             this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
-            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.cascadeToolStripMenuItem.Text = "Каскадом";
             this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.cascadeToolStripMenuItem_Click);
             // 
@@ -346,22 +350,50 @@
             // 
             this.minimizeallToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
             this.minimizeallToolStripMenuItem.Name = "minimizeallToolStripMenuItem";
-            this.minimizeallToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.minimizeallToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.minimizeallToolStripMenuItem.Text = "Свернуть все";
             this.minimizeallToolStripMenuItem.Click += new System.EventHandler(this.minimizeallToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(151, 6);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8F);
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.closeToolStripMenuItem.Text = "Закрыть";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            // 
+            // adminStripMenuItem
+            // 
+            this.adminStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.userToolStripMenuItem,
+            this.logsToolStripMenuItem});
+            this.adminStripMenuItem.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.adminStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.adminStripMenuItem.Margin = new System.Windows.Forms.Padding(3);
+            this.adminStripMenuItem.Name = "adminStripMenuItem";
+            this.adminStripMenuItem.Padding = new System.Windows.Forms.Padding(2);
+            this.adminStripMenuItem.Size = new System.Drawing.Size(133, 21);
+            this.adminStripMenuItem.Text = "Администрирование";
+            this.adminStripMenuItem.Visible = false;
+            // 
+            // userToolStripMenuItem
+            // 
+            this.userToolStripMenuItem.Name = "userToolStripMenuItem";
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.userToolStripMenuItem.Text = "Пользователи";
+            this.userToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
+            // 
+            // logsToolStripMenuItem
+            // 
+            this.logsToolStripMenuItem.Name = "logsToolStripMenuItem";
+            this.logsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logsToolStripMenuItem.Text = "Журнал событий";
+            this.logsToolStripMenuItem.Click += new System.EventHandler(this.logsToolStripMenuItem_Click);
             // 
             // statusStripMain
             // 
@@ -399,7 +431,7 @@
             this.timerForDatetime.Interval = 1000;
             this.timerForDatetime.Tick += new System.EventHandler(this.timerForDatetime_Tick);
             // 
-            // MainMDI
+            // mainMDIForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -413,7 +445,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStripMain;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "MainMDI";
+            this.Name = "mainMDIForm";
             this.Text = "Планерно-диспетчерский отдел";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMDI_FormClosing);
@@ -465,6 +497,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem pkoJournalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rkoJournalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem adminStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logsToolStripMenuItem;
     }
 }
 

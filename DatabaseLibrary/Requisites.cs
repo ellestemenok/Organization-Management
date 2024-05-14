@@ -1,4 +1,6 @@
 ﻿using Npgsql;
+using System.Windows.Forms;
+using System;
 namespace DatabaseLibrary
 {
     public class Requisites
@@ -93,8 +95,16 @@ namespace DatabaseLibrary
                 "public.\"PaymentAccount\" " +
                 "WHERE \"AccountID\" = @AccountID", Autorization.npgSqlConnection))
             {
-                cmd.Parameters.AddWithValue("@AccountID", accountID);
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    cmd.Parameters.AddWithValue("@AccountID", accountID);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка: элемент используется в другой таблице.", "Запрещено", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
     }

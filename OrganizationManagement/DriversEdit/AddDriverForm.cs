@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
+using System.Xml.Linq;
 namespace OrganizationManagement.DriversEdit
 {
     public partial class AddDriverForm : Form
@@ -15,6 +16,7 @@ namespace OrganizationManagement.DriversEdit
         {
             string driverName = nameField.Text;
             Driver.Insert(driverName);
+            Log.Insert(mainMDIForm.userID, "Создан водитель " + driverName);
             Close(); 
         }
     }

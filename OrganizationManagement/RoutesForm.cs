@@ -59,10 +59,11 @@ namespace OrganizationManagement
                 // Перемещение контрагентов маршрута в запись с RouteID = 1
                 string updateContractorsQuery = $"UPDATE public.\"Contractor\" SET \"RouteID\" = 1 WHERE \"RouteID\" = {routeID}";
                 DataDB.ExecuteQuery(updateContractorsQuery);
-
+                Log.Insert(mainMDIForm.userID, "Удален маршрут " + selectedRow.Cells["Название"].Value.ToString());
                 // Удаление маршрута
                 Route.Delete(routeID);
                 LoadDataIntoDataGridView();
+                
             }
         }
 

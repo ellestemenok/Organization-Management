@@ -2,7 +2,9 @@
 using System;
 using System.Data;
 using System.Drawing;
+using System.Text;
 using System.Windows.Forms;
+using System.Xml.Linq;
 namespace OrganizationManagement
 {
     public partial class ExpenditureInvoicesForm : Form
@@ -113,8 +115,10 @@ namespace OrganizationManagement
             {
                 DataGridViewRow selectedRow = invoicesGrid.SelectedRows[0];
                 int invoiceID = Convert.ToInt32(selectedRow.Cells["InvoiceID"].Value);
+                Log.Insert(mainMDIForm.userID, "Удалена расходная накладная №" + selectedRow.Cells["InvoiceNumber"].Value.ToString());
                 ExpenditureInvoice.Delete(invoiceID);
                 LoadDataIntoDataGridView();
+                
             }
         }
         private void filterBox_TextChanged(object sender, EventArgs e)

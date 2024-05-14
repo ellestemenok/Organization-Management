@@ -1,4 +1,6 @@
 ﻿using Npgsql;
+using System.Windows.Forms;
+using System;
 namespace DatabaseLibrary
 {
     public class Storage
@@ -26,8 +28,16 @@ namespace DatabaseLibrary
                 "public.\"Storage\" " +
                 "WHERE \"StorageID\" = @StorageID", Autorization.npgSqlConnection))
             {
-                cmd.Parameters.AddWithValue("@StorageID", storageID);
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    cmd.Parameters.AddWithValue("@StorageID", storageID);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка: элемент используется в другой таблице.", "Запрещено", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
         public static void Insert(string name, bool ismain, bool isfree)

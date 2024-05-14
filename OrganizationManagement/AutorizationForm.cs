@@ -6,7 +6,7 @@ namespace OrganizationManagement
 {
     public partial class AutorizationForm : Form
     {
-        public string username; // Переименовано с userID на username
+        public string username;
         public string password;
 
         public AutorizationForm()
@@ -24,19 +24,9 @@ namespace OrganizationManagement
 
                 if (role != null)
                 {
-                    mainMDIAdminForm.SetUserRole(role); // Установка роли пользователя
-                    mainMDIAdminForm.SetUserID(fetchedUserID); // Установка ID пользователя
-                    Form nextForm = new mainMDIAdminForm();
-                    //Form nextForm;
-                    //if (role == "Администратор")
-                    //{
-                    //    nextForm = new mainMDIAdminForm();
-                    //}
-                    //else
-                    //{
-                    //    nextForm = new MainMDI(); // Если есть другая форма для других ролей
-                    //                              // Если требуется, добавьте код для установки UserID и в этой форме
-                    //}
+                    mainMDIForm.SetUserRole(role); // Установка роли пользователя
+                    mainMDIForm.SetUserID(fetchedUserID); // Установка ID пользователя
+                    Form nextForm = new mainMDIForm();
 
                     nextForm.Show();
                     this.Hide();

@@ -73,7 +73,7 @@ namespace OrganizationManagement
             }
 
             PurchaseInvoice.Update(invoiceID, invoiceDate, number, contractorID, storageID);
-
+            
             AddGoodinPurchaseInvoiceForm addForm = new AddGoodinPurchaseInvoiceForm(invoiceID);
             addForm.MdiParent = ActiveForm;
             addForm.Show();
@@ -98,7 +98,7 @@ namespace OrganizationManagement
             }
 
             PurchaseInvoice.Update(invoiceID, invoiceDate, number, contractorID, storageID);
-
+            Log.Insert(mainMDIForm.userID, "Добавлена приходная накладная №" + number.ToString());
             // Закрываем форму после сохранения
             Close();
         }

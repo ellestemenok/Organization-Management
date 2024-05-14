@@ -2,6 +2,7 @@
 using System.Data;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using DatabaseLibrary;
 using Microsoft.Reporting.WinForms;
 using OrganizationManagement._dataTables;
@@ -63,6 +64,7 @@ namespace OrganizationManagement
                     innField.Text,kppField.Text,okpoField.Text,okvadField.Text,ogrnField.Text,
                     directorField.Text,genaccountantField.Text,
                     payingVATcheckBox.Checked, okpdField.Text);
+            Log.Insert(mainMDIForm.userID, "Отредактирована организация");
             Close();
         }
         private void accountsGrid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -93,6 +95,7 @@ namespace OrganizationManagement
             {
                 DataGridViewRow selectedRow = accountsGrid.SelectedRows[0];
                 int accountID= Convert.ToInt32(selectedRow.Cells["№"].Value);
+                Log.Insert(mainMDIForm.userID, "Удален расчетный счет " + selectedRow.Cells["Номер счета"].Value.ToString());
                 Requisites.DeletePaymentAccount(accountID);
                 LoadDataIntoDataGridView();
             }

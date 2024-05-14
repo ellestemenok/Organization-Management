@@ -67,6 +67,8 @@ namespace OrganizationManagement
 
                 // Обновление данных в DataGridView
                 LoadDataIntoDataGridView();
+
+                Log.Insert(mainMDIForm.userID, "Удален Расходный кассовый ордер №" + rkoID.ToString());
             }
         }
         private void refreshGrid_Click(object sender, EventArgs e)

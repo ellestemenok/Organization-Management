@@ -46,6 +46,7 @@ namespace OrganizationManagement.NomenclatureEdit
 
             Good.Insert(name, article, measureunitID, groupID, archivecheck, netcost, vat, 
                 costwovat, tradeprice, trademargin,  description);
+            Log.Insert(mainMDIForm.userID, "Создан товар " + name);
             Close();
         }
         private void netcostField_Leave(object sender, EventArgs e)

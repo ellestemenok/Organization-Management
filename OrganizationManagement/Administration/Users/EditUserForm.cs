@@ -21,6 +21,8 @@ namespace OrganizationManagement
                 roleBox.Text = usersData.Rows[0]["Role"].ToString();
                 isActiveBox.Checked = Convert.ToBoolean(usersData.Rows[0]["isActive"]);
             }
+
+
         }
         private void saveButton_Click(object sender, EventArgs e)
         {
@@ -37,11 +39,18 @@ namespace OrganizationManagement
                 return;
             }
 
-            
-
             User.Update(userID, fio, login, password, role, isActive);
             Close();
 
+        }
+
+        private void EditUserForm_Enter(object sender, EventArgs e)
+        {
+            if (roleBox.Text == "Администратор")
+            {
+                isActiveBox.Checked = true;
+                isActiveBox.Enabled = false;
+            }
         }
     }
 }

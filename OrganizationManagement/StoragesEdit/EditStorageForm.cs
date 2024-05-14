@@ -26,6 +26,7 @@ namespace OrganizationManagement.StoragesEdit
             bool isFree = freeCheckBox.Checked;
 
             Storage.Update(storageID, name, isMain, isFree);
+            Log.Insert(mainMDIForm.userID, "Отредактирован склад " + name);
             Close();
         }
     }

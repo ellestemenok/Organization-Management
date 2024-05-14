@@ -33,7 +33,7 @@ namespace OrganizationManagement.CashboxEdit
             }
             string name = nameField.Text;
 
-            Cashbox.AddPayment(time, type, sum, contractorID, name, cashboxID) ;
+            Cashbox.AddPayment(time, type, sum, contractorID, name, cashboxID, mainMDIForm.userID) ;
             Close();
 
         }

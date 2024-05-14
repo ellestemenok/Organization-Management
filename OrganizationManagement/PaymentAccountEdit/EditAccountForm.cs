@@ -30,6 +30,7 @@ namespace OrganizationManagement.AccountEdit
             string bik = bikField.Text;
 
             Requisites.UpdatePaymentAccount(accountID, name, accountNumber, bankname, corrAccount, bik);
+            Log.Insert(mainMDIForm.userID, "Отредактирован р/c " + accountNumber);
             Close();
         }
     }

@@ -49,6 +49,8 @@ namespace OrganizationManagement.DriversEdit
 
             // Обновляем информацию для текущего водителя
             Driver.Update(driverID, name, routeID.HasValue ? routeID.Value : (object)DBNull.Value); // Передаём DBNull.Value, если routeID == null
+
+            Log.Insert(mainMDIForm.userID, "Отредактирован водитель " + name);
             Close();
         }
     }

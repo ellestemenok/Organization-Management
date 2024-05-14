@@ -64,6 +64,7 @@ namespace OrganizationManagement.PKOnRKOEdit
             }
             string name = nameField.Text;
             PKO.Update(pkoID, date, number, contractorID, invoiceID, sum, name);
+            Log.Insert(mainMDIForm.userID, "Создан " + name);
 
             // Проверка наличия Cashbox на указанную дату
             string cashboxQuery = $"SELECT \"CashboxID\" FROM public.\"Cashbox\" WHERE \"CashboxDate\" = '{date:yyyy-MM-dd}'";

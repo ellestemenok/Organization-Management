@@ -60,8 +60,15 @@ namespace DatabaseLibrary
                 "public.\"Invoice\" " +
                 "WHERE \"InvoiceID\" = @InvoiceID", Autorization.npgSqlConnection))
             {
-                cmd.Parameters.AddWithValue("@InvoiceID", invoiceID);
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    cmd.Parameters.AddWithValue("@InvoiceID", invoiceID);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка: элемент используется в другой таблице.", "Запрещено", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

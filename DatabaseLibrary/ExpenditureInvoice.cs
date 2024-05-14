@@ -1,6 +1,7 @@
 ﻿using Npgsql;
 using System;
 using System.Data;
+using System.Windows.Forms;
 namespace DatabaseLibrary
 {
     public class ExpenditureInvoice
@@ -31,8 +32,16 @@ namespace DatabaseLibrary
                 "public.\"ExpenditureInvoice\" " +
                 "WHERE \"InvoiceID\" = @InvoiceID", Autorization.npgSqlConnection))
             {
-                cmd.Parameters.AddWithValue("@InvoiceID", invoiceID);
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    cmd.Parameters.AddWithValue("@InvoiceID", invoiceID);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка: элемент используется в другой таблице.", "Запрещено", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
         public static void DeleteDetail(int detailID)

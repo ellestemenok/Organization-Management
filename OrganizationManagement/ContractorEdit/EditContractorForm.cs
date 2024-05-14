@@ -85,6 +85,8 @@ namespace OrganizationManagement.ContractorEdit
             Contractor.Update(contractorID, type, name, fullname, telephone, email, inn, kpp, okpo, oktmo, ogrn,
                 paymentacc, bank, bik, corr, postadrr, legaladdr, consaddr, director, accountant,
                 reason, groupID, manager, description, routeID);
+
+            Log.Insert(mainMDIForm.userID, "Отредактирован контрагент " + name);
             Close();
         }
 

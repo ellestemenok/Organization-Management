@@ -79,7 +79,7 @@ namespace OrganizationManagement
 
             // Вызываем метод Update из класса DataDB
             PurchaseInvoice.Update(invoiceID, invoiceDate, invoiceNumber, contractorID, storageID);
-
+            Log.Insert(mainMDIForm.userID, "Отредактирована расходная накладная №" + invoiceNumber.ToString());
             // Закрываем форму после сохранения
             Close();
         }

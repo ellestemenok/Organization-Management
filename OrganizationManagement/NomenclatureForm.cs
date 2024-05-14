@@ -47,8 +47,10 @@ namespace OrganizationManagement
             { 
                 DataGridViewRow selectedRow = goodsGrid.SelectedRows[0];
                 int goodID = Convert.ToInt32(selectedRow.Cells["GoodID"].Value);
+                Log.Insert(mainMDIForm.userID, "Удален товар " + selectedRow.Cells["Название"].Value.ToString());
                 Good.Delete(goodID);
                 LoadDataIntoDataGridView();
+                
             }
         }
         private void editItem_Click(object sender, EventArgs e)
@@ -75,7 +77,7 @@ namespace OrganizationManagement
                     $"WHERE \"GoodID\" = {goodID}\r\n\t;";
             DataTable goodsData = goodsRepository.FillFormWithQueryResult(query);
 
-            NomenclatureEdit.EditPurchaseInvoiceForm editForm = new NomenclatureEdit.EditPurchaseInvoiceForm(goodsData);
+            EditGoodForm editForm = new EditGoodForm(goodsData);
             editForm.MdiParent = ActiveForm;
             editForm.Show();
         }
@@ -104,7 +106,7 @@ namespace OrganizationManagement
                     $"WHERE \"GoodID\" = {goodID}\r\n\t;";
                 DataTable goodsData = goodsRepository.FillFormWithQueryResult(query);
 
-                NomenclatureEdit.EditPurchaseInvoiceForm editForm = new NomenclatureEdit.EditPurchaseInvoiceForm(goodsData);
+                EditGoodForm editForm = new EditGoodForm(goodsData);
                 editForm.MdiParent = ActiveForm;
                 editForm.Show();
             }

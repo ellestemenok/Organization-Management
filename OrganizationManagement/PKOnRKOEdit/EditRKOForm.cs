@@ -52,7 +52,9 @@ namespace OrganizationManagement.PKOnRKOEdit
             }
             string name = nameField.Text;
             RKO.Update(rkoID, date, number, contractorID, invoiceID, sum, name);
-            UpdatePaymentRecord(rkoID, date, "Приходный кассовый ордер №" + number, contractorID, sum);
+            UpdatePaymentRecord(rkoID, date, "Расходный кассовый ордер №" + number, contractorID, sum);
+
+            Log.Insert(mainMDIForm.userID, "Отредактирован Расходный кассовый ордер №" + number.ToString());
 
             Close();
         }
@@ -76,7 +78,6 @@ namespace OrganizationManagement.PKOnRKOEdit
             }
             else
             {
-                // Здесь можете добавить логику на случай, если связанная запись в Payment отсутствует
                 MessageBox.Show("Связанная запись платежа не найдена. Обновление не выполнено.", "Ошибка обновления", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

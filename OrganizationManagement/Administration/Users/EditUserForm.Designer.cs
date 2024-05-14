@@ -151,6 +151,7 @@
             this.Name = "EditUserForm";
             this.ShowIcon = false;
             this.Text = "Добавление пользователя";
+            this.Enter += new System.EventHandler(this.EditUserForm_Enter);
             this.ResumeLayout(false);
             this.PerformLayout();
 

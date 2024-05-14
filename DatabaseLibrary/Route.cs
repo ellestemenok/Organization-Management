@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DatabaseLibrary
 {
@@ -37,8 +38,16 @@ namespace DatabaseLibrary
             using (NpgsqlCommand cmd = new NpgsqlCommand("DELETE FROM public.\"Route\" WHERE \"RouteID\" = @RouteID",
                 Autorization.npgSqlConnection))
             {
-                cmd.Parameters.AddWithValue("@RouteID", routeID);
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    cmd.Parameters.AddWithValue("@RouteID", routeID);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка: элемент используется в другой таблице.", "Запрещено", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
     }

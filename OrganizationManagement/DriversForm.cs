@@ -49,6 +49,7 @@ namespace OrganizationManagement
             {
                 DataGridViewRow selectedRow = driversGrid.SelectedRows[0];
                 int driverID = Convert.ToInt32(selectedRow.Cells["DriverID"].Value);
+                Log.Insert(mainMDIForm.userID, "Удален водитель " + selectedRow.Cells["Имя водителя"].Value.ToString());
                 Driver.Delete(driverID);
                 LoadDataIntoDataGridView();
             }

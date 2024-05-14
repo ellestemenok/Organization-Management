@@ -2,7 +2,9 @@
 using OrganizationManagement.ContractorEdit;
 using System;
 using System.Data;
+using System.Text;
 using System.Windows.Forms;
+using System.Xml.Linq;
 namespace OrganizationManagement
 {
     public partial class ContractorsForm : Form
@@ -47,10 +49,13 @@ namespace OrganizationManagement
             {
                 DataGridViewRow selectedRow = contractorsGrid.SelectedRows[0];
                 int contactorID = Convert.ToInt32(selectedRow.Cells["ContractorID"].Value);
+                Log.Insert(mainMDIForm.userID, "Удален контрагент " + selectedRow.Cells["Краткое название"].Value.ToString());
                 Contractor.Delete(contactorID);
                 LoadDataIntoDataGridView();
+                
             }
         }
+
         private void editItem_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = contractorsGrid.SelectedRows[0];

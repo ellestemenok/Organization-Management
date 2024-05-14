@@ -107,6 +107,9 @@
             // isActiveBox
             // 
             this.isActiveBox.AutoSize = true;
+            this.isActiveBox.Checked = true;
+            this.isActiveBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.isActiveBox.Enabled = false;
             this.isActiveBox.Location = new System.Drawing.Point(75, 124);
             this.isActiveBox.Name = "isActiveBox";
             this.isActiveBox.Size = new System.Drawing.Size(83, 17);

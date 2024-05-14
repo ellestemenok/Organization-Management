@@ -134,6 +134,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administration\LogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administration\LogForm.Designer.cs">
+      <DependentUpon>LogForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administration\Users\EditUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,11 +224,11 @@
     <Compile Include="ExpenditureInvoiceEdit\PaymentsForExpForm.Designer.cs">
       <DependentUpon>PaymentsForExpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="mainMDIAdminForm.cs">
+    <Compile Include="mainMDIForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="mainMDIAdminForm.Designer.cs">
-      <DependentUpon>mainMDIAdminForm.cs</DependentUpon>
+    <Compile Include="mainMDIForm.Designer.cs">
+      <DependentUpon>mainMDIForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ReportViewForm.cs">
       <SubType>Form</SubType>
@@ -315,12 +321,6 @@
     </Compile>
     <Compile Include="AutorizationForm.Designer.cs">
       <DependentUpon>AutorizationForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="mainMDIForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="mainMDIForm.Designer.cs">
-      <DependentUpon>mainMDIForm.cs</DependentUpon>
     </Compile>
     <Compile Include="OrganizationRequisitesForm.cs">
       <SubType>Form</SubType>
@@ -451,6 +451,9 @@
       <DependentUpon>StoragesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="_dataTables\OrganizationDT.cs" />
+    <EmbeddedResource Include="Administration\LogForm.resx">
+      <DependentUpon>LogForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administration\Users\EditUserForm.resx">
       <DependentUpon>EditUserForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -493,8 +496,8 @@
     <EmbeddedResource Include="ExpenditureInvoiceEdit\PaymentsForExpForm.resx">
       <DependentUpon>PaymentsForExpForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="mainMDIAdminForm.resx">
-      <DependentUpon>mainMDIAdminForm.cs</DependentUpon>
+    <EmbeddedResource Include="mainMDIForm.resx">
+      <DependentUpon>mainMDIForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportViewForm.resx">
       <DependentUpon>ReportViewForm.cs</DependentUpon>
@@ -540,9 +543,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AutorizationForm.resx">
       <DependentUpon>AutorizationForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="mainMDIForm.resx">
-      <DependentUpon>mainMDIForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrganizationRequisitesForm.resx">
       <DependentUpon>OrganizationRequisitesForm.cs</DependentUpon>

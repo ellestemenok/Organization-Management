@@ -15,6 +15,7 @@ namespace OrganizationManagement.RoutesEdit
         {
             string routeName = nameField.Text;
             Route.Insert(routeName);
+            Log.Insert(mainMDIForm.userID, "Создан маршрут " + routeName);
             Close(); 
         }
     }

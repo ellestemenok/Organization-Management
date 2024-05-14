@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System;
 using System.Data;
+using System.Windows.Forms;
 namespace DatabaseLibrary
 {
     public class Contractor
@@ -114,8 +115,16 @@ namespace DatabaseLibrary
                 "public.\"Contractor\" " +
                 "WHERE \"ContractorID\" = @ContractorID", Autorization.npgSqlConnection))
             {
-                cmd.Parameters.AddWithValue("@ContractorID", contractorID);
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    cmd.Parameters.AddWithValue("@ContractorID", contractorID);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка: элемент используется в другой таблице.", "Запрещено", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DatabaseLibrary
 {
@@ -40,8 +41,16 @@ namespace DatabaseLibrary
                 "public.\"Driver\" " +
                 "WHERE \"DriverID\" = @DriverID", Autorization.npgSqlConnection))
             {
-                cmd.Parameters.AddWithValue("@DriverID", driverID);
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    cmd.Parameters.AddWithValue("@DriverID", driverID);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка: элемент используется в другой таблице.", "Запрещено", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
 

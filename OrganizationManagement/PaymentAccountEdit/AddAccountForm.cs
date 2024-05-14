@@ -18,6 +18,8 @@ namespace OrganizationManagement
             string bik = bikField.Text;
             Requisites.InsertPaymentAccount(name, accountNumber, 
                 bankName, corrAccount, bik);
+
+            Log.Insert(mainMDIForm.userID, "Создан р/c " + accountNumber);
             Close();
         }
     }

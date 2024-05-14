@@ -53,6 +53,8 @@ namespace OrganizationManagement.PKOnRKOEdit
             PKO.Update(pkoID, date, number, contractorID, invoiceID, sum, name);
 
             UpdatePaymentRecord(pkoID, date, "Приходный кассовый ордер №" + number, contractorID, sum);
+
+            Log.Insert(mainMDIForm.userID, "Отредактирован Приходный кассовый ордер №" + number.ToString());
             Close();
 
         }

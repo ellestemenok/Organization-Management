@@ -136,7 +136,6 @@
             this.driversGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.driversGrid.Size = new System.Drawing.Size(684, 437);
             this.driversGrid.TabIndex = 4;
-            this.driversGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.routesGrid_CellDoubleClick);
             // 
             // DriversForm
             // 

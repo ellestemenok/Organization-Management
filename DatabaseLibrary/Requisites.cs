@@ -5,6 +5,7 @@ namespace DatabaseLibrary
 {
     public class Requisites
     {
+        //метод для обновления реквизитов организации
         public static void Update(int organizationID, string type, string name, string fullName, string consigneeAddress, string postAddress, string legalAddress, string telephoneNumber, string email, string inn, string kpp, string okpo, string okvad, string ogrn, string director, string generalAccountant, bool payingVAT, string okpd)
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("UPDATE public.\"Organization\" " +
@@ -28,6 +29,7 @@ namespace DatabaseLibrary
                             "WHERE \"OrganizationID\" = 1",
                             Autorization.npgSqlConnection))
             {
+                //заполнение параметров
                 cmd.Parameters.AddWithValue("@Type", type);
                 cmd.Parameters.AddWithValue("@Name", name);
                 cmd.Parameters.AddWithValue("@FullName", fullName);
@@ -46,10 +48,11 @@ namespace DatabaseLibrary
                 cmd.Parameters.AddWithValue("@PayingVAT", payingVAT);
                 cmd.Parameters.AddWithValue("@OKPD", okpd);
                 cmd.Parameters.AddWithValue("@OrganizationID", organizationID);
-
+                //выполнение запроса
                 cmd.ExecuteNonQuery();
             }
         }
+        //метод для обновления расчетного счета организации
         public static void UpdatePaymentAccount(int accountID, string name, string accountNumber,
             string bankname, string corrAccount, string bik)
         {
@@ -62,16 +65,18 @@ namespace DatabaseLibrary
                             "WHERE \"AccountID\" = @AccountID",
                             Autorization.npgSqlConnection))
             {
+                //заполнение параметров
                 cmd.Parameters.AddWithValue("@AccountID", accountID);
                 cmd.Parameters.AddWithValue("@Name", name);
                 cmd.Parameters.AddWithValue("@AccountNumber", accountNumber);
                 cmd.Parameters.AddWithValue("@BankName", bankname);
                 cmd.Parameters.AddWithValue("@CorrAccount", corrAccount);
                 cmd.Parameters.AddWithValue("@BIK", bik);
-
+                //выполнение запроса
                 cmd.ExecuteNonQuery();
             }
         }
+        //метод для создания нового расчетного счета организации
         public static void InsertPaymentAccount(string name, string accountNumber,
             string bankName, string corrAccount, string bik)
         {
@@ -80,15 +85,17 @@ namespace DatabaseLibrary
                 "VALUES (@Name, @AccountNumber, @BankName, @CorrAccount, @BIK)",
                 Autorization.npgSqlConnection))
             {
+                //заполнение параметров
                 cmd.Parameters.AddWithValue("@Name", name);
                 cmd.Parameters.AddWithValue("@AccountNumber", accountNumber);
                 cmd.Parameters.AddWithValue("@BankName", bankName);
                 cmd.Parameters.AddWithValue("@CorrAccount", corrAccount);
                 cmd.Parameters.AddWithValue("@BIK", bik);
-
+                //выполнение запроса
                 cmd.ExecuteNonQuery();
             }
         }
+        //метод для удаления расчетного счета
         public static void DeletePaymentAccount(int accountID)
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("DELETE FROM " +
@@ -97,11 +104,13 @@ namespace DatabaseLibrary
             {
                 try
                 {
+                    //заполнение параметров и выполенение запроса
                     cmd.Parameters.AddWithValue("@AccountID", accountID);
                     cmd.ExecuteNonQuery();
                 }
-                catch (Exception ex)
+                catch
                 {
+                    //если удаление расчетного счета нарушит целостность БД, то действие запрещается
                     MessageBox.Show("Ошибка: элемент используется в другой таблице.", "Запрещено", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 

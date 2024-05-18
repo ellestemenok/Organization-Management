@@ -1,5 +1,4 @@
 ﻿using Npgsql;
-using System.Data.SqlClient;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -7,6 +6,7 @@ namespace DatabaseLibrary
 {
     public class Contractor
     {
+        //метод для обновления записи о контрагента
         public static void Update(int contractorID, string type, 
             string name, string fullname, string telephone, 
             string email, string inn, string kpp, string okpo, 
@@ -40,6 +40,7 @@ namespace DatabaseLibrary
                 "WHERE \"ContractorID\" =@ContractorID;",
                 Autorization.npgSqlConnection))
             {
+                //выполнение запроса и ввод параметров
                 cmd.Parameters.AddWithValue("@ContractorID", contractorID);
                 cmd.Parameters.AddWithValue("@Type", type);
                 cmd.Parameters.AddWithValue("@Name", name);
@@ -68,6 +69,7 @@ namespace DatabaseLibrary
                 cmd.ExecuteNonQuery();
             }
         }
+        //метод для создания нового контрагента
         public static void Insert(string type, string name, string fullname, string telephone, 
             string email, string inn, string kpp, string okpo, string oktmo, string ogrn, 
             string paymentacc, string bank, string bik, string corracc, string postaddr, string legaladdr, 
@@ -82,6 +84,7 @@ namespace DatabaseLibrary
                 "@Director, @GeneralAccountant, @Reason, @CategoryID, @Description, @Manager, @RouteID);",
                 Autorization.npgSqlConnection))
             {
+                //выполнение запроса и ввод параметров
                 cmd.Parameters.AddWithValue("@Type", type);
                 cmd.Parameters.AddWithValue("@Name", name);
                 cmd.Parameters.AddWithValue("@FullName", fullname);
@@ -109,6 +112,8 @@ namespace DatabaseLibrary
                 cmd.ExecuteNonQuery();
             }
         }
+
+        //метод для удаления контрагента
         public static void Delete(int contractorID)
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("DELETE FROM " +
@@ -117,24 +122,27 @@ namespace DatabaseLibrary
             {
                 try
                 {
+                    //выполнение запроса и ввод параметров
                     cmd.Parameters.AddWithValue("@ContractorID", contractorID);
                     cmd.ExecuteNonQuery();
                 }
-                catch (Exception ex)
+                catch
                 {
+                    //если удаление этого контрагента приведет к нарушению целостности БД, то выполнение действия запрещается
                     MessageBox.Show("Ошибка: элемент используется в другой таблице.", "Запрещено", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
         }
 
-
+        //метод для обновления маршрута для контрагента
         public static void UpdateContractorRoute(string contractorName, object routeID)
         {
             if (Autorization.npgSqlConnection != null && Autorization.npgSqlConnection.State == ConnectionState.Open)
             {                 
                 using (var command = new NpgsqlCommand("UPDATE public.\"Contractor\" SET \"RouteID\" = @RouteID WHERE \"Name\" = @Name", Autorization.npgSqlConnection))
                 {
+                    //выполнение запроса и ввод параметров
                     command.Parameters.AddWithValue("@RouteID", routeID ?? DBNull.Value);
                     command.Parameters.AddWithValue("@Name", contractorName);
 

@@ -1,18 +1,12 @@
 ﻿using Npgsql;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace DatabaseLibrary
 {
     public class Invoice
     {
-
-   
+        //метод для обновления записи о счет-фактуре
         public static void Update(int invoiceID, DateTime date, int number, int contractorID, int paymentID, bool isGiven, int? expNum)
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("UPDATE public.\"Invoice\"\r\n\t" +
@@ -26,6 +20,7 @@ namespace DatabaseLibrary
                 "WHERE \"InvoiceID\"=@InvoiceID;",
                 Autorization.npgSqlConnection))
             {
+                //выполнение запроса и ввод параметров
                 cmd.Parameters.AddWithValue("@InvoiceID", invoiceID);
                 cmd.Parameters.AddWithValue("@InvoiceDate", date);
                 cmd.Parameters.AddWithValue("@InvoiceNumber", number);
@@ -37,23 +32,7 @@ namespace DatabaseLibrary
                 cmd.ExecuteNonQuery();
             }
         }
-
-        public static void AddProductToInvoice(int invoiceID, int productID, int quantity)
-        {
-            if (Autorization.npgSqlConnection != null)
-            {
-                using (NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO " +
-                    "public.\"InvoiceDetail\" (\"InvoiceID\", \"ProductID\", \"Quantity\") " +
-                    "VALUES (@InvoiceID, @ProductID, @Quantity);", Autorization.npgSqlConnection))
-                {
-                    cmd.Parameters.AddWithValue("@InvoiceID", invoiceID);
-                    cmd.Parameters.AddWithValue("@ProductID", productID);
-                    cmd.Parameters.AddWithValue("@Quantity", quantity);
-                    cmd.ExecuteNonQuery();
-                }
-            }
-        }
-
+        //метод для удаления счет-фактуры
         public static void Delete(int invoiceID)
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("DELETE FROM " +
@@ -62,11 +41,13 @@ namespace DatabaseLibrary
             {
                 try
                 {
+                    //выполнение запроса и ввод параметров
                     cmd.Parameters.AddWithValue("@InvoiceID", invoiceID);
                     cmd.ExecuteNonQuery();
                 }
-                catch (Exception ex)
+                catch
                 {
+                    //если удаление этой счет-фактуры приведет к нарушению целостности БД, то выполнение действия запрещается
                     MessageBox.Show("Ошибка: элемент используется в другой таблице.", "Запрещено", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

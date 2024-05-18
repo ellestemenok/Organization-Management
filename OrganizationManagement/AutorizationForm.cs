@@ -8,17 +8,15 @@ namespace OrganizationManagement
     {
         public string username;
         public string password;
-
         public AutorizationForm()
         {
             InitializeComponent();
         }
-
         private void autorizationButton_Click(object sender, EventArgs e)
         {
             try
             {
-                username = usernameField.Text; // Используйте новое имя переменной
+                username = usernameField.Text;
                 password = passwordField.Text;
                 var (role, fullName, fetchedUserID) = Autorization.Autorize(username, password);
 
@@ -33,12 +31,14 @@ namespace OrganizationManagement
                 }
                 else
                 {
-                    MessageBox.Show("Неверные учетные данные.", "Ошибка авторизации", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Неверные учетные данные.", 
+                        "Ошибка авторизации", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка подключения к базе данных: {ex.Message}", "Ошибка базы данных", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ошибка подключения к базе данных: {ex.Message}", 
+                    "Ошибка базы данных", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

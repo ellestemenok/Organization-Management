@@ -1,14 +1,11 @@
 ﻿using Npgsql;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DatabaseLibrary
 {
     public class RKO
     {
+        //метод для создания нового РКО
         public static void Insert(DateTime date, int contractorID, int invoiceID, double sum)
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO public.\"RKO\"" +
@@ -17,14 +14,17 @@ namespace DatabaseLibrary
                 "VALUES (@RkoDate, @ContractorID, @PurchInvID, @Sum);",
                 Autorization.npgSqlConnection))
             {
+                //Заполнение параметров
                 cmd.Parameters.AddWithValue("@RkoDate", date);
                 cmd.Parameters.AddWithValue("@ContractorID", contractorID);
                 cmd.Parameters.AddWithValue("@PurchInvID", invoiceID);
                 cmd.Parameters.AddWithValue("@Sum", sum);
+                //Выполнение запроса
                 cmd.ExecuteNonQuery();
             }
         }
 
+        //метод для обновления РКО
         public static void Update(int rkoID, DateTime date, int number, int contractorID, int invoiceID, double sum, string name = "")
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("UPDATE public.\"RKO\"\r\n\t" +
@@ -38,6 +38,7 @@ namespace DatabaseLibrary
                 "WHERE \"RkoID\"=@RkoID;",
                 Autorization.npgSqlConnection))
             {
+                //Заполнение параметров
                 cmd.Parameters.AddWithValue("@RkoDate", date);
                 cmd.Parameters.AddWithValue("@PurchInvID", invoiceID);
                 cmd.Parameters.AddWithValue("@ContractorID", contractorID);
@@ -45,7 +46,7 @@ namespace DatabaseLibrary
                 cmd.Parameters.AddWithValue("@RkoNum", number);
                 cmd.Parameters.AddWithValue("@Name", name);
                 cmd.Parameters.AddWithValue("@RkoID", rkoID);
-
+                //выполнение запроса
                 cmd.ExecuteNonQuery();
             }
         }

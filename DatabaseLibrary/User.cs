@@ -4,13 +4,14 @@ namespace DatabaseLibrary
 {
     public class User
     {
+        //метод для удаления пользователя из системы
         public static void Delete(int userID)
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("SELECT COUNT(*) FROM public.\"User\" WHERE \"Role\" = 'Администратор' AND \"UserID\" != @UserID", Autorization.npgSqlConnection))
             {
-                cmd.Parameters.AddWithValue("@UserID", userID);
+                cmd.Parameters.AddWithValue("@UserID", userID); //добавление параметров
 
-                long count = (long)cmd.ExecuteScalar(); // Изменено приведение на long для предотвращения InvalidCastException
+                long count = (long)cmd.ExecuteScalar(); //приведение на long для предотвращения InvalidCastException
 
                 if (count == 0) // Если это последний администратор
                 {
@@ -24,8 +25,7 @@ namespace DatabaseLibrary
             }
         }
 
-
-
+        //метод для проверки уникальности логина и пароля
         private static bool CheckUniqueLoginAndPassword(string login, string password)
         {
             // Первоначально проверяем только уникальность логина
@@ -47,34 +47,37 @@ namespace DatabaseLibrary
                     }
                 }
             }
-            return true; // Нет совпадений логина, или пароль отличается
+            return true; // нет совпадений логина, или пароль отличается
         }
-
+        //метод для создания нового пользователя в системе
         public static void Insert(string fio, string login, string password, string role, bool isActive)
         {
-            if (!CheckUniqueLoginAndPassword(login, password))
+            if (!CheckUniqueLoginAndPassword(login, password)) //если пользователь с таким логином и паролем существует, то действие запрещается
             {
-                MessageBox.Show("Пользователь с таким логином и паролем уже существует.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Пользователь с таким логином и паролем уже существует.", 
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            using (NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO public.\"User\" (\"Login\", \"FullName\", \"Password\", \"Role\", \"isActive\") " +
+            using (NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO public.\"User\" " +
+                "(\"Login\", \"FullName\", \"Password\", \"Role\", \"isActive\") " +
                 "VALUES (@Login, @FullName, @Password, @Role, @isActive);",
                 Autorization.npgSqlConnection))
             {
+                //добавление параметров
                 cmd.Parameters.AddWithValue("@Login", login);
                 cmd.Parameters.AddWithValue("@FullName", fio);
-                cmd.Parameters.AddWithValue("@Password", BCrypt.Net.BCrypt.HashPassword(password));
+                cmd.Parameters.AddWithValue("@Password", BCrypt.Net.BCrypt.HashPassword(password)); //хэширование пароля
                 cmd.Parameters.AddWithValue("@Role", role);
                 cmd.Parameters.AddWithValue("@isActive", isActive);
-
+                //выполнение запроса
                 cmd.ExecuteNonQuery();
             }
         }
-
+        //метод для обновления пользователя
         public static void Update(int userID, string fio, string login, string password, string role, bool isActive)
         {
-            if (!CheckUniqueLoginAndPassword(login, password))
+            if (!CheckUniqueLoginAndPassword(login, password)) //если пользователь с таким логином и паролем существует, то действие запрещается
             {
                 MessageBox.Show("Пользователь с таким логином и паролем уже существует.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -90,17 +93,16 @@ namespace DatabaseLibrary
                 "WHERE \"UserID\"=@UserID;",
                 Autorization.npgSqlConnection))
             {
+                //добавление параметров
                 cmd.Parameters.AddWithValue("@UserID", userID);
                 cmd.Parameters.AddWithValue("@FullName", fio);
                 cmd.Parameters.AddWithValue("@Login", login);
                 cmd.Parameters.AddWithValue("@Role", role);
                 cmd.Parameters.AddWithValue("@isActive", isActive);
-                cmd.Parameters.AddWithValue("@Password", BCrypt.Net.BCrypt.HashPassword(password));
+                cmd.Parameters.AddWithValue("@Password", BCrypt.Net.BCrypt.HashPassword(password)); //хэширование пароля
+                //выполнение запроса
                 cmd.ExecuteNonQuery();
             }
         }
-
-
-
     }
 }

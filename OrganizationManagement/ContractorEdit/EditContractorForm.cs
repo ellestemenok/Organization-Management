@@ -2,6 +2,7 @@
 using DatabaseLibrary;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Windows.Forms;
 namespace OrganizationManagement.ContractorEdit
@@ -92,42 +93,50 @@ namespace OrganizationManagement.ContractorEdit
 
         private async void api_btn_Click(object sender, EventArgs e)
         {
-            var token = "974ee49a114eadcb38db8cdfbfe776f344faf9ae";
+            var token = ConfigurationManager.AppSettings["ApiToken"];
             var api = new SuggestClientAsync(token);
-            var result = await api.FindParty(innField.Text);
 
-            if (result.suggestions.Count > 0)
+            try
             {
-                var data = result.suggestions[0].data;
-                string type = data.type.ToString();
-
-                // Установка категории в typeBox в зависимости от типа
-                if (type == "LEGAL")
+                var result = await api.FindParty(innField.Text);
+                if (result.suggestions.Count > 0)
                 {
-                    // Установка значений для юридического лица
-                    kppField.Text = data.kpp;
-                    directorField.Text = data.management.name;
-                    typeBox.SelectedIndex = typeBox.FindStringExact("Организация");
+                    var data = result.suggestions[0].data;
+                    string type = data.type.ToString();
+
+                    // Установка категории в typeBox в зависимости от типа
+                    if (type == "LEGAL")
+                    {
+                        // Установка значений для юридического лица
+                        kppField.Text = data.kpp;
+                        directorField.Text = data.management.name;
+                        typeBox.SelectedIndex = typeBox.FindStringExact("Организация");
+                    }
+                    else
+                    {
+                        // Установка значений для индивидуального предпринимателя
+                        directorField.Text = $"{data.fio.surname} {data.fio.name} {data.fio.patronymic}";
+                        typeBox.SelectedIndex = typeBox.FindStringExact("Индивидуальный предприниматель");
+                    }
+
+                    nameField.Text = data.name.short_with_opf;
+                    fullnameField.Text = data.name.full_with_opf;
+                    okpoField.Text = data.okpo;
+                    ogrnField.Text = data.ogrn;
+                    oktmoField.Text = data.oktmo;
+                    postAddrField.Text = data.address.value;
+                    legaladdrField.Text = data.address.value;
                 }
                 else
                 {
-                    // Установка значений для индивидуального предпринимателя
-                    directorField.Text = $"{data.fio.surname} {data.fio.name} {data.fio.patronymic}";
-                    typeBox.SelectedIndex = typeBox.FindStringExact("Индивидуальный предприниматель");
+                    MessageBox.Show("Компания не найдена.");
                 }
-
-                nameField.Text = data.name.short_with_opf;
-                fullnameField.Text = data.name.full_with_opf;
-                okpoField.Text = data.okpo;
-                ogrnField.Text = data.ogrn;
-                oktmoField.Text = data.oktmo;
-                postAddrField.Text = data.address.value;
-                legaladdrField.Text = data.address.value;
             }
-            else
+            catch
             {
-                MessageBox.Show("Компания не найдена.");
+                MessageBox.Show("Нет соединения с базой предпринимателей.");
             }
+
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

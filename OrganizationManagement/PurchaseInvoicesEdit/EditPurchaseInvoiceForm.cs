@@ -1,4 +1,5 @@
 ﻿using DatabaseLibrary;
+using OrganizationManagement._dataTables;
 using OrganizationManagement.PurchaseInvoicesEdit;
 using System;
 using System.Collections.Generic;
@@ -131,6 +132,33 @@ namespace OrganizationManagement
             PaymentsForPurchForm paymentJournal = new PaymentsForPurchForm(invoiceID);
             paymentJournal.MdiParent = ActiveForm;
             paymentJournal.Show();
+        }
+
+        private void printButton_Click(object sender, EventArgs e)
+        {
+            DateTime invoiceDate = dateTimePicker.Value;
+            int invoiceNumber = Convert.ToInt32(numField.Text);
+            int contractorID = 0;
+            int storageID = 0;
+
+            if (contractorBox.SelectedItem != null)
+            {
+                var contractorItem = (KeyValuePair<int, string>)contractorBox.SelectedItem;
+                contractorID = contractorItem.Key;
+            }
+
+            if (storageBox.SelectedItem != null)
+            {
+                var storageItem = (KeyValuePair<int, string>)storageBox.SelectedItem;
+                storageID = storageItem.Key;
+            }
+
+            // Вызываем метод Update из класса DataDB
+            PurchaseInvoice.Update(invoiceID, invoiceDate, invoiceNumber, contractorID, storageID);
+            IReportDataProvider provider = new PurchInvoiceReportDataProvider(invoiceID);
+            ReportViewForm viewForm = new ReportViewForm(provider);
+            viewForm.MdiParent = ActiveForm;
+            viewForm.Show();
         }
     }
 }

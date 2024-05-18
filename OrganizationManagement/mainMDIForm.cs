@@ -11,14 +11,16 @@ namespace OrganizationManagement
     public partial class mainMDIForm : Form
     {
         public static int userID;
-        public static string userRole; // Добавьте статическую переменную для хранения роли пользователя
+        public static string userRole; // статическая переменная для хранения роли пользователя
 
+        // Метод для установки Id пользователя
         public static void SetUserID(int id)
         {
             userID = id;
         }
 
-        public static void SetUserRole(string role) // Метод для установки роли пользователя
+        // Метод для установки роли пользователя
+        public static void SetUserRole(string role)
         {
             userRole = role;
         }

@@ -5,6 +5,7 @@ namespace DatabaseLibrary
 {
     public class Storage
     {
+        //метод для обновления склада
         public static void Update(int storageID, string name, bool ismain, bool isfree)
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("UPDATE public.\"Storage\"\r\n\t" +
@@ -22,6 +23,7 @@ namespace DatabaseLibrary
                 cmd.ExecuteNonQuery();
             }
         }
+        //метод для удаления склада
         public static void Delete(int storageID)
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("DELETE FROM " +
@@ -30,16 +32,19 @@ namespace DatabaseLibrary
             {
                 try
                 {
+                    //заполнение параметров и выполнение запроса
                     cmd.Parameters.AddWithValue("@StorageID", storageID);
                     cmd.ExecuteNonQuery();
                 }
-                catch (Exception ex)
+                catch
                 {
+                    //если удаления склада приведет к нарушению целостности БД, то действие запрещается
                     MessageBox.Show("Ошибка: элемент используется в другой таблице.", "Запрещено", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
         }
+        //метод для создания нового склада
         public static void Insert(string name, bool ismain, bool isfree)
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO public.\"Storage\"" +
@@ -50,6 +55,7 @@ namespace DatabaseLibrary
                 "VALUES (@Name, @isMain, @isFree, 1);",
                 Autorization.npgSqlConnection))
             {
+                //заполнение параметров и выполнение запроса
                 cmd.Parameters.AddWithValue("@Name", name);
                 cmd.Parameters.AddWithValue("@isMain", ismain);
                 cmd.Parameters.AddWithValue("@isFree", isfree);

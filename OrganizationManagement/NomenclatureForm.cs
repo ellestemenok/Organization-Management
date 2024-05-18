@@ -42,7 +42,8 @@ namespace OrganizationManagement
         }
         private void delItem_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Удалить элемент?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Удалить элемент?", "Удаление", 
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             { 
                 DataGridViewRow selectedRow = goodsGrid.SelectedRows[0];
@@ -81,6 +82,7 @@ namespace OrganizationManagement
             editForm.MdiParent = ActiveForm;
             editForm.Show();
         }
+
         private void goodsGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if(e.RowIndex >= 0)

@@ -27,8 +27,6 @@ namespace OrganizationManagement._dataTables
         public string GeneralAccountant { get; set; }
         public bool PayingVAT { get; set; }
         public string OKPD { get; set; }
-
-        // Новые свойства для платежных счетов
         public int AccountID { get; set; }
         public string AccountName { get; set; }
         public string AccountNumber { get; set; }
@@ -44,7 +42,8 @@ namespace OrganizationManagement._dataTables
                 connection.Open();
                 string sql = "SELECT o.*, p.\"AccountID\", p.\"Name\" as AccountName, p.\"AccountNumber\", " +
                     "p.\"BankName\", p.\"СorrAccount\", p.\"BIK\" FROM public.\"Organization\" o " +
-                    "LEFT JOIN public.\"PaymentAccount\" p ON o.\"OrganizationID\" = p.\"OrganizationID\" WHERE o.\"OrganizationID\" = 1";
+                    "LEFT JOIN public.\"PaymentAccount\" p ON o.\"OrganizationID\" = p.\"OrganizationID\" " +
+                    "WHERE o.\"OrganizationID\" = 1";
                 using (var command = new NpgsqlCommand(sql, connection))
                 using (var reader = command.ExecuteReader())
                 {
@@ -86,15 +85,15 @@ namespace OrganizationManagement._dataTables
     }
 
     public class OrganizationReportDataProvider : IReportDataProvider
-{
-    public ReportDataSource GetReportDataSource()
     {
-        var x = new OrganizationDT();
-        var data = x.GetOrganizationData();
-        return new ReportDataSource("OrganizationDT", data);
-    }
+        public ReportDataSource GetReportDataSource()
+        {
+            var x = new OrganizationDT();
+            var data = x.GetOrganizationData();
+            return new ReportDataSource("OrganizationDT", data);
+        }
 
-    public string ReportPath
+        public string ReportPath
         {
             get
             {

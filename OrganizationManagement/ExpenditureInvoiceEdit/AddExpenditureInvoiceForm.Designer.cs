@@ -59,6 +59,7 @@
             this.paymentJournal = new System.Windows.Forms.ToolStripMenuItem();
             this.создатьСчетфактуруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.printButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.specGrid)).BeginInit();
@@ -259,6 +260,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.printButton);
             this.panel2.Controls.Add(this.saveButton);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 560);
@@ -371,6 +373,17 @@
             this.dateTimePicker.Size = new System.Drawing.Size(132, 20);
             this.dateTimePicker.TabIndex = 9;
             // 
+            // printButton
+            // 
+            this.printButton.Font = new System.Drawing.Font("Verdana", 8F);
+            this.printButton.Location = new System.Drawing.Point(12, 9);
+            this.printButton.Name = "printButton";
+            this.printButton.Size = new System.Drawing.Size(100, 30);
+            this.printButton.TabIndex = 8;
+            this.printButton.Text = "Печать";
+            this.printButton.UseVisualStyleBackColor = true;
+            this.printButton.Click += new System.EventHandler(this.printButton_Click);
+            // 
             // AddExpenditureInvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -442,5 +455,6 @@
         private System.Windows.Forms.Label opl;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ToolStripMenuItem paymentJournal;
+        private System.Windows.Forms.Button printButton;
     }
 }

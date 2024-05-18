@@ -93,6 +93,7 @@
     <Reference Include="System.Collections.Immutable, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Immutable.8.0.0\lib\net462\System.Collections.Immutable.dll</HintPath>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.8.0.1\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
@@ -254,6 +255,9 @@
     <Compile Include="InvoicesForm.Designer.cs">
       <DependentUpon>InvoicesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="_dataTables\InvoiceDT.cs" />
+    <Compile Include="_dataTables\PurchInvoiceDetailDT.cs" />
+    <Compile Include="_dataTables\ExpInvoiceDetailDT.cs" />
     <Compile Include="_dataTables\IReportDataProvider.cs" />
     <Compile Include="KeyPressEvent.cs" />
     <Compile Include="CashboxForm.cs">
@@ -612,11 +616,23 @@
     <EmbeddedResource Include="StoragesForm.resx">
       <DependentUpon>StoragesForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="_reports\ExpInvoiceReport.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_reports\InvoiceReport.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="_reports\OrgReport.rdlc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_reports\PurchInvoiceReport.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\OrganizationManagement._dataTables.ExpInvoiceDetailDT.datasource" />
+    <None Include="Properties\DataSources\OrganizationManagement._dataTables.InvoiceDT.datasource" />
     <None Include="Properties\DataSources\OrganizationManagement._dataTables.OrganizationDT.datasource" />
+    <None Include="Properties\DataSources\OrganizationManagement._dataTables.PurchInvoiceDetailDT.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

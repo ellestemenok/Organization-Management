@@ -36,12 +36,14 @@
             this.storageBox = new System.Windows.Forms.ComboBox();
             this.reasonField = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.printButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.specGrid = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.addItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.paymentJournal = new System.Windows.Forms.ToolStripMenuItem();
             this.создатьСчетфактуруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.numField = new System.Windows.Forms.TextBox();
@@ -58,7 +60,6 @@
             this.quant1 = new System.Windows.Forms.Label();
             this.sum = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.paymentJournal = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.specGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -121,12 +122,24 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.printButton);
             this.panel2.Controls.Add(this.saveButton);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 560);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(534, 51);
             this.panel2.TabIndex = 5;
+            // 
+            // printButton
+            // 
+            this.printButton.Font = new System.Drawing.Font("Verdana", 8F);
+            this.printButton.Location = new System.Drawing.Point(12, 9);
+            this.printButton.Name = "printButton";
+            this.printButton.Size = new System.Drawing.Size(100, 30);
+            this.printButton.TabIndex = 8;
+            this.printButton.Text = "Печать";
+            this.printButton.UseVisualStyleBackColor = true;
+            this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
             // saveButton
             // 
@@ -209,6 +222,15 @@
             this.delItem.Size = new System.Drawing.Size(28, 20);
             this.delItem.Text = " ";
             this.delItem.Click += new System.EventHandler(this.delItem_Click);
+            // 
+            // paymentJournal
+            // 
+            this.paymentJournal.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.paymentJournal.Image = global::OrganizationManagement.Properties.Resources.cashIcon;
+            this.paymentJournal.Name = "paymentJournal";
+            this.paymentJournal.Size = new System.Drawing.Size(28, 20);
+            this.paymentJournal.Text = "гиги";
+            this.paymentJournal.Click += new System.EventHandler(this.paymentJournal_Click);
             // 
             // создатьСчетфактуруToolStripMenuItem
             // 
@@ -361,15 +383,6 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Сумма:";
             // 
-            // paymentJournal
-            // 
-            this.paymentJournal.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.paymentJournal.Image = global::OrganizationManagement.Properties.Resources.cashIcon;
-            this.paymentJournal.Name = "paymentJournal";
-            this.paymentJournal.Size = new System.Drawing.Size(28, 20);
-            this.paymentJournal.Text = "гиги";
-            this.paymentJournal.Click += new System.EventHandler(this.paymentJournal_Click);
-            // 
             // EditExpenditureInvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -440,5 +453,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label duty;
         private System.Windows.Forms.ToolStripMenuItem paymentJournal;
+        private System.Windows.Forms.Button printButton;
     }
 }

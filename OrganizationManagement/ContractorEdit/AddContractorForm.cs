@@ -2,6 +2,7 @@
 using DatabaseLibrary;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace OrganizationManagement.ContractorEdit
@@ -70,7 +71,7 @@ namespace OrganizationManagement.ContractorEdit
 
         private async void api_btn_Click(object sender, EventArgs e)
         {
-            var token = "974ee49a114eadcb38db8cdfbfe776f344faf9ae";
+            var token = ConfigurationManager.AppSettings["ApiToken"];
             var api = new SuggestClientAsync(token);
 
             try

@@ -1,15 +1,12 @@
 ﻿using Npgsql;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DatabaseLibrary
 {
     public class Driver
     {
+        //метод для обновления записи о водителе
         public static void Update(int driverID, string name, object routeID)
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("UPDATE public.\"Driver\"\r\n\t" +
@@ -19,9 +16,11 @@ namespace DatabaseLibrary
                 "WHERE \"DriverID\"=@DriverID;",
                 Autorization.npgSqlConnection))
             {
+                //выполнение запроса и ввод параметров
                 cmd.Parameters.AddWithValue("@DriverID", driverID);
                 cmd.Parameters.AddWithValue("@Name", name);
 
+                //водитель может быть без установленного ему маршрута
                 if (routeID != null && routeID != DBNull.Value)
                 {
                     cmd.Parameters.AddWithValue("@RouteID", (int)routeID);
@@ -35,6 +34,7 @@ namespace DatabaseLibrary
             }
         }
 
+        //метод для удаления водителя
         public static void Delete(int driverID)
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("DELETE FROM " +
@@ -43,17 +43,20 @@ namespace DatabaseLibrary
             {
                 try
                 {
+                    //выполнение запроса и ввод параметров
                     cmd.Parameters.AddWithValue("@DriverID", driverID);
                     cmd.ExecuteNonQuery();
                 }
-                catch (Exception ex)
+                catch
                 {
+                    //если удаление этого водителя приведет к нарушению целостности БД, то выполнение действия запрещается
                     MessageBox.Show("Ошибка: элемент используется в другой таблице.", "Запрещено", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
         }
 
+        //метод для создания нового водителя
         public static void Insert(string name)
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO public.\"Driver\"" +
@@ -61,6 +64,7 @@ namespace DatabaseLibrary
                 "VALUES (@Name);",
                 Autorization.npgSqlConnection))
             {
+                //выполнение запроса и ввод параметров
                 cmd.Parameters.AddWithValue("@Name", name);
                 cmd.ExecuteNonQuery();
             }

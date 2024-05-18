@@ -1,5 +1,6 @@
 ﻿using DatabaseLibrary;
 using Npgsql;
+using OrganizationManagement._dataTables;
 using OrganizationManagement.PurchaseInvoicesEdit;
 using System;
 using System.Collections.Generic;
@@ -205,6 +206,33 @@ namespace OrganizationManagement
             paymentJournal.MdiParent = ActiveForm;
             paymentJournal.Show();
 
+        }
+
+        private void printButton_Click(object sender, EventArgs e)
+        {
+            DateTime invoiceDate = dateTimePicker.Value;
+            int contractorID = 0;
+            int storageID = 0;
+            int number = Convert.ToInt32(numField.Text);
+
+            if (contractorBox.SelectedItem != null)
+            {
+                var contractorItem = (KeyValuePair<int, string>)contractorBox.SelectedItem;
+                contractorID = contractorItem.Key;
+            }
+
+            if (storageBox.SelectedItem != null)
+            {
+                var storageItem = (KeyValuePair<int, string>)storageBox.SelectedItem;
+                storageID = storageItem.Key;
+            }
+
+            ExpenditureInvoice.Update(invoiceID, invoiceDate, number, contractorID, storageID);
+
+            IReportDataProvider provider = new ExpenditureInvoiceReportDataProvider(invoiceID);
+            ReportViewForm viewForm = new ReportViewForm(provider);
+            viewForm.MdiParent = ActiveForm;
+            viewForm.Show();
         }
     }
 }

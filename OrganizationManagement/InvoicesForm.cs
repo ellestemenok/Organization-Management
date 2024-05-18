@@ -81,7 +81,7 @@ namespace OrganizationManagement
             {
                 DataGridViewRow selectedRow = invoicesGrid.SelectedRows[0];
                 int invoiceID = Convert.ToInt32(selectedRow.Cells["InvoiceID"].Value);
-                Log.Insert(mainMDIForm.userID, "Удалена счет-фактура №" + selectedRow.Cells["InvoiceNumber"].Value.ToString());
+                Log.Insert(mainMDIForm.userID, "Удалена счет-фактура №" + selectedRow.Cells["Номер"].Value.ToString());
                 Invoice.Delete(invoiceID);
                 LoadDataIntoDataGridView();
             }

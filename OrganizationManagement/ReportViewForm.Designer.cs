@@ -40,13 +40,14 @@
             this.reportViewer1.Size = new System.Drawing.Size(800, 450);
             this.reportViewer1.TabIndex = 0;
             // 
-            // Form1
+            // ReportViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.reportViewer1);
-            this.Name = "Form1";
+            this.Name = "ReportViewForm";
+            this.ShowIcon = false;
             this.Text = "Отчет для печати";
             this.ResumeLayout(false);
 

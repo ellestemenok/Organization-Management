@@ -1,4 +1,5 @@
 ﻿using DatabaseLibrary;
+using OrganizationManagement._dataTables;
 using OrganizationManagement.PurchaseInvoicesEdit;
 using System;
 using System.Collections.Generic;
@@ -178,6 +179,44 @@ namespace OrganizationManagement.InvoicesEdit
             ExpenditureInvoice.DeleteDetail(detailID);
             UpdateQuantnPrice();
             LoadDataIntoDataGridView();
+        }
+
+        private void printButton_Click(object sender, EventArgs e)
+        {
+            DateTime invoiceDate = dateTimePicker.Value;
+            int contractorID = 0;
+            int paymentID = 0;
+            int number = Convert.ToInt32(numField.Text);
+
+            if (contractorBox.SelectedItem != null)
+            {
+                var contractorItem = (KeyValuePair<int, string>)contractorBox.SelectedItem;
+                contractorID = contractorItem.Key;
+            }
+
+            if (paymentBox.SelectedItem != null)
+            {
+                var paymentItem = (KeyValuePair<int, string>)paymentBox.SelectedItem;
+                paymentID = paymentItem.Key;
+            }
+
+            int? expNum; // Объявляем переменную как nullable int
+            if (int.TryParse(expNumField.Text, out int parsedValue))
+            {
+                expNum = parsedValue; // Присваиваем expNum значение parsedValue, если преобразование успешно
+            }
+            else
+            {
+                expNum = null; // Устанавливаем expNum в null, если ввод не может быть преобразован в число
+            }
+
+            bool isGiven = givenBox.Checked;
+            Invoice.Update(invoiceID, invoiceDate, number, contractorID, paymentID, isGiven, expNum);
+
+            IReportDataProvider provider = new InvoiceReportDataProvider(invoiceID);
+            ReportViewForm viewForm = new ReportViewForm(provider);
+            viewForm.MdiParent = ActiveForm;
+            viewForm.Show();
         }
     }
 }

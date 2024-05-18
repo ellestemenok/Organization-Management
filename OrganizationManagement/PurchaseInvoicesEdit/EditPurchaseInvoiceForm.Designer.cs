@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.numField = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,6 +44,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.addItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.paymentJournal = new System.Windows.Forms.ToolStripMenuItem();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -57,7 +58,7 @@
             this.quant1 = new System.Windows.Forms.Label();
             this.sum = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.paymentJournal = new System.Windows.Forms.ToolStripMenuItem();
+            this.printButton = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.specGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -137,6 +138,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.printButton);
             this.panel2.Controls.Add(this.saveButton);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 560);
@@ -164,14 +166,14 @@
             this.specGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.specGrid.BackgroundColor = System.Drawing.Color.White;
             this.specGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 8F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.specGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.specGrid.DefaultCellStyle = dataGridViewCellStyle1;
             this.specGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.specGrid.Location = new System.Drawing.Point(3, 45);
             this.specGrid.Name = "specGrid";
@@ -224,6 +226,15 @@
             this.delItem.Size = new System.Drawing.Size(28, 20);
             this.delItem.Text = " ";
             this.delItem.Click += new System.EventHandler(this.delItem_Click);
+            // 
+            // paymentJournal
+            // 
+            this.paymentJournal.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.paymentJournal.Image = global::OrganizationManagement.Properties.Resources.cashIcon;
+            this.paymentJournal.Name = "paymentJournal";
+            this.paymentJournal.Size = new System.Drawing.Size(28, 20);
+            this.paymentJournal.Text = "гиги";
+            this.paymentJournal.Click += new System.EventHandler(this.paymentJournal_Click);
             // 
             // dateTimePicker
             // 
@@ -353,14 +364,16 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Сумма:";
             // 
-            // paymentJournal
+            // printButton
             // 
-            this.paymentJournal.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.paymentJournal.Image = global::OrganizationManagement.Properties.Resources.cashIcon;
-            this.paymentJournal.Name = "paymentJournal";
-            this.paymentJournal.Size = new System.Drawing.Size(28, 20);
-            this.paymentJournal.Text = "гиги";
-            this.paymentJournal.Click += new System.EventHandler(this.paymentJournal_Click);
+            this.printButton.Font = new System.Drawing.Font("Verdana", 8F);
+            this.printButton.Location = new System.Drawing.Point(12, 9);
+            this.printButton.Name = "printButton";
+            this.printButton.Size = new System.Drawing.Size(100, 30);
+            this.printButton.TabIndex = 8;
+            this.printButton.Text = "Печать";
+            this.printButton.UseVisualStyleBackColor = true;
+            this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
             // EditPurchaseInvoiceForm
             // 
@@ -432,5 +445,6 @@
         private System.Windows.Forms.Label sum;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ToolStripMenuItem paymentJournal;
+        private System.Windows.Forms.Button printButton;
     }
 }

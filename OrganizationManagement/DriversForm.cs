@@ -96,19 +96,9 @@ namespace OrganizationManagement
             }
         }
 
-        private void routesGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void refreshGrid_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    LoadDataIntoDataGridView();
-
-            //}
-            //catch (Exception ex) { MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            LoadDataIntoDataGridView();
         }
     }
 }

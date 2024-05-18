@@ -2,23 +2,22 @@
 using OrganizationManagement.ContractorEdit;
 using System;
 using System.Data;
-using System.Text;
 using System.Windows.Forms;
-using System.Xml.Linq;
 namespace OrganizationManagement
 {
     public partial class ContractorsForm : Form
     {
         public ContractorsForm()
         {
-            InitializeComponent();
+            InitializeComponent(); //инициализация компонента
         }
         private void ContractorsForm_Load(object sender, EventArgs e)
         {
-            Autorization.OpenConnection();
+            Autorization.OpenConnection(); //открытие соединения с БД
         }
         public void LoadDataIntoDataGridView()
         {
+            //Выборка столбцов и записей для отображения в dataGridView
             string query = "SELECT \"ContractorID\", " +
                 "\"Name\" AS \"Краткое название\", " +
                 "\"FullName\" AS \"Полное название\", " +
@@ -32,16 +31,18 @@ namespace OrganizationManagement
         }
         private void ContractorsForm_Enter(object sender, EventArgs e)
         {
-            LoadDataIntoDataGridView();
+            LoadDataIntoDataGridView();  //отображение данных в dataGridView
             string query = "SELECT \"Name\" FROM public.\"ContractorCategory\"";
-            DataDB.LoadCategoriesIntoTreeView(query,categoryView);
+            DataDB.LoadCategoriesIntoTreeView(query,categoryView);  //отображение данных в categoryView
         }
+        //добавление нового контрагента
         private void addItem_Click(object sender, EventArgs e)
         {
             AddContractorForm addForm = new AddContractorForm();
             addForm.MdiParent = ActiveForm;
             addForm.Show();
         }
+        //удаление контрагента
         private void delItem_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Удалить элемент?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -49,19 +50,17 @@ namespace OrganizationManagement
             {
                 DataGridViewRow selectedRow = contractorsGrid.SelectedRows[0];
                 int contactorID = Convert.ToInt32(selectedRow.Cells["ContractorID"].Value);
-                Log.Insert(mainMDIForm.userID, "Удален контрагент " + selectedRow.Cells["Краткое название"].Value.ToString());
+                Log.Insert(mainMDIForm.userID, "Удален контрагент " + selectedRow.Cells["Краткое название"].Value.ToString()); //запись действия в журнал событий
                 Contractor.Delete(contactorID);
                 LoadDataIntoDataGridView();
-                
             }
         }
-
+        //редактирование контрагента
         private void editItem_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = contractorsGrid.SelectedRows[0];
             int contractorID = Convert.ToInt32(selectedRow.Cells["ContractorID"].Value);
             DataDB contractorsRepository = new DataDB();
-
             string query = "SELECT \"ContractorID\", " +
                 "\r\n\"Type\", Con.\"Name\", " +
                 "\r\n\"FullName\", \"Telephone\", " +
@@ -81,6 +80,7 @@ namespace OrganizationManagement
             editForm.MdiParent = ActiveForm;
             editForm.Show();
         }
+        //редактирование контрагента по даблклику по строке
         private void contractorsGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -107,10 +107,12 @@ namespace OrganizationManagement
                 editForm.Show();
             }
         }
+        //обновление содержимого окна
         private void refreshGrid_Click(object sender, EventArgs e)
         {
             LoadDataIntoDataGridView();
         }
+        // переключение содержимого по выбору узла из TreeView
         private void categoryView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             // Получите выбранный узел
@@ -130,10 +132,10 @@ namespace OrganizationManagement
                 contractorsGrid.Columns["Телефон"].Width = 100;
             }
         }
+        //фильтр для поиска строк
         private void filterBox_TextChanged(object sender, EventArgs e)
         {
             string searchText = filterBox.Text.Trim();
-
             if (!string.IsNullOrEmpty(searchText))
             {
                 DataView dv = ((DataTable)contractorsGrid.DataSource).DefaultView;

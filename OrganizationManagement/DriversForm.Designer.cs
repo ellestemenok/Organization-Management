@@ -150,7 +150,6 @@
             this.Name = "DriversForm";
             this.ShowIcon = false;
             this.Text = "Водители";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DriversForm_FormClosing);
             this.Load += new System.EventHandler(this.DriversForm_Load);
             this.Enter += new System.EventHandler(this.DriversForm_Enter);
             this.menuStrip1.ResumeLayout(false);

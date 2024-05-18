@@ -33,7 +33,7 @@
             this.editItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshGrid = new System.Windows.Forms.ToolStripMenuItem();
             this.filterLable = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.filterBox = new System.Windows.Forms.ToolStripTextBox();
             this.cashboxGrid = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cashboxGrid)).BeginInit();
@@ -48,7 +48,7 @@
             this.editItem,
             this.refreshGrid,
             this.filterLable,
-            this.toolStripTextBox1});
+            this.filterBox});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -90,13 +90,13 @@
             this.filterLable.Size = new System.Drawing.Size(61, 20);
             this.filterLable.Text = "Фильтр";
             // 
-            // toolStripTextBox1
+            // filterBox
             // 
-            this.toolStripTextBox1.BackColor = System.Drawing.Color.White;
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Verdana", 8F);
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(150, 20);
-            this.toolStripTextBox1.TextChanged += new System.EventHandler(this.toolStripTextBox1_TextChanged);
+            this.filterBox.BackColor = System.Drawing.Color.White;
+            this.filterBox.Font = new System.Drawing.Font("Verdana", 8F);
+            this.filterBox.Name = "filterBox";
+            this.filterBox.Size = new System.Drawing.Size(150, 20);
+            this.filterBox.TextChanged += new System.EventHandler(this.filterBox_TextChanged);
             // 
             // cashboxGrid
             // 
@@ -133,7 +133,6 @@
             this.Name = "CashboxForm";
             this.ShowIcon = false;
             this.Text = "Журнал кассовых отчетов";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CashboxForm_FormClosing);
             this.Load += new System.EventHandler(this.CashboxForm_Load);
             this.Enter += new System.EventHandler(this.CashboxForm_Enter);
             this.menuStrip1.ResumeLayout(false);
@@ -150,7 +149,7 @@
         private System.Windows.Forms.ToolStripMenuItem refreshGrid;
         private System.Windows.Forms.ToolStripMenuItem filterLable;
         private System.Windows.Forms.DataGridView cashboxGrid;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ToolStripTextBox filterBox;
         private System.Windows.Forms.MenuStrip menuStrip1;
     }
 }

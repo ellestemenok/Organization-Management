@@ -11,7 +11,6 @@ namespace OrganizationManagement
         public DriversForm()
         {
             InitializeComponent(); //инициализация компонента
-           
         }
         private void DriversForm_Enter(object sender, EventArgs e)
         {

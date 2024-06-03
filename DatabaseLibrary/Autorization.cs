@@ -2,7 +2,6 @@
 using System.Configuration; // Подключение библиотеки System.Configuration для работы с конфигурацией приложения
 using System.Data; // Подключение библиотеки System.Data для работы с данными
 using System.Windows.Forms; // Подключение библиотеки System.Windows.Forms для работы с формами
-
 namespace DatabaseLibrary
 {
     public class Autorization

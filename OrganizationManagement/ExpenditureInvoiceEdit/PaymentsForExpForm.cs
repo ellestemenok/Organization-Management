@@ -6,38 +6,45 @@ using System.Windows.Forms;
 
 namespace OrganizationManagement
 {
+    // Класс формы для работы с платежами по расходным накладным, унаследованный от Form
     public partial class PaymentsForExpForm : Form
     {
-        int invoiceID;
+        int invoiceID;// Поле для хранения идентификатора накладной
+        // Конструктор формы PaymentsForExpForm
         public PaymentsForExpForm(int expInvID)
         {
-            InitializeComponent();
-            invoiceID = expInvID;
-            Text += invoiceID.ToString();
+            InitializeComponent(); // Инициализация компонентов формы
+            invoiceID = expInvID; // Инициализация поля invoiceID
+            Text += invoiceID.ToString(); // Добавление идентификатора накладной в заголовок формы
         }
+        // Обработчик события загрузки формы
         private void PaymentsForExpForm_Load(object sender, EventArgs e)
         {
-            Autorization.OpenConnection();
+            Autorization.OpenConnection(); // Открытие соединения с базой данных
         }
+        // Обработчик события входа в форму
         private void PaymentsForExpForm_Enter(object sender, EventArgs e)
         {
-            LoadDataIntoDataGridView();
+            LoadDataIntoDataGridView(); // Загрузка данных в DataGridView
         }
+        // Метод для загрузки данных в DataGridView
         public void LoadDataIntoDataGridView()
         {
             string query = "SELECT \"PkoID\", " +
                 "\"PkoDate\" AS \"Дата\", " +
                 "\"Sum\" AS \"Сумма\", " +
                 $"\"Name\" AS \"Примечание\" FROM public.\"PKO\" WHERE \"ExpInvID\" = {invoiceID}";
-            DataDB.FillDataGridViewWithQueryResult(paymentsGrid, query);
-            paymentsGrid.Columns["PkoID"].Visible = false;
+            DataDB.FillDataGridViewWithQueryResult(paymentsGrid, query); // Заполнение DataGridView результатом запроса
+            paymentsGrid.Columns["PkoID"].Visible = false; // Скрытие столбца PkoID
         }
+        // Обработчик события клика по кнопке добавления элемента
         private void addItem_Click(object sender, EventArgs e)
         {
-            AddPKOForm addForm = new AddPKOForm(invoiceID);
-            addForm.MdiParent = ActiveForm;
-            addForm.Show();
+            AddPKOForm addForm = new AddPKOForm(invoiceID); // Создание формы для добавления ПКО
+            addForm.MdiParent = ActiveForm; // Установка родительской формы
+            addForm.Show(); // Отображение формы
         }
+        // Обработчик события клика по кнопке удаления элемента
         private void delItem_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = paymentsGrid.SelectedRows[0];
@@ -51,11 +58,9 @@ namespace OrganizationManagement
                     $"WHERE \"Name\" IN (SELECT \"Name\" FROM public.\"PKO\");";
                 DataDB.ExecuteQuery(deletePaymentQuery);
                 Log.Insert(mainMDIForm.userID, "Удален Приходный кассовый ордер №" + pkoID.ToString());
-
                 // Удаление записи из таблицы PKO
                 string deletePKOQuery = $"DELETE FROM public.\"PKO\" WHERE \"PkoID\" = {pkoID}";
                 DataDB.ExecuteQuery(deletePKOQuery);
-
                 // Обновление данных в DataGridView
                 LoadDataIntoDataGridView();
                 
@@ -63,14 +68,15 @@ namespace OrganizationManagement
         }
         private void refreshGrid_Click(object sender, EventArgs e)
         {
-            LoadDataIntoDataGridView();
+            LoadDataIntoDataGridView(); // Обновление данных в DataGridView
         }
+        // Обработчик события клика по кнопке редактирования элемента
         private void editItem_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = paymentsGrid.SelectedRows[0];
             int pkoID = Convert.ToInt32(selectedRow.Cells["PkoID"].Value);
             DataDB pkoRepository = new DataDB();
-
+            // Запрос для получения данных ПКО
             string query = $"SELECT p.\"PkoID\", p.\"PkoDate\" AS \"Дата\", p.\"PkoNum\" AS \"Номер\", " +
                $"p.\"ExpInvID\" AS \"Инвойс\", p.\"ContractorID\", c.\"Name\" AS \"Контрагент\", " +
                $"p.\"OrgID\", o.\"Name\" AS \"Организация\", p.\"Sum\" AS \"Сумма\", p.\"Name\" AS \"Основание\" " +
@@ -79,17 +85,18 @@ namespace OrganizationManagement
                $"LEFT JOIN public.\"Contractor\" c ON p.\"ContractorID\" = c.\"ContractorID\" " +
                $"WHERE p.\"PkoID\" = {pkoID}";
             DataTable pkoData = pkoRepository.FillFormWithQueryResult(query);
-
+            // Создание формы для редактирования ПКО
             EditPKOForm editForm = new EditPKOForm(pkoData);
             editForm.MdiParent = ActiveForm;
             editForm.Show();
         }
+        // Обработчик события двойного клика по ячейке DataGridView
         private void paymentsGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow selectedRow = paymentsGrid.SelectedRows[0];
             int pkoID = Convert.ToInt32(selectedRow.Cells["PkoID"].Value);
             DataDB pkoRepository = new DataDB();
-
+            // Запрос для получения данных ПКО
             string query = $"SELECT p.\"PkoID\", p.\"PkoDate\" AS \"Дата\", p.\"PkoNum\" AS \"Номер\", " +
                $"p.\"ExpInvID\" AS \"Инвойс\", p.\"ContractorID\", c.\"Name\" AS \"Контрагент\", " +
                $"p.\"OrgID\", o.\"Name\" AS \"Организация\", p.\"Sum\" AS \"Сумма\", p.\"Name\" AS \"Основание\" " +
@@ -98,16 +105,16 @@ namespace OrganizationManagement
                $"LEFT JOIN public.\"Contractor\" c ON p.\"ContractorID\" = c.\"ContractorID\" " +
                $"WHERE p.\"PkoID\" = {pkoID}";
             DataTable pkoData = pkoRepository.FillFormWithQueryResult(query);
-
+            // Создание формы для редактирования ПКО
             EditPKOForm editForm = new EditPKOForm(pkoData);
-            editForm.MdiParent = ActiveForm;
-            editForm.Show();
+            editForm.MdiParent = ActiveForm;// Установка родительской формы
+            editForm.Show();// Отображение формы
         }
+        // Обработчик события изменения текста в TextBox
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
         {
             // Получаем текст из TextBox
             string searchText = toolStripTextBox1.Text.Trim();
-
             // Применяем фильтр к DataGridView
             if (!string.IsNullOrEmpty(searchText))
             {

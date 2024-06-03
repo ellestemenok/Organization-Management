@@ -263,7 +263,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.95719cm</Height>
+              <Height>0.87782cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -505,8 +505,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>InvoiceDT</DataSetName>
-        <Left>0.00001cm</Left>
-        <Height>1.80854cm</Height>
+        <Left>0.00004cm</Left>
+        <Height>1.72916cm</Height>
         <Width>26.905cm</Width>
         <Style>
           <Border>
@@ -526,7 +526,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.5cm</Height>
+              <Height>0.52325cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -599,7 +599,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.5cm</Height>
+              <Height>0.52325cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -672,7 +672,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.5cm</Height>
+              <Height>0.52325cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -745,7 +745,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.5cm</Height>
+              <Height>0.52325cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -818,7 +818,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.5cm</Height>
+              <Height>0.52325cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -891,7 +891,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.5cm</Height>
+              <Height>0.52325cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -964,7 +964,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.5cm</Height>
+              <Height>0.52325cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -1037,7 +1037,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.5cm</Height>
+              <Height>0.52325cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -1110,7 +1110,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.5cm</Height>
+              <Height>0.52325cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -1183,7 +1183,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.5cm</Height>
+              <Height>0.52325cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -1256,7 +1256,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.5cm</Height>
+              <Height>0.52325cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -1352,9 +1352,9 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>InvoiceDT</DataSetName>
-        <Top>1.98493cm</Top>
-        <Left>0.00001cm</Left>
-        <Height>5.5cm</Height>
+        <Top>1.72916cm</Top>
+        <Left>0.00004cm</Left>
+        <Height>5.75576cm</Height>
         <Width>26.905cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
@@ -1411,7 +1411,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>1.08948cm</Height>
+              <Height>1.06294cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -2028,7 +2028,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>1.07625cm</Height>
+              <Height>1.04971cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -2755,7 +2755,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>0.57346cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -3516,7 +3516,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.61323cm</Height>
+              <Height>0.58669cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -4061,6 +4061,7 @@
                               <Value>=Fields!ExpenditureInvoiceDetailTotal.Value</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
+                                <Format>N2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -4262,7 +4263,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>0.57346cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -4808,6 +4809,7 @@
                               <Style>
                                 <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
+                                <Format>N2</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -5048,10 +5050,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>InvoiceDT</DataSetName>
-        <Top>8.09308cm</Top>
-        <Left>0.00001cm</Left>
-        <Height>3.97896cm</Height>
-        <Width>26.905cm</Width>
+        <Top>7.48493cm</Top>
+        <Left>0.00004cm</Left>
+        <Height>3.84628cm</Height>
+        <Width>26.90501cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -5750,9 +5752,9 @@
             <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>12.82912cm</Top>
-        <Left>0.00001cm</Left>
-        <Height>1.59687cm</Height>
+        <Top>11.60294cm</Top>
+        <Left>0.00002cm</Left>
+        <Height>1.59688cm</Height>
         <Width>26.905cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
@@ -6085,9 +6087,9 @@
             <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
-        <Top>14.60238cm</Top>
+        <Top>13.19982cm</Top>
         <Height>1.59688cm</Height>
-        <Width>13.83237cm</Width>
+        <Width>13.83238cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -6096,10 +6098,10 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>6.37766in</Height>
+    <Height>5.82547in</Height>
     <Style />
   </Body>
-  <Width>10.59252in</Width>
+  <Width>10.59254in</Width>
   <Page>
     <PageHeight>21cm</PageHeight>
     <PageWidth>29.7cm</PageWidth>

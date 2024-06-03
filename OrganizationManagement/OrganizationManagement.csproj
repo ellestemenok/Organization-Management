@@ -237,12 +237,6 @@
     <Compile Include="ReportViewForm.Designer.cs">
       <DependentUpon>ReportViewForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="InvoicesEdit\AddGoodinInvoiceForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InvoicesEdit\AddGoodinInvoiceForm.Designer.cs">
-      <DependentUpon>AddGoodinInvoiceForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="InvoicesEdit\EditInvoiceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -455,6 +449,7 @@
       <DependentUpon>StoragesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="_dataTables\OrganizationDT.cs" />
+    <Compile Include="_dataTables\RouteSheetDT.cs" />
     <EmbeddedResource Include="Administration\LogForm.resx">
       <DependentUpon>LogForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -505,9 +500,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReportViewForm.resx">
       <DependentUpon>ReportViewForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InvoicesEdit\AddGoodinInvoiceForm.resx">
-      <DependentUpon>AddGoodinInvoiceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InvoicesEdit\EditInvoiceForm.resx">
       <DependentUpon>EditInvoiceForm.cs</DependentUpon>
@@ -628,11 +620,16 @@
     <EmbeddedResource Include="_reports\PurchInvoiceReport.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="_reports\RouteSheetReport.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\OrganizationManagement._dataTables.ExpInvoiceDetailDT.datasource" />
     <None Include="Properties\DataSources\OrganizationManagement._dataTables.InvoiceDT.datasource" />
     <None Include="Properties\DataSources\OrganizationManagement._dataTables.OrganizationDT.datasource" />
     <None Include="Properties\DataSources\OrganizationManagement._dataTables.PurchInvoiceDetailDT.datasource" />
+    <None Include="Properties\DataSources\OrganizationManagement._dataTables.RouteSheetDT.datasource" />
+    <None Include="Properties\DataSources\OrganizationManagement._dataTables.RouteSheetReportDataProvider.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

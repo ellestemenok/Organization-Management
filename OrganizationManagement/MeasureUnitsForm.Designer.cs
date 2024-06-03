@@ -144,7 +144,6 @@
             this.Name = "MeasureUnitsForm";
             this.ShowIcon = false;
             this.Text = "Единицы измерения";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MeasureUnits_FormClosing);
             this.Load += new System.EventHandler(this.MeasureUnits_Load);
             this.Enter += new System.EventHandler(this.MeasureUnits_Enter);
             this.menuStrip1.ResumeLayout(false);

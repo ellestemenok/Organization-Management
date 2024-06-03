@@ -9,7 +9,7 @@ namespace OrganizationManagement._dataTables
 {
     public class InvoiceDT
     {
-        // Organization fields
+        // Поля организации
         public string OrganizationFullName { get; set; }
         public string OrganizationOGRN { get; set; }
         public bool OrganizationPayingVAT { get; set; }
@@ -18,44 +18,47 @@ namespace OrganizationManagement._dataTables
         public string OrganizationKPP { get; set; }
         public string OrganizationConsigneeAddress { get; set; }
 
-        // Invoice fields
+        // Поля накладной
         public DateTime InvoiceDate { get; set; }
         public int InvoiceNumber { get; set; }
         public decimal InvoiceTotalAmount { get; set; }
 
-        // PaymentAccount fields
+        // Поля расчетного счета
         public string PaymentAccountName { get; set; }
         public string PaymentAccountNumber { get; set; }
         public string PaymentAccountBankName { get; set; }
         public string PaymentAccountCorrAccount { get; set; }
         public string PaymentAccountBIK { get; set; }
 
-        // Contractor fields
+        // Поля контрагента
         public string ContractorConsigneeAddress { get; set; }
         public string ContractorFullName { get; set; }
         public string ContractorLegalAddress { get; set; }
         public string ContractorINN { get; set; }
         public string ContractorKPP { get; set; }
 
-        // Good fields
+        // Поля товара
         public string GoodName { get; set; }
         public decimal GoodTradePrice { get; set; }
 
-        // ExpenditureInvoiceDetail fields
+        // Поля детали расходной накладной
         public decimal ExpenditureInvoiceDetailQuantity { get; set; }
         public decimal ExpenditureInvoiceDetailTotal { get; set; }
 
-        // MeasureUnit fields
+        // Поля единицы измерения
         public int MeasureUnitOkeiID { get; set; }
         public string MeasureUnitName { get; set; }
 
+        // Метод для получения данных отчета по указанному идентификатору накладной
         public List<InvoiceDT> GetInvoiceReportData(int invoiceId)
         {
             var invoiceReportData = new List<InvoiceDT>();
 
+            // Создание и открытие соединения с базой данных
             using (var connection = new NpgsqlConnection(Autorization.connectionString))
             {
                 connection.Open();
+                // SQL-запрос для извлечения данных из нескольких таблиц
                 string sql = @"
             SELECT 
                 org.""FullName"" AS OrganizationFullName,
@@ -101,14 +104,17 @@ namespace OrganizationManagement._dataTables
             WHERE 
                 inv.""InvoiceID"" = @InvoiceID";
 
+                // Создание и настройка команды для выполнения SQL-запроса
                 using (var command = new NpgsqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@InvoiceID", invoiceId);
 
+                    // Выполнение запроса и чтение результатов
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
+                            // Добавление каждой строки данных в список
                             invoiceReportData.Add(new InvoiceDT
                             {
                                 OrganizationFullName = reader.GetString(0),
@@ -143,24 +149,27 @@ namespace OrganizationManagement._dataTables
                 }
             }
 
-            return invoiceReportData;
+            return invoiceReportData; // Возвращение списка данных отчета
         }
     }
-        public class InvoiceReportDataProvider : IReportDataProvider
+    // Класс, реализующий интерфейс IReportDataProvider для предоставления данных отчета
+    public class InvoiceReportDataProvider : IReportDataProvider
     {
         private readonly int _invoiceId;
-
+        // Конструктор, принимающий идентификатор накладной
         public InvoiceReportDataProvider(int invoiceId)
         {
             _invoiceId = invoiceId;
         }
 
+        // Метод для получения источника данных для отчета
         public ReportDataSource GetReportDataSource()
         {
             var data = new InvoiceDT().GetInvoiceReportData(_invoiceId);
             return new ReportDataSource("InvoiceDT", data);
         }
 
+        // Свойство для получения пути к файлу отчета
         public string ReportPath
         {
             get

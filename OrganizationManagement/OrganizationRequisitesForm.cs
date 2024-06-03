@@ -2,9 +2,7 @@
 using System.Data;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using System.Xml.Linq;
 using DatabaseLibrary;
-using Microsoft.Reporting.WinForms;
 using OrganizationManagement._dataTables;
 using OrganizationManagement.AccountEdit;
 
@@ -14,16 +12,20 @@ namespace OrganizationManagement
     {
         public OrganizationRequisitesForm()
         {
-            InitializeComponent();
+            InitializeComponent(); //инициализация компонента
+        }
+        private void OrganizationRequisites_Enter(object sender, EventArgs e)
+        {
+            LoadDataIntoDataGridView(); //отображение содержимого окна
         }
         private void OrganizationRequisites_Load(object sender, EventArgs e)
         {
-            Autorization.OpenConnection();
+            Autorization.OpenConnection(); //открытие соединения с БД
 
             string query = "SELECT * FROM \"Organization\" LIMIT 1";
             DataDB organizationRepository = new DataDB();
             DataTable organizationData = organizationRepository.FillFormWithQueryResult(query);
-
+            // заполнение полей окна
             if (organizationData.Rows.Count > 0)
             {
                 typeField.Text = organizationData.Rows[0]["Type"].ToString();
@@ -56,6 +58,7 @@ namespace OrganizationManagement
             DataDB.FillDataGridViewWithQueryResult(accountsGrid, query);
             accountsGrid.Columns["№"].Visible = false;
         }
+        //обновление реквизитов организации
         private void orgSave_Click(object sender, EventArgs e)
         {
             Requisites.Update(1,typeField.Text,nameField.Text,fullnameField.Text,
@@ -64,51 +67,44 @@ namespace OrganizationManagement
                     innField.Text,kppField.Text,okpoField.Text,okvadField.Text,ogrnField.Text,
                     directorField.Text,genaccountantField.Text,
                     payingVATcheckBox.Checked, okpdField.Text);
-            Log.Insert(mainMDIForm.userID, "Отредактирована организация");
+            Log.Insert(mainMDIForm.userID, "Отредактирована организация"); // лог об изменении организации
             Close();
         }
+        //редактировать расчетный счет организации
         private void accountsGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 int accountID = Convert.ToInt32(accountsGrid.Rows[e.RowIndex].Cells["№"].Value);
                 DataDB paymentAccountRepository = new DataDB();
-
                 string query = $"SELECT * FROM public.\"PaymentAccount\" WHERE \"AccountID\" = {accountID}";
                 DataTable accountData = paymentAccountRepository.FillFormWithQueryResult(query);
-
                 EditAccountForm editForm = new EditAccountForm(accountData);
                 editForm.MdiParent = ActiveForm;
                 editForm.Show();
             }
         }
+        // добавить расчетный счет организации
         private void addAccButton_Click(object sender, EventArgs e)
         {
             AddAccountForm addForm = new AddAccountForm();
             addForm.MdiParent = ActiveForm;
             addForm.Show();
         }
+        // удалить расчетный счет организации
         private void delAccButton_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Удалить элемент?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 DataGridViewRow selectedRow = accountsGrid.SelectedRows[0];
-                int accountID= Convert.ToInt32(selectedRow.Cells["№"].Value);
-                Log.Insert(mainMDIForm.userID, "Удален расчетный счет " + selectedRow.Cells["Номер счета"].Value.ToString());
+                int accountID = Convert.ToInt32(selectedRow.Cells["№"].Value);
+                Log.Insert(mainMDIForm.userID, "Удален расчетный счет " + selectedRow.Cells["Номер счета"].Value.ToString()); // создание лога об удалении р/с
                 Requisites.DeletePaymentAccount(accountID);
                 LoadDataIntoDataGridView();
             }
         }
-        private void OrganizationRequisites_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //Autorization.CloseConnection();
-        }
-        private void OrganizationRequisites_Enter(object sender, EventArgs e)
-        {
-            LoadDataIntoDataGridView();
-        }
-
+        // печать реквизитов и р/с организации
         private void orgPrint_Click(object sender, EventArgs e)
         {
             IReportDataProvider provider = new OrganizationReportDataProvider();

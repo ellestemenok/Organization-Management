@@ -143,7 +143,6 @@
             this.Name = "RKOForm";
             this.ShowIcon = false;
             this.Text = "Журнал расходных кассовых ордеров";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RKOForm_FormClosing);
             this.Load += new System.EventHandler(this.RKOForm_Load);
             this.Enter += new System.EventHandler(this.RKOForm_Enter);
             this.menuStrip1.ResumeLayout(false);

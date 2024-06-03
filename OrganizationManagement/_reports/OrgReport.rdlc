@@ -45,7 +45,6 @@
                       <rd:DefaultName>Textbox53</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -79,7 +78,6 @@
                       <rd:DefaultName>Textbox57</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -113,7 +111,6 @@
                       <rd:DefaultName>Textbox59</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -147,7 +144,6 @@
                       <rd:DefaultName>Textbox61</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -161,7 +157,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.70583cm</Height>
+              <Height>0.6cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -182,7 +178,6 @@
                       <rd:DefaultName>AccountNumber</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -212,7 +207,6 @@
                       <rd:DefaultName>BankName</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -242,7 +236,6 @@
                       <rd:DefaultName>BIK</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -272,7 +265,6 @@
                       <rd:DefaultName>CorrAccount</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -306,8 +298,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>OrganizationDT</DataSetName>
-        <Top>10.28376cm</Top>
-        <Height>1.25291cm</Height>
+        <Top>9.91334cm</Top>
+        <Height>1.14708cm</Height>
         <Width>16.83954cm</Width>
         <Style>
           <Border>
@@ -317,6 +309,7 @@
       </Tablix>
       <Line Name="Line1">
         <Top>0.63528cm</Top>
+        <Left>0.00001cm</Left>
         <Height>0cm</Height>
         <Width>16.83953cm</Width>
         <ZIndex>1</ZIndex>
@@ -353,6 +346,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox63</rd:DefaultName>
+        <Left>0.00001cm</Left>
         <Height>0.6cm</Height>
         <Width>16.83953cm</Width>
         <ZIndex>2</ZIndex>
@@ -1343,6 +1337,7 @@
         </TablixRowHierarchy>
         <DataSetName>OrganizationDT</DataSetName>
         <Top>0.92287cm</Top>
+        <Left>0.00001cm</Left>
         <Height>8.4cm</Height>
         <Width>16.83953cm</Width>
         <ZIndex>3</ZIndex>
@@ -1353,7 +1348,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>5.53125in</Height>
+    <Height>4.3545in</Height>
     <Style>
       <Border>
         <Style>None</Style>

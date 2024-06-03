@@ -1,6 +1,5 @@
 ﻿using DatabaseLibrary;
 using OrganizationManagement.PKOnRKOEdit;
-
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -10,14 +9,14 @@ namespace OrganizationManagement
     {
         public PKOForm()
         {
-            InitializeComponent();
+            InitializeComponent();//инициализация компонента
         }
-
+        //открытие соединения с БД
         private void PKOForm_Load(object sender, EventArgs e)
         {
             Autorization.OpenConnection();
         }
-
+        //отображение содержимого окна
         private void PKOForm_Enter(object sender, EventArgs e)
         {
             LoadDataIntoDataGridView();
@@ -25,6 +24,7 @@ namespace OrganizationManagement
 
         public void LoadDataIntoDataGridView()
         {
+            //Выборка столбцов и записей для отображения в dataGridView
             string query = "SELECT p.\"PkoID\", " +
                            "p.\"PkoDate\" AS \"Дата\", " +
                            "p.\"PkoNum\" AS \"Номер\", " +
@@ -40,15 +40,15 @@ namespace OrganizationManagement
             pkoGrid.Columns["PkoID"].Visible = false;
             pkoGrid.Columns["Дата"].Width = 100;
             pkoGrid.Columns["Номер"].Width = 50;
-
         }
-
+        //добавление ПКО
         private void addItem_Click(object sender, EventArgs e)
         {
             AddPKOForm addForm = new AddPKOForm();
             addForm.MdiParent = ActiveForm;
             addForm.Show();
         }
+        //удаление ПКО
         private void delItem_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = pkoGrid.SelectedRows[0];
@@ -69,19 +69,20 @@ namespace OrganizationManagement
                 // Обновление данных в DataGridView
                 LoadDataIntoDataGridView();
 
-                Log.Insert(mainMDIForm.userID, "Удален Приходный кассовый ордер №" + pkoID.ToString());
+                Log.Insert(mainMDIForm.userID, "Удален Приходный кассовый ордер №" + pkoID.ToString()); // создание лога о создании нового ПКО
             }
         }
+        //обновление содержимого страницы
         private void refreshGrid_Click(object sender, EventArgs e)
         {
             LoadDataIntoDataGridView();
         }
+        //редактирование ПКО
         private void editItem_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = pkoGrid.SelectedRows[0];
             int pkoID = Convert.ToInt32(selectedRow.Cells["PkoID"].Value);
             DataDB pkoRepository = new DataDB();
-
             string query = $"SELECT p.\"PkoID\", p.\"PkoDate\" AS \"Дата\", p.\"PkoNum\" AS \"Номер\", " +
                $"p.\"ExpInvID\" AS \"Инвойс\", p.\"ContractorID\", c.\"Name\" AS \"Контрагент\", " +
                $"p.\"OrgID\", o.\"Name\" AS \"Организация\", p.\"Sum\" AS \"Сумма\", p.\"Name\" AS \"Основание\" " +
@@ -90,11 +91,11 @@ namespace OrganizationManagement
                $"LEFT JOIN public.\"Contractor\" c ON p.\"ContractorID\" = c.\"ContractorID\" " +
                $"WHERE p.\"PkoID\" = {pkoID}";
             DataTable pkoData = pkoRepository.FillFormWithQueryResult(query);
-
             EditPKOForm editForm = new EditPKOForm(pkoData);
             editForm.MdiParent = ActiveForm;
             editForm.Show();
         }
+        //редактирование ПКО даблкликом
         private void pkoGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow selectedRow = pkoGrid.SelectedRows[0];
@@ -114,11 +115,7 @@ namespace OrganizationManagement
             editForm.MdiParent = ActiveForm;
             editForm.Show();
         }
-        private void PKOForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //Autorization.CloseConnection();
-        }
-
+        //фильтр для поиска записей
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
         {
             // Получаем текст из TextBox

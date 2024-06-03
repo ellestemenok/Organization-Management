@@ -12,12 +12,13 @@ namespace OrganizationManagement.ContractorEdit
         private int contractorID;
         public EditContractorForm(DataTable contractorsTable)
         {
-            InitializeComponent();
+            InitializeComponent(); //инициализация окна
             DataDB.LoadDataIntoComboBox(groupBox, "SELECT \"CategoryID\", \"Name\" FROM public.\"ContractorCategory\" ORDER BY \"CategoryID\" ASC");
             DataDB.LoadDataIntoComboBox(routeBox, "SELECT \"RouteID\", \"Name\" FROM public.\"Route\" ORDER BY \"RouteID\" ASC");
-
+            // Проверка наличия данных в таблице
             if (contractorsTable.Rows.Count > 0)
             {
+                // Инициализация полей формы значениями из DataTable
                 contractorID = Convert.ToInt32(contractorsTable.Rows[0]["ContractorID"]);
 
                 typeBox.Text = contractorsTable.Rows[0]["Type"].ToString();
@@ -48,6 +49,7 @@ namespace OrganizationManagement.ContractorEdit
         }
         private void saveButton_Click(object sender, EventArgs e)
         {
+            // Получение значений из элементов формы
             string type = typeBox.Text;
             string name = nameField.Text;
             string fullname = fullnameField.Text;
@@ -57,6 +59,7 @@ namespace OrganizationManagement.ContractorEdit
                 var groupItem = (KeyValuePair<int, string>)groupBox.SelectedItem;
                 groupID = groupItem.Key;
             }
+            // Получение значений из текстовых полей
             string telephone = telephoneField.Text;
             string email = emailField.Text;
             string inn = innField.Text;
@@ -83,14 +86,15 @@ namespace OrganizationManagement.ContractorEdit
                 var routeItem = (KeyValuePair<int, string>)routeBox.SelectedItem;
                 routeID = routeItem.Key;
             }
+            //обновление контрагента
             Contractor.Update(contractorID, type, name, fullname, telephone, email, inn, kpp, okpo, oktmo, ogrn,
                 paymentacc, bank, bik, corr, postadrr, legaladdr, consaddr, director, accountant,
                 reason, groupID, manager, description, routeID);
-
+            //логирование
             Log.Insert(mainMDIForm.userID, "Отредактирован контрагент " + name);
             Close();
         }
-
+        //выполнения запроса к апи
         private async void api_btn_Click(object sender, EventArgs e)
         {
             var token = ConfigurationManager.AppSettings["ApiToken"];
@@ -118,7 +122,6 @@ namespace OrganizationManagement.ContractorEdit
                         directorField.Text = $"{data.fio.surname} {data.fio.name} {data.fio.patronymic}";
                         typeBox.SelectedIndex = typeBox.FindStringExact("Индивидуальный предприниматель");
                     }
-
                     nameField.Text = data.name.short_with_opf;
                     fullnameField.Text = data.name.full_with_opf;
                     okpoField.Text = data.okpo;
@@ -138,7 +141,7 @@ namespace OrganizationManagement.ContractorEdit
             }
 
         }
-
+        // Обработчик события нажатия на ссылку для генерации грузополучателя
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             consaddrField.Text = nameField.Text + "; " + legaladdrField.Text;

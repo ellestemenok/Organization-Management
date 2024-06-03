@@ -144,7 +144,6 @@
             this.Name = "StoragesForm";
             this.ShowIcon = false;
             this.Text = "Склады";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StoragesForm_FormClosing);
             this.Load += new System.EventHandler(this.StoragesForm_Load);
             this.Enter += new System.EventHandler(this.StoragesForm_Enter);
             this.menuStrip1.ResumeLayout(false);

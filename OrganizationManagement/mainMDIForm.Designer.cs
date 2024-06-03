@@ -38,7 +38,7 @@
             this.contractorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.measureUnitsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.водителиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.driversToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.routesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.cashboxTodayStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,7 +102,7 @@
             this.contractorsToolStripMenuItem,
             this.measureUnitsToolStripMenuItem,
             this.toolStripSeparator1,
-            this.водителиToolStripMenuItem,
+            this.driversToolStripMenuItem,
             this.routesToolStripMenuItem});
             this.справочникиToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.справочникиToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
@@ -156,12 +156,12 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(212, 6);
             // 
-            // водителиToolStripMenuItem
+            // driversToolStripMenuItem
             // 
-            this.водителиToolStripMenuItem.Name = "водителиToolStripMenuItem";
-            this.водителиToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.водителиToolStripMenuItem.Text = "Водители";
-            this.водителиToolStripMenuItem.Click += new System.EventHandler(this.водителиToolStripMenuItem_Click);
+            this.driversToolStripMenuItem.Name = "driversToolStripMenuItem";
+            this.driversToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.driversToolStripMenuItem.Text = "Водители";
+            this.driversToolStripMenuItem.Click += new System.EventHandler(this.driversToolStripMenuItem_Click);
             // 
             // routesToolStripMenuItem
             // 
@@ -384,14 +384,14 @@
             // userToolStripMenuItem
             // 
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.userToolStripMenuItem.Text = "Пользователи";
             this.userToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
             // 
             // logsToolStripMenuItem
             // 
             this.logsToolStripMenuItem.Name = "logsToolStripMenuItem";
-            this.logsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logsToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.logsToolStripMenuItem.Text = "Журнал событий";
             this.logsToolStripMenuItem.Click += new System.EventHandler(this.logsToolStripMenuItem_Click);
             // 
@@ -446,7 +446,7 @@
             this.MainMenuStrip = this.menuStripMain;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "mainMDIForm";
-            this.Text = "Планерно-диспетчерский отдел";
+            this.Text = "Система планово-диспетчерского управления";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMDI_FormClosing);
             this.menuStripMain.ResumeLayout(false);
@@ -484,7 +484,7 @@
         private System.Windows.Forms.ToolStripMenuItem storageStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem storagesToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem водителиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem driversToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem routesToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem invoicesToolStripMenuItem;

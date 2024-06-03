@@ -10,18 +10,19 @@ namespace OrganizationManagement
     {
         public MeasureUnitsForm()
         {
-            InitializeComponent();
+            InitializeComponent(); //инициализация компонента
         }
         private void MeasureUnits_Load(object sender, EventArgs e)
         {
-            Autorization.OpenConnection();
+            Autorization.OpenConnection();//открытие соединения с БД
         }
         private void MeasureUnits_Enter(object sender, EventArgs e)
         {
-            LoadDataIntoDataGridView();
+            LoadDataIntoDataGridView();//отображение содержимого окна
         }
         public void LoadDataIntoDataGridView()
         {
+            //Выборка столбцов и записей для отображения в dataGridView
             string query = "SELECT \"UnitID\", " +
                 "\"okeiID\" AS \"Код по ОКЕИ\", " +
                 "\"Name\" AS \"Краткое название\", " +
@@ -32,12 +33,14 @@ namespace OrganizationManagement
             DataDB.FillDataGridViewWithQueryResult(measureunitsGrid, query);
             measureunitsGrid.Columns["UnitID"].Visible = false;
         }
+        //добавление ед. измерения
         private void addItem_Click(object sender, EventArgs e)
         {
             AddMeasureUnitForm addForm = new AddMeasureUnitForm();
             addForm.MdiParent = ActiveForm;
             addForm.Show();
         }
+        //удаление ед. измерения
         private void delItem_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Удалить элемент?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -45,46 +48,43 @@ namespace OrganizationManagement
             {
                 DataGridViewRow selectedRow = measureunitsGrid.SelectedRows[0];
                 int unitID = Convert.ToInt32(selectedRow.Cells["UnitID"].Value);
+                Log.Insert(mainMDIForm.userID, "Удалена единица измерения " + selectedRow.Cells["Полное название"].Value.ToString()); // создание лога об удалении ед. измерения
                 MeasureUnit.Delete(unitID);
                 LoadDataIntoDataGridView();
             }
         }
+        //обновление содержимого страницы
         private void refreshGrid_Click(object sender, EventArgs e)
         {
             LoadDataIntoDataGridView();
         }
+        //редактирование единицы измерения
         private void editItem_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = measureunitsGrid.SelectedRows[0];
             int unitID = Convert.ToInt32(selectedRow.Cells["UnitID"].Value);
             DataDB measureunitsRepository = new DataDB();
-
             string query = $"SELECT * FROM public.\"MeasureUnit\" WHERE \"UnitID\" = {unitID}";
             DataTable measureunitsData = measureunitsRepository.FillFormWithQueryResult(query);
-
             EditMeasureUnitForm editForm = new EditMeasureUnitForm(measureunitsData);
             editForm.MdiParent = ActiveForm;
             editForm.Show();
         }
+        //редактирование единицы измерения даблкликом
         private void measureunitsGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 int unitID = Convert.ToInt32(measureunitsGrid.Rows[e.RowIndex].Cells["UnitID"].Value);
                 DataDB measureunitsRepository = new DataDB();
-
                 string query = $"SELECT * FROM public.\"MeasureUnit\" WHERE \"UnitID\" = {unitID}";
                 DataTable measureunitsData = measureunitsRepository.FillFormWithQueryResult(query);
-
                 EditMeasureUnitForm editForm = new EditMeasureUnitForm(measureunitsData);
                 editForm.MdiParent = ActiveForm;
                 editForm.Show();
             }
         }
-        private void MeasureUnits_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //Autorization.CloseConnection();
-        }
+        //фильтр для поиска записей
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
         {
             // Получаем текст из TextBox

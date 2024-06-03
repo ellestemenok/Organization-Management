@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
             this.expNumField = new System.Windows.Forms.TextBox();
@@ -188,7 +188,6 @@
             this.contractorBox.Name = "contractorBox";
             this.contractorBox.Size = new System.Drawing.Size(455, 21);
             this.contractorBox.TabIndex = 12;
-            this.contractorBox.SelectedIndexChanged += new System.EventHandler(this.contractorBox_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -296,14 +295,14 @@
             this.specGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.specGrid.BackgroundColor = System.Drawing.Color.White;
             this.specGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 8F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.specGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.specGrid.DefaultCellStyle = dataGridViewCellStyle1;
             this.specGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.specGrid.Location = new System.Drawing.Point(3, 43);
             this.specGrid.Name = "specGrid";
@@ -383,8 +382,7 @@
             this.MaximizeBox = false;
             this.Name = "EditInvoiceForm";
             this.ShowIcon = false;
-            this.Text = "Добавить счет-фактуру";
-            this.Load += new System.EventHandler(this.AddInvoiceForm_Load);
+            this.Text = "Редактировать счет-фактуру";
             this.Enter += new System.EventHandler(this.AddInvoiceForm_Enter);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

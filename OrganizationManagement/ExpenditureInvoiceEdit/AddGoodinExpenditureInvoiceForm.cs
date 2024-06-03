@@ -8,18 +8,21 @@ namespace OrganizationManagement.PurchaseInvoicesEdit
 {
     public partial class AddGoodinExpenditureInvoiceForm : Form
     { 
-        private int invoiceID;
+        private int invoiceID;// Идентификатор расходной накладной
+        // Конструктор формы добавления товара в расходную накладную
         public AddGoodinExpenditureInvoiceForm(int id)
         {
             InitializeComponent();
             invoiceID = id;
+            // Загрузка данных в комбо-бокс
             DataDB.LoadDataIntoComboBox(goodBox, "SELECT \"GoodID\", " +
                 "\"Name\" FROM public.\"Good\" " +
                 "ORDER BY \"Name\" ASC");
-
+            // Установка значения по умолчанию в комбо-боксе и добавление обработчика события нажатия клавиши
             goodBox.Text = ((KeyValuePair<int, string>)goodBox.Items[0]).Value;
             quantField.KeyPress += KeyPressEvent.textBox_KeyPressMeasureUnit;
         }
+        // Обработчик клика по кнопке сохранения
         private void saveButton_Click(object sender, EventArgs e)
         {
             int selectedgoodID = ((KeyValuePair<int, string>)goodBox.SelectedItem).Key;
@@ -28,11 +31,11 @@ namespace OrganizationManagement.PurchaseInvoicesEdit
             {
                 quantity = Convert.ToDouble(quantField.Text);
             }
-            
-
+            // Добавление товара в расходную накладную и закрытие формы
             ExpenditureInvoice.AddProductToInvoice(invoiceID, selectedgoodID, quantity);
             Close();
         }
+        // Обработчик изменения выбранного товара
         private void goodBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedgoodID = ((KeyValuePair<int, string>)goodBox.SelectedItem).Key;
@@ -60,6 +63,7 @@ namespace OrganizationManagement.PurchaseInvoicesEdit
                 }
             }
         }
+        // Метод для вычисления суммы товара
         private void CalculateSum()
         {
             if (double.TryParse(quantField.Text, out double quantity) && double.TryParse(priceField.Text, out double price))
@@ -71,6 +75,7 @@ namespace OrganizationManagement.PurchaseInvoicesEdit
                 sumField.Text = string.Empty;
             }
         }
+        // Обработчик изменения текста поля количества
         private void quantField_TextChanged(object sender, EventArgs e)
         {
             CalculateSum();

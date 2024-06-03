@@ -1,5 +1,4 @@
 ﻿using Npgsql;
-using System;
 using System.Windows.Forms;
 namespace DatabaseLibrary
 {
@@ -84,7 +83,6 @@ namespace DatabaseLibrary
                     //если удаление этого товара приведет к нарушению целостности БД, то выполнение действия запрещается
                     MessageBox.Show("Ошибка: элемент используется в другой таблице.", "Запрещено", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
             }
         }
     }

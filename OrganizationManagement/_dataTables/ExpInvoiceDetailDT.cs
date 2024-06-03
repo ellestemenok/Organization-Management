@@ -7,8 +7,10 @@ using System.IO;
 
 namespace OrganizationManagement._dataTables
 {
+    // Класс, представляющий данные для отчета по расходной накладной
     public class ExpInvoiceDetailDT
     {
+        // Свойства для хранения информации о накладной
         public string OrganizationName { get; set; }
         public int InvoiceNumber { get; set; }
         public DateTime InvoiceDate { get; set; }
@@ -22,14 +24,15 @@ namespace OrganizationManagement._dataTables
         public decimal Price { get; set; }
         public decimal Total { get; set; }
         public decimal TotalAmount { get; set; }
-
+        // Метод для получения данных отчета по указанному идентификатору накладной
         public List<ExpInvoiceDetailDT> GetInvoiceReportData(int invoiceId)
         {
             var invoiceReportData = new List<ExpInvoiceDetailDT>();
-
+            // Создание и открытие соединения с базой данных
             using (var connection = new NpgsqlConnection(Autorization.connectionString))
             {
                 connection.Open();
+                // SQL-запрос для извлечения данных из нескольких таблиц
                 string sql = @"
                     SELECT 
                         org.""Name"" AS OrganizationName,
@@ -91,25 +94,25 @@ namespace OrganizationManagement._dataTables
                 }
             }
 
-            return invoiceReportData;
+            return invoiceReportData; // Возвращение списка данных отчета
         }
     }
-
+    // Класс, реализующий интерфейс IReportDataProvider для предоставления данных отчета
     public class ExpenditureInvoiceReportDataProvider : IReportDataProvider
     {
         private readonly int _invoiceId;
-
+        // Конструктор, принимающий идентификатор накладной
         public ExpenditureInvoiceReportDataProvider(int invoiceId)
         {
             _invoiceId = invoiceId;
         }
-
+        // Метод для получения источника данных для отчета
         public ReportDataSource GetReportDataSource()
         {
             var data = new ExpInvoiceDetailDT().GetInvoiceReportData(_invoiceId);
             return new ReportDataSource("ExpInvoiceDetailDT", data);
         }
-
+        // Свойство для получения пути к файлу отчета
         public string ReportPath
         {
             get

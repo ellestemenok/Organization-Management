@@ -1,19 +1,20 @@
 ﻿using DatabaseLibrary;
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 namespace OrganizationManagement.PKOnRKOEdit
 {
-    public partial class EditRKOForm : Form
+    public partial class EditRKOForm : Form // Объявление класса формы редактирования РКО
     {
-        private int rkoID;
+        private int rkoID; // Поле для хранения ID РКО
+        // Конструктор класса, принимающий данные о РКО в виде таблицы данных
         public EditRKOForm(DataTable rkoData)
         {
-            InitializeComponent();
-            Autorization.OpenConnection();
-            sumBox.KeyPress += KeyPressEvent.textBox_KeyPressMoney;
+            InitializeComponent(); // Инициализация компонентов формы
+            Autorization.OpenConnection(); // Открытие соединения с базой данных
+            sumBox.KeyPress += KeyPressEvent.textBox_KeyPressMoney; // Привязка обработчика события нажатия клавиш для поля суммы
+            // Загрузка данных в выпадающие списки контрагентов, организаций и инвойсов
             DataDB.LoadDataIntoComboBox(contractorBox, "SELECT \"ContractorID\", \"Name\" FROM public.\"Contractor\" ORDER BY \"ContractorID\" ASC");
             DataDB.LoadDataIntoComboBox(orgBox, "SELECT \"OrganizationID\", \"Name\" FROM public.\"Organization\" WHERE \"OrganizationID\" = 1");
             DataDB.LoadDataIntoComboBox(invBox, "SELECT \"InvoiceID\", CAST(\"InvoiceNumber\" AS VARCHAR) AS \"InvoiceNumber\" FROM public.\"PurchaseInvoice\" ORDER BY \"InvoiceID\" ASC");
@@ -31,8 +32,7 @@ namespace OrganizationManagement.PKOnRKOEdit
                 nameField.Text = row["Основание"].ToString();
             }
         }
-
-
+        // Обработчик события нажатия кнопки "Сохранить"
         private void saveButton_Click(object sender, EventArgs e)
         {
             DateTime date = dateTimePicker.Value;
@@ -45,6 +45,7 @@ namespace OrganizationManagement.PKOnRKOEdit
                 invoiceID = invItem.Key;
             }
             double sum = Convert.ToDouble(sumBox.Text);
+            // Получение ID выбранного контрагента
             if (contractorBox.SelectedItem != null)
             {
                 var contractorItem = (KeyValuePair<int, string>)contractorBox.SelectedItem;
@@ -53,13 +54,11 @@ namespace OrganizationManagement.PKOnRKOEdit
             string name = nameField.Text;
             RKO.Update(rkoID, date, number, contractorID, invoiceID, sum, name);
             UpdatePaymentRecord(rkoID, date, "Расходный кассовый ордер №" + number, contractorID, sum);
-
+            // Журналирование действия
             Log.Insert(mainMDIForm.userID, "Отредактирован Расходный кассовый ордер №" + number.ToString());
-
-            Close();
+            Close(); // Закрытие формы после сохранения
         }
-
-
+        // Метод для обновления записи в таблице Payment
         private void UpdatePaymentRecord(int rkoID, DateTime date, string name, int contractorID, double sum)
         {
             // Находим ID записи Payment, связанной с данным ПКО
@@ -81,7 +80,7 @@ namespace OrganizationManagement.PKOnRKOEdit
                 MessageBox.Show("Связанная запись платежа не найдена. Обновление не выполнено.", "Ошибка обновления", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        // Обработчик события загрузки формы
         private void EditRKOForm_Load(object sender, EventArgs e)
         {
             Autorization.OpenConnection();

@@ -7,8 +7,10 @@ using System.IO;
 
 namespace OrganizationManagement._dataTables
 {
+    // Класс, представляющий данные детализации счета на покупку
     public class PurchInvoiceDetailDT
     {
+        // Поля данных счета
         public string OrganizationName { get; set; }
         public int InvoiceNumber { get; set; }
         public DateTime InvoiceDate { get; set; }
@@ -22,14 +24,18 @@ namespace OrganizationManagement._dataTables
         public decimal Price { get; set; }
         public decimal Total { get; set; }
         public decimal TotalAmount { get; set; }
-
+        // Метод для получения данных отчета по номеру счета
         public List<PurchInvoiceDetailDT> GetInvoiceReportData(int invoiceId)
-        {
+        { 
+            // Список для хранения данных счета
             var invoiceReportData = new List<PurchInvoiceDetailDT>();
 
+            // Создание и открытие соединения с базой данных
             using (var connection = new NpgsqlConnection(Autorization.connectionString))
             {
                 connection.Open();
+
+                // SQL-запрос для извлечения данных из соответствующих таблиц
                 string sql = @"
                     SELECT 
                         org.""Name"" AS OrganizationName,
@@ -62,10 +68,11 @@ namespace OrganizationManagement._dataTables
                     WHERE 
                         inv.""InvoiceID"" = @InvoiceID";
 
+                // Выполнение команды SQL с использованием параметра InvoiceID
                 using (var command = new NpgsqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@InvoiceID", invoiceId);
-
+                    // Чтение данных из результата запроса
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -91,25 +98,29 @@ namespace OrganizationManagement._dataTables
                 }
             }
 
-            return invoiceReportData;
+            return invoiceReportData; // Возвращение списка данных счета
         }
     }
 
+    // Класс, реализующий интерфейс IReportDataProvider для предоставления данных отчета счета на покупку
     public class PurchInvoiceReportDataProvider : IReportDataProvider
     {
         private readonly int _invoiceId;
 
+        // Конструктор принимает идентификатор счета на покупку
         public PurchInvoiceReportDataProvider(int invoiceId)
         {
             _invoiceId = invoiceId;
         }
 
+        // Метод для получения источника данных для отчета
         public ReportDataSource GetReportDataSource()
         {
             var data = new PurchInvoiceDetailDT().GetInvoiceReportData(_invoiceId);
             return new ReportDataSource("PurchInvoiceDetailDT", data);
         }
 
+        // Свойство для получения пути к файлу отчета
         public string ReportPath
         {
             get

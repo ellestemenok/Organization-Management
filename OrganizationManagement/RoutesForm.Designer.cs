@@ -45,6 +45,7 @@
             // 
             this.menuStrip1.AllowMerge = false;
             this.menuStrip1.Font = new System.Drawing.Font("Verdana", 9F);
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addItem,
             this.delItem,
@@ -56,7 +57,7 @@
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(684, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(684, 30);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -65,7 +66,7 @@
             this.addItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.addItem.Image = global::OrganizationManagement.Properties.Resources.invoiceAddIcon;
             this.addItem.Name = "addItem";
-            this.addItem.Size = new System.Drawing.Size(28, 20);
+            this.addItem.Size = new System.Drawing.Size(34, 26);
             this.addItem.Text = " ";
             this.addItem.Click += new System.EventHandler(this.addItem_Click);
             // 
@@ -74,7 +75,7 @@
             this.delItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.delItem.Image = global::OrganizationManagement.Properties.Resources.invoiceDeleteIcon;
             this.delItem.Name = "delItem";
-            this.delItem.Size = new System.Drawing.Size(28, 20);
+            this.delItem.Size = new System.Drawing.Size(34, 26);
             this.delItem.Text = " ";
             this.delItem.Click += new System.EventHandler(this.delItem_Click);
             // 
@@ -83,7 +84,7 @@
             this.editItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.editItem.Image = global::OrganizationManagement.Properties.Resources.invoiceEditIcon;
             this.editItem.Name = "editItem";
-            this.editItem.Size = new System.Drawing.Size(28, 20);
+            this.editItem.Size = new System.Drawing.Size(34, 26);
             this.editItem.Text = " ";
             this.editItem.Click += new System.EventHandler(this.editItem_Click);
             // 
@@ -92,7 +93,7 @@
             this.refreshGrid.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.refreshGrid.Image = global::OrganizationManagement.Properties.Resources.refreshIcon;
             this.refreshGrid.Name = "refreshGrid";
-            this.refreshGrid.Size = new System.Drawing.Size(28, 20);
+            this.refreshGrid.Size = new System.Drawing.Size(34, 26);
             this.refreshGrid.Text = " ";
             this.refreshGrid.Click += new System.EventHandler(this.refreshGrid_Click);
             // 
@@ -100,7 +101,7 @@
             // 
             this.filterLable.Font = new System.Drawing.Font("Verdana", 8F);
             this.filterLable.Name = "filterLable";
-            this.filterLable.Size = new System.Drawing.Size(61, 20);
+            this.filterLable.Size = new System.Drawing.Size(75, 26);
             this.filterLable.Text = "Фильтр";
             // 
             // filterBox
@@ -108,7 +109,7 @@
             this.filterBox.BackColor = System.Drawing.Color.White;
             this.filterBox.Font = new System.Drawing.Font("Verdana", 8F);
             this.filterBox.Name = "filterBox";
-            this.filterBox.Size = new System.Drawing.Size(174, 20);
+            this.filterBox.Size = new System.Drawing.Size(174, 26);
             this.filterBox.TextChanged += new System.EventHandler(this.filterBox_TextChanged);
             // 
             // routesGrid
@@ -129,18 +130,19 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.routesGrid.DefaultCellStyle = dataGridViewCellStyle1;
             this.routesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.routesGrid.Location = new System.Drawing.Point(0, 24);
+            this.routesGrid.Location = new System.Drawing.Point(0, 30);
             this.routesGrid.Name = "routesGrid";
             this.routesGrid.ReadOnly = true;
             this.routesGrid.RowHeadersVisible = false;
+            this.routesGrid.RowHeadersWidth = 51;
             this.routesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.routesGrid.Size = new System.Drawing.Size(684, 437);
+            this.routesGrid.Size = new System.Drawing.Size(684, 431);
             this.routesGrid.TabIndex = 4;
             this.routesGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.routesGrid_CellDoubleClick);
             // 
             // RoutesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(684, 461);
@@ -151,7 +153,6 @@
             this.Name = "RoutesForm";
             this.ShowIcon = false;
             this.Text = "Маршруты";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RoutesForm_FormClosing);
             this.Load += new System.EventHandler(this.RoutesForm_Load);
             this.Enter += new System.EventHandler(this.RoutesForm_Enter);
             this.menuStrip1.ResumeLayout(false);

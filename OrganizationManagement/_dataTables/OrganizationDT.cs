@@ -7,8 +7,10 @@ using System.IO;
 
 namespace OrganizationManagement._dataTables
 {
+    // Класс, представляющий данные организации
     public class OrganizationDT
     {
+        // Поля организации
         public int OrganizationID { get; set; }
         public string Type { get; set; }
         public string Name { get; set; }
@@ -27,23 +29,27 @@ namespace OrganizationManagement._dataTables
         public string GeneralAccountant { get; set; }
         public bool PayingVAT { get; set; }
         public string OKPD { get; set; }
+        // Поля расчетного счета
         public int AccountID { get; set; }
         public string AccountName { get; set; }
         public string AccountNumber { get; set; }
         public string BankName { get; set; }
         public string CorrAccount { get; set; }
         public string BIK { get; set; }
-
+        // Метод для получения данных организации
         public List<OrganizationDT> GetOrganizationData()
         {
+            // Создание и открытие соединения с базой данных
             var organizations = new List<OrganizationDT>();
             using (var connection = new NpgsqlConnection(Autorization.connectionString))
             {
                 connection.Open();
+                // SQL-запрос для извлечения данных из таблицы Organization и связанной таблицы PaymentAccount
                 string sql = "SELECT o.*, p.\"AccountID\", p.\"Name\" as AccountName, p.\"AccountNumber\", " +
                     "p.\"BankName\", p.\"СorrAccount\", p.\"BIK\" FROM public.\"Organization\" o " +
                     "LEFT JOIN public.\"PaymentAccount\" p ON o.\"OrganizationID\" = p.\"OrganizationID\" " +
                     "WHERE o.\"OrganizationID\" = 1";
+                // Создание и настройка команды для выполнения SQL-запроса
                 using (var command = new NpgsqlCommand(sql, connection))
                 using (var reader = command.ExecuteReader())
                 {
@@ -69,7 +75,7 @@ namespace OrganizationManagement._dataTables
                             GeneralAccountant = reader.GetString(15),
                             PayingVAT = reader.GetBoolean(16),
                             OKPD = reader.GetString(17),
-                            // Платежные счета
+                            // Проверка на NULL значения для платежных счетов
                             AccountID = reader.IsDBNull(18) ? 0 : reader.GetInt32(18),
                             AccountName = reader.IsDBNull(19) ? null : reader.GetString(19),
                             AccountNumber = reader.IsDBNull(20) ? null : reader.GetString(20),
@@ -80,12 +86,14 @@ namespace OrganizationManagement._dataTables
                     }
                 }
             }
-            return organizations;
+            return organizations; // Возвращение списка организаций
         }
     }
 
+    // Класс, реализующий интерфейс IReportDataProvider для предоставления данных отчета организации
     public class OrganizationReportDataProvider : IReportDataProvider
     {
+        // Метод для получения источника данных для отчета
         public ReportDataSource GetReportDataSource()
         {
             var x = new OrganizationDT();
@@ -93,6 +101,7 @@ namespace OrganizationManagement._dataTables
             return new ReportDataSource("OrganizationDT", data);
         }
 
+        // Свойство для получения пути к файлу отчета
         public string ReportPath
         {
             get

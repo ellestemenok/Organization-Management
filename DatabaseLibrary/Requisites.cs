@@ -1,6 +1,5 @@
 ﻿using Npgsql;
 using System.Windows.Forms;
-using System;
 namespace DatabaseLibrary
 {
     public class Requisites

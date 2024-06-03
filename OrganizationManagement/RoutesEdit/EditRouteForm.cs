@@ -1,4 +1,5 @@
 ﻿using DatabaseLibrary;
+using OrganizationManagement._dataTables;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -6,15 +7,17 @@ namespace OrganizationManagement.RoutesEdit
 {
     public partial class EditRouteForm : Form
     {
-        private int routeID;
-        private DataTable contractorsData;
-        private DataTable routesData;
+        private int routeID; // Переменная для хранения идентификатора маршрута.
+        private DateTime date;
+        private DataTable contractorsData; // Таблица с данными о контрагентах.
+        private DataTable routesData; // Таблица с данными о маршрутах.
+        // Конструктор класса, инициализирующий компоненты формы и принимающий таблицы с данными о маршрутах и контрагентах.
         public EditRouteForm(DataTable routesData, DataTable contractorsData)
         {
             InitializeComponent();
-            this.routesData = routesData;
-            this.contractorsData = contractorsData; // Сохраняем данные о контрагентах
-
+            this.routesData = routesData; // Сохранение таблицы с данными о маршрутах.
+            this.contractorsData = contractorsData; // Сохранение таблицы с данными о контрагентах.
+            dateTimePicker1.Value = DateTime.Now;
             if (routesData.Rows.Count > 0)
             {
                 routeID = Convert.ToInt32(routesData.Rows[0]["RouteID"]);
@@ -25,10 +28,9 @@ namespace OrganizationManagement.RoutesEdit
         {
             LoadDataIntoDataGridView();
         }
-
+        // Метод для загрузки данных о контрагентах в таблицу DataGridView.
         public void LoadDataIntoDataGridView()
         {
-
             // Очищаем таблицу перед загрузкой новых данных
             routeAdrsGrid.Rows.Clear();
             routeAdrsGrid.Columns.Clear(); // Очищаем все столбцы
@@ -58,7 +60,10 @@ namespace OrganizationManagement.RoutesEdit
                     }
                 }
             }
+            routeAdrsGrid.Columns["BelongsToRoute"].Width =120;
+            routeAdrsGrid.Columns["ContractorName"].Width = 300;
         }
+        // Обработчик события нажатия кнопки "Сохранить".
         private void saveButton_Click(object sender, EventArgs e)
         {
             string newName ="";
@@ -69,7 +74,6 @@ namespace OrganizationManagement.RoutesEdit
                 routesData.Rows[0]["Name"] = newName;
                 Route.UpdateRouteName(routeID, newName); // метод реализован для обновления названия маршрута
             }
-
             // Сохраняем изменения в маршрутах контрагентов
             foreach (DataRow contractor in contractorsData.Rows)
             {
@@ -79,7 +83,7 @@ namespace OrganizationManagement.RoutesEdit
             Log.Insert(mainMDIForm.userID, "Отредактирован маршрут " + newName);
             Close(); // Закрываем форму после сохранения изменений
         }
-
+        // Обработчик события клика по ячейке в таблице DataGridView.
         private void routeAdrsGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == routeAdrsGrid.Columns["BelongsToRoute"].Index && e.RowIndex >= 0)
@@ -88,7 +92,7 @@ namespace OrganizationManagement.RoutesEdit
                 bool isChecked = !(bool)checkBox.Value; // Предполагаемое новое значение
 
                 string contractorName = routeAdrsGrid.Rows[e.RowIndex].Cells["ContractorName"].Value.ToString();
-
+                // Обновление значения RouteID для выбранного контрагента.
                 foreach (DataRow contractor in contractorsData.Rows)
                 {
                     if (contractor["Name"].ToString() == contractorName)
@@ -114,6 +118,19 @@ namespace OrganizationManagement.RoutesEdit
                 }
                 LoadDataIntoDataGridView();
             }
+        }
+
+        private void printButton_Click(object sender, EventArgs e)
+        {
+            IReportDataProvider provider = new RouteSheetReportDataProvider(routeID, date);
+            ReportViewForm viewForm = new ReportViewForm(provider);
+            viewForm.MdiParent = ActiveForm;
+            viewForm.Show();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            date = dateTimePicker1.Value.Date;
         }
     }
 }

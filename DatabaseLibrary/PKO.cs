@@ -49,6 +49,5 @@ namespace DatabaseLibrary
                 cmd.ExecuteNonQuery();
             }
         }
-
     }
 }

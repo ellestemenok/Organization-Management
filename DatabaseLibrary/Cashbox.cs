@@ -58,8 +58,6 @@ namespace DatabaseLibrary
 
                 cmd.ExecuteNonQuery();
             }
-
         }
-
     }
 }

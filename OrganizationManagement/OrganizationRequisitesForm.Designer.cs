@@ -569,7 +569,6 @@
             this.Name = "OrganizationRequisitesForm";
             this.ShowIcon = false;
             this.Text = "Редактирование организации";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OrganizationRequisites_FormClosing);
             this.Load += new System.EventHandler(this.OrganizationRequisites_Load);
             this.Enter += new System.EventHandler(this.OrganizationRequisites_Enter);
             this.tabControl1.ResumeLayout(false);

@@ -150,7 +150,7 @@
             this.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.Name = "EditUserForm";
             this.ShowIcon = false;
-            this.Text = "Добавление пользователя";
+            this.Text = "Редактирование пользователя";
             this.Enter += new System.EventHandler(this.EditUserForm_Enter);
             this.ResumeLayout(false);
             this.PerformLayout();

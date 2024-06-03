@@ -143,7 +143,6 @@
             this.Name = "PKOForm";
             this.ShowIcon = false;
             this.Text = "Журнал приходных кассовых ордеров";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PKOForm_FormClosing);
             this.Load += new System.EventHandler(this.PKOForm_Load);
             this.Enter += new System.EventHandler(this.PKOForm_Enter);
             this.menuStrip1.ResumeLayout(false);

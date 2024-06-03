@@ -9,21 +9,22 @@ namespace OrganizationManagement
     {
         public StoragesForm()
         {
-            InitializeComponent();
+            InitializeComponent(); //инициализация компонента
         }
 
         private void StoragesForm_Load(object sender, EventArgs e)
         {
-            Autorization.OpenConnection();
+            Autorization.OpenConnection();  //открытие соединения с БД
         }
 
         private void StoragesForm_Enter(object sender, EventArgs e)
         {
-            LoadDataIntoDataGridView();
+            LoadDataIntoDataGridView(); //отображение содержимого окна
         }
 
         public void LoadDataIntoDataGridView()
         {
+            //Выборка столбцов и записей для отображения в dataGridView
             string query = "SELECT \"StorageID\", " +
                 "\"Name\" AS \"Название\", " +
                 "\"isMain\" AS \"Основной склад\", " +
@@ -32,13 +33,14 @@ namespace OrganizationManagement
             DataDB.FillDataGridViewWithQueryResult(storagesGrid, query);
             storagesGrid.Columns["StorageID"].Visible = false;
         }
-
+        //добавить склад
         private void addItem_Click(object sender, EventArgs e)
         {
             AddStorageForm addForm = new AddStorageForm();
             addForm.MdiParent = ActiveForm;
             addForm.Show();
         }
+        //удалить склад
         private void delItem_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Удалить элемент?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -49,46 +51,40 @@ namespace OrganizationManagement
                 Log.Insert(mainMDIForm.userID, "Удален склад " + selectedRow.Cells["Название"].Value.ToString());
                 Storage.Delete(storageID);
                 LoadDataIntoDataGridView();
-                
             }
         }
+        //обновление содержимого страницы
         private void refreshGrid_Click(object sender, EventArgs e)
         {
             LoadDataIntoDataGridView();
         }
+        //редактирование склада
         private void editItem_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = storagesGrid.SelectedRows[0];
             int storageID = Convert.ToInt32(selectedRow.Cells["StorageID"].Value);
             DataDB storagesRepository = new DataDB();
-
             string query = $"SELECT * FROM public.\"Storage\" WHERE \"StorageID\" = {storageID}";
             DataTable storagesData = storagesRepository.FillFormWithQueryResult(query);
-
             EditStorageForm editForm = new EditStorageForm(storagesData);
             editForm.MdiParent = ActiveForm;
             editForm.Show();
         }
+        //редактирование склада даблкликом
         private void storagesGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 int storageID = Convert.ToInt32(storagesGrid.Rows[e.RowIndex].Cells["StorageID"].Value);
                 DataDB storagesRepository = new DataDB();
-
                 string query = $"SELECT * FROM public.\"Storage\" WHERE \"StorageID\" = {storageID}";
                 DataTable storagesData = storagesRepository.FillFormWithQueryResult(query);
-
                 EditStorageForm editForm = new EditStorageForm(storagesData);
                 editForm.MdiParent = ActiveForm;
                 editForm.Show();
             }
         }
-        private void StoragesForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //Autorization.CloseConnection();
-        }
-
+        //фильтр для поиска записей
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
         {
             // Получаем текст из TextBox

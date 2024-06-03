@@ -5,9 +5,11 @@ using System.Data;
 using System.Windows.Forms;
 namespace OrganizationManagement.PurchaseInvoicesEdit
 {
+    // Определение класса формы для добавления товара в счет на закупку.
     public partial class AddGoodinPurchaseInvoiceForm : Form
-    { 
-        private int invoiceID;
+    {
+        private int invoiceID; // Переменная для хранения идентификатора счета на закупку.
+        // Конструктор класса, инициализирующий компоненты формы и принимающий идентификатор счета на закупку.
         public AddGoodinPurchaseInvoiceForm(int id)
         {
             InitializeComponent();
@@ -19,18 +21,19 @@ namespace OrganizationManagement.PurchaseInvoicesEdit
             goodBox.Text = ((KeyValuePair<int, string>)goodBox.Items[0]).Value;
             quantField.KeyPress += KeyPressEvent.textBox_KeyPressMeasureUnit;
         }
+        // Обработчик события нажатия кнопки "Сохранить".
         private void saveButton_Click(object sender, EventArgs e)
         {
             int selectedgoodID = ((KeyValuePair<int, string>)goodBox.SelectedItem).Key;
             double quantity = 0;
             if (quantField.Text != "")
             {
-                quantity = Convert.ToDouble(quantField.Text);
+                quantity = Convert.ToDouble(quantField.Text);// Получение введенного пользователем количества товара.
             }
-
             PurchaseInvoice.AddProductToInvoice(invoiceID, selectedgoodID, quantity);
             Close();
         }
+        // Обработчик события изменения выбранного товара.
         private void goodBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedgoodID = ((KeyValuePair<int, string>)goodBox.SelectedItem).Key;
@@ -39,6 +42,7 @@ namespace OrganizationManagement.PurchaseInvoicesEdit
                 "\"NetCost\" \r\nFROM public.\"Good\" as g\r\n" +
                 "JOIN public.\"MeasureUnit\" AS u ON g.\"MeasureUnitID\" = u.\"UnitID\"\r\n" +
                 $"WHERE \"GoodID\" = {selectedgoodID}");
+            // Заполнение полей данными из базы данных.
             if (goodData != null && goodData.Rows.Count > 0)
             {
                 // Заполнение полей значениями из базы данных
@@ -58,20 +62,22 @@ namespace OrganizationManagement.PurchaseInvoicesEdit
                 }
             }
         }
+        // Метод для вычисления суммы товара.
         private void CalculateSum()
         {
             if (double.TryParse(quantField.Text, out double quantity) && double.TryParse(priceField.Text, out double price))
             {
-                sumField.Text = (quantity * price).ToString();
+                sumField.Text = (quantity * price).ToString(); // Вычисление суммы товара и отображение результата.
             }
             else
             {
-                sumField.Text = string.Empty;
+                sumField.Text = string.Empty; // Очистка поля суммы, если введены некорректные значения.
             }
         }
+        // Обработчик события изменения текста в поле ввода количества товара.
         private void quantField_TextChanged(object sender, EventArgs e)
         {
-            CalculateSum();
+            CalculateSum(); // Вызов метода для вычисления суммы товара.
         }
     }
 }

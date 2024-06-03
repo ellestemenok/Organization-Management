@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace OrganizationManagement.ContractorEdit
 {
     public partial class AddContractorForm : Form
@@ -12,9 +11,7 @@ namespace OrganizationManagement.ContractorEdit
         public AddContractorForm()
         {
             InitializeComponent();
-            
             typeBox.Text = typeBox.Items[0].ToString(); // тайбокс = ип, ооо и т.д.
-
             DataDB.LoadDataIntoComboBox(groupBox, "SELECT \"CategoryID\", \"Name\" " + // загрузка в групбокс категорий контрагентов (покупатель, продавец)
                 "FROM public.\"ContractorCategory\" " +
                 "ORDER BY \"CategoryID\" ASC");
@@ -25,8 +22,10 @@ namespace OrganizationManagement.ContractorEdit
                 "ORDER BY \"RouteID\" ASC");
             routeBox.Text = ((KeyValuePair<int, string>)routeBox.Items[0]).Value; // отображение маршрутов в боксе
         }
+        // Обработчик события нажатия на кнопку "Сохранить"
         private void saveButton_Click(object sender, EventArgs e)
         {
+            // Получение значений из элементов формы
             string type = typeBox.Text;
             string name = nameField.Text;
             string fullname = fullnameField.Text;
@@ -36,6 +35,7 @@ namespace OrganizationManagement.ContractorEdit
                 var groupItem = (KeyValuePair<int, string>)groupBox.SelectedItem;
                 groupID = groupItem.Key;
             }
+            // Получение значений из текстовых полей
             string telephone = telephoneField.Text;
             string email = emailField.Text;
             string inn = innField.Text;
@@ -55,20 +55,21 @@ namespace OrganizationManagement.ContractorEdit
             string manager = managerField.Text;
             string reason = reasonField.Text;
             string description = descriptionField.Text;
-
             int routeID = 0;
             if (routeBox.SelectedItem != null)
             {
                 var routeItem = (KeyValuePair<int, string>)routeBox.SelectedItem;
                 routeID = routeItem.Key;
             }
+            // Вставка данных в таблицу контрагентов
             Contractor.Insert(type, name, fullname, telephone, email, inn, kpp, okpo, oktmo, ogrn,
                 paymentacc, bank, bik, corr, postadrr, legaladdr, consaddr, director, accountant,
                 reason, groupID, manager, description, routeID);
+            // Логирование добавления контрагента
             Log.Insert(mainMDIForm.userID, "Добавлен контрагент " + name);
             Close();
         }
-
+        // Обработчик события нажатия на кнопку для получения данных из API
         private async void api_btn_Click(object sender, EventArgs e)
         {
             var token = ConfigurationManager.AppSettings["ApiToken"];
@@ -116,7 +117,7 @@ namespace OrganizationManagement.ContractorEdit
             }
             
         }
-
+        // Обработчик события нажатия на ссылку для генерации грузополучателя
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             consaddrField.Text = nameField.Text + "; " + legaladdrField.Text;

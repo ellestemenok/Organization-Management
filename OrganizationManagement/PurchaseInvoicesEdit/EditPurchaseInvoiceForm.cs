@@ -9,13 +9,14 @@ namespace OrganizationManagement
 {
     public partial class EditPurchaseInvoiceForm : Form
     {
-        private int invoiceID;
+        private int invoiceID; // Переменная для хранения идентификатора счета на покупку.
+        // Конструктор класса, принимающий данные о счете на покупку.
         public EditPurchaseInvoiceForm(DataTable invoicesData)
         {
             InitializeComponent();
             DataDB.LoadDataIntoComboBox(contractorBox, "SELECT \"ContractorID\", \"Name\" FROM public.\"Contractor\" ORDER BY \"ContractorID\" ASC");
             DataDB.LoadDataIntoComboBox(storageBox, "SELECT \"StorageID\", \"Name\" FROM public.\"Storage\" ORDER BY \"StorageID\" ASC");
-
+            // Проверка наличия данных о счете на покупку.
             if (invoicesData.Rows.Count > 0)
             {
                 invoiceID = Convert.ToInt32(invoicesData.Rows[0]["InvoiceID"]);
@@ -27,6 +28,7 @@ namespace OrganizationManagement
                 sum.Text = invoicesData.Rows[0]["TotalAmount"].ToString();
             }
         }
+        // Метод для загрузки данных в таблицу DataGridView.
         public void LoadDataIntoDataGridView()
         {
             string query = "SELECT\r\n" +
@@ -53,25 +55,27 @@ namespace OrganizationManagement
             specGrid.Columns["Цена"].Width = 60;
             specGrid.Columns["Стоимость"].Width = 90;
         }
+        // Обработчик события нажатия кнопки "Добавить товар".
         private void addItem_Click(object sender, EventArgs e)
         {
             AddGoodinPurchaseInvoiceForm addForm = new AddGoodinPurchaseInvoiceForm(invoiceID);
             addForm.MdiParent = ActiveForm;
             addForm.Show();
         }
+        // Обработчик события нажатия кнопки "Сохранить изменения".
         private void saveButton_Click(object sender, EventArgs e)
         {
             DateTime invoiceDate = dateTimePicker.Value;
             int invoiceNumber = Convert.ToInt32(numField.Text);
             int contractorID = 0;
             int storageID = 0;
-
+            // Получение идентификатора выбранного поставщика.
             if (contractorBox.SelectedItem != null)
             {
                 var contractorItem = (KeyValuePair<int, string>)contractorBox.SelectedItem;
                 contractorID = contractorItem.Key;
             }
-
+            // Получение идентификатора выбранного склада.
             if (storageBox.SelectedItem != null)
             {
                 var storageItem = (KeyValuePair<int, string>)storageBox.SelectedItem;
@@ -84,8 +88,10 @@ namespace OrganizationManagement
             // Закрываем форму после сохранения
             Close();
         }
+        // Метод для обновления количества и цены.
         private void UpdateQuantnPrice()
         {
+            // Обновление данных о количестве, сумме и долге.
             quant1.Text = DataDB.ExecuteScalarQuery($"SELECT COALESCE(COUNT(\"DetailID\"), 0.00) FROM public.\"PurchaseInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
             quant2.Text = DataDB.ExecuteScalarQuery($"SELECT COALESCE(SUM(\"Quantity\"), 0.00) FROM public.\"PurchaseInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
             sum.Text = DataDB.ExecuteScalarQuery($"SELECT COALESCE(SUM(\"Total\"), 0.00) FROM public.\"PurchaseInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
@@ -97,12 +103,14 @@ namespace OrganizationManagement
             if (Convert.ToDouble(duty.Text) > 0 && Convert.ToDouble(duty.Text) != Convert.ToDouble(sum.Text)) duty.ForeColor = System.Drawing.Color.Blue;
             if (Convert.ToDouble(duty.Text) < 0) duty.ForeColor = System.Drawing.Color.Green;
         }
+        // Обработчик события входа на форму.
         private void EditPurchaseInvoiceForm_Enter(object sender, EventArgs e)
         {
             LoadDataIntoDataGridView();
             UpdateQuantnPrice();
             if (specGrid.Rows.Count > 0) storageBox.Enabled = false;
         }
+        // Обработчик события нажатия кнопки "Удалить товар".
         private void delItem_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = specGrid.SelectedRows[0];
@@ -111,6 +119,7 @@ namespace OrganizationManagement
             LoadDataIntoDataGridView();
             UpdateQuantnPrice();
         }
+        // Обработчик события изменения выбранного контрагента.
         private void contractorBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedgoodID = ((KeyValuePair<int, string>)contractorBox.SelectedItem).Key;
@@ -126,33 +135,32 @@ namespace OrganizationManagement
                 reasonField.Text = contrData.Rows[0]["Reason"].ToString();
             }
         }
-
+        // Обработчик события нажатия кнопки "Журнал платежей".
         private void paymentJournal_Click(object sender, EventArgs e)
         {
             PaymentsForPurchForm paymentJournal = new PaymentsForPurchForm(invoiceID);
             paymentJournal.MdiParent = ActiveForm;
             paymentJournal.Show();
         }
-
+        // Обработчик события нажатия кнопки "Печать".
         private void printButton_Click(object sender, EventArgs e)
         {
             DateTime invoiceDate = dateTimePicker.Value;
             int invoiceNumber = Convert.ToInt32(numField.Text);
             int contractorID = 0;
             int storageID = 0;
-
+            // Получение идентификатора контрагента.
             if (contractorBox.SelectedItem != null)
             {
                 var contractorItem = (KeyValuePair<int, string>)contractorBox.SelectedItem;
                 contractorID = contractorItem.Key;
             }
-
+            // Получение идентификатора склада.
             if (storageBox.SelectedItem != null)
             {
                 var storageItem = (KeyValuePair<int, string>)storageBox.SelectedItem;
                 storageID = storageItem.Key;
             }
-
             // Вызываем метод Update из класса DataDB
             PurchaseInvoice.Update(invoiceID, invoiceDate, invoiceNumber, contractorID, storageID);
             IReportDataProvider provider = new PurchInvoiceReportDataProvider(invoiceID);

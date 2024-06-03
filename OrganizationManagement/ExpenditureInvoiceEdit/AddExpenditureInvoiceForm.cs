@@ -10,23 +10,26 @@ namespace OrganizationManagement
 {
     public partial class AddExpenditureInvoiceForm : Form
     {
-        private int invoiceID;
+        private int invoiceID; // Идентификатор расходной накладной
+        // Конструктор формы добавления расходной накладной
         public AddExpenditureInvoiceForm()
         {
             InitializeComponent();
+            // Загрузка данных в комбо-боксы
             DataDB.LoadDataIntoComboBox(contractorBox, "SELECT \"ContractorID\", \"Name\" FROM public.\"Contractor\" ORDER BY \"ContractorID\" ASC");
             DataDB.LoadDataIntoComboBox(storageBox, "SELECT \"StorageID\", \"Name\" FROM public.\"Storage\" ORDER BY \"StorageID\" ASC");
             ExpenditureInvoice.Insert(DateTime.Today, 1, 1);
-
+            // Вставка новой записи о расходной накладной и заполнение формы данными
             contractorBox.Text = ((KeyValuePair<int, string>)contractorBox.Items[0]).Value;
             storageBox.Text = ((KeyValuePair<int, string>)storageBox.Items[0]).Value;
-
+            // Получение идентификатора созданной накладной и ее номера
             invoiceID = Convert.ToInt32(DataDB.ExecuteScalarQuery("SELECT MAX(\"InvoiceID\") " +
                 "FROM public.\"ExpenditureInvoice\";"));
             numField.Text = DataDB.ExecuteScalarQuery("SELECT MAX(\"InvoiceNumber\") " +
                 "FROM public.\"ExpenditureInvoice\";");
             dateTimePicker.Value = DateTime.Today;
         }
+        // Загрузка данных в таблицу деталей расходной накладной
         public void LoadDataIntoDataGridView()
         {
             string query = "SELECT\r\n" +
@@ -52,13 +55,15 @@ namespace OrganizationManagement
             specGrid.Columns["Ед. изм."].Width = 45;
             specGrid.Columns["Цена"].Width = 60;
             specGrid.Columns["Стоимость"].Width = 90;
-        }
+        }        
+        // Обработчик клика по кнопке добавления товара
         private void addItem_Click(object sender, EventArgs e)
         {
             DateTime invoiceDate = dateTimePicker.Value;
             int contractorID = 0;
             int storageID = 0;
             int number = Convert.ToInt32(numField.Text);
+            // Получение выбранного контрагента и склада
             if (contractorBox.SelectedItem != null)
             {
                 var contractorItem = (KeyValuePair<int, string>)contractorBox.SelectedItem;
@@ -70,36 +75,36 @@ namespace OrganizationManagement
                 storageID = storageItem.Key;
             }
             ExpenditureInvoice.Update(invoiceID, invoiceDate, number, contractorID, storageID);
-
+            // Обновление информации о расходной накладной и открытие формы добавления товара
             AddGoodinExpenditureInvoiceForm addForm = new AddGoodinExpenditureInvoiceForm(invoiceID);
             addForm.MdiParent = ActiveForm;
             addForm.Show();
         }
+        // Обработчик клика по кнопке сохранения
         private void saveButton_Click(object sender, EventArgs e)
         {
             DateTime invoiceDate = dateTimePicker.Value;
             int contractorID = 0;
             int storageID = 0;
             int number = Convert.ToInt32(numField.Text);
-
+            // Получение выбранного контрагента и склада
             if (contractorBox.SelectedItem != null)
             {
                 var contractorItem = (KeyValuePair<int, string>)contractorBox.SelectedItem;
                 contractorID = contractorItem.Key;
             }
-
             if (storageBox.SelectedItem != null)
             {
                 var storageItem = (KeyValuePair<int, string>)storageBox.SelectedItem;
                 storageID = storageItem.Key;
             }
-           
+            // Обновление информации о расходной накладной, запись в лог и закрытие формы
             ExpenditureInvoice.Update(invoiceID, invoiceDate, number, contractorID, storageID);
             Log.Insert(mainMDIForm.userID, "Добавлена расходная накладная №" + number.ToString());
             // Закрываем форму после сохранения
             Close();
         }
-
+        // Обновление данных о количестве, сумме и долге
         private void UpdateQuantnPrice()
         {
             quant1.Text = DataDB.ExecuteScalarQuery($"SELECT COALESCE(COUNT(\"DetailID\"), 0.00) FROM public.\"ExpenditureInvoiceDetail\"\r\nWHERE \"InvoiceID\"={invoiceID};");
@@ -113,13 +118,14 @@ namespace OrganizationManagement
             if (Convert.ToDouble(duty.Text) > 0 && Convert.ToDouble(duty.Text) != Convert.ToDouble(sum.Text)) duty.ForeColor = System.Drawing.Color.Blue;
             if (Convert.ToDouble(duty.Text) < 0) duty.ForeColor = System.Drawing.Color.Green;
         }
+        // Обработчик события входа на форму
         private void AddExpenditureInvoiceForm_Enter(object sender, EventArgs e)
         {
             UpdateQuantnPrice();
             LoadDataIntoDataGridView();
             if (specGrid.Rows.Count > 0) storageBox.Enabled = false;
         }
-
+        // Обработчик клика по кнопке удаления товара
         private void delItem_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = specGrid.SelectedRows[0];
@@ -127,7 +133,7 @@ namespace OrganizationManagement
             ExpenditureInvoice.DeleteDetail(detailID);
             UpdateQuantnPrice();
         }
-
+        // Обработчик изменения выбранного контрагента
         private void contractorBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedgoodID = ((KeyValuePair<int, string>)contractorBox.SelectedItem).Key;
@@ -143,7 +149,7 @@ namespace OrganizationManagement
                 reasonField.Text = contrData.Rows[0]["Reason"].ToString();
             }
         }
-
+        // Обработчик создания счета-фактуры
         private void создатьСчетфактуруToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (NpgsqlConnection conn = new NpgsqlConnection(Autorization.connectionString))
@@ -199,7 +205,7 @@ namespace OrganizationManagement
                 }
             }
         }
-
+        // Обработчик клика по кнопке журнала платежей
         private void paymentJournal_Click(object sender, EventArgs e)
         {
             PaymentsForExpForm paymentJournal = new PaymentsForExpForm(invoiceID);
@@ -207,28 +213,26 @@ namespace OrganizationManagement
             paymentJournal.Show();
 
         }
-
+        // Обработчик клика по кнопке печати
         private void printButton_Click(object sender, EventArgs e)
         {
             DateTime invoiceDate = dateTimePicker.Value;
             int contractorID = 0;
             int storageID = 0;
             int number = Convert.ToInt32(numField.Text);
-
+            // Получение выбранного контрагента и склада
             if (contractorBox.SelectedItem != null)
             {
                 var contractorItem = (KeyValuePair<int, string>)contractorBox.SelectedItem;
                 contractorID = contractorItem.Key;
             }
-
             if (storageBox.SelectedItem != null)
             {
                 var storageItem = (KeyValuePair<int, string>)storageBox.SelectedItem;
                 storageID = storageItem.Key;
             }
-
+            // Обновление информации о расходной накладной и открытие формы отчета
             ExpenditureInvoice.Update(invoiceID, invoiceDate, number, contractorID, storageID);
-
             IReportDataProvider provider = new ExpenditureInvoiceReportDataProvider(invoiceID);
             ReportViewForm viewForm = new ReportViewForm(provider);
             viewForm.MdiParent = ActiveForm;

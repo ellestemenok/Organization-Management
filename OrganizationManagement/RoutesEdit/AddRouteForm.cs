@@ -1,22 +1,23 @@
 ﻿using DatabaseLibrary;
 using System;
-using System.Data;
 using System.Windows.Forms;
 namespace OrganizationManagement.RoutesEdit
 {
-    public partial class AddRouteForm : Form
+    public partial class AddRouteForm : Form // Объявление класса формы добавления маршрута, наследующего класс Form.
     {
-        public AddRouteForm()
+        public AddRouteForm() // Определение конструктора класса формы.
         {
-            InitializeComponent();
+            InitializeComponent(); // Инициализация компонентов формы.
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
+        private void saveButton_Click(object sender, EventArgs e) // Обработчик события нажатия кнопки "Сохранить".
         {
-            string routeName = nameField.Text;
-            Route.Insert(routeName);
-            Log.Insert(mainMDIForm.userID, "Создан маршрут " + routeName);
-            Close(); 
+            string routeName = nameField.Text; // Получение текста из поля ввода имени маршрута.
+
+            Route.Insert(routeName); // Вставка нового маршрута в базу данных.
+            Log.Insert(mainMDIForm.userID, "Создан маршрут " + routeName); // Вставка записи в журнал о создании нового маршрута.
+
+            Close(); // Закрытие формы добавления маршрута после сохранения.
         }
     }
 }
